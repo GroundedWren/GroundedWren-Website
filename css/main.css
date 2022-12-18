@@ -6,6 +6,10 @@ html, body {
 	margin: 0;
 }
 
+a {
+	color: white;
+}
+
 .subveil {
 	height: 100%;
 }
