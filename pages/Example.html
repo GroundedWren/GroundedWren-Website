@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>Head Title!</title>
+
+	<!-- Styles -->
+	<link rel="stylesheet" href="../css/main.css" type="text/css" />
+	<link rel="stylesheet" href="../css/Common/Controls.css" type="text/css" />
+
+	<!-- Scripts -->
+	<script src="../scripts/main.js"></script>
+
+	<script src="../scripts/Common/Common.js"></script>
+	<script src="../scripts/Common/DOMLib.js"></script>
+	<script src="../scripts/Common/FileLib.js"></script>
+	<script src="../scripts/Common/Components/ElementDragger.js"></script>
+	<script src="../scripts/Common/Components/Timekeeper.js"></script>
+	<script src="../scripts/Common/Controls/Dialog.js"></script>
+	<script src="../scripts/Common/Controls/Modal.js"></script>
+
+	<script src="../scripts/Pages/Example.js"></script>
+</head>
+<body>
+	<div id="subveil">
+		<div class="header">This is a header</div>
+		<div class="main-page">
+			<h1>Hello world!</h1>
+			<div id="content"></div>
+
+			<h2>Upload</h2>
+			<input id="fileUpload" type="file" /><br /><br />
+
+			<button onclick="Pages.Example.displayFileAsText()">displayFileAsText</button><br /><br />
+			<button onclick="Pages.Example.displayFileJSONsTestProperty()">displayFileJSONsTestProperty</button><br /><br />
+
+			<h2>Download</h2>
+			<input id="fileDownload" type="button" value="Download" onclick="Pages.Example.saveTestFile()" />
+
+
+			<hr />
+			<h2>Tests</h2>
+			<img src="../img/TestImg.png" alt="alt text" width="500" /><br />
+			<input id="Button1" type="button" value="button" onclick="window.alert('hey there friend')" /><br /><br />
+
+			<br />
+			<form id="form1">
+				<div class="inputDiv">
+					<label for="Text1">Username</label>
+					<input id="Text1" type="text" />
+				</div>
+
+				<div class="inputDiv">
+					<label for="Password1">Password</label>
+					<input id="Password1" type="password" />
+				</div>
+
+				<div class="inputDiv">
+					<label for="Checkbox1">Checkbox</label>
+					<input id="Checkbox1" type="checkbox" /><br />
+				</div>
+
+				<div class="inputDiv">
+					<label for="radios1">Radios</label>
+					<div id="radios1">
+						<input id="Radio1" type="radio" name="radioName1" value="radioval1" />
+						<label for="Radio1">value 1</label>
+						<input id="Radio2" type="radio" name="radioName1" value="radioval2" />
+						<label for="Radio2">value 2</label>
+					</div>
+				</div>
+
+				<div class="inputDiv">
+					<label for="Select1">select 1</label>
+					<select id="Select1">
+						<option>Option 1</option>
+						<option>Option 2</option>
+					</select>
+				</div>
+				<input id="Reset1" type="reset" value="reset" />
+				<input id="Submit1" type="submit" value="submit" />
+			</form><br />
+
+			<input id="Hidden1" type="hidden" />
+			<textarea id="TextArea1" rows="2" cols="20" placeholder="I'm a text area uwu"></textarea><br />
+
+			<table id="myTable1" style="width: 50%;">
+				<tr class="tableHeader"><td>cell 1</td><td>cell 2</td><td>cell 3</td></tr>
+				<tr><td>cell 1</td><td>cell 2</td><td>cell 3</td></tr>
+				<tr><td>cell 1</td><td>cell 2</td><td>cell 3</td></tr>
+			</table><br />
+
+			<button onclick="Pages.Example.showModal()">It's modal time!</button><br /><br />
+			<button onclick="Pages.Example.showDialog()">It's nonmodal dialog time!</button><br /><br />
+		</div>
+		<footer class="footer">This is a footer</footer>
+	</div>
+</body>
+</html>
