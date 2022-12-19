@@ -4,6 +4,7 @@ html, body {
 	color: white;
 	height: 100%;
 	margin: 0;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 a {
@@ -15,8 +16,6 @@ a {
 }
 
 .main-page {
-	margin-top: 20px;
-	margin-bottom: 20px;
 }
 
 .banner {
@@ -24,8 +23,14 @@ a {
 	background-color: darkblue;
 	width: calc(100% - 10px);
 	height: 20px;
+	padding-top: 1px;
+	padding-bottom: 4px;
 	padding-left: 5px;
 	padding-right: 5px;
+}
+
+.banner-buffer {
+	height: 25px;
 }
 
 .fixed-header {
@@ -62,6 +67,76 @@ div.inputDiv > label {
 
 div.inputDiv * {
 	display: inline-block;
+}
+
+input[type="text"], input[type="password"] {
+	background-color: black;
+	color: white;
+}
+
+input[type="checkbox"] {
+	appearance: none;
+	background-color: black;
+	margin: 0;
+	vertical-align: middle;
+	color: black;
+	width: 13px;
+	height: 13px;
+	border: 2px solid white;
+	border-radius: 3px;
+}
+
+.z { /* Fix auto-indent */
+}
+
+input[type="checkbox"]:checked {
+	background-color: mediumpurple;
+}
+
+input[type="radio"] {
+	appearance: none;
+	background-color: black;
+	margin: 0;
+	vertical-align: middle;
+	width: 13px;
+	height: 13px;
+	border: 2px solid white;
+	border-radius: 50%;
+}
+
+.z { /* Fix auto-indent */
+}
+
+input[type="radio"] + label {
+	margin-right: 5px;
+}
+
+input[type="radio"]:checked {
+	background-color: mediumpurple;
+}
+
+textarea {
+	color: white;
+	background-color: black;
+}
+
+select {
+	color: white;
+	background-color: black;
+}
+
+button:not(.popup-close), input[type="button"], input[type="submit"], input[type="reset"], input[type="file"]::file-selector-button {
+	background-color: rgb(38, 38, 38);
+	color: white;
+	border: 1px solid rgb(91, 154, 213);
+}
+
+.z { /* Fix auto-indent */
+}
+
+button:hover:not(.popup-close), input[type="button"]:hover, input[type="submit"]:hover, input[type="reset"]:hover, input[type="file"]::file-selector-button:hover {
+	background-color: rgb(25, 25, 25);
+	border-color: rgb(73, 124, 171);
 }
 /*#endregion */
 

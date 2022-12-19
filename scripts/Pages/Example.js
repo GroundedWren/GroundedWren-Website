@@ -11,7 +11,7 @@ registerNamespace("Pages.Example", function (ns)
 			document.getElementById('subveil'),
 			"title",
 			"<p>Hi! I'll be your dialog this evening.</p>"
-			+ "<p>You can do anything you want with me uwu</p>"
+			+ "<p>Move me around uwu</p>"
 		);
 
 		if (Dialog.NumberShowing > 0)
