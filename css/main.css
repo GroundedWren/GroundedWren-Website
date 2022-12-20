@@ -125,7 +125,7 @@ select {
 	background-color: black;
 }
 
-button:not(.popup-close), input[type="button"], input[type="submit"], input[type="reset"], input[type="file"]::file-selector-button {
+button:not(.popup-close), input[type="button"], input[type="submit"], input[type="reset"], input[type="file"]::file-selector-button, .button-like {
 	background-color: rgb(38, 38, 38);
 	color: white;
 	border: 1px solid rgb(91, 154, 213);
@@ -134,7 +134,7 @@ button:not(.popup-close), input[type="button"], input[type="submit"], input[type
 .z { /* Fix auto-indent */
 }
 
-button:hover:not(.popup-close), input[type="button"]:hover, input[type="submit"]:hover, input[type="reset"]:hover, input[type="file"]::file-selector-button:hover {
+button:hover:not(.popup-close), input[type="button"]:hover, input[type="submit"]:hover, input[type="reset"]:hover, input[type="file"]::file-selector-button:hover, .button-like:hover {
 	background-color: rgb(25, 25, 25);
 	border-color: rgb(73, 124, 171);
 }
@@ -156,3 +156,22 @@ table, th, td {
 	font-weight: bold;
 }
 /*#endregion */
+
+/*#region Card */
+.card {
+	margin: 10px;
+	border: 1px solid white;
+	padding: 10px;
+	box-shadow: 0 0 10px 5px rgba(100, 100, 100, 0.4)
+}
+
+.card-header {
+	background-color: rebeccapurple;
+	color: white;
+	width: calc(100% + 15px);
+	font-size: larger;
+	margin: -10px;
+	margin-bottom: 10px;
+	padding-left: 5px;
+}
+/*#endregion*/

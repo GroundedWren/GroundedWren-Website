@@ -18,12 +18,13 @@
 	<script src="../scripts/Common/Components/Timekeeper.js"></script>
 	<script src="../scripts/Common/Controls/Dialog.js"></script>
 	<script src="../scripts/Common/Controls/Modal.js"></script>
+	<script src="../scripts/Common/Controls/PageControl.js"></script>
 
 	<script src="../scripts/Pages/Example.js"></script>
 </head>
 <body>
 	<div id="subveil">
-		<header class="banner fixed-header">Example page!</header>
+		<header class="banner fixed-header"><a style="float: left" href="../index.html">Home</a><span>Example page!</span></header>
 		<div class="banner-buffer"></div>
 		<div class="main-page">
 			<h1>Hello world!</h1>
@@ -94,8 +95,21 @@
 			<button onclick="Pages.Example.showModal()">It's modal time!</button><br /><br />
 			<button onclick="Pages.Example.showDialog()">It's nonmodal dialog time!</button><br /><br />
 		</div>
+
+		<div id="pgC" class="page-control" style="width: 1000px; height: 700px;">
+			<div id="pgC_ts" class="tab-strip">
+				<div id="pgC_t1" tabindex="0" class="tab-strip-tab button-like"><span>Tab 1</span></div>
+				<div id="pgC_t2" tabindex="0" class="tab-strip-tab button-like"><span>Tab 2</span></div>
+				<div class="tab-gutter"></div>
+			</div>
+			<div id="pgC_pc" class="page-container">
+				<div id="pgC_p1" class="page-control-page">Page 1</div>
+				<div id="pgC_p2" class="page-control-page">Page 2</div>
+			</div>
+		</div>
+
 		<div class="banner-buffer"></div>
-		<footer class="banner fixed-footer"><a href="../index.html">Home</a></footer>
+		<footer class="banner fixed-footer">This is just a proving ground for things I'm working on</footer>
 	</div>
 </body>
 </html>

@@ -3,30 +3,16 @@
  */
 registerNamespace("Pages.Index", function (ns)
 {
-	var subveilEl = undefined;
+	subveilEl = undefined;
+
+	socialsControl = undefined;
+	ns.socialsControl = socialsControl;
 
 	function registerElements(subveil)
 	{
 		subveilEl = subveil;
 	};
 	ns.registerElements = registerElements;
-
-	function helloButton()
-	{
-		var Dialog = Common.Controls.Popups.Dialog;
-
-		var helloDialog = new Dialog(subveilEl, "Greetings", "Hi there :)");
-
-		if (Dialog.NumberShowing > 0)
-		{
-			helloDialog.showAbsolute(Dialog.LastShowLeft + 50, Dialog.LastShowTop + 50);
-		}
-		else
-		{
-			helloDialog.showInView(200, 100);
-		}
-	};
-	ns.helloButton = helloButton;
 });
 
 /**
@@ -36,5 +22,16 @@ window.onload = () =>
 {
 	Pages.Index.registerElements(
 		document.getElementById("subveil")
+	);
+
+	Pages.Index.socialsControl = new Common.Controls.PageControl.PageControl(
+		document.getElementById("socialsCtrl"),
+		document.getElementById("socialsCtrl_ts"),
+		document.getElementById("socialsCtrl_pgc"),
+		{
+			"socialsCtrl_tab_Cohost": document.getElementById("socialsCtrl_page_Cohost"),
+			"socialsCtrl_tab_Tumblr": document.getElementById("socialsCtrl_page_Tumblr"),
+			"socialsCtrl_tab_Twitter": document.getElementById("socialsCtrl_page_Twitter"),
+		}
 	);
 };
