@@ -3,7 +3,6 @@
  */
 registerNamespace("Pages.Example", function (ns)
 {
-	pageControl = undefined;
 	ns.pageControl = pageControl;
 
 	function showDialog()

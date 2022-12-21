@@ -3,16 +3,7 @@
  */
 registerNamespace("Pages.Index", function (ns)
 {
-	subveilEl = undefined;
-
-	socialsControl = undefined;
-	ns.socialsControl = socialsControl;
-
-	function registerElements(subveil)
-	{
-		subveilEl = subveil;
-	};
-	ns.registerElements = registerElements;
+	ns.socialsControl = null;
 });
 
 /**
@@ -20,10 +11,6 @@ registerNamespace("Pages.Index", function (ns)
  */
 window.onload = () =>
 {
-	Pages.Index.registerElements(
-		document.getElementById("subveil")
-	);
-
 	Pages.Index.socialsControl = new Common.Controls.PageControl.PageControl(
 		document.getElementById("socialsCtrl"),
 		document.getElementById("socialsCtrl_ts"),

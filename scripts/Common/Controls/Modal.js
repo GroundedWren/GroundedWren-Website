@@ -9,17 +9,17 @@ registerNamespace("Common.Controls.Popups", function (ns)
 
 	//#region private fields
 	// The veil upon which our modal sits
-	__veilEl = null;
+	var __veilEl = null;
 	// The top-level DOM element of the modal
-	__modalEl = null;
+	var __modalEl = null;
 
 	// The modal's title element
-	__modalTitle = null;
+	var __modalTitle = null;
 	// The modal's content element
-	__modalContent = null;
+	var __modalContent = null;
 
 	//Callback for when the modal is closed
-	__onModalClosed = function () { };
+	var __onModalClosed = function () { };
 	//#endregion
 
 	/**

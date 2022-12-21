@@ -1,0 +1,34 @@
+﻿/**
+	CSS Classes for Blog.html
+*/
+
+#subveil {
+	height: 100%;
+}
+
+.main-page {
+	margin-left: 20px;
+	margin-right: 20px;
+	height: calc(100% - 25px); /*Header*/
+}
+
+.content {
+	display: flex;
+	flex-direction: row;
+	height: 100%;
+}
+
+#entryCard {
+	height: calc(100% - 42px); /*Margin, Border, Padding*/
+}
+
+.card iframe {
+	border: none;
+	width: calc(100% + 10px); /*10 to overlap the padding*/
+	height: calc(100% - 26px + 10px); /*26 for the header, 10 to overlap the padding*/
+}
+
+h1, h2, h3, h4, h5, h6 {
+	margin-bottom: 0px;
+	margin-top: 10px;
+}
