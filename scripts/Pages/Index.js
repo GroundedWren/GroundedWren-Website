@@ -19,6 +19,7 @@ window.onload = () =>
 			"socialsCtrl_tab_Cohost": document.getElementById("socialsCtrl_page_Cohost"),
 			"socialsCtrl_tab_Tumblr": document.getElementById("socialsCtrl_page_Tumblr"),
 			"socialsCtrl_tab_Twitter": document.getElementById("socialsCtrl_page_Twitter"),
+			"socialsCtrl_tab_Other": document.getElementById("socialsCtrl_page_Other"),
 		}
 	);
 };

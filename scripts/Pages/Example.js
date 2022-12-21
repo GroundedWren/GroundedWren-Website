@@ -3,7 +3,7 @@
  */
 registerNamespace("Pages.Example", function (ns)
 {
-	ns.pageControl = pageControl;
+	ns.pageControl = null;
 
 	function showDialog()
 	{
