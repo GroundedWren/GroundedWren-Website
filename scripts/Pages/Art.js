@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Namespace for Art.html
  */
 registerNamespace("Pages.Art", function (ns)
@@ -64,11 +64,31 @@ registerNamespace("Pages.Art", function (ns)
 		{
 			if (!artFrame.filtered)
 			{
-				getOrCreateGroup(artFrame).after(artFrame.getElement());
+				var group = getOrCreateGroup(artFrame);
+				__findInsertionPoint(group).after(artFrame.getElement());
 			}
 		});
 	};
 	ns.siteFrames = siteFrames;
+
+	/**
+	 * Gets where to insert the next art frame in a group (at the end)
+	 */
+	function __findInsertionPoint(group)
+	{
+		var insPt = group;
+		var keepLooking = true;
+		while (keepLooking)
+		{
+			var nextEl = insPt.nextElementSibling;
+			if (nextEl && nextEl.classList.contains("artframe"))
+			{
+				insPt = nextEl;
+			}
+			else { keepLooking = false; }
+		}
+		return insPt;
+	}
 
 	/**
 	 * Sorts and sites frames onto the page
@@ -324,7 +344,7 @@ registerNamespace("Pages.Art", function (ns)
 		ns.ArtFrames.forEach(frame => frame.setFiltered(!frame.passesFilters()));
 		ns.sortBy(ns.__lastSort);
 	};
-	//#region Filtering
+	//#endregion
 
 	class ArtFrame
 	{
@@ -481,7 +501,7 @@ registerNamespace("Pages.Art", function (ns)
 			this.__addTableRow(
 				metaTable,
 				"Date",
-				this.date.toLocaleDateString('en-US')
+				this.date.toLocaleDateString(undefined, { weekday: undefined, year: "numeric", month: "long", day: "numeric" })
 			);
 			return frame;
 		}
