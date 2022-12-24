@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>Art</title>
+
+	<!-- Styles -->
+	<link rel="stylesheet" href="../css/main.css" type="text/css" />
+	<link rel="stylesheet" href="../css/Common/Controls.css" type="text/css" />
+
+	<link rel="stylesheet" href="../css/Pages/Art.css" type="text/css" />
+
+	<!-- ../scripts -->
+	<script src="../scripts/main.js"></script>
+
+	<script src="../scripts/Common/Common.js"></script>
+	<script src="../scripts/Common/DOMLib.js"></script>
+	<script src="../scripts/Common/Components/ElementDragger.js"></script>
+	<script src="../scripts/Common/Controls/Dialog.js"></script>
+	<script src="../scripts/Common/Controls/Modal.js"></script>
+
+	<script src="../scripts/Pages/Art.js"></script>
+</head>
+<body>
+	<div id="subveil">
+		<div class="banner fixed-header"><a style="float: left;" href="../index.html">Home</a><span>Art</span></div>
+		<div class="banner-buffer"></div>
+		<div class="main-page">
+			<div class="content">
+				<div style="flex-shrink: 0; flex-grow: 0;">
+					<!-- Left pane -->
+					<div class="card">
+						<div class="card-header">Sort</div>
+						<div class="inputDiv">
+							<label for="CharaRad">Character</label>
+							<input id="CharaRad" type="radio" name="SortRadGroup" onChange="Pages.Art.sortBy('Character')" checked /><br />
+							<label for="ArtistRad">Artist</label>
+							<input id="ArtistRad" type="radio" name="SortRadGroup" onChange="Pages.Art.sortBy('Artist')" /><br />
+							<label for="DateRad">Date</label>
+							<input id="DateRad" type="radio" name="SortRadGroup" onChange="Pages.Art.sortBy('Date')" /><br />
+						</div>
+					</div>
+					<div class="card">
+						<div class="card-header">Filter</div>
+						<button onclick="Pages.Art.showAll()">Show All</button>
+						<button onclick="Pages.Art.hideAll()">Hide All</button><br />
+						<!--<div class="inputDiv" style="margin-top: 5px;">
+							<label for="ExplicitCB">Enable explicit art</label>
+							<input id="ExplicitCB" type="checkbox" onchange="Pages.Art.showExplicit(arguments[0].target.checked)" />
+						</div>-->
+
+						<h3>Characters</h3>
+						<button onclick="Pages.Art.showAllChars()">All</button>
+						<button onclick="Pages.Art.hideAllChars()">None</button>
+						<div id="CharFilters" class="inputDiv">
+							<h4>Vera's OCs</h4><br />
+							<label for="VeraCB">Vera</label>
+							<input id="VeraCB" type="checkbox" onchange="Pages.Art.setCharFilter('Vera', arguments[0].target.checked)" /><br />
+							<label for="ErynCB">Eryn</label>
+							<input id="ErynCB" type="checkbox" onchange="Pages.Art.setCharFilter('Eryn', arguments[0].target.checked)" /><br />
+							<label for="FreyaCB">Freya</label>
+							<input id="FreyaCB" type="checkbox" onchange="Pages.Art.setCharFilter('Freya', arguments[0].target.checked)" /><br />
+							<label for="SindriCB">Sindri</label>
+							<input id="SindriCB" type="checkbox" onchange="Pages.Art.setCharFilter('Sindri', arguments[0].target.checked)" /><br />
+							<h4>Others' OCs</h4><br />
+							<label for="GhodukkCB">Ghodukk</label>
+							<input id="GhodukkCB" type="checkbox" onchange="Pages.Art.setCharFilter('Ghodukk', arguments[0].target.checked)" /><br />
+							<label for="JackCB">Jack</label>
+							<input id="JackCB" type="checkbox" onchange="Pages.Art.setCharFilter('Jack', arguments[0].target.checked)" /><br />
+							<label for="LightsongCB">Lightsong</label>
+							<input id="LightsongCB" type="checkbox" onchange="Pages.Art.setCharFilter('Lightsong', arguments[0].target.checked)" /><br />
+							<label for="PercyCB">Percy</label>
+							<input id="PercyCB" type="checkbox" onchange="Pages.Art.setCharFilter('Percy', arguments[0].target.checked)" /><br />
+							<label for="SerinCB">Serin</label>
+							<input id="SerinCB" type="checkbox" onchange="Pages.Art.setCharFilter('Serin', arguments[0].target.checked)" /><br />
+							<h4>Others</h4><br />
+							<label for="NocturnaCB">Nocturna</label>
+							<input id="NocturnaCB" type="checkbox" onchange="Pages.Art.setCharFilter('Nocturna', arguments[0].target.checked)" /><br />
+						</div>
+
+						<h3>Artists</h3>
+						<button onclick="Pages.Art.showAllArtists()">All</button>
+						<button onclick="Pages.Art.hideAllArtists()">None</button>
+						<div id="ArtistFilters" class="inputDiv" style="margin-top: 5px">
+							<label for="BACB">Bastien Aufrere</label>
+							<input id="BACB" type="checkbox" onchange="Pages.Art.togArtistFilter('BastienAufrere', arguments[0].target.checked)" /><br />
+							<label for="BerBorCB">Berenice Borggrefe</label>
+							<input id="BerBorCB" type="checkbox" onchange="Pages.Art.togArtistFilter('BereniceBoggrefe', arguments[0].target.checked)" /><br />
+							<label for="ChelseaRhiCB">Chelsea-Rhi</label>
+							<input id="ChelseaRhiCB" type="checkbox" onchange="Pages.Art.togArtistFilter('ChelseaRhi', arguments[0].target.checked)" /><br />
+							<label for="BonnieCB">Bonnie Guerra</label>
+							<input id="BonnieCB" type="checkbox" onchange="Pages.Art.togArtistFilter('BonnieGuerra', arguments[0].target.checked)" /><br />
+							<label for="DespeyCB">Despey</label>
+							<input id="DespeyCB" type="checkbox" onchange="Pages.Art.togArtistFilter('Despey', arguments[0].target.checked)" /><br />
+							<label for="JestCB">jesterdk</label>
+							<input id="JestCB" type="checkbox" onchange="Pages.Art.togArtistFilter('JesterDK', arguments[0].target.checked)" /><br />
+							<label for="PalavenmoonsCB">Palavenmoons</label>
+							<input id="PalavenmoonsCB" type="checkbox" onchange="Pages.Art.togArtistFilter('Palavenmoons', arguments[0].target.checked)" /><br />
+							<label for="RaiykCB">Raiyk</label>
+							<input id="RaiykCB" type="checkbox" onchange="Pages.Art.togArtistFilter('Raiyk', arguments[0].target.checked)" /><br />
+							<label for="SLCCB">ShrimpLoverCat</label>
+							<input id="SLCCB" type="checkbox" onchange="Pages.Art.togArtistFilter('ShrimpLoverCat', arguments[0].target.checked)" /><br />
+							<label for="VeraArtCB">Vera</label>
+							<input id="VeraArtCB" type="checkbox" onchange="Pages.Art.togArtistFilter('Vera', arguments[0].target.checked)" /><br />
+						</div>
+					</div>
+				</div>
+
+				<div style="flex-shrink: 0; flex-grow: 1; flex-basis: 0;">
+					<!-- right pane -->
+					<div id="gallery">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

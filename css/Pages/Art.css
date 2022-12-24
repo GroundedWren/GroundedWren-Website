@@ -1,0 +1,83 @@
+﻿#subveil {
+	height: 100%;
+}
+
+.main-page {
+	margin-left: 20px;
+	margin-right: 20px;
+	height: calc(100% - 25px); /*Header*/
+}
+
+.content {
+	display: flex;
+	flex-direction: row;
+	height: 100%;
+	width: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	margin-bottom: 0px;
+	margin-top: 10px;
+}
+
+#gallery {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+.artframe {
+	width: 400px;
+	min-height: 300px;
+	display: flex;
+	flex-direction: column;
+	overflow: clip;
+	cursor: pointer;
+}
+
+.z { /* Fix auto-indent */
+}
+
+.artframe > img {
+	width: 100%;
+	overflow: clip;
+}
+
+.artframe:hover {
+	box-shadow: 0 0 10px 5px rgba(100, 100, 100, 0.9)
+}
+
+.frameBuffer {
+	flex-grow: 1;
+}
+
+/*.blurred {
+	filter: blur(10px);
+}*/
+
+.imgMeta {
+	flex-basis: 0;
+	flex-shrink: 0;
+	flex-grow: 0;
+}
+
+td {
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	padding-top: 5px;
+	width: auto;
+}
+table{
+	border: none;
+	margin-bottom: 20px;
+}
+.row-label{
+	width: 100px;
+}
+
+.divider {
+	width: 100%;
+	margin-bottom: 0;
+	text-align: center;
+}

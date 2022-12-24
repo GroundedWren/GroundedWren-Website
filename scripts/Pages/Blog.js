@@ -6,13 +6,12 @@ registerNamespace("Pages.Blog", function (ns)
 	ns.entryFrame = null;
 	ns.entryHeader = null;
 
-	const ENTRIES_DIRECTORY = "blog_entries/"
-	const PAGES_DIRECTORY = "https://groundedwren.com/pages/"
+	const ENTRIES_DIRECTORY = "./blog_entries/"
 
 	function openEntry(filename, title)
 	{
 		ns.entryFrame.setAttribute("src", ENTRIES_DIRECTORY + filename);
-		ns.entryHeader.innerHTML = `<a href="${PAGES_DIRECTORY + ENTRIES_DIRECTORY + filename}">${title}</a>`;
+		ns.entryHeader.innerHTML = `<a href="${ENTRIES_DIRECTORY + filename}">${title}</a>`;
 	}
 	ns.openEntry = openEntry;
 });

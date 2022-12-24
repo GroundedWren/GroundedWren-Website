@@ -24,8 +24,10 @@
 
 .card iframe {
 	border: none;
-	width: calc(100% + 10px); /*10 to overlap the padding*/
-	height: calc(100% - 26px + 10px); /*26 for the header, 10 to overlap the padding*/
+	margin-left: -10px;
+	margin-top: -10px;
+	width: calc(100% + 10px + 10px); /*10 to overlap the bottom padding, 10 for the top*/
+	height: calc(100% - 26px + 10px + 10px); /*26 for the header, 10 to overlap the bottom padding, 10 for the top*/
 }
 
 h1, h2, h3, h4, h5, h6 {

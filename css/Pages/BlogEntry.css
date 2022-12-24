@@ -1,8 +1,10 @@
 ﻿body {
-	width: calc(100% - 10px); /*padding*/
-	height: calc(100% - 10px); /*padding*/
+	width: calc(100% - 10px - 10px); /*padding*/
+	height: calc(100% - 10px - 10px); /*padding*/
 	padding-right: 10px;
 	padding-bottom: 10px;
+	padding-top: 10px;
+	padding-left: 10px;
 }
 h1, h2, h3, h4, h5, h6 {
 	margin: 0px;

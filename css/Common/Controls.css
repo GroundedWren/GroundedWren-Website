@@ -77,6 +77,10 @@
 	flex-direction: column;
 }
 
+.popup-content{
+	overflow: auto
+}
+
 .stop-scrolling {
 	height: 100%;
 	overflow: hidden;
