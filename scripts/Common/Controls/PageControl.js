@@ -6,7 +6,7 @@ registerNamespace("Common.Controls.PageControl", function (ns)
 	/**
 	 * Namespace function to build a new page control
 	 */
-	function buildPageControl(parentEl)
+	function buildPageControl(parentEl, zeroStateMessage)
 	{
 		const { el: pageControl } = Common.DOMLib.createElement(
 			"div",
@@ -30,7 +30,7 @@ registerNamespace("Common.Controls.PageControl", function (ns)
 			pageControl,
 			["page-container"]
 		);
-		return new PageControl(pageControl, tabStrip, pageContainer, {});
+		return new PageControl(pageControl, tabStrip, pageContainer, {}, zeroStateMessage);
 	};
 	ns.buildPageControl = buildPageControl;
 
@@ -47,6 +47,8 @@ registerNamespace("Common.Controls.PageControl", function (ns)
 		__pageContainerEl;
 		//mapping from tab element ids to Tab objects
 		__tabDict;
+		//zero state control element
+		__zeroStateControl;
 
 		//element id of the currently selected tab
 		__activeTabId;
@@ -56,7 +58,7 @@ registerNamespace("Common.Controls.PageControl", function (ns)
 		/**
 		 * Create a page control from existing DOM elements
 		 */
-		constructor(pageControl, tabStrip, pageContainer, tabPageMap)
+		constructor(pageControl, tabStrip, pageContainer, tabPageMap, zeroStateMessage)
 		{
 			this.controlEl = pageControl;
 			this.__tabStripEl = tabStrip;
@@ -67,6 +69,11 @@ registerNamespace("Common.Controls.PageControl", function (ns)
 			{
 				this.registerTab(document.getElementById(tabId), tabPageMap[tabId]);
 				this.__lastTabId = tabId;
+			}
+
+			if (zeroStateMessage != undefined)
+			{
+				this.__zeroStateControl = Common.Controls.ZeroState.embedZSC(this.__pageContainerEl, zeroStateMessage);
 			}
 
 			this.__activeTabId = null;
@@ -122,9 +129,20 @@ registerNamespace("Common.Controls.PageControl", function (ns)
 			{
 				this.__tabDict[this.__activeTabId].deactivate();
 			}
+
+			this.__exitZeroState();
+
 			this.__tabDict[tabId].activate();
 			this.__activeTabId = tabId;
 		};
+
+		__exitZeroState()
+		{
+			if (this.__zeroStateControl)
+			{
+				Common.DOMLib.addStyle(this.__zeroStateControl, { "display": "none" });
+			}
+		}
 	};
 	ns.PageControl = PageControl;
 

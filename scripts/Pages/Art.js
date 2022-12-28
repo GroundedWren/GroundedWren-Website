@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Namespace for Art.html
  */
 registerNamespace("Pages.Art", function (ns)
@@ -40,12 +40,15 @@ registerNamespace("Pages.Art", function (ns)
 		BereniceBoggrefe: new ArtistInfo("Berenice Borggrefe", "https://www.artstation.com/ravenluckarts"),
 		Vera: new ArtistInfo("Vera", "https://www.groundedwren.com"),
 		BastienAufrere: new ArtistInfo("Bastien Aufrere", "https://www.artstation.com/bastien_aufrere"),
-		JesterDK: new ArtistInfo("jesterdk", "https://www.deviantart.com/jesterdk"),
+		JesterDK: new ArtistInfo("JesterDK", "https://www.deviantart.com/jesterdk"),
 		BonnieGuerra: new ArtistInfo("Bonnie Guerra", "https://www.patreon.com/Bonnieguerra"),
 	};
 	//#endregion
 
 	//#region Siting
+	//The galery div
+	ns.GalleryEl = null;
+
 	// List of all frames which may be shown
 	ns.ArtFrames = [];
 
@@ -60,14 +63,17 @@ registerNamespace("Pages.Art", function (ns)
 	 */
 	function siteFrames(getOrCreateGroup)
 	{
+		var shownFrameCount = 0;
 		ns.ArtFrames.forEach((artFrame) =>
 		{
 			if (!artFrame.filtered)
 			{
 				var group = getOrCreateGroup(artFrame);
 				__findInsertionPoint(group).after(artFrame.getElement());
+				shownFrameCount++;
 			}
 		});
+		shownFrameCount ? exitZeroState() : enterZeroState();
 	};
 	ns.siteFrames = siteFrames;
 
@@ -104,7 +110,6 @@ registerNamespace("Pages.Art", function (ns)
 		ns.ArtGroupMap = {};
 
 		var dce = Common.DOMLib.createElement;
-		var gallery = document.getElementById("gallery");
 
 		switch (sorter)
 		{
@@ -113,7 +118,7 @@ registerNamespace("Pages.Art", function (ns)
 				{
 					var primaryChar = artFrame.getPrimaryCharacter();
 					if (ns.ArtGroupMap[primaryChar]) { return ns.ArtGroupMap[primaryChar]; }
-					const { el: divider } = dce("div", gallery, ["card", "divider"]);
+					const { el: divider } = dce("div", ns.GalleryEl, ["card", "divider"]);
 					divider.innerText = primaryChar;
 					ns.ArtGroupMap[primaryChar] = divider;
 					ns.ArtGroups.push(divider);
@@ -126,7 +131,7 @@ registerNamespace("Pages.Art", function (ns)
 				{
 					var primaryArtist = artFrame.getPrimaryArtist();
 					if (ns.ArtGroupMap[primaryArtist]) { return ns.ArtGroupMap[primaryArtist]; }
-					const { el: divider } = dce("div", gallery, ["card", "divider"]);
+					const { el: divider } = dce("div", ns.GalleryEl, ["card", "divider"]);
 					divider.innerHTML = ns.Artists[primaryArtist].getLink();
 					ns.ArtGroupMap[primaryArtist] = divider;
 					ns.ArtGroups.push(divider);
@@ -140,7 +145,7 @@ registerNamespace("Pages.Art", function (ns)
 				{
 					var date = artFrame.date.getUTCFullYear();
 					if (ns.ArtGroupMap[date]) { return ns.ArtGroupMap[date]; }
-					const { el: divider } = dce("div", gallery, ["card", "divider"]);
+					const { el: divider } = dce("div", ns.GalleryEl, ["card", "divider"]);
 					divider.innerHTML = date;
 					ns.ArtGroupMap[date] = divider;
 					ns.ArtGroups.push(divider);
@@ -518,6 +523,21 @@ registerNamespace("Pages.Art", function (ns)
 		}
 	}
 	Pages.Art.ArtFrame = ArtFrame;
+
+	//#region Zero State
+	ns.ZeroStateControl = null;
+	function enterZeroState()
+	{
+		Common.DOMLib.addStyle(ns.ZeroStateControl, { "display": "block" });
+	}
+	ns.enterZeroState = enterZeroState;
+
+	function exitZeroState()
+	{
+		Common.DOMLib.addStyle(ns.ZeroStateControl, { "display": "none" });
+	}
+	ns.exitZeroState = exitZeroState;
+	//#endregion
 });
 
 /**
@@ -594,7 +614,7 @@ window.onload = () =>
 		//),
 		new ArtFrame(
 			"Tangled Up in Blue",
-			"../img/Sindri Profile - jesterdk & Vera - 2016-10-14.png",
+			"../img/Sindri Profile - JesterDK & Vera - 2016-10-14.png",
 			["Sindri"],
 			["Vera", "JesterDK"],
 			new Date(2016, 09, 14),
@@ -650,6 +670,14 @@ window.onload = () =>
 		),
 	]);
 	//#endregion
+
+	Pages.Art.GalleryEl = document.getElementById("gallery");
+
+	Pages.Art.ZeroStateControl = Common.Controls.ZeroState.embedZSC(
+		document.getElementById("RightPane"),
+		"Nothing to Show - Modify Filters"
+	);
+	Pages.Art.enterZeroState();
 
 	Pages.Art.ArtFrames.sort((a, b) => b.date - a.date);
 	Pages.Art.ArtFrames.forEach(frame => frame.setFiltered(!frame.passesFilters()));

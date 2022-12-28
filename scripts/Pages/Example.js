@@ -72,17 +72,21 @@ registerNamespace("Pages.Example", function (ns)
  */
 window.onload = () =>
 {
+	//#region greeter
 	const greeter = new Common.Components.Timekeeper(document.getElementById("content"));
 	greeter.start();
+	//#endregion
 
+	//#region HTML testing
 	const form1El = document.getElementById("form1");
 	form1El.addEventListener('submit', event =>
 	{
 		window.alert("form submitted :)");
 		event.preventDefault();
 	});
+	//#endregion
 
-	//Page control testing :)
+	//#region Page control
 	const fileUploadEl = document.getElementById("fileUpload");
 	fileUploadEl.addEventListener('change', (changeEv) =>
 	{
@@ -103,7 +107,7 @@ window.onload = () =>
 	const { el: dynPage } = Common.DOMLib.createElement("div");
 	Pages.Example.pageControl.addNewTab("Dynamic", dynPage);
 
-	const nestedPageControl = Common.Controls.PageControl.buildPageControl(dynPage);
+	const nestedPageControl = Common.Controls.PageControl.buildPageControl(dynPage, "zero state");
 	Common.DOMLib.addStyle(nestedPageControl.controlEl, { "height": "100%" });
 	const { el: nested1 } = Common.DOMLib.createElement("div");
 	const { el: nested2 } = Common.DOMLib.createElement("div");
@@ -111,4 +115,50 @@ window.onload = () =>
 	nested2.innerHTML = `<p>hey me too</p>`;
 	nestedPageControl.addNewTab("Nested 1", nested1);
 	nestedPageControl.addNewTab("Nested 2", nested2);
+	//#endregion
+
+	//#region SVG
+	var SVGLib = Common.SVGLib;
+	var svg = SVGLib.createChildElement(
+		document.getElementById("SVGParent"),
+		SVGLib.ElementTypes.svg,
+		{
+			"style": "border: 1px solid green",
+			"width": "600",
+			"height": "250",
+			"class": "test-svg-class"
+		}
+	);
+	var svgDefs = SVGLib.createChildElement(svg, SVGLib.ElementTypes.defs);
+	var gradient = SVGLib.createChildElement(svgDefs, SVGLib.ElementTypes.linearGradient, { "id": "gradId" });
+	SVGLib.createChildElement(gradient, SVGLib.ElementTypes.stop, { "offset": "0%", "stop-color": "rebeccapurple", "stop-opacity": 1 });
+	SVGLib.createChildElement(gradient, SVGLib.ElementTypes.stop, { "offset": "100%", "stop-opacity": 0 });
+
+	SVGLib.createChildElement(
+		svg,
+		SVGLib.ElementTypes.rect,
+		{
+			"x": "0",
+			"y": "0",
+			"width": "100%",
+			"height": "100%",
+			"stroke": "blue",
+			"strokeWidth": "3",
+			"fill": SVGLib.getDefsRef("gradId")
+		}
+	);
+
+	SVGLib.createChildElement(
+		svg,
+		SVGLib.ElementTypes.text,
+		{
+			"x": "50%",
+			"y": "50%",
+			"dominant-baseline": "middle",
+			"text-anchor": "middle",
+			"fill": "white"
+		},
+		"text"
+	);
+	//#endregion
 };

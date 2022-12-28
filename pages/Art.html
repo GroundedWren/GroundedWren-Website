@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8" />
@@ -15,9 +15,11 @@
 
 	<script src="../scripts/Common/Common.js"></script>
 	<script src="../scripts/Common/DOMLib.js"></script>
+	<script src="../scripts/Common/SVGLib.js"></script>
 	<script src="../scripts/Common/Components/ElementDragger.js"></script>
 	<script src="../scripts/Common/Controls/Dialog.js"></script>
 	<script src="../scripts/Common/Controls/Modal.js"></script>
+	<script src="../scripts/Common/Controls/ZeroState.js"></script>
 
 	<script src="../scripts/Pages/Art.js"></script>
 </head>
@@ -92,7 +94,7 @@
 							<input id="BonnieCB" type="checkbox" onchange="Pages.Art.togArtistFilter('BonnieGuerra', arguments[0].target.checked)" /><br />
 							<label for="DespeyCB">Despey</label>
 							<input id="DespeyCB" type="checkbox" onchange="Pages.Art.togArtistFilter('Despey', arguments[0].target.checked)" /><br />
-							<label for="JestCB">jesterdk</label>
+							<label for="JestCB">JesterDK</label>
 							<input id="JestCB" type="checkbox" onchange="Pages.Art.togArtistFilter('JesterDK', arguments[0].target.checked)" /><br />
 							<label for="PalavenmoonsCB">Palavenmoons</label>
 							<input id="PalavenmoonsCB" type="checkbox" onchange="Pages.Art.togArtistFilter('Palavenmoons', arguments[0].target.checked)" /><br />
@@ -106,7 +108,7 @@
 					</div>
 				</div>
 
-				<div style="flex-shrink: 0; flex-grow: 1; flex-basis: 0;">
+				<div id="RightPane" style="flex-shrink: 0; flex-grow: 1; flex-basis: 0;">
 					<!-- right pane -->
 					<div id="gallery">
 					</div>

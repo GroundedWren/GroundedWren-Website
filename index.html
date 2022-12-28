@@ -15,10 +15,12 @@
 
 	<script src="scripts/Common/Common.js"></script>
 	<script src="scripts/Common/DOMLib.js"></script>
+	<script src="scripts/Common/SVGLib.js"></script>
 	<script src="scripts/Common/Components/ElementDragger.js"></script>
 	<script src="scripts/Common/Controls/Dialog.js"></script>
 	<script src="scripts/Common/Controls/Modal.js"></script>
 	<script src="scripts/Common/Controls/PageControl.js"></script>
+	<script src="scripts/Common/Controls/ZeroState.js"></script>
 
 	<script src="scripts/Pages/Index.js"></script>
 </head>
@@ -27,16 +29,16 @@
 		<div class="main-page">
 			<h1>GroundedWren.com</h1>
 			<div class="content">
-				<div style="flex-shrink: 0;">
+				<div style="flex-shrink: 0; flex-grow: 0; flex-basis: 240px;">
 					<!-- Left pane -->
 					<div class="card">
 						<div class="card-header">Directory</div>
 						<ul>
-							<li><a href="pages/Art.html">Art</a></li>
+							<li><a href="pages/Art.html">Art Gallery</a></li>
 							<li><a href="pages/Blog.html">Blog</a></li>
-							<li><a href="pages/Example.html">Demo page</a></li>
 							<li>Music</li>
 							<li>Writing</li>
+							<li><a href="pages/Example.html">Demo page</a></li>
 						</ul>
 						<h3>Coding Projects</h3>
 						<ul>
@@ -71,6 +73,11 @@
 							It rocks, check it out! ^^
 						</p>
 						<footer>Written 12/20/2022 by Vera</footer>
+					</div>
+					<div class="card">
+						<div class="card-header">Featured Avi Photo</div>
+						<img src="img/Avi/Featured Avi 2022-12-28.png" style="width: 100%"/>
+						<footer>He likes toast</footer>
 					</div>
 				</div>
 				<div>

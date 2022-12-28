@@ -22,7 +22,7 @@
 	height: calc(100% - 42px); /*Margin, Border, Padding*/
 }
 
-.card iframe {
+.card iframe,svg {
 	border: none;
 	margin-left: -10px;
 	margin-top: -10px;

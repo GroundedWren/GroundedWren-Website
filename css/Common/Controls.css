@@ -77,7 +77,7 @@
 	flex-direction: column;
 }
 
-.popup-content{
+.popup-content {
 	overflow: auto
 }
 
@@ -144,10 +144,23 @@
 	min-width: 0;
 }
 
+.z { /* Fix auto-indent */
+}
+
+.page-container .zero-state-control {
+	margin-left: -3px; /*padding*/
+	margin-top: -3px;
+	width: calc(100% + 6px);
+	height: calc(100% + 6px);
+}
+
 .page-control-page {
 	display: none;
 	height: 100%;
 	overflow: auto;
+}
+
+.z { /* Fix auto-indent */
 }
 
 .page-control-page.selected {
