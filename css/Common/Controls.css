@@ -4,7 +4,8 @@
 
 /*#region Popup Common*/
 .popup {
-	box-shadow: 0 0 10px 5px rgba(100, 100, 100, 0.4)
+	box-shadow: 0 0 10px 5px rgba(100, 100, 100, 0.4);
+	border: 1px solid rebeccapurple;
 }
 
 .popup-content {
@@ -19,7 +20,7 @@
 	width: 100%;
 	flex-direction: row;
 	align-items: center;
-	background-color: purple;
+	background-color: rebeccapurple;
 }
 
 .popup-title {
@@ -43,7 +44,6 @@
 .dialog {
 	position: absolute;
 	z-index: 1;
-	border: 1px solid purple;
 	background-color: black;
 }
 
@@ -67,7 +67,6 @@
 .modal {
 	position: relative;
 	background-color: black;
-	border: 1px solid blue;
 	width: 500px;
 	top: 50%;
 	left: 50%;

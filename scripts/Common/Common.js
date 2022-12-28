@@ -27,4 +27,13 @@ registerNamespace("Common", function (ns)
 		}
 	}
 	ns.fcd = fcd;
+
+	/**
+	 * Get's the page's URLSearchParams
+	 */
+	function getUrlParams()
+	{
+		return new URLSearchParams(window.location.search);
+	}
+	ns.getUrlParams = getUrlParams;
 });

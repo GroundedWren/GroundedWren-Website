@@ -7,6 +7,19 @@ html, body {
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+::-webkit-scrollbar {
+	width: 10px;
+}
+::-webkit-scrollbar-track {
+	background: #2C1642;
+}
+::-webkit-scrollbar-thumb {
+	background: rebeccapurple;
+}
+::-webkit-scrollbar-thumb:hover {
+	background: #A853FC;
+}
+
 a {
 	color: white;
 }
@@ -151,7 +164,7 @@ table, th, td {
 
 .tableHeader {
 	border-bottom: 2px solid;
-	border-bottom-color: rebeccapurple;
+	border-bottom-color: #A853FC;
 	text-align: center;
 	font-weight: bold;
 }
