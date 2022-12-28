@@ -614,7 +614,7 @@ window.onload = () =>
 		//),
 		new ArtFrame(
 			"Tangled Up in Blue",
-			"../img/Sindri Profile - JesterDK & Vera - 2016-10-14.png",
+			"../img/Sindri Profile - jesterdk & Vera - 2016-10-14.png",
 			["Sindri"],
 			["Vera", "JesterDK"],
 			new Date(2016, 09, 14),
