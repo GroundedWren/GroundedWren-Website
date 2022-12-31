@@ -105,7 +105,7 @@ window.onload = () =>
 	Pages.Example.pageControl.setActiveTab("pgC_t1");
 
 	const { el: dynPage } = Common.DOMLib.createElement("div");
-	Pages.Example.pageControl.addNewTab("Dynamic", dynPage);
+	Pages.Example.pageControl.addNewTab("Dynamic", dynPage, () => { window.alert("on activate"); });
 
 	const nestedPageControl = Common.Controls.PageControl.buildPageControl(dynPage, "zero state");
 	Common.DOMLib.addStyle(nestedPageControl.controlEl, { "height": "100%" });

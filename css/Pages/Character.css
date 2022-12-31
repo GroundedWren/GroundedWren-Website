@@ -1,0 +1,55 @@
+﻿/**
+	CSS Classes for Character.html
+*/
+
+#subveil {
+	height: 100%;
+}
+
+.main-page {
+	margin-left: 20px;
+	margin-right: 20px;
+	margin-top: 10px;
+	height: calc(100% - 25px - 10px); /*Header, margin-top*/
+}
+
+.content {
+	display: flex;
+	flex-direction: row;
+	height: 100%;
+}
+
+#LeftPane {
+	display: flex;
+	flex-direction: column;
+	flex-basis: 200px;
+	flex-grow: 0;
+	flex-shrink: 0;
+	height: 100%;
+	margin-right: 20px;
+}
+
+#RightPane {
+	flex-basis: 500px;
+	flex-grow: 1;
+	flex-shrink: 0;
+	height: 100%;
+}
+
+td {
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	padding-top: 5px;
+	width: auto;
+	word-wrap:break-word;
+}
+
+table {
+	border: none;
+	margin-bottom: 20px;
+}
+
+.row-label {
+	width: 100px;
+}

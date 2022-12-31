@@ -92,6 +92,10 @@
 	flex-direction: column;
 }
 
+.page-control.loading {
+	opacity: 0.3;
+}
+
 .tab-strip {
 	display: flex;
 	flex-direction: row;
@@ -149,6 +153,8 @@
 .page-container .zero-state-control {
 	margin-left: -3px; /*padding*/
 	margin-top: -3px;
+	margin-right: -3px;
+	margin-bottom: -3px;
 	width: calc(100% + 6px);
 	height: calc(100% + 6px);
 }

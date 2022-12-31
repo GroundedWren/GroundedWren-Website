@@ -77,12 +77,14 @@ registerNamespace("Common.Controls.PageControl", function (ns)
 			}
 
 			this.__activeTabId = null;
+
+			this.controlEl.classList.remove("loading");
 		}
 
 		/**
 		 * Creates a new tab and associates it with the page
 		 */
-		addNewTab(tabText, page)
+		addNewTab(tabText, page, onActivate)
 		{
 			const { el: newTabEl, id: newTabId } = Common.DOMLib.createElement(
 				"div",
@@ -105,15 +107,27 @@ registerNamespace("Common.Controls.PageControl", function (ns)
 
 			this.__pageContainerEl.appendChild(page);
 			page.classList.add("page-control-page")
-			this.registerTab(newTabEl, page);
+			this.registerTab(newTabEl, page, onActivate);
+
+			return newTabId;
 		};
 
 		/**
-		 * Registers a tab so that clickign it works
+		 * Adds an onActivate handler to a tab
 		 */
-		registerTab(tab, page)
+		addOnActivate(tabId, onActivate)
 		{
-			this.__tabDict[tab.id] = new Tab(tab, page);
+			if (this.__tabDict[tabId] == null) { return; }
+
+			this.__tabDict[tabId].onActivate = onActivate;
+		}
+
+		/**
+		 * Registers a tab so that clicking it works
+		 */
+		registerTab(tab, page, onActivate)
+		{
+			this.__tabDict[tab.id] = new Tab(tab, page, onActivate);
 			tab.onclick = Common.fcd(this, this.setActiveTab, [tab.id]);
 		}
 
@@ -153,10 +167,12 @@ registerNamespace("Common.Controls.PageControl", function (ns)
 	{
 		tabEl;
 		__pageEl;
-		constructor(tabEl, pageEl)
+		onActivate;
+		constructor(tabEl, pageEl, onActivate)
 		{
 			this.tabEl = tabEl;
 			this.__pageEl = pageEl;
+			this.onActivate = onActivate;
 		}
 
 		/**
@@ -164,6 +180,7 @@ registerNamespace("Common.Controls.PageControl", function (ns)
 		 */
 		activate()
 		{
+			if (this.onActivate) { this.onActivate(); }
 			this.tabEl.classList.add("selected");
 			this.__pageEl.classList.add("selected");
 		};
