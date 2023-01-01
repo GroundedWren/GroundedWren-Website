@@ -6,11 +6,59 @@
 	padding-top: 10px;
 	padding-left: 10px;
 }
-h1, h2, h3, h4, h5, h6 {
+
+h2, h3, h4, h5, h6 {
+	margin: 0px;
+	border-bottom: 1px solid white;
+}
+
+h1 {
+	text-align: center;
 	margin: 0px;
 }
 
 p {
 	margin-top: 0px;
 	margin-bottom: 32px;
+}
+
+.card {
+	box-shadow: none;
+}
+
+.card.center {
+	max-width: 50%;
+	margin-bottom: 32px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	font-style: italic;
+}
+
+.card.centerimg {
+	max-width: 20%;
+	margin-bottom: 32px;
+	overflow: hidden;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.z {
+}
+
+.card.centerimg img {
+	width: 100%;
+}
+
+.card.right {
+	max-width: 20%;
+	overflow: hidden;
+	float: right;
+}
+
+.z {
+}
+
+.card.right img {
+	width: 100%;
 }

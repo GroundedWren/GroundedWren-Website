@@ -13,6 +13,7 @@ registerNamespace("Pages.Blog", function (ns)
 	ns.ENTRY_PARAM = ENTRY_PARAM;
 
 	ns.BlogTitles = {
+		"2022_12_31": "Fate of the Flightless",
 		"2022_12_20": "Hello blog!",
 	};
 
