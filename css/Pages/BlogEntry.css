@@ -1,4 +1,4 @@
-﻿body {
+body {
 	width: calc(100% - 10px - 10px); /*padding*/
 	height: calc(100% - 10px - 10px); /*padding*/
 	padding-right: 10px;
@@ -27,7 +27,7 @@ p {
 }
 
 .card.center {
-	max-width: 50%;
+	max-width: 40%;
 	margin-bottom: 32px;
 	margin-left: auto;
 	margin-right: auto;
