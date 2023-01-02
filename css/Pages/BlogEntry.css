@@ -9,6 +9,7 @@ body {
 
 h2, h3, h4, h5, h6 {
 	margin: 0px;
+	margin-bottom: 5px;
 	border-bottom: 1px solid white;
 }
 
@@ -26,34 +27,40 @@ p {
 	box-shadow: none;
 }
 
-.card.center {
-	max-width: 40%;
-	margin-bottom: 32px;
-	margin-left: auto;
-	margin-right: auto;
-	text-align: center;
-	font-style: italic;
+.z {
 }
 
-.card.centerimg {
-	max-width: 20%;
+.centerimg-container {
+	width: 100%;
 	margin-bottom: 32px;
+	text-align: center;
+}
+
+.centerimg {
 	overflow: hidden;
-	margin-left: auto;
-	margin-right: auto;
+	display: inline-block;
+	text-align: left;
 }
 
 .z {
 }
 
-.card.centerimg img {
-	width: 100%;
+
+.centerimg img {
+	max-height: 500px;
 }
 
 .card.right {
-	max-width: 20%;
+	width: 20%;
+	max-width: 350px;
+	min-width: 200px;
 	overflow: hidden;
 	float: right;
+	clear: right;
+	margin-top: 2px;
+	margin-right: 0px;
+	margin-left: 10px;
+	margin-bottom: 10px;
 }
 
 .z {
@@ -61,4 +68,16 @@ p {
 
 .card.right img {
 	width: 100%;
+}
+
+.blockquote-container {
+	text-align: center;
+	width: 100%;
+	margin-bottom: 32px;
+}
+
+.blockquote {
+	display: inline-block;
+	max-width: 775px;
+	font-style: italic;
 }
