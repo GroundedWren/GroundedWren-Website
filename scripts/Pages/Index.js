@@ -3,21 +3,7 @@
  */
 registerNamespace("Pages.Index", function (ns)
 {
-	ns.socialsControl = null;
-	ns.socialsCohostEl = null
-
-	var cohostEmbedBuilt = false;
-
-	ns.buildCohostEmbed = function ()
-	{
-		if (cohostEmbedBuilt) { return; }
-
-		var iframe = Common.DOMLib.createElement("iframe", ns.socialsCohostEl).el;
-		iframe.setAttribute("title", "Cohost");
-		iframe.setAttribute("src", "https://cohost.org/Grounded-Wren");
-
-		cohostEmbedBuilt = true;
-	};
+	
 });
 
 /**
@@ -25,20 +11,42 @@ registerNamespace("Pages.Index", function (ns)
  */
 window.onload = () =>
 {
-	Pages.Index.socialsCohostEl = document.getElementById("socialsCtrl_page_Cohost");
-
-	Pages.Index.socialsControl = new Common.Controls.PageControl.PageControl(
-		document.getElementById("socialsCtrl"),
-		document.getElementById("socialsCtrl_ts"),
-		document.getElementById("socialsCtrl_pgc"),
+	var directoryContainer = document.getElementById("Directory");
+	Common.Controls.DropdownMenu.buildDropdownMenu(
+		directoryContainer,
 		{
-			"socialsCtrl_tab_Cohost": Pages.Index.socialsCohostEl,
-			"socialsCtrl_tab_Tumblr": document.getElementById("socialsCtrl_page_Tumblr"),
-			"socialsCtrl_tab_Twitter": document.getElementById("socialsCtrl_page_Twitter"),
-			"socialsCtrl_tab_Other": document.getElementById("socialsCtrl_page_Other"),
-		},
-		"No Tab Selected"
+			"Art Gallery": {
+				action: () => { window.location.href = "pages/Art.html"; },
+			},
+			"Characters": {
+				childActionMap: {
+					"Vera": () => { window.location.href = "pages/Character.html?char=vera"; },
+					"Freya": () => { window.location.href = "pages/Character.html?char=freya"; },
+					"Orianna": () => { window.location.href = "pages/Character.html?char=orianna"; },
+					"Sindri": () => { window.location.href = "pages/Character.html?char=sindri"; },
+				}
+			},
+			"Music": {
+				action: () => { Common.Controls.Popups.showModal("GroundedWren.com", "Coming soon!"); },
+			},
+			"Writing": {
+				childActionMap: {
+					"Blog": () => { window.location.href = "pages/Blog.html"; },
+					"Fiction": () => { Common.Controls.Popups.showModal("GroundedWren.com", "Coming soon!"); },
+				}
+			},
+			"Coding Projects": {
+				childActionMap: {
+					"Text Adventure": () => { window.location.href = "https://textadventure.groundedwren.com"; },
+					"D&D Workbook": () => { Common.Controls.Popups.showModal("GroundedWren.com", "Coming soon!"); },
+				}
+			},
+			"Misc": {
+				childActionMap: {
+					"About Me": () => { window.location.href = "pages/AboutMe.html"; },
+					"Demo page": () => { window.location.href = "pages/Example.html"; },
+				}
+			},
+		}
 	);
-
-	Pages.Index.socialsControl.addOnActivate("socialsCtrl_tab_Cohost", Common.fcd(Pages.Index, Pages.Index.buildCohostEmbed));
 };

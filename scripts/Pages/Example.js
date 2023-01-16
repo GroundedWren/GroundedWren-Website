@@ -73,7 +73,13 @@ registerNamespace("Pages.Example", function (ns)
 window.onload = () =>
 {
 	//#region greeter
-	const greeter = new Common.Components.Timekeeper(document.getElementById("content"));
+	const greeter = new Common.Components.Timekeeper(
+		document.getElementById("content"),
+		"Central Time: ",
+		{
+			timeZone: "America/Chicago"
+		}
+	);
 	greeter.start();
 	//#endregion
 
@@ -159,6 +165,52 @@ window.onload = () =>
 			"fill": "white"
 		},
 		"text"
+	);
+	//#endregion
+
+	//#region VisibilityToggle
+	var visTogButton = document.getElementById("VisTogButton");
+	Common.Components.RegisterVisToggle(
+		visTogButton,
+		[
+			document.getElementById("togee"),
+			document.getElementById("togee2")
+		],
+		(visible) =>
+		{
+			Common.DOMLib.addStyle(visTogButton, {
+				"background-color": visible
+					? "green"
+					: "red"
+			});
+		}
+	);
+	//#endregion
+
+	//#region Dropdown menu
+	var menuContainer = document.getElementById("dropdownMenuContainer");
+	Common.Controls.DropdownMenu.buildDropdownMenu(
+		menuContainer,
+		{
+			"tab 1": {
+				action: () => { window.alert("tab 1"); },
+				childActionMap: {
+					"child 1": () => { window.alert("tab 1 child 1"); },
+					"child 2": () => { window.alert("tab 1 child 2"); },
+				}
+			},
+			"tab 2": {
+				action: () => { window.alert("tab 2"); },
+				childActionMap: {
+					"child 1": () => { window.alert("tab 2 child 1"); },
+				}
+			},
+			"tab 3": {
+				action: () => { window.alert("tab 3"); }
+			}
+		},
+		false,
+		false
 	);
 	//#endregion
 };

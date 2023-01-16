@@ -86,16 +86,7 @@
 }
 /*#endregion */
 
-/*#region Page Control*/
-.page-control {
-	display: flex;
-	flex-direction: column;
-}
-
-.page-control.loading {
-	opacity: 0.3;
-}
-
+/*#region Tabstrip*/
 .tab-strip {
 	display: flex;
 	flex-direction: row;
@@ -111,7 +102,6 @@
 	flex-shrink: 0;
 	position: relative;
 	border-right: none;
-	border-bottom: none;
 	border-color: white;
 }
 
@@ -137,6 +127,56 @@
 .tab-gutter {
 	flex-grow: 1;
 	border-left: 1px solid white;
+}
+/*#endregion*/
+
+/*#region Dropdown Menu*/
+.dropdown-menu {
+	display: flex;
+	flex-direction: column;
+}
+
+.z { /* Fix auto-indent */
+}
+
+.dropdown-menu > .tab-strip-tab {
+	border: none;
+}
+
+.tab-strip-tab.child {
+	border-right: 1px solid white;
+	border-top: none;
+	z-index: 1;
+}
+
+.dropdown-menu .chevron {
+	position: relative;
+	float: right;
+	margin-right: 10px;
+	margin-top: 10px;
+	margin-bottom: 0px;
+	vertical-align: bottom;
+}
+/*#endregion*/
+
+/*#region Page Control*/
+.page-control {
+	display: flex;
+	flex-direction: column;
+}
+
+.z { /* Fix auto-indent */
+}
+
+.page-control.loading {
+	opacity: 0.3;
+}
+
+.page-control .tab-strip-tab {
+	border-bottom: none;
+}
+
+.z { /* Fix auto-indent */
 }
 
 .page-container {

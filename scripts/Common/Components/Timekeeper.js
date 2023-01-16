@@ -12,20 +12,31 @@
 		__span;
 		// Token for the update timer
 		__timerToken;
+		// Time options
+		__options;
 		//#endregion
 
 		/**
 		 * Create a Timekeeper
 		 * @param contentEl Element in which to display the time
+		 * @param prefix
+		 * @param timeZone
 		 */
-		constructor(contentEl)
+		constructor(contentEl, prefix, options)
 		{
 			this.__element = contentEl;
-			this.__element.innerText = "Current time: ";
+			this.__element.innerText = prefix;
+
+			this.__options = options;
 
 			this.__span = document.createElement("span");
-			this.__span.innerText = new Date().toUTCString();
+			this.__updateTimeDelegate();
 			this.__element.appendChild(this.__span);
+		}
+
+		__updateTimeDelegate = () =>
+		{
+			this.__span.innerText = new Date().toLocaleString(undefined, this.__options)
 		}
 
 		/**
@@ -33,10 +44,7 @@
 		 */
 		start()
 		{
-			this.__timerToken = window.setInterval(() =>
-			{
-				this.__span.innerHTML = new Date().toUTCString();
-			}, 500);
+			this.__timerToken = window.setInterval(this.__updateTimeDelegate, 500);
 		}
 
 		/**

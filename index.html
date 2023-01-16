@@ -20,12 +20,12 @@
 
 	<script src="scripts/Common/Common.js"></script>
 	<script src="scripts/Common/DOMLib.js"></script>
-	<script src="scripts/Common/SVGLib.js"></script>
 	<script src="scripts/Common/Components/ElementDragger.js"></script>
+	<script src="scripts/Common/Components/VisibilityToggle.js"></script>
 	<script src="scripts/Common/Controls/Dialog.js"></script>
 	<script src="scripts/Common/Controls/Modal.js"></script>
 	<script src="scripts/Common/Controls/PageControl.js"></script>
-	<script src="scripts/Common/Controls/ZeroState.js"></script>
+	<script src="scripts/Common/Controls/DropdownMenu.js"></script>
 
 	<script src="scripts/Pages/Index.js"></script>
 </head>
@@ -33,40 +33,9 @@
 	<div id="subveil">
 		<div class="main-page">
 			<h1>GroundedWren.com</h1>
-			<div class="content">
-				<div style="flex-shrink: 0; flex-grow: 0; flex-basis: 240px;">
-					<!-- Left pane -->
-					<div class="card">
-						<div class="card-header">Directory</div>
-						<ul>
-							<li><a href="pages/Art.html">Art Gallery</a></li>
-							<li><a href="pages/Blog.html">Blog</a></li>
-							<li>
-								Characters
-								<ul>
-									<li><a href="pages/Character.html?char=vera">Vera</a></li>
-									<li><a href="pages/Character.html?char=freya">Freya</a></li>
-									<li><a href="pages/Character.html?char=orianna">Orianna</a></li>
-									<li><a href="pages/Character.html?char=sindri">Sindri</a></li>
-								</ul>
-							</li>
-							<li>Music</li>
-							<li>Writing</li>
-							<li><a href="pages/Example.html">Demo page</a></li>
-						</ul>
-						<h3>Coding Projects</h3>
-						<ul>
-							<li><a href="https://textadventure.groundedwren.com">Vera's Text Adventure</a></li>
-							<li>D&D Workbook</li>
-						</ul>
-					</div>
-					<div class="card">
-						<div class="card-header">Contact</div>
-						<span>Discord: Vera#9518</span>
-					</div>
-				</div>
-				<!-- Center pane -->
-				<div style="flex-basis: 400px; flex-grow: 1; flex-shrink: 0;">
+			<div id="Directory"></div>
+			<div id="content">
+				<div id="leftPane">
 					<div class="card">
 						<div class="card-header">About the site</div>
 						<p>Hi!</p>
@@ -88,44 +57,12 @@
 						</p>
 						<footer>Written 12/20/2022 by Vera</footer>
 					</div>
+				</div>
+				<div id="rightPane">
 					<div class="card">
 						<div class="card-header">Featured Avi Photo</div>
-						<img src="img/Avi/Featured Avi 2022-12-28.png" style="width: 100%"/>
+						<img src="img/Avi/Featured Avi 2022-12-28.png" style="width: 100%" />
 						<footer>He likes toast</footer>
-					</div>
-				</div>
-				<div>
-					<!-- Right pane -->
-					<div class="card">
-						<div class="card-header">Socials</div>
-						<div id="socialsCtrl" class="page-control loading" style="width: 500px; height: 750px;">
-							<div id="socialsCtrl_ts" class="tab-strip">
-								<div id="socialsCtrl_tab_Twitter" tabindex="0" class="tab-strip-tab button-like"><span>Twitter</span></div>
-								<div id="socialsCtrl_tab_Cohost" tabindex="0" class="tab-strip-tab button-like"><span>Cohost</span></div>
-								<div id="socialsCtrl_tab_Tumblr" tabindex="0" class="tab-strip-tab button-like"><span>Tumblr</span></div>
-								<div id="socialsCtrl_tab_Other" tabindex="0" class="tab-strip-tab button-like"><span>Other</span></div>
-								<div class="tab-gutter"></div>
-							</div>
-							<div id="socialsCtrl_pgc" class="page-container">
-								<div id="socialsCtrl_page_Twitter" class="page-control-page">
-									<a class="twitter-timeline" data-width="500" data-height="700" data-dnt="true" data-theme="dark" href="https://twitter.com/TearsHoldLight?ref_src=twsrc%5Etfw">Tweets by TearsHoldLight</a>
-									<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-								</div>
-								<div id="socialsCtrl_page_Cohost" class="page-control-page" style="overflow: hidden">
-									<!-- To be added by JS -->
-								</div>
-								<div id="socialsCtrl_page_Tumblr" class="page-control-page" style="overflow: hidden">
-									<div class="tumblr-post" data-href="https://embed.tumblr.com/embed/post/DU2ipG5WI_VUsZg_8jTGjA/704131884206194689" data-did="4de863624eaaa48895d516b4bd8b0f17465f9940"><a href="https://vakarianfan.tumblr.com/post/704131884206194689/hi">https://vakarianfan.tumblr.com/post/704131884206194689/hi</a></div>
-									<script async src="https://assets.tumblr.com/post.js"></script>
-								</div>
-								<div id="socialsCtrl_page_Other" class="page-control-page" style="overflow: hidden">
-									<ul>
-										<li>GitHub: <a href="https://github.com/GroundedWren">GroundedWren</a></li>
-										<li>AO3: <a href="https://archiveofourown.org/users/Grounded_Wren96">Grounded_Wren96</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
 					</div>
 				</div>
 			</div>

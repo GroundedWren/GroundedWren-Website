@@ -30,6 +30,7 @@ registerNamespace("Pages.Character", function (ns)
 
 	function buildLeftPane(character)
 	{
+		var leftPane = document.getElementById("LeftPane");
 		if (character.profileSrc)
 		{
 			document.getElementById("ProfilePicture").src = character.profileSrc;
@@ -49,12 +50,61 @@ registerNamespace("Pages.Character", function (ns)
 		document.getElementById("tdAge").innerText = character.age;
 		document.getElementById("tdHeight").innerText = character.height;
 
+		var colorTable = document.getElementById("Colors");
+		if (character.colors)
+		{
+			createColorTable(character.colors, colorTable);
+		}
+
 		document.getElementById("tdCreatedBy").innerText = character.createdBy;
 		document.getElementById("tdCreatedDate").innerText = character.createdDate.toLocaleDateString(
 			undefined,
 			{ weekday: undefined, year: "numeric", month: "short" }
 		);
 		document.getElementById("tdStatus").innerText = character.status;
+	}
+
+	function createColorTable(colors, table)
+	{
+		var tbody = Common.DOMLib.createElement("tbody", table).el;
+		Object.keys(colors).forEach(label =>
+		{
+			var tRow = Common.DOMLib.createElement("tr", tbody).el;
+			Common.DOMLib.createElement("td", tRow, ["row-label"]).el.innerText = label;
+
+			var svg = Common.SVGLib.createChildElement(
+				Common.DOMLib.createElement("td", tRow, ["color-cell"]).el,
+				Common.SVGLib.ElementTypes.svg,
+				{
+					"width": "100%",
+					"height": "100%"
+				}
+			);
+			Common.SVGLib.createChildElement(
+				svg,
+				Common.SVGLib.ElementTypes.rect,
+				{
+					"x": "0",
+					"y": "0",
+					"width": "100%",
+					"height": "100%",
+					"fill": colors[label]
+				}
+			);
+			Common.SVGLib.createChildElement(
+				svg,
+				Common.SVGLib.ElementTypes.text,
+				{
+					"x": "50%",
+					"y": "50%",
+					"dominant-baseline": "middle",
+					"text-anchor": "middle",
+					"font-size": "14",
+					"fill": Common.getContrastingBorW(colors[label])
+				},
+				colors[label]
+			);
+		});
 	}
 
 	function addRightPaneTabs(character)

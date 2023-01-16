@@ -14,6 +14,15 @@
 			age: "21-26",
 			height: "5'4\" (163 cm)",
 
+			colors: {
+				"Skin darkest": "#A82D2F",
+				"Skin lightest": "#CB3B3A",
+				Hair: "#121015",
+				Iris: "#532C1E",
+				Sclera: "#C79A96",
+				Lips: "#6C2529",
+			},
+
 			createdBy: "Vera & Cryo",
 			createdDate: new Date(2019, 3),
 			status: "Active",
@@ -21,6 +30,7 @@
 			appearanceDetails: "<ul>"
 				+ "<li>Black, shoulder length wavy hair. Always worn down, often messy.</li>"
 				+ "<li>Deep brown irises. Sclera are a brownish off-white.</li>"
+				+ "<li>Upper lip is darker.</li>"
 				+ "<li>Fingernails are claw-like and black.</li>"
 				+ "<li>Horns are skin-color and begin just before her hair-line. They are <i>mostly</i> blunt.</li>"
 				+ "<li>She always wears three rings on her left horn. They vary, but are usually cool colors. Notably, they have appeared as the colors of the bisexual and transgender flags.</li>"
@@ -56,6 +66,14 @@
 			sex: "F",
 			age: "26-29",
 			height: "6'0\" (183 cm)",
+
+			colors: {
+				Skin: "#63312E",
+				Hair: "#000000",
+				Iris: "#4C7958",
+				Sclera: "#FFFFFF",
+				Lips: "#532A28",
+			},
 
 			createdBy: "Vera",
 			createdDate: new Date(2020, 11),
@@ -101,6 +119,14 @@
 			age: "110",
 			height: "5'6\" (168 cm)",
 
+			colors: {
+				Skin: "#D29794",
+				Hair: "#914424",
+				Iris: "#2E4C89",
+				Sclera: "#FFFFFF",
+				Lips: "#BC77A4",
+			},
+
 			createdBy: "Vera",
 			createdDate: new Date(2020, 2),
 			status: "Deceased",
@@ -138,6 +164,16 @@
 			sex: "M",
 			age: "26",
 			height: "6'0\" (183 cm)",
+
+			colors: {
+				"Carapace 1": "#746A6F",
+				"Carapace 2": "#675D62",
+				"Skin 1": "#4E4249",
+				"Skin 2, tattoo": "#3A2D35",
+				Iris: "#822297",
+				Sclera: "#BFA7C4",
+				"Caruncle, tongue": "#2D5573",
+			},
 
 			createdBy: "Vera & Raiyk",
 			createdDate: new Date(2016, 08),

@@ -128,7 +128,18 @@ registerNamespace("Common.Controls.PageControl", function (ns)
 		registerTab(tab, page, onActivate)
 		{
 			this.__tabDict[tab.id] = new Tab(tab, page, onActivate);
+
 			tab.onclick = Common.fcd(this, this.setActiveTab, [tab.id]);
+
+			tab.addEventListener('keydown', (keyEv) =>
+			{
+				if (keyEv.keyCode === Common.KeyCodes.Space
+					|| keyEv.keyCode === Common.KeyCodes.Enter)
+				{
+					tab.onclick();
+					keyEv.preventDefault();
+				}
+			});
 		}
 
 		/**

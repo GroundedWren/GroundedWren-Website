@@ -20,7 +20,7 @@ registerNamespace("Common.SVGLib", function (ns)
 
 	/**
 	 * Shortcut to create an SVG element and append it to a parent
-	 * @param the parent element
+	 * @param parent the parent element
 	 * ... see ns.createElement
 	 */
 	function createChildElement(parent, elementType, attributes, innerHTML)
