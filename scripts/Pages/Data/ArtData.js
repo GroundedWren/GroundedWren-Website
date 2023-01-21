@@ -179,6 +179,16 @@
 				+ "I consider this to be the authoritative depiction of Vera.",
 				false
 			),
+			new ns.ArtFrame(
+				"Confusion",
+				"../img/Vera Confusion - ShrimpLoverCat - 2023-01-20.png",
+				["Vera"],
+				["ShrimpLoverCat"],
+				new Date(2023, 0, 23),
+				"Whimiscal piece from Catty!<br /><br />"
+				+ "Vera seems a bit perplexed, probably by some plan Serin has just pitched.",
+				false
+			),
 		]);
 	}
 	ns.initializeFrames = initializeFrames;

@@ -425,6 +425,22 @@ registerNamespace("Pages.Art", function (ns)
 		}
 
 		/**
+		 * Fetches the identifying title
+		 */
+		getTitle()
+		{
+			return this.__title;
+		}
+
+		/**
+		 * Fetches the link to the image
+		 */
+		getArtLink()
+		{
+			return this.__artLink;
+		}
+
+		/**
 		 * Gets the character this frame should be grouped with
 		 */
 		getPrimaryCharacter()
@@ -462,16 +478,12 @@ registerNamespace("Pages.Art", function (ns)
 
 				Common.DOMLib.addStyle(image, { display: "block", "margin-left": "auto", "margin-right": "auto", "height": "100%" });
 				Common.Controls.Popups.showModal(
-					this.__title,
-					`<div style="display: flex; flex-direction: row; height: 100%">`
-					+ `<div style="flex-basis: 300px; flex-shrink: 0; flex-grow: 0"><div class="card">`
-					+ `<p>${this.description || "No description"}</p></div></div>`
-					+ `${image.outerHTML}`
-					+ `</div>`,
+					`<a href="/pages/ArtFrame.html?art=${encodeURIComponent(this.__title)}" target="_blank">${this.__title}</a>`,
+					`<iframe src="/pages/ArtFrame.html?art=${encodeURIComponent(this.__title)}&inFrame=true">`,
 					{
 						width: "95%",
 						height: "95%",
-						overflow: "auto"
+						overflow: "hidden"
 					},
 					() =>
 					{
@@ -483,7 +495,20 @@ registerNamespace("Pages.Art", function (ns)
 			dce("div", frame, ["frameBuffer"]);
 
 			const { el: meta } = dce("div", frame, ["imgMeta"]);
-			const { el: metaTable } = dce("table", meta);
+			this.buildMetaTable(meta);
+
+			return frame;
+		}
+
+		/**
+		 * Builds a meta-info table
+		 * @param parent the element to insert the table into
+		 */
+		buildMetaTable(parent)
+		{
+			var dce = Common.DOMLib.createElement;
+
+			const { el: metaTable } = dce("table", parent);
 
 			this.__addTableRow(
 				metaTable,
@@ -505,7 +530,6 @@ registerNamespace("Pages.Art", function (ns)
 				"Date",
 				this.date.toLocaleDateString(undefined, { weekday: undefined, year: "numeric", month: "long", day: "numeric" })
 			);
-			return frame;
 		}
 
 		__addTableRow(tableEl, labelText, labelValueHTML)
@@ -629,6 +653,60 @@ registerNamespace("Pages.Art", function (ns)
 	//#endregion
 });
 
+registerNamespace("Pages.ArtFrame", function (ns)
+{
+	ns.render = function (params)
+	{
+		if (!params.has("art"))
+		{
+			window.history.replaceState(null, "", "ArtFrame.html");
+			Common.Controls.Popups.showModal(
+				"ArtFrame",
+				`No art specified`,
+				undefined,
+				() => { window.location.href = "/Pages/Art.html"; }
+			);
+			return;
+		}
+
+		var artName = params.get("art");
+
+		const matchingFrames = Pages.Art.ArtFrames.filter(artFrame => artFrame.getTitle() === artName);
+
+		if (!matchingFrames.length)
+		{
+			window.history.replaceState(null, "", "ArtFrame.html");
+			Common.Controls.Popups.showModal(
+				"ArtFrame",
+				`Art not found: ${artName}`,
+				undefined,
+				() => { window.location.href = "/Pages/Art.html"; }
+			);
+			return;
+		}
+
+		const artFrame = matchingFrames[0];
+
+		var inFrame = params.has("inFrame");
+		if (inFrame)
+		{
+			document.getElementById("Banner").remove();
+			document.getElementById("BannerBuffer").remove();
+			document.getElementById("mainPage").classList.add("frame");
+		}
+
+		document.getElementById("imgElement").setAttribute("src", artFrame.getArtLink());
+
+		if (!inFrame)
+		{
+			artFrame.buildMetaTable(document.getElementById("metaContainer"));
+		}
+
+		const descParagraph = Common.DOMLib.createElement("p", document.getElementById("commentContainer")).el;
+		descParagraph.innerHTML = artFrame.description;
+	};
+});
+
 /**
  * Code to be called when the window first loads
  */
@@ -636,14 +714,21 @@ window.onload = () =>
 {
 	Pages.Art.initializeFrames();
 
-	Pages.Art.GalleryEl = document.getElementById("gallery");
+	if (window.location.pathname === "/pages/ArtFrame.html")
+	{
+		Pages.ArtFrame.render(Common.getUrlParams());
+	}
+	else
+	{
+		Pages.Art.GalleryEl = document.getElementById("gallery");
 
-	Pages.Art.ZeroStateControl = Common.Controls.ZeroState.embedZSC(
-		document.getElementById("RightPane"),
-		"Nothing to Show - Modify Filters"
-	);
-	Pages.Art.enterZeroState();
+		Pages.Art.ZeroStateControl = Common.Controls.ZeroState.embedZSC(
+			document.getElementById("RightPane"),
+			"Nothing to Show - Modify Filters"
+		);
+		Pages.Art.enterZeroState();
 
-	Pages.Art.ArtFrames.sort((a, b) => b.date - a.date);
-	Pages.Art.interperetUrlParams(Common.getUrlParams());
+		Pages.Art.ArtFrames.sort((a, b) => b.date - a.date);
+		Pages.Art.interperetUrlParams(Common.getUrlParams());
+	}
 };
