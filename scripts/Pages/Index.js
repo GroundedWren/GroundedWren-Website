@@ -31,8 +31,8 @@ window.onload = () =>
 			},
 			"Writing": {
 				childActionMap: {
-					"Blog": () => { window.location.href = "pages/Blog.html"; },
-					"Fiction": () => { Common.Controls.Popups.showModal("GroundedWren.com", "Coming soon!"); },
+					"Blog": () => { window.location.href = "pages/Writing.html?folder=Blog"; },
+					"Fiction": () => { window.location.href = "pages/Writing.html?folder=Fiction"; },
 				}
 			},
 			"Coding Projects": {

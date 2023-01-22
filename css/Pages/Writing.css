@@ -1,0 +1,63 @@
+﻿/**
+	CSS Classes for Writing.html
+*/
+
+#subveil {
+	height: 100%;
+}
+
+#main-page {
+	margin-right: 20px;
+	height: calc(100% - 25px); /*Header*/
+}
+
+#content {
+	display: flex;
+	flex-direction: row;
+	height: 100%;
+}
+
+.divider {
+	height: 100%;
+	border-left: 1px solid rgb(91, 154, 213);
+}
+
+#leftPaneCollapseBtn {
+	align-self: center;
+	height: 75px;
+	width: 0px;
+	padding-left: 0px;
+	padding-right: 14px;
+	border-left: 0px;
+}
+
+#entryCard {
+	height: calc(100% - 42px); /*Margin, Border, Padding*/
+}
+
+#leftPane {
+	min-width: 250px;
+	max-width: 300px;
+	word-wrap: break-word;
+}
+
+.hidden {
+	display: none;
+}
+
+.card iframe, svg {
+	border: none;
+	margin-left: -10px;
+	margin-top: -10px;
+	width: calc(100% + 10px + 10px); /*10 to overlap the bottom padding, 10 for the top*/
+	height: calc(100% - 26px + 10px + 10px); /*26 for the header, 10 to overlap the bottom padding, 10 for the top*/
+}
+
+h1, h2, h3, h4, h5, h6 {
+	margin-bottom: 0px;
+	margin-top: 10px;
+}
+
+ul {
+	padding-left: 20px;
+}
