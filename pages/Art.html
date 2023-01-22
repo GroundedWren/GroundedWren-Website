@@ -21,8 +21,8 @@
 	<script src="../scripts/Common/Controls/Modal.js"></script>
 	<script src="../scripts/Common/Controls/ZeroState.js"></script>
 
-	<script src="../scripts/Pages/Art.js"></script>
 	<script src="../scripts/Pages/Data/ArtData.js"></script>
+	<script src="../scripts/Pages/Art.js"></script>
 </head>
 <body>
 	<div id="subveil">
@@ -30,8 +30,8 @@
 		<div id="BannerBuffer" class="banner-buffer"></div>
 		<div class="main-page">
 			<div class="content">
-				<div id="LeftPane" style="flex-shrink: 0; flex-grow: 0;">
-					<!-- Left pane -->
+				<div id="LeftPane">
+					<button id="getLink" onclick="Pages.Art.onLinkRequested()">Get Link</button>
 					<div class="card">
 						<div class="card-header">Sort</div>
 						<div class="inputDiv">
@@ -86,13 +86,13 @@
 						<button onclick="Pages.Art.hideAllArtists()">None</button>
 						<div id="ArtistFilters" class="inputDiv" style="margin-top: 5px">
 							<label for="BACB">Bastien Aufrere</label>
-							<input id="BACB" type="checkbox" onchange="Pages.Art.togArtistFilter('BastienAufrere', arguments[0].target.checked)" /><br />
+							<input id="BACB" type="checkbox" onchange="Pages.Art.togArtistFilter('Bastien Aufrere', arguments[0].target.checked)" /><br />
 							<label for="BerBorCB">Berenice Borggrefe</label>
-							<input id="BerBorCB" type="checkbox" onchange="Pages.Art.togArtistFilter('BereniceBoggrefe', arguments[0].target.checked)" /><br />
+							<input id="BerBorCB" type="checkbox" onchange="Pages.Art.togArtistFilter('Berenice Borggrefe', arguments[0].target.checked)" /><br />
 							<label for="ChelseaRhiCB">Chelsea-Rhi</label>
-							<input id="ChelseaRhiCB" type="checkbox" onchange="Pages.Art.togArtistFilter('ChelseaRhi', arguments[0].target.checked)" /><br />
+							<input id="ChelseaRhiCB" type="checkbox" onchange="Pages.Art.togArtistFilter('Chelsea-Rhi', arguments[0].target.checked)" /><br />
 							<label for="BonnieCB">Bonnie Guerra</label>
-							<input id="BonnieCB" type="checkbox" onchange="Pages.Art.togArtistFilter('BonnieGuerra', arguments[0].target.checked)" /><br />
+							<input id="BonnieCB" type="checkbox" onchange="Pages.Art.togArtistFilter('Bonnie Guerra', arguments[0].target.checked)" /><br />
 							<label for="DespeyCB">Despey</label>
 							<input id="DespeyCB" type="checkbox" onchange="Pages.Art.togArtistFilter('Despey', arguments[0].target.checked)" /><br />
 							<label for="JestCB">JesterDK</label>
@@ -110,7 +110,6 @@
 				</div>
 
 				<div id="RightPane" style="flex-shrink: 0; flex-grow: 1; flex-basis: 0;">
-					<!-- right pane -->
 					<div id="gallery">
 					</div>
 				</div>

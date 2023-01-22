@@ -3,7 +3,7 @@
  */
 registerNamespace("Pages.Index", function (ns)
 {
-	
+	//Nothing here :)
 });
 
 /**
@@ -20,10 +20,10 @@ window.onload = () =>
 			},
 			"Characters": {
 				childActionMap: {
-					"Vera": () => { window.location.href = "pages/Character.html?char=vera"; },
-					"Freya": () => { window.location.href = "pages/Character.html?char=freya"; },
-					"Orianna": () => { window.location.href = "pages/Character.html?char=orianna"; },
-					"Sindri": () => { window.location.href = "pages/Character.html?char=sindri"; },
+					"Vera": () => { window.location.href = "pages/Character.html?char=Vera"; },
+					"Freya": () => { window.location.href = "pages/Character.html?char=Freya"; },
+					"Orianna": () => { window.location.href = "pages/Character.html?char=Orianna"; },
+					"Sindri": () => { window.location.href = "pages/Character.html?char=Sindri"; },
 				}
 			},
 			"Music": {

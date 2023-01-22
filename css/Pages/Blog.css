@@ -6,16 +6,29 @@
 	height: 100%;
 }
 
-.main-page {
-	margin-left: 20px;
+#main-page {
 	margin-right: 20px;
 	height: calc(100% - 25px); /*Header*/
 }
 
-.content {
+#content {
 	display: flex;
 	flex-direction: row;
 	height: 100%;
+}
+
+.divider {
+	height: 100%;
+	border-left: 1px solid rgb(91, 154, 213);
+}
+
+#leftPaneCollapseBtn {
+	align-self: center;
+	height: 75px;
+	width: 0px;
+	padding-left: 0px;
+	padding-right: 14px;
+	border-left: 0px;
 }
 
 #entryCard {

@@ -91,3 +91,16 @@ iframe {
 	margin-bottom: 0;
 	text-align: center;
 }
+
+#leftPane {
+	flex-shrink: 0;
+	flex-grow: 0;
+}
+
+#getLink {
+	margin-top: 10px;
+	margin-left: 10px;
+	margin-right: 10px;
+	width: calc(100% - 20px);
+	height: 30px;
+}

@@ -18,6 +18,7 @@
 	<script src="../scripts/Common/SVGLib.js"></script>
 	<script src="../scripts/Common/Controls/ZeroState.js"></script>
 	<script src="../scripts/Common/Controls/Modal.js"></script>
+	<script src="../scripts/Common/Components/VisibilityToggle.js"></script>
 
 	<script src="../scripts/Pages/Blog.js"></script>
 </head>
@@ -26,21 +27,24 @@
 		<div class="banner fixed-header"><a style="float: left;" href="../index.html">Home</a><span>Blog</span></div>
 		<div class="banner-buffer"></div>
 
-		<div class="main-page">
-			<div class="content">
-				<div style="flex-shrink: 0; flex-grow: 0;">
-					<!-- Left pane -->
+		<div id="main-page">
+			<div id="content">
+				<div id="leftPane" style="flex-shrink: 0; flex-grow: 0;">
 					<div class="card">
-						<div class="card-header">Entries</div>
+						<div id="entries" class="card-header">Entries</div>
 						<h2>2022</h2>
 						<h3>December</h3>
-						<a href="?entry=2022_12_20" onclick="Pages.Blog.openEntry('2022_12_31', arguments[0])">12/31/22 - Fate of the Flightless</a><br/>
+						<a href="?entry=2022_12_20" onclick="Pages.Blog.openEntry('2022_12_31', arguments[0])">12/31/22 - Fate of the Flightless</a><br />
 						<a href="?entry=2022_12_20" onclick="Pages.Blog.openEntry('2022_12_20', arguments[0])">12/20/22 - Hello Blog!</a>
 					</div>
 				</div>
 
-				<div style="flex-shrink: 0; flex-grow: 1;">
-					<!-- right pane -->
+				<div class="divider"></div>
+				<button id="leftPaneCollapseBtn" class="button-like">
+					<span id="leftPaneCollapseChevron"class="chevron left"></span>
+				</button>
+
+				<div id="rightPane" style="flex-shrink: 0; flex-grow: 1;">
 					<div id="entryCard" class="card">
 						<div id="entryHeader" class="card-header" style="text-align: center">-</div>
 						<iframe id="entryFrame" src="" title="blog entry"></iframe>

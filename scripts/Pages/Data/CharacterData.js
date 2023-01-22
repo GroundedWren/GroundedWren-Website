@@ -1,7 +1,7 @@
-﻿registerNamespace("Pages.Character", function (ns)
+﻿registerNamespace("Pages.Character.Data", function (ns)
 {
 	ns.Characters = {
-		"vera": {
+		"Vera": {
 			profileSrc: "../../img/Profiles/Vera Reading - Headshot - Ravenluck.png",
 
 			name: "Vera Konigin",
@@ -52,9 +52,9 @@
 				+ "<p>Cyrus, for all of his shortcomings, is one of the few people in Vera’s life who is not wary of her infernal heritage - he doesn’t seem to notice at all. This alone has earned Vera’s respect and loyalty.</P>"
 				+ "<p>Vera is concerned by her father’s declining health, but lacks the courage to visit often.</P>",
 
-			galleryLink: "/pages/Art.html?charFilt=vera&showAll=artist&sort=date&hide=leftPane&hide=banner&hide=bannerBuffer"
+			galleryLink: "/pages/Art.html?charFilt=Vera&showAll=artist&sort=date&hide=leftPane&hide=banner&hide=bannerBuffer"
 		},
-		"freya": {
+		"Freya": {
 			profileSrc: "../../img/Profiles/Freya Shaded Halfbody Cropped - Chelsea-Rhi - 2022-02-24.png",
 
 			name: "Freya Visser",
@@ -106,9 +106,9 @@
 				+ "<p>Seeing her single-minded devotion to the righteous cause of destroying the undead, and her leadership in rallying her town in a noble cause, Lathander blessed her as a paladin.</p>"
 				+ "<p>When she felt she was strong enough, Freya took a boat to Port Nyanzaru, finally returning to  her homeland....</p>",
 
-			galleryLink: "/pages/Art.html?charFilt=freya&showAll=artist&sort=date&hide=leftPane&hide=banner&hide=bannerBuffer"
+			galleryLink: "/pages/Art.html?charFilt=Freya&showAll=artist&sort=date&hide=leftPane&hide=banner&hide=bannerBuffer"
 		},
-		"orianna": {
+		"Orianna": {
 			name: "Orianna Nailo",
 			pronouns: "She/Her",
 			gender: "Female",
@@ -152,7 +152,7 @@
 			backstory: "<p>Orianna Nailo is the protege of Vera, a powerful wizard and explorer.  We have traveled all along the sword coast delving into tombs and ruins seeking to learn the secrets of powerful necromancy and gain the secret to immortality. Our sponsor is Lord Percival Bromley, a noble of Waterdeep. When the curse began we were in Waterdeep, beginning to explore Undermountain. Vera instantly fell ill to Orianna's dismay. She asked Orianna to find what is causing the curse and stop it so that she will live and our quest can continue…</p>"
 				+ "",
 		},
-		"sindri": {
+		"Sindri": {
 			profileSrc: "../../img/Profiles/Sindri Reference - Crop - Raiyk - 2016-09-10.png",
 
 			name: "Sindri Laelius",
@@ -213,7 +213,7 @@
 				+ "<h1>Andromeda (2819-)</h1>"
 				+ "<p>Following the events of Mass Effect: Andromeda, Dr. Alerius' team is awakened from cryo-sleep. Supplied a new frigate by the initiative - the Wasp - they are let loose into the cluster to scout for new interesting floral life. Technically their primary goal is to find useful plants for cultivation by the Initiative, but their unofficial goal is to study local ecosystems and expand knowledge about how life works on the inter-galactic scale. Sindri is highly excited to begin this new phase of his life, and endless possibilities no doubt await....</p>",
 
-			galleryLink: "/pages/Art.html?charFilt=sindri&showAll=artist&sort=date&hide=leftPane&hide=banner&hide=bannerBuffer"
+			galleryLink: "/pages/Art.html?charFilt=Sindri&showAll=artist&sort=date&hide=leftPane&hide=banner&hide=bannerBuffer"
 		},
 
 		"template": {

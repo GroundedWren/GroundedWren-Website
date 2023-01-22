@@ -14,7 +14,7 @@ registerNamespace("Pages.Character", function (ns)
 	 */
 	function loadCharacter(characterKey)
 	{
-		const character = ns.Characters[characterKey];
+		const character = ns.Data.Characters[characterKey];
 		if (!character) { return; }
 
 		buildLeftPane(character);
@@ -167,7 +167,7 @@ window.onload = () =>
 	if (params.has(Pages.Character.CHARACTER_PARAM))
 	{
 		const character = params.get(Pages.Character.CHARACTER_PARAM);
-		if (Pages.Character.Characters[character])
+		if (Pages.Character.Data.Characters[character])
 		{
 			Pages.Character.loadCharacter(character);
 		}

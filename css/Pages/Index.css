@@ -32,18 +32,19 @@ h1 {
 #content {
 	display: flex;
 	flex-direction: row;
-	min-width: 800px;
+	min-width: 600px;
+	align-items: flex-start;
+	flex-wrap: wrap;
 }
 
-#leftPane {
+#about {
 	flex-basis: 600px;
 	flex-grow: 1;
-	flex-shrink: 0;
+	flex-shrink: 1;
 }
 
-#rightPane {
-	flex-basis: 800px;
-	min-width: 400px;
+#avi {
+	flex-basis: 600px;
 	flex-grow: 0;
 	flex-shrink: 1;
 }

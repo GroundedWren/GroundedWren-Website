@@ -3,32 +3,8 @@
  */
 registerNamespace("Pages.Art", function (ns)
 {
-	//#region Artists
-	/**
-	 * Class for storing information about an artist
-	 */
-	class ArtistInfo
-	{
-		//Display name
-		name;
-		//Url where to find them
-		link;
-		constructor(name, link)
-		{
-			this.name = name;
-			this.link = link;
-		}
-
-		/**
-		 * Gets a link to display
-		 */
-		getLink()
-		{
-			return `<a target="_blank" href=${this.link}>${this.name}</a>`;
-		}
-	}
-	ns.ArtistInfo = ArtistInfo;
-	//#endregion
+	// All tracked artists
+	ns.Artists = {};
 
 	//#region Siting
 	//The galery div
@@ -154,6 +130,10 @@ registerNamespace("Pages.Art", function (ns)
 	// Whether to pause re-siting frames as changes come in
 	ns.pauseUpdates = false;
 
+	// Flags to track whether all of a particular type is showing
+	ns.showingAllChars = false;
+	ns.showingAllArtists = false;
+
 	/**
 	 * Show all frames (clears all filters)
 	 */
@@ -164,6 +144,9 @@ registerNamespace("Pages.Art", function (ns)
 		setAllChildCheckboxes(document.getElementById("ArtistFilters"), true);
 		ns.pauseUpdates = false;
 		updateForFilters();
+
+		ns.showingAllChars = true;
+		ns.showingAllArtists = true;
 	};
 	/**
 	 * Hides all frames (sets all filters)
@@ -175,6 +158,9 @@ registerNamespace("Pages.Art", function (ns)
 		setAllChildCheckboxes(document.getElementById("ArtistFilters"), false);
 		ns.pauseUpdates = false;
 		updateForFilters();
+
+		ns.showingAllChars = false;
+		ns.showingAllArtists = false;
 	};
 
 	/**
@@ -231,6 +217,8 @@ registerNamespace("Pages.Art", function (ns)
 		setAllChildCheckboxes(document.getElementById("CharFilters"), true);
 		ns.pauseUpdates = false;
 		updateForFilters();
+
+		ns.showingAllChars = true;
 	};
 	/**
 	 * Filter every character
@@ -241,6 +229,8 @@ registerNamespace("Pages.Art", function (ns)
 		setAllChildCheckboxes(document.getElementById("CharFilters"), false);
 		ns.pauseUpdates = false;
 		updateForFilters();
+
+		ns.showingAllChars = false;
 	};
 
 	/**
@@ -252,6 +242,8 @@ registerNamespace("Pages.Art", function (ns)
 		setAllChildCheckboxes(document.getElementById("ArtistFilters"), true);
 		ns.pauseUpdates = false;
 		updateForFilters();
+
+		ns.showingAllArtists = true;
 	};
 	/**
 	 * Filter every artist
@@ -262,6 +254,8 @@ registerNamespace("Pages.Art", function (ns)
 		setAllChildCheckboxes(document.getElementById("ArtistFilters"), false);
 		ns.pauseUpdates = false;
 		updateForFilters();
+
+		ns.showingAllArtists = false;
 	};
 
 	/**
@@ -302,6 +296,7 @@ registerNamespace("Pages.Art", function (ns)
 		if (!ns.pauseUpdates)
 		{
 			updateForFilters();
+			ns.showingAllChars = false;
 		}
 
 	};
@@ -323,6 +318,7 @@ registerNamespace("Pages.Art", function (ns)
 		if (!ns.pauseUpdates)
 		{
 			updateForFilters();
+			ns.showingAllArtists = false;
 		};
 	};
 
@@ -337,25 +333,12 @@ registerNamespace("Pages.Art", function (ns)
 	};
 	//#endregion
 
-	class ArtFrame
+	//#region Frames
+	class ArtFrameCard extends ns.Data.ArtFrame
 	{
 		//#region fields
 		// Outermost element id
 		frameId;
-		// Display name
-		__title;
-		// link to the art
-		__artlink;
-		// List of represented characters
-		characters = [];
-		// List of represented artists
-		artists = [];
-		// Date the art was created or posted
-		date;
-		// A description of the work
-		description;
-		// Whether the art is explicit, sexually or otherwise
-		__isExplicit;
 		// Whether the frame is currently filtered out
 		filtered;
 		//#endregion
@@ -371,14 +354,17 @@ registerNamespace("Pages.Art", function (ns)
 		 */
 		constructor(title, artLink, characters, artists, date, description, isExplicit)
 		{
+			super(
+				title,
+				artLink,
+				characters,
+				artists,
+				date,
+				description,
+				isExplicit,
+				(artistId) => ns.Artists[artistId].getLink()
+			);
 			this.frameId = null;
-			this.__title = title;
-			this.__artLink = artLink;
-			this.characters = characters;
-			this.artists = artists;
-			this.date = date;
-			this.description = description;
-			this.__isExplicit = isExplicit;
 			this.filtered = false;
 		}
 
@@ -422,22 +408,6 @@ registerNamespace("Pages.Art", function (ns)
 			{
 				return this.render();
 			}
-		}
-
-		/**
-		 * Fetches the identifying title
-		 */
-		getTitle()
-		{
-			return this.__title;
-		}
-
-		/**
-		 * Fetches the link to the image
-		 */
-		getArtLink()
-		{
-			return this.__artLink;
 		}
 
 		/**
@@ -499,52 +469,33 @@ registerNamespace("Pages.Art", function (ns)
 
 			return frame;
 		}
-
-		/**
-		 * Builds a meta-info table
-		 * @param parent the element to insert the table into
-		 */
-		buildMetaTable(parent)
-		{
-			var dce = Common.DOMLib.createElement;
-
-			const { el: metaTable } = dce("table", parent);
-
-			this.__addTableRow(
-				metaTable,
-				"Title",
-				this.__title
-			);
-			this.__addTableRow(
-				metaTable,
-				"Artists",
-				this.artists.map((artist) => ns.Artists[artist].getLink()).join(", ")
-			);
-			this.__addTableRow(
-				metaTable,
-				"Characters",
-				this.characters.join(", ")
-			);
-			this.__addTableRow(
-				metaTable,
-				"Date",
-				this.date.toLocaleDateString(undefined, { weekday: undefined, year: "numeric", month: "long", day: "numeric" })
-			);
-		}
-
-		__addTableRow(tableEl, labelText, labelValueHTML)
-		{
-			var dce = Common.DOMLib.createElement;
-
-			var { el: tableRow } = dce("tr", tableEl);
-			var { el: rowLabel } = dce("td", tableRow, ["row-label"]);
-			rowLabel.innerText = labelText;
-			var { el: rowValue } = dce("td", tableRow);
-			rowValue.innerHTML = labelValueHTML;
-		}
 	}
-	Pages.Art.ArtFrame = ArtFrame;
+	ns.ArtFrameCard = ArtFrameCard;
 
+	// All art frames
+	ns.ArtFrames = [];
+
+	/**
+	 * Initialize art frames from data
+	 */
+	ns.initializeFrames = function initializeFrames()
+	{
+		Object.keys(ns.Data.ArtFrames).forEach(artTitle =>
+		{
+			const artObj = ns.Data.ArtFrames[artTitle];
+			ns.ArtFrames.push(new ArtFrameCard(
+				artTitle,
+				artObj.src,
+				artObj.characters,
+				artObj.artists,
+				artObj.date,
+				artObj.description,
+				artObj.isExplicit)
+			);
+		});
+	};
+
+	//#endregion
 	//#region Zero State
 	ns.ZeroStateControl = null;
 	function enterZeroState()
@@ -568,22 +519,22 @@ registerNamespace("Pages.Art", function (ns)
 			"date": "DateRad",
 		},
 		"charFilt": {
-			"vera": "VeraCB",
-			"eryn": "ErynCB",
-			"freya": "FreyaCB",
-			"sindri": "SindriCB",
-			"ghodukk": "GhodukkCB",
-			"jack": "JackCB",
-			"lightsong": "LightsongCB",
-			"percy": "PercyCB",
-			"serin": "SerinCB",
-			"nocturna": "NocturnaCB",
+			"Vera": "VeraCB",
+			"Eryn": "ErynCB",
+			"Freya": "FreyaCB",
+			"Sindri": "SindriCB",
+			"Ghodukk": "GhodukkCB",
+			"Jack": "JackCB",
+			"Lightsong": "LightsongCB",
+			"Percy": "PercyCB",
+			"Serin": "SerinCB",
+			"Nocturna": "NocturnaCB",
 		},
 		"artistFilt": {
-			"BastienAufrere": "BACB",
-			"BereniceBoggrefe": "BerBorCB",
-			"ChelseaRhi": "ChelseaRhiCB",
-			"BonnieGuerra": "BonnieCB",
+			"Bastien Aufrere": "BACB",
+			"Berenice Borggrefe": "BerBorCB",
+			"Chelsea-Rhi": "ChelseaRhiCB",
+			"Bonnie Guerra": "BonnieCB",
 			"Despey": "DespeyCB",
 			"JesterDK": "JestCB",
 			"Raiyk": "RaiykCB",
@@ -650,61 +601,31 @@ registerNamespace("Pages.Art", function (ns)
 			Common.DOMLib.addStyle(document.getElementById(elId), { "display": "none" });
 		});
 	};
-	//#endregion
-});
 
-registerNamespace("Pages.ArtFrame", function (ns)
-{
-	ns.render = function (params)
+	ns.onLinkRequested = function ()
 	{
-		if (!params.has("art"))
-		{
-			window.history.replaceState(null, "", "ArtFrame.html");
-			Common.Controls.Popups.showModal(
-				"ArtFrame",
-				`No art specified`,
-				undefined,
-				() => { window.location.href = "/Pages/Art.html"; }
-			);
-			return;
-		}
+		const params = [];
 
-		var artName = params.get("art");
+		const charParams = ns.showingAllChars
+			? "showAll=char"
+			: ns.shownCharacters.map(char => `charFilt=${encodeURIComponent(char)}`).join("&");
+		if (charParams) { params.push(charParams); }
 
-		const matchingFrames = Pages.Art.ArtFrames.filter(artFrame => artFrame.getTitle() === artName);
+		const artistParams = ns.showingAllArtists
+			? "showAll=artist"
+			: ns.shownArtists.map(artist => `artistFilt=${encodeURIComponent(artist)}`).join("&");
+		if (artistParams) { params.push(artistParams); }
 
-		if (!matchingFrames.length)
-		{
-			window.history.replaceState(null, "", "ArtFrame.html");
-			Common.Controls.Popups.showModal(
-				"ArtFrame",
-				`Art not found: ${artName}`,
-				undefined,
-				() => { window.location.href = "/Pages/Art.html"; }
-			);
-			return;
-		}
+		const sortParam = `sort=${encodeURIComponent(ns.__lastSort.toLowerCase())}`;
+		if (sortParam) { params.push(sortParam); }
 
-		const artFrame = matchingFrames[0];
+		const link = `GroundedWren.com/pages/Art.html?${params.join("&")}`;
 
-		var inFrame = params.has("inFrame");
-		if (inFrame)
-		{
-			document.getElementById("Banner").remove();
-			document.getElementById("BannerBuffer").remove();
-			document.getElementById("mainPage").classList.add("frame");
-		}
+		navigator.clipboard.writeText(link);
 
-		document.getElementById("imgElement").setAttribute("src", artFrame.getArtLink());
-
-		if (!inFrame)
-		{
-			artFrame.buildMetaTable(document.getElementById("metaContainer"));
-		}
-
-		const descParagraph = Common.DOMLib.createElement("p", document.getElementById("commentContainer")).el;
-		descParagraph.innerHTML = artFrame.description;
-	};
+		Common.Controls.Popups.showModal("Art Gallery",`Link Copied!<br>${link}`);
+	}
+	//#endregion
 });
 
 /**
@@ -712,23 +633,17 @@ registerNamespace("Pages.ArtFrame", function (ns)
  */
 window.onload = () =>
 {
+	Pages.Art.Data.InitializeArtists(Pages.Art, "Artists");
 	Pages.Art.initializeFrames();
 
-	if (window.location.pathname === "/pages/ArtFrame.html")
-	{
-		Pages.ArtFrame.render(Common.getUrlParams());
-	}
-	else
-	{
-		Pages.Art.GalleryEl = document.getElementById("gallery");
+	Pages.Art.GalleryEl = document.getElementById("gallery");
 
-		Pages.Art.ZeroStateControl = Common.Controls.ZeroState.embedZSC(
-			document.getElementById("RightPane"),
-			"Nothing to Show - Modify Filters"
-		);
-		Pages.Art.enterZeroState();
+	Pages.Art.ZeroStateControl = Common.Controls.ZeroState.embedZSC(
+		document.getElementById("RightPane"),
+		"Nothing to Show - Modify Filters"
+	);
+	Pages.Art.enterZeroState();
 
-		Pages.Art.ArtFrames.sort((a, b) => b.date - a.date);
-		Pages.Art.interperetUrlParams(Common.getUrlParams());
-	}
+	Pages.Art.ArtFrames.sort((a, b) => b.date - a.date);
+	Pages.Art.interperetUrlParams(Common.getUrlParams());
 };

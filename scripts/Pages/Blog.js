@@ -82,4 +82,18 @@ window.onload = () =>
 	{
 		Pages.Blog.enterZeroState();
 	}
+
+	const visTogButton = document.getElementById("leftPaneCollapseBtn");
+	const visTogChevron = document.getElementById("leftPaneCollapseChevron");
+	Common.Components.RegisterVisToggle(
+		visTogButton,
+		[
+			document.getElementById("leftPane"),
+		],
+		(visible) =>
+		{
+			visTogChevron.classList.remove(visible ? "right" : "left");
+			visTogChevron.classList.add(visible ? "left" : "right");
+		}
+	);
 };
