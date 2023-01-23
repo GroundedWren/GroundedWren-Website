@@ -8,6 +8,11 @@ registerNamespace("Pages.Writing.Data", function (ns)
 			entriesDirectory: "./blog_entries/",
 			entryExtension: ".html",
 			entries: {
+				"2023_01_22": {
+					title: "Memories and Bedrooms",
+					author: "Vera",
+					date: new Date(2023, 0, 22),
+				},
 				"2022_12_31": {
 					title: "Fate of the Flightless",
 					author: "Vera",
