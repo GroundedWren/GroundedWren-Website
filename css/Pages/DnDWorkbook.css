@@ -12,6 +12,7 @@
 }
 #aboutCard {
 	width: 100%;
+	min-width: 1050px;
 }
 
 .image-frame {
