@@ -38,7 +38,7 @@ registerNamespace("Pages.Writing.Data", function (ns)
 				"EmbarkingTheBrusco": {
 					title: "Embarking the Brusco",
 					author: "Vera",
-					date: new Date(2017),
+					dateString: "2017",
 					characters: ["Sindri"],
 				},
 			},

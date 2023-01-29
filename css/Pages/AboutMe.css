@@ -22,6 +22,16 @@
 	flex-direction: row;
 	flex-wrap: wrap;
 	align-items: flex-start;
+	justify-content: center;
+}
+
+#bottomContent {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	justify-content: center;
 }
 
 #socialsCtrl {

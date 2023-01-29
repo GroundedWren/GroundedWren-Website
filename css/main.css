@@ -10,12 +10,18 @@ html, body {
 ::-webkit-scrollbar {
 	width: 10px;
 }
+
 ::-webkit-scrollbar-track {
 	background: #2C1642;
 }
+
 ::-webkit-scrollbar-thumb {
 	background: rebeccapurple;
 }
+
+.z { /* Fix auto-indent */
+}
+
 ::-webkit-scrollbar-thumb:hover {
 	background: #A853FC;
 }
@@ -80,6 +86,29 @@ div.inputDiv > label {
 
 div.inputDiv * {
 	display: inline-block;
+}
+
+div.input-flex {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.input-flex-line {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.z { /* Fix auto-indent */
+}
+
+.input-flex-line > label {
+	text-align: left;
+	flex-grow: 1;
 }
 
 input[type="text"], input[type="password"] {

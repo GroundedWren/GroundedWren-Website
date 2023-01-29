@@ -46,6 +46,19 @@ h1 {
 	align-items: flex-start;
 }
 
+.text-pane-row {
+	display: flex;
+	flex-direction: row;
+	/*flex-wrap: wrap;*/
+	justify-content: center;
+	align-items: flex-start;
+	width: 100%;
+}
+
+.text-pane-row ul {
+	margin-top: 0px;
+}
+
 #avi {
 	flex-basis: 600px;
 	flex-grow: 0;

@@ -63,4 +63,18 @@ registerNamespace("Common.DOMLib", function (ns)
 		}
 	}
 	ns.addStyle = addStyle;
+
+	/**
+	 * Sets an entire object of attributes onto an element
+	 * @param el Element to modify
+	 * @param attrs Attributes object
+	 */
+	function setAttributes(el, attrs)
+	{
+		for (const attribute in attrs)
+		{
+			el.setAttribute(attribute, attrs[attribute]);
+		}
+	}
+	ns.setAttributes = setAttributes;
 });

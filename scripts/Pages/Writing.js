@@ -10,28 +10,88 @@ registerNamespace("Pages.Writing", function (ns)
 	ns.currentFolder = null;
 
 	const ENTRY_PARAM = "entry";
-	ns.ENTRY_PARAM = ENTRY_PARAM;
 	const FOLDER_PARAM = "folder";
-	ns.FOLDER_PARAM = FOLDER_PARAM;
 
 	const FOLDER_CONTENT_ID = "folderContent";
 	const DIRECTORY_CARD_ID = "directoryCard";
-	ns.DIRECTORY_CARD_ID = DIRECTORY_CARD_ID;
 	const DIRECTORY_HEADER_ID = "directoryHeader";
 	const DIRECTORY_CONTENT_ID = "directoryContent";
 	const METADATA_CARD_ID = "metaCard";
 	const METADATA_CONTENT_ID = "metaContent";
 
+	// Map from folder name to radio element
+	ns.folderRadioMap = {};
+
 	/**
-	 * Shows the zero stage control
+	 * Builds the folder list card
+	 */
+	ns.buildFolderList = function ()
+	{
+		const folderContentEl = document.getElementById(FOLDER_CONTENT_ID);
+		/*const listEl = Common.DOMLib.createElement("ul", folderContentEl).el;*/
+
+		Object.keys(ns.Data.Folders).forEach(folder =>
+		{
+			const inputLineEl = Common.DOMLib.createElement("div", folderContentEl, ["input-flex-line"]).el;
+
+			const labelEl = Common.DOMLib.createElement("label", inputLineEl).el;
+			labelEl.innerHTML = folder;
+
+			const radioEl = Common.DOMLib.createElement("input", inputLineEl).el;
+			Common.DOMLib.setAttributes(
+				radioEl,
+				{
+					"type": "radio",
+					"name": "folderList",
+					"value": folder
+				}
+			);
+			radioEl.addEventListener("change", Common.fcd(ns, openFolder, [folder]));
+
+			labelEl.setAttribute("for", radioEl.id);
+
+			ns.folderRadioMap[folder] = radioEl;
+		});
+	};
+
+	/**
+	 * Handles url parameters for the writing page
+	 */
+	ns.interperetUrlParams = function (params)
+	{
+		var folder = "";
+		if (params.has(FOLDER_PARAM))
+		{
+			folder = params.get(FOLDER_PARAM);
+			buildDirectory(folder);
+			ns.folderRadioMap[folder].checked = true;
+		}
+		else
+		{
+			document.getElementById(DIRECTORY_CARD_ID).classList.add("hidden");
+		}
+
+		if (params.has(ENTRY_PARAM) && folder)
+		{
+			const entry = params.get(ENTRY_PARAM);
+			openToEntry(folder, entry);
+		}
+		else
+		{
+			enterZeroState();
+		}
+	};
+
+	/**
+	 * Shows the zero state control
 	 */
 	function enterZeroState()
 	{
 		Common.DOMLib.addStyle(ns.entryFrame, { "display": "none" });
 		Common.DOMLib.addStyle(ns.zsc, { "display": "block" });
+		ns.entryHeader.innerHTML = "-"
 		hideMetadata();
 	}
-	ns.enterZeroState = enterZeroState;
 
 	/**
 	 * Hides the zero state control
@@ -41,38 +101,14 @@ registerNamespace("Pages.Writing", function (ns)
 		Common.DOMLib.addStyle(ns.zsc, { "display": "none" });
 		Common.DOMLib.addStyle(ns.entryFrame, { "display": "block" });
 	}
-	ns.exitZeroState = exitZeroState;
-
-	/**
-	 * Builds the folder list card
-	 */
-	ns.buildFolderList = function ()
-	{
-		const folderContentEl = document.getElementById(FOLDER_CONTENT_ID);
-		const listEl = Common.DOMLib.createElement("ul", folderContentEl).el;
-
-		Object.keys(ns.Data.Folders).forEach(folder =>
-		{
-			const listItemEL = Common.DOMLib.createElement("li", listEl).el;
-
-			const linkEl = Common.DOMLib.createElement("a", listItemEL).el;
-			linkEl.innerHTML = `${folder}`;
-			linkEl.setAttribute("href", `?folder=${folder}`);
-			linkEl.onclick = Common.fcd(
-				ns,
-				ns.openFolder,
-				[folder]
-			);
-		});
-	};
 
 	/**
 	 * Opens the specified folder
 	 */
-	ns.openFolder = function (folder, event)
+	function openFolder(folder, event)
 	{
 		enterZeroState();
-		ns.buildDirectory(folder);
+		buildDirectory(folder);
 		document.getElementById(DIRECTORY_CARD_ID).classList.remove("hidden");
 
 		if (event)
@@ -85,7 +121,7 @@ registerNamespace("Pages.Writing", function (ns)
 	/**
 	 * Sets up the entries (directory) card according to a specified folder
 	 */
-	ns.buildDirectory = function(folder)
+	function buildDirectory(folder)
 	{
 		if (!folder || !ns.Data.Folders[folder]) { return; }
 
@@ -115,7 +151,7 @@ registerNamespace("Pages.Writing", function (ns)
 			linkEl.setAttribute("href", `?folder=${folder}&entry=${entryId}`);
 			linkEl.onclick = Common.fcd(
 				ns,
-				ns.openToEntry,
+				openToEntry,
 				[folder, entryId]
 			);
 		});
@@ -133,28 +169,30 @@ registerNamespace("Pages.Writing", function (ns)
 		{
 			loadEntry(entryId, folderObj.entriesDirectory, folderObj.entryExtension, entry.title, event);
 			displayMetadata(entry);
+			exitZeroState();
+
+			if (event)
+			{
+				event.preventDefault();
+				window.history.replaceState(null, "", `?${FOLDER_PARAM}=${ns.currentFolder}&${ENTRY_PARAM}=${filename}`);
+			}
 		}
 		else
 		{
 			window.history.replaceState(null, "", "Writing.html");
-			Pages.Writing.enterZeroState();
+			enterZeroState();
 			Common.Controls.Popups.showModal("Writing", `Entry not found: ${entry}`);
 		}
 	}
-	ns.openToEntry = openToEntry;
 
-	function loadEntry(filename, directory, extension, title, event)
+	/**
+	 * Helper method to actually load writing content into the right pane
+	 */
+	function loadEntry(filename, directory, extension, title)
 	{
 		const page = directory + filename + extension;
 		ns.entryFrame.setAttribute("src", page);
 		ns.entryHeader.innerHTML = `<a href="${page}">${title}</a>`;
-		exitZeroState();
-
-		if (event)
-		{
-			event.preventDefault();
-			window.history.replaceState(null, "", `?${FOLDER_PARAM}=${ns.currentFolder}&${ENTRY_PARAM}=${filename}`);
-		}
 	}
 
 	function displayMetadata(entry)
@@ -177,7 +215,11 @@ registerNamespace("Pages.Writing", function (ns)
 				{
 					dateStyle: "medium",
 				}
-			)}</span>`
+			)}</span>`;
+		}
+		else if (entry.dateString)
+		{
+			metaContent.innerHTML += `<br /><span>Date: ${entry.dateString}</span>`;
 		}
 	}
 
@@ -206,27 +248,7 @@ window.onload = () =>
 
 	Pages.Writing.buildFolderList();
 
-	const params = Common.getUrlParams();
-	var folder = "";
-	if (params.has(Pages.Writing.FOLDER_PARAM))
-	{
-		folder = params.get(Pages.Writing.FOLDER_PARAM);
-		Pages.Writing.buildDirectory(folder);
-	}
-	else
-	{
-		document.getElementById(Pages.Writing.DIRECTORY_CARD_ID).classList.add("hidden");
-	}
-
-	if (params.has(Pages.Writing.ENTRY_PARAM) && folder)
-	{
-		const entry = params.get(Pages.Writing.ENTRY_PARAM);
-		Pages.Writing.openToEntry(folder, entry);
-	}
-	else
-	{
-		Pages.Writing.enterZeroState();
-	}
+	Pages.Writing.interperetUrlParams(Common.getUrlParams());
 
 	const visTogButton = document.getElementById("leftPaneCollapseBtn");
 	const visTogChevron = document.getElementById("leftPaneCollapseChevron");
