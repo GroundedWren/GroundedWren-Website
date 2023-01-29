@@ -38,7 +38,7 @@ window.onload = () =>
 			"Coding Projects": {
 				childActionMap: {
 					"Text Adventure": () => { window.location.href = "https://textadventure.groundedwren.com"; },
-					"D&D Workbook": () => { Common.Controls.Popups.showModal("GroundedWren.com", "Coming soon!"); },
+					"DnD Workbook": () => { window.location.href = "pages/DnDWorkbook.html"; },
 				}
 			},
 			"Misc": {

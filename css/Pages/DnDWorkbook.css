@@ -1,0 +1,24 @@
+﻿#mainPage {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+#downloadsCard {
+	width: 350px;
+}
+#aboutCard {
+	width: 100%;
+}
+
+.image-frame {
+	display: inline-block;
+	width: auto;
+}
+
+h1, h2, h3 {
+	margin-top: 0;
+}

@@ -174,7 +174,7 @@ registerNamespace("Pages.Writing", function (ns)
 			if (event)
 			{
 				event.preventDefault();
-				window.history.replaceState(null, "", `?${FOLDER_PARAM}=${ns.currentFolder}&${ENTRY_PARAM}=${filename}`);
+				window.history.replaceState(null, "", `?${FOLDER_PARAM}=${ns.currentFolder}&${ENTRY_PARAM}=${entryId}`);
 			}
 		}
 		else
