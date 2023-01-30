@@ -1,0 +1,124 @@
+﻿#subveil{
+	height: 100%;
+}
+
+h1, h2, h3 {
+	margin-top: 0;
+	margin-bottom: 10px;
+}
+
+#mainPage {
+	margin-left: 20px;
+	margin-right: 20px;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: stretch;
+	height: 100%;
+	border-left: 1px solid rebeccapurple;
+	border-right: 1px solid rebeccapurple;
+	height: calc(100% - 25px); /*Header*/
+	min-width: 1305px;
+}
+
+#leftPane {
+	min-width: 750px;
+	flex-basis: 750px;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: stretch;
+}
+
+#collectionsPane {
+	flex-basis: 500px;
+	flex-grow: 1;
+	padding: 10px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: stretch;
+}
+
+#collectionImg {
+	max-width: 480px;
+	max-height: 480px;
+}
+
+#collectionImgWrapper {
+	width: 480px;
+	height: 480px;
+}
+
+#collectionsInfoPane {
+	flex-basis: 500px;
+	padding: 10px;
+}
+
+#collectionsCard {
+	min-width: 200px;
+}
+
+.divider {
+	height: 100%;
+	border-left: 1px solid rgb(91, 154, 213);
+}
+
+.divider-horiz {
+	width: 100%;
+	border-top: 1px solid rebeccapurple;
+}
+
+#leftPaneCollapseBtn {
+	align-self: center;
+	height: 75px;
+	width: 0px;
+	padding-left: 0px;
+	padding-right: 14px;
+	border-left: 0px;
+}
+
+#rightPane {
+	flex-grow: 1;
+	min-width: 500px;
+	flex-basis: 500px;
+	overflow: auto;
+	min-width: 500px;
+}
+
+audio {
+	margin-bottom: 10px;
+}
+
+.songTitleContainer {
+	padding-right: 5px;
+}
+
+.songTitleContainer h3 {
+	display: inline-block;
+}
+
+.songTitleContainer span {
+	float: right;
+}
+
+.hidden {
+	display: none;
+}
+
+td {
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	padding-top: 5px;
+	width: auto;
+}
+
+table {
+	border: none;
+	margin-bottom: 20px;
+}
+
+.row-label {
+	width: 175px;
+}
