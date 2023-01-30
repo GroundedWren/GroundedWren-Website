@@ -28,7 +28,6 @@ registerNamespace("Pages.Writing", function (ns)
 	ns.buildFolderList = function ()
 	{
 		const folderContentEl = document.getElementById(FOLDER_CONTENT_ID);
-		/*const listEl = Common.DOMLib.createElement("ul", folderContentEl).el;*/
 
 		Object.keys(ns.Data.Folders).forEach(folder =>
 		{

@@ -27,7 +27,7 @@ window.onload = () =>
 				}
 			},
 			"Music": {
-				action: () => { Common.Controls.Popups.showModal("GroundedWren.com", "Coming soon!"); },
+				action: () => { window.location.href = "pages/Music.html"; },
 			},
 			"Writing": {
 				childActionMap: {
