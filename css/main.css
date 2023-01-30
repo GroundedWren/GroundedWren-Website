@@ -210,7 +210,6 @@ table, th, td {
 .card-header {
 	background-color: rebeccapurple;
 	color: white;
-	width: calc(100% + 15px);
 	font-size: larger;
 	margin: -10px;
 	margin-bottom: 10px;
