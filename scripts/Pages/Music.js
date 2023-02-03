@@ -12,15 +12,7 @@ registerNamespace("Pages.Music", function (ns)
 	const COLLECTION_PARAM = "collection";
 
 	ns.collectionRadioMap = {};
-
-	ns.collectionImgZSC = null;
-	/**
-	 * Creates this page's Zero State Controls
-	 */
-	ns.registerZSC = function ()
-	{
-		ns.collectionImgZSC = Common.Controls.ZeroState.embedZSC(document.getElementById(COLLECTION_IMG_WRAPPER_ID), "Select a collection");
-	};
+	ns.audioList = [];
 
 	/*
 	 * Uses the namespace's data to build out the list of collections 
@@ -73,19 +65,11 @@ registerNamespace("Pages.Music", function (ns)
 		const collectionImg = document.getElementById(COLLECTION_IMG_ID);
 		collectionImg.setAttribute("src", ns.Data.Collections[collectionId].Art);
 
-		exitZeroState();
-
 		if (event)
 		{
 			event.preventDefault();
 			window.history.replaceState(null, "", `?${COLLECTION_PARAM}=${collectionId}`);
 		}
-	}
-
-	function exitZeroState()
-	{
-		Common.DOMLib.addStyle(ns.collectionImgZSC, { "display": "none" });
-		document.getElementById(COLLECTION_IMG_ID).classList.remove("hidden");
 	}
 
 	function populateCollectionInfo(collectionId)
@@ -123,10 +107,22 @@ registerNamespace("Pages.Music", function (ns)
 
 		const songTitleContainer = Common.DOMLib.createElement("div", containerEl, ["songTitleContainer"]).el;
 		Common.DOMLib.createElement("h3", songTitleContainer).el.innerText = song.title;
-		const chevronEl = Common.DOMLib.createElement("span", songTitleContainer, ["chevron"]).el;
+		const chevronEl = Common.DOMLib.createElement("span", songTitleContainer, ["chevron", "bottom"]).el;
 		chevronEl.setAttribute("tabindex", 0);
 
 		const audioEl = Common.DOMLib.createElement("audio", containerEl).el;
+		ns.audioList.push(audioEl);
+		audioEl.addEventListener("play", () =>
+		{
+			ns.audioList.forEach(audioListEl =>
+			{
+				if (audioListEl.id !== audioEl.id)
+				{
+					audioListEl.pause();
+				}
+			});
+		});
+
 		Common.DOMLib.setAttributes(audioEl, { "controls": null });
 		const sourceEl = Common.DOMLib.createElement("source", audioEl).el;
 		Common.DOMLib.setAttributes(sourceEl, { "src": song.src, "type": song.type });
@@ -161,13 +157,14 @@ registerNamespace("Pages.Music", function (ns)
 			if (detailEl.classList.contains("hidden"))
 			{
 				detailEl.classList.remove("hidden");
-				chevronEl.classList.add("bottom");
+				chevronEl.classList.remove("bottom");
 			}
 			else
 			{
 				detailEl.classList.add("hidden");
-				chevronEl.classList.remove("bottom");
+				chevronEl.classList.add("bottom");
 			}
+			event.preventDefault();
 		};
 
 		songTitleContainer.addEventListener("click", toggleDetailDelegate);
@@ -191,8 +188,6 @@ registerNamespace("Pages.Music", function (ns)
  */
 window.onload = () =>
 {
-	Pages.Music.registerZSC();
-
 	Pages.Music.buildCollectionList();
 
 	Pages.Music.interperetUrlParams(Common.getUrlParams());

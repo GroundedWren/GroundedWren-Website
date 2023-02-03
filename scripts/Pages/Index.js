@@ -49,4 +49,30 @@ window.onload = () =>
 			},
 		}
 	);
+
+	const updateChevron = document.getElementById("updateChevron");
+	const updateContent = document.getElementById("updateContent");
+	const updateHeader = document.getElementById("updatesCardHeader");
+	const toggleChevDel = (event) =>
+	{
+		if (event.keyCode
+			&& event.keyCode !== Common.KeyCodes.Space
+			&& event.keyCode !== Common.KeyCodes.Enter)
+		{
+			return;
+		}
+		if (updateChevron.classList.contains("bottom"))
+		{
+			updateChevron.classList.remove("bottom");
+			updateContent.classList.remove("hidden");
+		}
+		else
+		{
+			updateChevron.classList.add("bottom");
+			updateContent.classList.add("hidden");
+		}
+		event.preventDefault();
+	};
+	updateHeader.addEventListener("click", toggleChevDel);
+	updateChevron.addEventListener("keydown", toggleChevDel);
 };

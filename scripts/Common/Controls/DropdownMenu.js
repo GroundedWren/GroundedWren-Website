@@ -144,7 +144,6 @@ registerNamespace("Common.Controls.DropdownMenu", function (ns)
 					|| keyEv.keyCode === Common.KeyCodes.Enter)
 				{
 					childTabEl.click();
-					/*keyEv.preventDefault();*/
 				}
 			});
 
@@ -228,7 +227,7 @@ registerNamespace("Common.Controls.DropdownMenu", function (ns)
 			});
 			if (children.length)
 			{
-				this.chevronEl = Common.DOMLib.createElement("span", this.tabEl, ["chevron"]).el;
+				this.chevronEl = Common.DOMLib.createElement("span", this.tabEl, ["chevron", "bottom"]).el;
 			}
 			Common.Components.RegisterVisToggle(tabEl, children, Common.fcd(this, this.__onToggle));
 		}
@@ -246,11 +245,11 @@ registerNamespace("Common.Controls.DropdownMenu", function (ns)
 			if (state)
 			{
 				this.action();
-				this.chevronEl?.classList.add("bottom");
+				this.chevronEl?.classList.remove("bottom");
 			}
 			else
 			{
-				this.chevronEl?.classList.remove("bottom");
+				this.chevronEl?.classList.add("bottom");
 			}
 		}
 	};
