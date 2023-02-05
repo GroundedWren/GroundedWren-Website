@@ -451,7 +451,7 @@ registerNamespace("Pages.Art", function (ns)
 					`<a href="/pages/ArtFrame.html?art=${encodeURIComponent(this.__title)}" target="_blank">${this.__title}</a>`,
 					`<iframe src="/pages/ArtFrame.html?art=${encodeURIComponent(this.__title)}&inFrame=true">`,
 					{
-						width: "95%",
+						width: "80%",
 						height: "95%",
 						overflow: "hidden"
 					},

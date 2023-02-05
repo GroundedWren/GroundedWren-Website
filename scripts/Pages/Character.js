@@ -40,15 +40,25 @@ registerNamespace("Pages.Character", function (ns)
 			document.getElementById("ProfilePicture").remove();
 		}
 
-		document.getElementById("tdName").innerText = character.name;
-		document.getElementById("tdPronouns").innerText = character.pronouns;
-		document.getElementById("tdGender").innerText = character.gender;
-		document.getElementById("tdOrientation").innerText = character.orientation;
+		document.getElementById("tdName").innerHTML += character.name;
+		document.getElementById("tdPronouns").innerHTML += character.pronouns;
+		document.getElementById("tdGender").innerHTML += character.gender;
+		document.getElementById("tdOrientation").innerHTML += character.orientation;
 
 		document.getElementById("tdSpecies").innerText = character.species;
-		document.getElementById("tdSex").innerText = character.sex;
-		document.getElementById("tdAge").innerText = character.age;
-		document.getElementById("tdHeight").innerText = character.height;
+		const tdSex = document.getElementById("tdSex");
+		tdSex.innerHTML += character.sex;
+		if (character.sexInfo)
+		{
+			document.getElementById("sexTooltip").innerHTML += character.sexInfo;
+		}
+		else
+		{
+			document.getElementById("sexTooltip").remove();
+			tdSex.classList.remove("tooltip-target");
+		}
+		document.getElementById("tdAge").innerHTML += character.age;
+		document.getElementById("tdHeight").innerHTML += character.height;
 
 		var colorTable = document.getElementById("Colors");
 		if (character.colors)

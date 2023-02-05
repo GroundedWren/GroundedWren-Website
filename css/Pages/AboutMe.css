@@ -25,7 +25,7 @@
 	justify-content: center;
 }
 
-#bottomContent {
+#topContent {
 	display: flex;
 	flex-direction: row;
 	width: 100%;
@@ -40,7 +40,11 @@
 }
 
 #contactCard {
-	width: 200px;
+	width: 300px;
+}
+
+#contactCard > table {
+	width: 100%;
 }
 
 table {

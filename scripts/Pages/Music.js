@@ -110,6 +110,38 @@ registerNamespace("Pages.Music", function (ns)
 		const chevronEl = Common.DOMLib.createElement("span", songTitleContainer, ["chevron", "bottom"]).el;
 		chevronEl.setAttribute("tabindex", 0);
 
+		const showDetailDelegate = () =>
+		{
+			detailEl.classList.remove("hidden");
+			chevronEl.classList.remove("bottom");
+		};
+
+		const hideDetailDelegate = () =>
+		{
+			detailEl.classList.add("hidden");
+			chevronEl.classList.add("bottom");
+		};
+
+		const toggleDetailDelegate = (event) =>
+		{
+			if (event.keyCode
+				&& event.keyCode !== Common.KeyCodes.Space
+				&& event.keyCode !== Common.KeyCodes.Enter
+			)
+			{
+				return;
+			}
+			if (detailEl.classList.contains("hidden"))
+			{
+				showDetailDelegate();
+			}
+			else
+			{
+				hideDetailDelegate();
+			}
+			event.preventDefault();
+		};
+
 		const audioEl = Common.DOMLib.createElement("audio", containerEl).el;
 		ns.audioList.push(audioEl);
 		audioEl.addEventListener("play", () =>
@@ -121,6 +153,7 @@ registerNamespace("Pages.Music", function (ns)
 					audioListEl.pause();
 				}
 			});
+			showDetailDelegate();
 		});
 
 		Common.DOMLib.setAttributes(audioEl, { "controls": null });
@@ -144,28 +177,6 @@ registerNamespace("Pages.Music", function (ns)
 
 		Common.DOMLib.createElement("h3", detailEl).el.innerText = "Lyrics";
 		Common.DOMLib.createElement("p", detailEl).el.innerHTML = song.lyrics;
-
-		const toggleDetailDelegate = (event) =>
-		{
-			if (event.keyCode
-				&& event.keyCode !== Common.KeyCodes.Space
-				&& event.keyCode !== Common.KeyCodes.Enter
-			)
-			{
-				return;
-			}
-			if (detailEl.classList.contains("hidden"))
-			{
-				detailEl.classList.remove("hidden");
-				chevronEl.classList.remove("bottom");
-			}
-			else
-			{
-				detailEl.classList.add("hidden");
-				chevronEl.classList.add("bottom");
-			}
-			event.preventDefault();
-		};
 
 		songTitleContainer.addEventListener("click", toggleDetailDelegate);
 		chevronEl.addEventListener("keydown", toggleDetailDelegate);

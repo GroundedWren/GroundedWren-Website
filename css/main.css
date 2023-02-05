@@ -263,3 +263,54 @@ table, th, td {
 	margin-top: 5px;
 }
 /*#endregion*/
+
+/*#region Tooltips*/
+.tooltip-target {
+	position: relative;
+	display: inline-block;
+	border-bottom: 1px dotted white;
+}
+
+.z { /* Fix auto-indent */
+}
+
+.tooltip-target .tooltip-text {
+	visibility: hidden;
+	background-color: rebeccapurple;
+	color: white;
+	text-align: center;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border-radius: 6px;
+	position: absolute;
+	z-index: 1;
+}
+
+.tooltip-text.right {
+	top: -5px;
+	left: calc(100% + 10px);
+}
+
+.tooltip-text.left {
+	top: -5px;
+	right: calc(100% + 10px);
+}
+
+.tooltip-text.top {
+	bottom: 100%;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.tooltip-text.bottom {
+	top: 100%;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.tooltip-target:hover .tooltip-text {
+	visibility: visible;
+}
+/*#endregion*/

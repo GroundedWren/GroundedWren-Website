@@ -11,8 +11,10 @@
 	width: 350px;
 }
 #aboutCard {
-	width: 100%;
-	min-width: 1050px;
+	max-width: 1200px;
+	margin: auto;
+	min-width: 900px;
+	align-content: center;
 }
 
 .image-frame {

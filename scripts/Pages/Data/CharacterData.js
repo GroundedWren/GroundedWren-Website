@@ -11,6 +11,7 @@
 
 			species: "Tiefling",
 			sex: "F",
+			sexInfo: "Cissexual AFAB",
 			age: "21-26",
 			height: "5'4\" (163 cm)",
 
@@ -64,6 +65,7 @@
 
 			species: "Human",
 			sex: "F",
+			sexInfo: "Cissexual AFAB",
 			age: "26-29",
 			height: "6'0\" (183 cm)",
 
@@ -116,6 +118,7 @@
 
 			species: "High Elf",
 			sex: "F",
+			sexInfo: "Cissexual AFAB",
 			age: "110",
 			height: "5'6\" (168 cm)",
 
@@ -162,6 +165,7 @@
 
 			species: "Turian",
 			sex: "M",
+			sexInfo: "Cissexual AMAB",
 			age: "26",
 			height: "6'0\" (183 cm)",
 
@@ -226,6 +230,7 @@
 
 			species: "",
 			sex: "",
+			sexInfo: "optional",
 			age: "",
 			height: "f'i\" (x cm)",
 

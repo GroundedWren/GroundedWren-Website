@@ -42,7 +42,7 @@ window.onload = () =>
 
 	const timeTicker = new Common.Components.Timekeeper(
 		document.getElementById("veraTime"),
-		"Vera time: ",
+		"",
 		{
 			timeStyle: "medium",
 			timeZone: "America/Chicago"
