@@ -17,6 +17,13 @@ h1 {
 	margin-right: 20px;
 }
 
+@media (max-width: 940px) {
+	.main-page {
+		margin-left: 5px;
+		margin-right: 5px;
+	}
+}
+
 #Directory {
 	margin: auto;
 	width: calc(150px * 6);
@@ -29,10 +36,19 @@ h1 {
 	flex-basis: 150px;
 }
 
+@media (max-width: 940px) {
+	#Directory {
+		width: 100%;
+	}
+	#Directory div.tab-strip-tab {
+		flex-basis: 30px;
+	}
+}
+
 #content {
 	display: flex;
 	flex-direction: row;
-	min-width: 600px;
+	overflow: auto;
 	justify-content: center;
 	align-items: flex-start;
 	flex-wrap: wrap;
@@ -40,6 +56,7 @@ h1 {
 
 #textPanes {
 	flex-basis: 600px;
+	overflow: auto;
 	flex-grow: 1;
 	flex-shrink: 1;
 	display: flex;
@@ -53,6 +70,7 @@ h1 {
 	justify-content: center;
 	align-items: flex-start;
 	width: 100%;
+	flex-wrap: wrap;
 }
 
 .text-pane-row ul {

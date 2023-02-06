@@ -8,6 +8,13 @@
 	height: calc(100% - 25px); /*Header*/
 }
 
+@media (max-width: 940px) {
+	.main-page {
+		margin-left: 5px;
+		margin-right: 5px;
+	}
+}
+
 .content {
 	display: flex;
 	flex-direction: row;

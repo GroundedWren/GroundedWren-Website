@@ -6,6 +6,7 @@ html, body {
 	margin: 0;
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	font-size: 16px;
+	overflow: auto;
 }
 
 ::-webkit-scrollbar {
