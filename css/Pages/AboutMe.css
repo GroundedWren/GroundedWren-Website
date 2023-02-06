@@ -69,3 +69,10 @@ td {
 .long-row-label {
 	padding-right: 10px;
 }
+
+/* Pages.Common.MINI_THRESHOLD */
+@media (max-width: 600px) {
+	#socialsCard{
+		display: none;
+	}
+}

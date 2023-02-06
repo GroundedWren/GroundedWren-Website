@@ -17,6 +17,7 @@ h1 {
 	margin-right: 20px;
 }
 
+/* Pages.Index.MINI_THRESHOLD */
 @media (max-width: 940px) {
 	.main-page {
 		margin-left: 5px;
@@ -36,6 +37,7 @@ h1 {
 	flex-basis: 150px;
 }
 
+/* Pages.Index.MINI_THRESHOLD */
 @media (max-width: 940px) {
 	#Directory {
 		width: 100%;

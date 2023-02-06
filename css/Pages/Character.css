@@ -57,3 +57,53 @@ table {
 .color-cell {
 	height: 21.5px;
 }
+
+#divVert {
+	display: none;
+}
+
+#leftPaneCollapseBtn {
+	display: none;
+}
+/* Pages.Character.MINI_THRESHOLD */
+@media (max-width: 750px) {
+	.main-page {
+		margin-left: 5px;
+		margin-right: 5px;
+	}
+
+	.content {
+		justify-content: center;
+	}
+
+	#RightPane.mini-hide {
+		display: none;
+	}
+
+	#divVert {
+		display: block;
+		border-left: 1px solid rgb(91, 154, 213);
+	}
+
+	#leftPaneCollapseBtn {
+		display: block;
+		align-self: center;
+		height: 75px;
+		width: 0px;
+		padding-left: 0px;
+		padding-right: 14px;
+		border-left: 0px;
+	}
+
+	#LeftPane {
+		margin-left: 16px;
+	}
+
+	#RightPane {
+		flex-basis: 300px;
+	}
+
+	.tab-strip-tab {
+		flex-basis: 90px;
+	}
+}

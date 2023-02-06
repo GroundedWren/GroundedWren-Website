@@ -18,6 +18,7 @@
 	<script src="../scripts/Common/FileLib.js"></script>
 	<script src="../scripts/Common/SVGLib.js"></script>
 	<script src="../scripts/Common/Components/ElementDragger.js"></script>
+	<script src="../scripts/Common/Components/VisibilityToggle.js"></script>
 	<script src="../scripts/Common/Controls/Dialog.js"></script>
 	<script src="../scripts/Common/Controls/Modal.js"></script>
 	<script src="../scripts/Common/Controls/PageControl.js"></script>
@@ -58,7 +59,11 @@
 						<tr><td class="row-label">Status</td><td id="tdStatus"></td></tr>
 					</table>
 				</div>
-				<div id="RightPane">
+				<div id="divVert" class="divider-vert"></div>
+				<button id="leftPaneCollapseBtn" class="button-like">
+					<span id="leftPaneCollapseChevron" class="chevron left"></span>
+				</button>
+				<div id="RightPane" class="mini-hide">
 					<!-- JS generated :) -->
 				</div>
 			</div>

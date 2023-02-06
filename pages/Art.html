@@ -18,6 +18,7 @@
 	<script src="../scripts/Common/DOMLib.js"></script>
 	<script src="../scripts/Common/SVGLib.js"></script>
 	<script src="../scripts/Common/Components/ElementDragger.js"></script>
+	<script src="../scripts/Common/Components/VisibilityToggle.js"></script>
 	<script src="../scripts/Common/Controls/Dialog.js"></script>
 	<script src="../scripts/Common/Controls/Modal.js"></script>
 	<script src="../scripts/Common/Controls/ZeroState.js"></script>
@@ -27,11 +28,11 @@
 </head>
 <body>
 	<div id="subveil">
-		<div id="Banner", class="banner fixed-header"><a style="float: left;" href="../index.html">Home</a><span>Art</span></div>
+		<div id="Banner" , class="banner fixed-header"><a style="float: left;" href="../index.html">Home</a><span>Art</span></div>
 		<div id="BannerBuffer" class="banner-buffer"></div>
-		<div class="main-page">
+		<div id="mainPage">
 			<div class="content">
-				<div id="LeftPane">
+				<div id="leftPane">
 					<button id="getLink" onclick="Pages.Art.onLinkRequested()">Get Link</button>
 					<div class="card">
 						<div class="card-header">Sort</div>
@@ -110,7 +111,12 @@
 					</div>
 				</div>
 
-				<div id="RightPane" style="flex-shrink: 0; flex-grow: 1; flex-basis: 0;">
+				<div id="divVert" class="divider-vert"></div>
+				<button id="leftPaneCollapseBtn" class="button-like">
+					<span id="leftPaneCollapseChevron" class="chevron left"></span>
+				</button>
+
+				<div id="rightPane" class="mini-hide">
 					<div id="gallery">
 					</div>
 				</div>

@@ -29,6 +29,9 @@ registerNamespace("Common", function (ns)
 	}
 	ns.fcd = fcd;
 
+	// Threshold to enter "mini" or mobile mode
+	ns.MINI_THRESHOLD = 600;
+
 	/**
 	 * Get's the page's URLSearchParams
 	 */

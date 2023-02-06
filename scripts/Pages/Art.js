@@ -3,6 +3,9 @@
  */
 registerNamespace("Pages.Art", function (ns)
 {
+	// Threshold to enter "mini" or mobile mode
+	ns.MINI_THRESHOLD = 700;
+
 	// All tracked artists
 	ns.Artists = {};
 
@@ -446,9 +449,16 @@ registerNamespace("Pages.Art", function (ns)
 			{
 				if (event.target.tagName.toLowerCase() === 'a') { return; }
 
+				const artLocation = `/pages/ArtFrame.html?art=${encodeURIComponent(this.__title)}`;
+				if (window.innerWidth <= Common.MINI_THRESHOLD)
+				{
+					window.location.href = artLocation;
+					return;
+				}
+
 				Common.DOMLib.addStyle(image, { display: "block", "margin-left": "auto", "margin-right": "auto", "height": "100%" });
 				Common.Controls.Popups.showModal(
-					`<a href="/pages/ArtFrame.html?art=${encodeURIComponent(this.__title)}" target="_blank">${this.__title}</a>`,
+					`<a href="${artLocation}" target="_blank">${this.__title}</a>`,
 					`<iframe src="/pages/ArtFrame.html?art=${encodeURIComponent(this.__title)}&inFrame=true">`,
 					{
 						width: "80%",
@@ -546,7 +556,7 @@ registerNamespace("Pages.Art", function (ns)
 			"artist": "ArtistFilters",
 		},
 		"hide": {
-			"leftPane": "LeftPane",
+			"leftPane": "leftPane",
 			"banner": "Banner",
 			"bannerBuffer": "BannerBuffer",
 		}
@@ -600,6 +610,13 @@ registerNamespace("Pages.Art", function (ns)
 		{
 			Common.DOMLib.addStyle(document.getElementById(elId), { "display": "none" });
 		});
+
+		if (hideIds.indexOf("leftPane") >= 0)
+		{
+			rightPane.classList.remove("mini-hide");
+			Common.DOMLib.addStyle(document.getElementById("divVert"), { "display": "none" });
+			Common.DOMLib.addStyle(document.getElementById("leftPaneCollapseBtn"), { "display": "none" });
+		}
 	};
 
 	ns.onLinkRequested = function ()
@@ -639,11 +656,35 @@ window.onload = () =>
 	Pages.Art.GalleryEl = document.getElementById("gallery");
 
 	Pages.Art.ZeroStateControl = Common.Controls.ZeroState.embedZSC(
-		document.getElementById("RightPane"),
+		document.getElementById("rightPane"),
 		"Nothing to Show - Modify Filters"
 	);
 	Pages.Art.enterZeroState();
 
 	Pages.Art.ArtFrames.sort((a, b) => b.date - a.date);
 	Pages.Art.interperetUrlParams(Common.getUrlParams());
+
+	const visTogButton = document.getElementById("leftPaneCollapseBtn");
+	const visTogChevron = document.getElementById("leftPaneCollapseChevron");
+	const rightPane = document.getElementById("rightPane");
+	Common.Components.RegisterVisToggle(
+		visTogButton,
+		[
+			document.getElementById("leftPane"),
+		],
+		(visible) =>
+		{
+			visTogChevron.classList.remove(visible ? "right" : "left");
+			visTogChevron.classList.add(visible ? "left" : "right");
+
+			if (visible)
+			{
+				rightPane.classList.add("mini-hide");
+			}
+			else
+			{
+				rightPane.classList.remove("mini-hide");
+			}
+		}
+	);
 };

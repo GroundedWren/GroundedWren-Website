@@ -6,6 +6,9 @@ registerNamespace("Pages.Character", function (ns)
 	const CHARACTER_PARAM = "char";
 	ns.CHARACTER_PARAM = CHARACTER_PARAM;
 
+	// Threshold to enter "mini" or mobile mode
+	ns.MINI_THRESHOLD = 750;
+
 	//Page control for character information
 	ns.infoControl = null;
 
@@ -192,4 +195,28 @@ window.onload = () =>
 			);
 		}
 	}
+
+	const visTogButton = document.getElementById("leftPaneCollapseBtn");
+	const visTogChevron = document.getElementById("leftPaneCollapseChevron");
+	const rightPane = document.getElementById("RightPane");
+	Common.Components.RegisterVisToggle(
+		visTogButton,
+		[
+			document.getElementById("LeftPane"),
+		],
+		(visible) =>
+		{
+			visTogChevron.classList.remove(visible ? "right" : "left");
+			visTogChevron.classList.add(visible ? "left" : "right");
+
+			if (visible)
+			{
+				rightPane.classList.add("mini-hide");
+			}
+			else
+			{
+				rightPane.classList.remove("mini-hide");
+			}
+		}
+	);
 };

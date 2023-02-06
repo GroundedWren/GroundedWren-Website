@@ -190,6 +190,14 @@ registerNamespace("Pages.Writing", function (ns)
 	function loadEntry(filename, directory, extension, title)
 	{
 		const page = directory + filename + extension;
+		if (window.innerWidth <= Common.MINI_THRESHOLD)
+		{
+			if (window.innerWidth <= Common.MINI_THRESHOLD)
+			{
+				window.location.href = page;
+				return;
+			}
+		}
 		ns.entryFrame.setAttribute("src", page);
 		ns.entryHeader.innerHTML = `<a href="${page}">${title}</a>`;
 	}

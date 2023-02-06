@@ -4,7 +4,6 @@
 registerNamespace("Pages.Music", function (ns)
 {
 	const COLLECTION_LIST_ID = "collectionsList";
-	const COLLECTION_IMG_WRAPPER_ID = "collectionImgWrapper";
 	const COLLECTION_IMG_ID = "collectionImg";
 	const COLLECTION_INFO_ID = "collectionsInfoPane";
 	const RIGHT_PANE_ID = "rightPane";

@@ -3,7 +3,21 @@
  */
 registerNamespace("Pages.Index", function (ns)
 {
-	//Nothing here :)
+	// Threshold to enter "mini" or mobile mode
+	ns.MINI_THRESHOLD = 940;
+
+	ns.resizeListener = () =>
+	{
+		var directoryContainer = document.getElementById("Directory");
+		if (window.innerWidth <= Pages.Index.MINI_THRESHOLD)
+		{
+			directoryContainer.classList.add("mini");
+		}
+		else
+		{
+			directoryContainer.classList.remove("mini");
+		}
+	};
 });
 
 /**
@@ -49,6 +63,9 @@ window.onload = () =>
 			},
 		}
 	);
+
+	Pages.Index.resizeListener();
+	window.addEventListener("resize", Pages.Index.resizeListener);
 
 	const updateChevron = document.getElementById("updateChevron");
 	const updateContent = document.getElementById("updateContent");

@@ -1,4 +1,4 @@
-﻿#subveil{
+﻿#subveil {
 	height: 100%;
 }
 
@@ -15,14 +15,12 @@ h1, h2, h3 {
 	justify-content: flex-start;
 	align-items: stretch;
 	min-height: calc(100% - 25px); /*Header*/
-	min-width: 800px;
 	flex-wrap: wrap;
 	align-content: flex-start;
 }
 
 #leftPane {
-	min-width: 715px;
-	flex-basis: 600px;
+	flex-basis: 250px;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
@@ -41,15 +39,14 @@ h1, h2, h3 {
 }
 
 #collectionImg {
-	min-width: 200px;
-	max-width: 480px;
-	min-height: 200px;
-	max-height: 480px;
+	min-width: 340px;
+	width: 480px;
+	height: auto;
 }
 
 #collectionImgWrapper {
-	width: 480px;
-	height: 480px;
+	max-width: 480px;
+	max-height: 480px;
 }
 
 #collectionsInfoPane {
@@ -57,7 +54,7 @@ h1, h2, h3 {
 }
 
 #collectionsCard {
-	min-width: 200px;
+	min-width: 150px;
 	flex-basis: 300px;
 	margin-right: 20px;
 }
@@ -69,8 +66,8 @@ h1, h2, h3 {
 
 #rightPane {
 	flex-grow: 1;
-	min-width: 450px;
-	flex-basis: 450px;
+	min-width: 360px;
+	flex-basis: 360px;
 	overflow: auto;
 	margin-left: 10px;
 }
@@ -84,13 +81,13 @@ audio {
 	cursor: pointer;
 }
 
-.songTitleContainer h3 {
-	display: inline-block;
-}
+	.songTitleContainer h3 {
+		display: inline-block;
+	}
 
-.songTitleContainer span {
-	float: right;
-}
+	.songTitleContainer span {
+		float: right;
+	}
 
 .hidden {
 	display: none;
@@ -111,4 +108,25 @@ table {
 
 .row-label {
 	width: 175px;
+}
+
+@media (max-width: 1000px) {
+	#mainPage {
+		margin-left: 5px;
+		margin-right: 5px;
+	}
+}
+
+@media (max-width: 720px) {
+	#collectionsPane {
+		flex-wrap: wrap;
+	}
+}
+
+/* Common.MINI_THRESHOLD */
+@media (max-width: 600px) {
+	#collectionImg {
+		min-width: 340px;
+		width: 100%;
+	}
 }

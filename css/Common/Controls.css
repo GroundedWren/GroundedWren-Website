@@ -127,7 +127,6 @@
 .tab-gutter {
 	flex-grow: 1;
 	border-left: 1px solid white;
-	border-top: 2px solid white;
 }
 /*#endregion*/
 
@@ -160,33 +159,31 @@
 	vertical-align: bottom;
 }
 
-@media (max-width: 940px) {
-	.dropdown-menu .tab-strip {
-		display: flex;
-		flex-direction: column;
-		flex-basis: 30px;
-		flex-grow: 0;
-		flex-shrink: 0;
-		width: 100%;
-		max-width: 600px;
-		margin: auto;
-	}
+.mini .dropdown-menu .tab-strip {
+	display: flex;
+	flex-direction: column;
+	flex-basis: 30px;
+	flex-grow: 0;
+	flex-shrink: 0;
+	width: 100%;
+	max-width: 600px;
+	margin: auto;
+}
 
-	.dropdown-menu .tab-strip-tab {
-		width: 100%;
-		border-right: 1px solid white;
-		border-bottom: 0;
-	}
+.mini .dropdown-menu .tab-strip-tab {
+	width: 100%;
+	border-right: 1px solid white;
+	border-bottom: 0;
+}
 
-	.tab-strip-tab.child {
-		margin-left: 10px;
-		width: calc(100% - 10px);
-		border-bottom: 1px solid white;
-	}
+.mini .tab-strip-tab.child {
+	margin-left: 10px;
+	width: calc(100% - 10px);
+	border-bottom: 1px solid white;
+}
 
-	.tab-gutter {
-		border-top: 2px solid white;
-	}
+.mini .tab-gutter {
+	border-top: 2px solid white;
 }
 /*#endregion*/
 
