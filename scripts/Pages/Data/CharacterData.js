@@ -47,7 +47,7 @@
 				+ "<li>Extremely willful</li>"
 				+ "</ul",
 
-			backstory: "<p>Vera was born to two human parents in Bluecrest, who were highly surprised to have a Tiefling daughter. Though her father did his bes to raise her, her mother abandoned them both. She accused Vera’s father of having an affair which resulted in a non-human child  (she wasn’t smart).</P>"
+			backstory: "<p>Vera was born to two human parents in Bluecrest, who were highly surprised to have a Tiefling daughter. Though her father did his best to raise her, her mother abandoned them both. She accused Vera’s father of having an affair which resulted in a non-human child  (she wasn’t smart).</P>"
 				+ "<p>As a Tiefling, Vera did not have many opportunities handed to her, and faced much hostility from most people. Vera used reading as an escape, finding particular interest in history and legend. She excelled in her studies and was well on her way to being accepted to the college.</P>"
 				+ "<p>Upon her acceptance to the college, Vera at once did not like Orianna. Effortlessly gaining the attention of Professor Wayland was  something Vera longed to replicate, but could not. Vera harassed Orianna relentlessly, often demeaning her intellect and criticizing the quality of her constructs. On one occasion Orianna snapped, and Vera was forced to destroy one such construct - this was shortly before Orianna’s larger meltdown, to which Vera undeniably contributed.</P>"
 				+ "<p>Cyrus, for all of his shortcomings, is one of the few people in Vera’s life who is not wary of her infernal heritage - he doesn’t seem to notice at all. This alone has earned Vera’s respect and loyalty.</P>"

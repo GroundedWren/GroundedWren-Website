@@ -171,7 +171,7 @@ select {
 	background-color: black;
 }
 
-button:not(.popup-close), input[type="button"], input[type="submit"], input[type="reset"], input[type="file"]::file-selector-button, .button-like {
+button, input[type="button"], input[type="submit"], input[type="reset"], input[type="file"]::file-selector-button, .button-like {
 	background-color: rgb(38, 38, 38);
 	color: white;
 	border: 1px solid rgb(91, 154, 213);
@@ -180,7 +180,7 @@ button:not(.popup-close), input[type="button"], input[type="submit"], input[type
 .z { /* Fix auto-indent */
 }
 
-button:hover:not(.popup-close), input[type="button"]:hover, input[type="submit"]:hover, input[type="reset"]:hover, input[type="file"]::file-selector-button:hover, .button-like:hover {
+button:hover, input[type="button"]:hover, input[type="submit"]:hover, input[type="reset"]:hover, input[type="file"]::file-selector-button:hover, .button-like:hover {
 	background-color: rgb(25, 25, 25);
 	border-color: rgb(73, 124, 171);
 }
