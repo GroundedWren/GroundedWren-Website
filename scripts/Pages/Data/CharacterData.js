@@ -28,7 +28,8 @@
 			createdDate: new Date(2019, 3),
 			status: "Active",
 
-			appearanceDetails: "<ul>"
+			appearanceDetails: "<p>Vera is a travel-weary short Tiefling woman. She carries herself confidently and with a degree of smugness. She is frequently smirking, but there is usually melancholy behind her eyes.</p>"
+				+ "<ul>"
 				+ "<li>Black, shoulder length wavy hair. Always worn down, often messy.</li>"
 				+ "<li>Deep brown irises. Sclera are a brownish off-white.</li>"
 				+ "<li>Upper lip is darker.</li>"
@@ -40,7 +41,8 @@
 				+ "<li>Short for a tiefling.</li>"
 				+ "</ul>",
 
-			personality: "<ul>"
+			personality: "<p>Vera is good at heart and cares about people, but often doesn't quite know how to show it. Her exaggerated boisterousness and performative condescention are masks for a deeply sad and insecure soul.</p>"
+				+ "<ul>"
 				+ "<li>Chaotic-Good</li>"
 				+ "<li>Often aloof or smug</li>"
 				+ "<li>Frequently mischevious - loves pranks</li>"
@@ -219,6 +221,49 @@
 
 			galleryLink: "/pages/Art.html?charFilt=Sindri&showAll=artist&sort=date&hide=leftPane&hide=banner&hide=bannerBuffer"
 		},
+		"Veryn": {
+			//profileSrc: "../../img/Profiles/x.png",
+
+			name: "Veryn Laelius",
+			pronouns: "He/Him",
+			gender: "Male",
+			orientation: "Bisexual",
+
+			species: "Scarlet Tiger Moth",
+			sex: "FtM",
+			sexInfo: "Transsexual AFAB; HRT; Mastectomy; Hysterectomy",
+			age: "32",
+			height: "5'8\" (173 cm)",
+
+			colors: {
+				"Chitinous Exodermus": "#CB3B3A", 
+				"Dorsal Abdomen": "#121015",
+				"Ventral Abdomen, Wings": "#A82D2F",
+				"Antennae, Mandibles": "#6C2529",
+				"Freckles": "#59AFBC",
+				Hair: "#282119",
+				Iris: "#532C1E",
+				Sclera: "#C79A96",
+			},
+
+			createdBy: "CW Foxfaer",
+			createdDate: new Date(2022, 2),
+			status: "Forthcoming",
+
+			appearanceDetails: "<p>Forthcoming</p>"
+				+ "<ul>"
+				+ "<li></li>"
+				+ "</ul>",
+
+			personality: "<p>Forthcoming</p>"
+				+ "<ul>"
+				+ "<li></li>"
+				+ "</ul",
+
+			backstory: "<p>Forthcoming</p>",
+
+			/*galleryLink: "/pages/Art.html?charFilt=Veryn&showAll=artist&sort=date&hide=leftPane&hide=banner&hide=bannerBuffer"*/
+		},
 
 		"template": {
 			profileSrc: "../../img/Profiles/x.png",
@@ -234,15 +279,21 @@
 			age: "",
 			height: "f'i\" (x cm)",
 
+			colors: {
+				"Location": "#hex",
+			},
+
 			createdBy: "",
 			createdDate: new Date(2022, 0),
 			status: "Active",
 
-			appearanceDetails: "<ul>"
+			appearanceDetails: "<p></p>"
+				+ "<ul>"
 				+ "<li></li>"
 				+ "</ul>",
 
-			personality: "<ul>"
+			personality: "<p></p>"
+				+ "<ul>"
 				+ "<li></li>"
 				+ "</ul",
 
@@ -251,6 +302,6 @@
 				+ "<p></p>",
 
 			galleryLink: "/pages/Art.html?charFilt=<char>&showAll=artist&sort=date&hide=leftPane&hide=banner&hide=bannerBuffer"
-		}
+		},
 	};
 });

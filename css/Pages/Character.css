@@ -65,6 +65,11 @@ table {
 #leftPaneCollapseBtn {
 	display: none;
 }
+
+#sexTooltip {
+	width: 150px;
+}
+
 /* Pages.Character.MINI_THRESHOLD */
 @media (max-width: 750px) {
 	.main-page {

@@ -346,6 +346,15 @@
 				+ "Vera seems a bit perplexed, probably by some plan Serin has just pitched.",
 			isExplicit: false,
 		},
+		"Inspiration, inspiration everywhere": {
+			src: "../img/Inspiration, Inspiration Everywhere - ShrimpLoverCat - 2023-02-18.png",
+			characters: ["Vera", "Serin"],
+			artists: ["ShrimpLoverCat"],
+			date: new Date(2023, 1, 18),
+			description: "Meme draw-over from Catty!<br /><br />"
+				+ "When Serin has cast Magnificient Mansion, he may have just a litttle too much power...",
+			isExplicit: false,
+		},
 	};
 	//#endregion
 });

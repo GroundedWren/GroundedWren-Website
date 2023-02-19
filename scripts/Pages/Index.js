@@ -38,6 +38,7 @@ window.onload = () =>
 					"Freya": () => { window.location.href = "pages/Character.html?char=Freya"; },
 					"Orianna": () => { window.location.href = "pages/Character.html?char=Orianna"; },
 					"Sindri": () => { window.location.href = "pages/Character.html?char=Sindri"; },
+					"Veryn": () => { window.location.href = "pages/Character.html?char=Veryn"; },
 				}
 			},
 			"Music": {

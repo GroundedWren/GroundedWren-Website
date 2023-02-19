@@ -8,7 +8,15 @@
 
 table {
 	border: none;
-	width: 100%;
+	width: 80%;
+	margin: auto;
+}
+
+/* Pages.Common.MINI_THRESHOLD */
+@media (max-width: 600px) {
+	table {
+		width: 100%;
+	}
 }
 
 .row-label {
