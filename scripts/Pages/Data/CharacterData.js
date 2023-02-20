@@ -1,4 +1,4 @@
-﻿registerNamespace("Pages.Character.Data", function (ns)
+registerNamespace("Pages.Character.Data", function (ns)
 {
 	ns.Characters = {
 		"Vera": {
@@ -39,6 +39,8 @@
 				+ "<li>Built somewhat delicately, though in healthy proportion.</li>"
 				+ "<li>Skin is a subtly pale red, which does not change hue on the palms of her hands or feet.</li>"
 				+ "<li>Short for a tiefling.</li>"
+				+ "<li>Thin, long devil tail which she often keeps tucked away.</li>"
+				+ "<li>Standard humanoid feet with plantigrade legs.</li>"
 				+ "</ul>",
 
 			personality: "<p>Vera is good at heart and cares about people, but often doesn't quite know how to show it. Her exaggerated boisterousness and performative condescention are masks for a deeply sad and insecure soul.</p>"
