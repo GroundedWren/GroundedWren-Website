@@ -23,7 +23,7 @@
 		{
 			return `<a target="_blank" href=${this.link}>${this.name}</a>`;
 		}
-	}
+	};
 
 	/**
 	 * Populate artists from Data
@@ -38,7 +38,7 @@
 			const artistObj = ns.Artists[artistName];
 			toNS[as][artistName] = new ns.ArtistInfo(artistName, artistObj.link);
 		});
-	}
+	};
 
 	ns.Artists = {
 		"Chelsea-Rhi": {
@@ -47,9 +47,9 @@
 		"Despey": {
 			link: "https://www.furaffinity.net/user/despey/",
 		},
-		"Palavenmoons": {
-			link: "https://palavenmoons.tumblr.com/",
-		},
+		//"Palavenmoons": {
+		//	link: "https://palavenmoons.tumblr.com/",
+		//},
 		"Raiyk": {
 			link: "https://www.furaffinity.net/user/Raiyk/",
 		},
@@ -68,8 +68,11 @@
 		"JesterDK": {
 			link: "https://www.deviantart.com/jesterdk",
 		},
-		"Bonnie Guerra": {
-			link: "https://www.patreon.com/Bonnieguerra",
+		//"Bonnie Guerra": {
+		//	link: "https://www.patreon.com/Bonnieguerra",
+		//},
+		"LiliVic Creations": {
+			link: "https://liliviccreationsart.carrd.co/",
 		},
 	};
 	//#endregion
@@ -124,7 +127,7 @@
 			this.date = date;
 			this.description = description;
 			this.__isExplicit = isExplicit;
-			this.__artistLinkDelegate = artistLinkDelegate
+			this.__artistLinkDelegate = artistLinkDelegate;
 		}
 
 		/**
@@ -185,7 +188,7 @@
 			var { el: rowValue } = dce("td", tableRow);
 			rowValue.innerHTML = labelValueHTML;
 		}
-	}
+	};
 
 	ns.ArtFrames = {
 		"Freya Shaded Half-body": {
@@ -353,6 +356,15 @@
 			date: new Date(2023, 1, 18),
 			description: "Meme draw-over from Catty!<br /><br />"
 				+ "When Serin has cast Magnificient Mansion, he may have just a litttle too much power...",
+			isExplicit: false,
+		},
+		"Melancholia": {
+			src: "../img/Melancholia watermark - LiliVic Creations - 2023-02-19.png",
+			characters: ["Vera"],
+			artists: ["LiliVic Creations"],
+			date: new Date(2023, 1, 19),
+			description: "Wonderful depiction of Vera in a low moment by Lilian<br /><br />"
+				+ "If she'd never done any of this, maybe he'd still be alive...",
 			isExplicit: false,
 		},
 	};

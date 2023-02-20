@@ -544,9 +544,11 @@ registerNamespace("Pages.Art", function (ns)
 			"Bastien Aufrere": "BACB",
 			"Berenice Borggrefe": "BerBorCB",
 			"Chelsea-Rhi": "ChelseaRhiCB",
-			"Bonnie Guerra": "BonnieCB",
+			/*"Bonnie Guerra": "BonnieCB",*/
 			"Despey": "DespeyCB",
 			"JesterDK": "JestCB",
+			"LiliVic Creations": "LiliVicCB",
+			/*"Palavenmoons": "PalavenmoonsCB",*/
 			"Raiyk": "RaiykCB",
 			"ShrimpLoverCat": "SLCCB",
 			"Vera": "VeraArtCB",
