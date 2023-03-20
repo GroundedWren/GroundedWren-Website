@@ -48,6 +48,7 @@ window.onload = () =>
 				childActionMap: {
 					"Blog": () => { window.location.href = "pages/Writing.html?folder=Blog"; },
 					"Fiction": () => { window.location.href = "pages/Writing.html?folder=Fiction"; },
+					"Poetry": () => { window.location.href = "pages/Writing.html?folder=Poetry"; },
 				}
 			},
 			"Coding Projects": {

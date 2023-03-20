@@ -4,6 +4,36 @@
 registerNamespace("Pages.Music.Data", function (ns)
 {
 	ns.Collections = {
+		"Untitled 2023": {
+			ContributingArtists: ["Vera"],
+			DateString: "2023",
+			Art: "../img/Music/Untitled2.png",
+			Description: "In-progress collection of things I'm recording this year.",
+			Songs: [
+				{
+					title: "The Air Near My Fingers",
+					src: "../music/Untitled 2023/The_Air_Near_My_Fingers.mp3",
+					type: "audio/mp3",
+					performers: ["Vera"],
+					composers: ["The White Stripes"],
+					instruments: ["Acoustic Guitar", "Vocals"],
+					recorded: new Date(2023, 2, 19),
+					description: "Had a weird burst of energy one Sunday and it manifested as this recording.",
+					lyrics: "Life is so boring<br />It's really got me snoring<br />I'm wearing out the flooring in a cheap hotel<br />"
+						+ "But I don't have to work<br />And I might be sinning<br />But I never have to hear the rings of school bells<br />"
+						+ "<br />"
+						+ "Don't you remember<br />You told me in December<br />That a boy is not a man until he makes a stand<br />"
+						+ "Well I'm not a genius<br />But maybe you'll remember this<br />I never said I ever wanted to be a man<br />"
+						+ "<br />"
+						+ "I get nervous when she comes around<br />"
+						+ "<br />"
+						+ "My mom is so caring<br />She's really got me staring<br />At all the crazy little things she does for sure<br />"
+						+ "But I can't seem to think of another kind of love<br />That I could ever get from anyone but her<br />"
+						+ "<br />"
+						+ "I get nervous when she comes around<br />",
+				},
+			]
+		},
 		"Grounded Wren": {
 			ContributingArtists: ["Vera"],
 			DateString: "2022",

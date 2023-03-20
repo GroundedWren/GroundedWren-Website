@@ -1,4 +1,4 @@
-registerNamespace("Pages.Character.Data", function (ns)
+﻿registerNamespace("Pages.Character.Data", function (ns)
 {
 	ns.Characters = {
 		"Vera": {

@@ -43,5 +43,101 @@ registerNamespace("Pages.Writing.Data", function (ns)
 				},
 			},
 		},
+		Poetry: {
+			entriesDirectory: "./poetry_entries/",
+			entryExtension: ".html",
+			entries: {
+				"TheRainPersists": {
+					title: "The Rain Persists",
+					author: "Vera",
+					dateString: "Junior or Senior year of University",
+				},
+				"TheJester": {
+					title: "The Jester",
+					author: "Vera",
+					dateString: "Junior or Senior year of University",
+				},
+				"Face": {
+					title: "Face",
+					author: "Vera",
+					dateString: "Junior or Senior year of University",
+				},
+				"Continuum": {
+					title: "Continuum",
+					author: "Vera",
+					dateString: "Junior or Senior year of University",
+				},
+				"MolassesIsSweet": {
+					title: "Molasses is Sweet",
+					author: "Vera",
+					dateString: "Junior or Senior year of University",
+				},
+				"InkBlackTea": {
+					title: "Ink Black Tea",
+					author: "Vera",
+					dateString: "Junior or Senior year of University",
+				},
+				"EKG": {
+					title: "EKG",
+					author: "Vera",
+					dateString: "Junior or Senior year of University",
+				},
+				"Nakedness": {
+					title: "Nakedness",
+					author: "Vera",
+					dateString: "Junior or Senior year of University",
+				},
+				"ForgottenChimney": {
+					title: "Forgotten Chimney",
+					author: "Vera",
+					dateString: "Junior or Senior year of University",
+				},
+				"UnderTheMacroscope": {
+					title: "Under the Macroscope",
+					author: "Vera",
+					dateString: "Junior or Senior year of University",
+				},
+				"MyCelebrationDay": {
+					title: "My Celebration Day",
+					author: "Vera",
+					dateString: "Senior year of University",
+				},
+				"UnfinishedQuestion": {
+					title: "Unfinished Question",
+					author: "Vera",
+					dateString: "Senior year of University",
+				},
+				"ThePerpetualCity": {
+					title: "The Perpetual City",
+					author: "Vera",
+					dateString: "Senior year of University",
+				},
+				"ShadesOfTheNight": {
+					title: "Shades of the Night",
+					author: "Vera",
+					dateString: "Senior year of University",
+				},
+				"ThirteenCrows": {
+					title: "Thirteen Crows",
+					author: "Vera",
+					dateString: "Senior year of University",
+				},
+				"RazorWings": {
+					title: "Razor Wings",
+					author: "Vera",
+					dateString: "Senior year of University",
+				},
+				"ThisNewMorning": {
+					title: "This New Morning",
+					author: "Vera",
+					dateString: "Senior year of University",
+				},
+				"Melting": {
+					title: "Melting",
+					author: "Vera",
+					dateString: "2018",
+				},
+			},
+		},
 	};
 });
