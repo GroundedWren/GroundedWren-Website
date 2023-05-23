@@ -64,7 +64,7 @@ h1, h2, h3 {
 	border-top: 1px solid rebeccapurple;
 }
 
-#rightPane {
+#trackList {
 	flex-grow: 1;
 	min-width: 360px;
 	flex-basis: 360px;

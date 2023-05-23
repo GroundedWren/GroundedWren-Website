@@ -88,7 +88,7 @@ registerNamespace("Pages.Writing", function (ns)
 	{
 		Common.DOMLib.addStyle(ns.entryFrame, { "display": "none" });
 		Common.DOMLib.addStyle(ns.zsc, { "display": "block" });
-		ns.entryHeader.innerHTML = "-"
+		ns.entryHeader.innerHTML = "Entry";
 		hideMetadata();
 	}
 

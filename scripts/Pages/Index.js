@@ -18,6 +18,21 @@ registerNamespace("Pages.Index", function (ns)
 			directoryContainer.classList.remove("mini");
 		}
 	};
+
+	ns.onUpdateVisToggled = (visible, event) =>
+	{
+		const updateChevron = document.getElementById("updateChevron");
+
+		if (visible)
+		{
+			updateChevron.classList.remove("bottom");
+		}
+		else
+		{
+			updateChevron.classList.add("bottom");
+		}
+		event.stopPropagation();
+	};
 });
 
 /**
@@ -30,37 +45,37 @@ window.onload = () =>
 		directoryContainer,
 		{
 			"Art Gallery": {
-				action: () => { window.location.href = "pages/Art.html"; },
+				linkHref: "pages/Art.html",
 			},
 			"Characters": {
 				childActionMap: {
-					"Vera": () => { window.location.href = "pages/Character.html?char=Vera"; },
-					"Freya": () => { window.location.href = "pages/Character.html?char=Freya"; },
-					"Orianna": () => { window.location.href = "pages/Character.html?char=Orianna"; },
-					"Sindri": () => { window.location.href = "pages/Character.html?char=Sindri"; },
-					"Veryn": () => { window.location.href = "pages/Character.html?char=Veryn"; },
+					"Vera": { linkHref: "pages/Character.html?char=Vera"},
+					"Freya": { linkHref: "pages/Character.html?char=Freya" },
+					"Orianna": { linkHref: "pages/Character.html?char=Orianna" },
+					"Sindri": { linkHref: "pages/Character.html?char=Sindri" },
+					"Veryn": { linkHref: "pages/Character.html?char=Veryn" },
 				}
 			},
 			"Music": {
-				action: () => { window.location.href = "pages/Music.html"; },
+				linkHref: "pages/Music.html",
 			},
 			"Writing": {
 				childActionMap: {
-					"Blog": () => { window.location.href = "pages/Writing.html?folder=Blog"; },
-					"Fiction": () => { window.location.href = "pages/Writing.html?folder=Fiction"; },
-					"Poetry": () => { window.location.href = "pages/Writing.html?folder=Poetry"; },
+					"Blog": { linkHref: "pages/Writing.html?folder=Blog" },
+					"Fiction": { linkHref: "pages/Writing.html?folder=Fiction" },
+					"Poetry": { linkHref: "pages/Writing.html?folder=Poetry" },
 				}
 			},
 			"Coding Projects": {
 				childActionMap: {
-					"Text Adventure": () => { window.location.href = "https://textadventure.groundedwren.com"; },
-					"DnD Workbook": () => { window.location.href = "pages/DnDWorkbook.html"; },
+					"Text Adventure": { linkHref: "https://textadventure.groundedwren.com" },
+					"DnD Workbook": { linkHref: "pages/DnDWorkbook.html" },
 				}
 			},
 			"Misc": {
 				childActionMap: {
-					"About Me": () => { window.location.href = "pages/AboutMe.html"; },
-					"Demo page": () => { window.location.href = "pages/Example.html"; },
+					"About Me": { linkHref: "pages/AboutMe.html" },
+					"Demo page": { linkHref: "pages/Example.html" },
 				}
 			},
 		}
@@ -69,29 +84,14 @@ window.onload = () =>
 	Pages.Index.resizeListener();
 	window.addEventListener("resize", Pages.Index.resizeListener);
 
-	const updateChevron = document.getElementById("updateChevron");
 	const updateContent = document.getElementById("updateContent");
-	const updateHeader = document.getElementById("updatesCardHeader");
-	const toggleChevDel = (event) =>
-	{
-		if (event.keyCode
-			&& event.keyCode !== Common.KeyCodes.Space
-			&& event.keyCode !== Common.KeyCodes.Enter)
-		{
-			return;
-		}
-		if (updateChevron.classList.contains("bottom"))
-		{
-			updateChevron.classList.remove("bottom");
-			updateContent.classList.remove("hidden");
-		}
-		else
-		{
-			updateChevron.classList.add("bottom");
-			updateContent.classList.add("hidden");
-		}
-		event.preventDefault();
-	};
-	updateHeader.addEventListener("click", toggleChevDel);
-	updateChevron.addEventListener("keydown", toggleChevDel);
+	Common.Components.RegisterVisToggle(
+		document.getElementById("updateChevron"),
+		[
+			updateContent
+		],
+		Pages.Index.onUpdateVisToggled,
+		false,
+		[document.getElementById("updatesCardHeader")]
+	);
 };

@@ -26,14 +26,19 @@
 </head>
 <body>
 	<div id="subveil">
-		<div id="Banner" , class="banner fixed-header"><a style="float: left;" href="javascript:history.back()">Back</a><span>Art Frame</span></div>
+		<header>
+			<div id="Banner" class="banner fixed-header">
+				<a style="float: left;" href="javascript:history.back()">Back</a>
+				<span role="heading" aria-level="1">Art Frame</span>
+			</div>
+		</header>
 		<div id="BannerBuffer" class="banner-buffer"></div>
-		<div id="mainPage">
+		<div id="mainPage" role="main">
 			<div id="imgContainer">
 				<img id="imgElement" />
 				<div id="metaContainer"></div>
 			</div>
-			<div id="commentContainer" class="card"></div>
+			<div id="commentContainer" class="card" aria-label="Image comment"></div>
 		</div>
 	</div>
 </body>

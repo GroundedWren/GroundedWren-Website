@@ -64,6 +64,7 @@ registerNamespace("Common.Controls.Popups", function (ns)
 			veil,
 			["modal", "popup"]
 		);
+		modalEl.setAttribute("aria-live", "polite");
 		__modalEl = modalEl;
 
 		const { el: modalHeader } = Common.DOMLib.createElement(
@@ -77,6 +78,10 @@ registerNamespace("Common.Controls.Popups", function (ns)
 			modalHeader,
 			["popup-title"]
 		);
+		Common.DOMLib.setAttributes(modalTitle, {
+			"role": "heading",
+			"aria-level": "1"
+		});
 		__modalTitle = modalTitle;
 
 		const { el: modalClose } = Common.DOMLib.createElement(
@@ -84,6 +89,7 @@ registerNamespace("Common.Controls.Popups", function (ns)
 			modalHeader,
 			["popup-close"]
 		);
+		modalClose.setAttribute("aria-label", "Close the modal");
 		modalClose.onclick = () => { hideModal(); };
 		modalClose.innerHTML = "<span>&times;</span>";
 

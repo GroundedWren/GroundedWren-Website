@@ -86,6 +86,7 @@
 			this.__dialogId = dialogId;
 
 			this.__dialogEl.setAttribute("tabIndex", "0");
+			this.__dialogEl.setAttribute("aria-live", "polite");
 			Common.DOMLib.addStyle(this.__dialogEl, { display: "None" });
 
 			const { el: dialogHeader } = Common.DOMLib.createElement(
@@ -100,6 +101,10 @@
 				dialogHeader,
 				["popup-title"]
 			);
+			Common.DOMLib.setAttributes(dialogHeader, {
+				"role": "heading",
+				"aria-level": "1"
+			});
 			this.__dialogTitle = dialogTitle;
 
 			const { el: dialogClose } = Common.DOMLib.createElement(
@@ -107,7 +112,10 @@
 				dialogHeader,
 				["popup-close"]
 			);
-			dialogClose.onclick = () => { this.destroy(); };
+			Common.DOMLib.setAttributes(dialogClose, {
+				"aria-label": "Close the dialog"
+			});
+			Common.DOMLib.setAsButton(dialogClose, () => { this.destroy(); });
 			dialogClose.innerHTML = "<span>&times;</span>";
 
 			const { el: dialogContent } = Common.DOMLib.createElement(

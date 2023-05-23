@@ -84,6 +84,13 @@ registerNamespace("Pages.Art", function (ns)
 					if (ns.ArtGroupMap[primaryChar]) { return ns.ArtGroupMap[primaryChar]; }
 					const { el: divider } = dce("div", ns.GalleryEl, ["card", "divider"]);
 					divider.innerText = primaryChar;
+					Common.DOMLib.setAttributes(
+						divider,
+						{
+							"role": "heading",
+							"aria-level": "2",
+						}
+					);
 					ns.ArtGroupMap[primaryChar] = divider;
 					ns.ArtGroups.push(divider);
 					return divider;
@@ -97,6 +104,13 @@ registerNamespace("Pages.Art", function (ns)
 					if (ns.ArtGroupMap[primaryArtist]) { return ns.ArtGroupMap[primaryArtist]; }
 					const { el: divider } = dce("div", ns.GalleryEl, ["card", "divider"]);
 					divider.innerHTML = ns.Artists[primaryArtist].getLink();
+					Common.DOMLib.setAttributes(
+						divider,
+						{
+							"role": "heading",
+							"aria-level": "2",
+						}
+					);
 					ns.ArtGroupMap[primaryArtist] = divider;
 					ns.ArtGroups.push(divider);
 					return divider;
@@ -111,6 +125,13 @@ registerNamespace("Pages.Art", function (ns)
 					if (ns.ArtGroupMap[date]) { return ns.ArtGroupMap[date]; }
 					const { el: divider } = dce("div", ns.GalleryEl, ["card", "divider"]);
 					divider.innerHTML = date;
+					Common.DOMLib.setAttributes(
+						divider,
+						{
+							"role": "heading",
+							"aria-level": "2",
+						}
+					);
 					ns.ArtGroupMap[date] = divider;
 					ns.ArtGroups.push(divider);
 					return divider;
@@ -353,9 +374,11 @@ registerNamespace("Pages.Art", function (ns)
 		 * @param characters An array of characters depicted
 		 * @param artists An array of artist names who contributed to the work
 		 * @param date A date object of when the art was produced
+		 * @param description A description of the work
+		 * @param altText Alt text for the image
 		 * @param isExplicit Whehter the art is explicit
 		 */
-		constructor(title, artLink, characters, artists, date, description, isExplicit)
+		constructor(title, artLink, characters, artists, date, description, altText, isExplicit)
 		{
 			super(
 				title,
@@ -364,6 +387,7 @@ registerNamespace("Pages.Art", function (ns)
 				artists,
 				date,
 				description,
+				altText,
 				isExplicit,
 				(artistId) => ns.Artists[artistId].getLink()
 			);
@@ -442,10 +466,14 @@ registerNamespace("Pages.Art", function (ns)
 
 			dce("div", frame, ["frameBuffer"]);
 
+			var srHeader = dce("h3", frame, ["sr-only"]).el;
+			srHeader.innerHTML = this.__title;
+
 			const { el: image } = dce("img", frame);
 			image.setAttribute("src", this.__artLink);
+			image.setAttribute("aria-label", this.altText);
 
-			frame.onclick = (event) =>
+			var frameClickDelegate =(event) =>
 			{
 				if (event.target.tagName.toLowerCase() === 'a') { return; }
 
@@ -471,6 +499,15 @@ registerNamespace("Pages.Art", function (ns)
 					}
 				);
 			};
+			Common.DOMLib.setAttributes(
+				frame,
+				{
+					"role": "none",
+					"aria-label": ("Art frame for " + this.__title + ", press enter to expand")
+				}
+			);
+			frame.setAttribute("role", "none");
+			Common.DOMLib.setAsButton(frame, frameClickDelegate);
 
 			dce("div", frame, ["frameBuffer"]);
 
@@ -500,8 +537,9 @@ registerNamespace("Pages.Art", function (ns)
 				artObj.artists,
 				artObj.date,
 				artObj.description,
-				artObj.isExplicit)
-			);
+				artObj.altText,
+				artObj.isExplicit
+			));
 		});
 	};
 

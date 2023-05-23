@@ -24,7 +24,8 @@ registerNamespace("Pages.Character", function (ns)
 
 		ns.infoControl = Common.Controls.PageControl.buildPageControl(
 			document.getElementById("RightPane"),
-			"Select a Tab"
+			"Select a Tab",
+			"Character documents"
 		);
 		Common.DOMLib.addStyle(ns.infoControl.controlEl, { height: "100%" });
 		addRightPaneTabs(character);
@@ -33,10 +34,10 @@ registerNamespace("Pages.Character", function (ns)
 
 	function buildLeftPane(character)
 	{
-		var leftPane = document.getElementById("LeftPane");
 		if (character.profileSrc)
 		{
 			document.getElementById("ProfilePicture").src = character.profileSrc;
+			document.getElementById("ProfilePicture").alt = character.profileAlt;
 		}
 		else
 		{
@@ -54,6 +55,9 @@ registerNamespace("Pages.Character", function (ns)
 		if (character.sexInfo)
 		{
 			document.getElementById("sexTooltip").innerHTML += character.sexInfo;
+
+			document.getElementById("tdSexSR").innerHTML += character.sex + ": " + character.sexInfo;
+			tdSex.setAttribute("aria-hidden", "true");
 		}
 		else
 		{

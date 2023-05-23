@@ -28,14 +28,19 @@
 </head>
 <body>
 	<div id="subveil">
-		<div id="Banner" , class="banner fixed-header"><a style="float: left;" href="../index.html">Home</a><span>Art</span></div>
+		<heading>
+			<div id="Banner" class="banner fixed-header">
+				<a style="float: left;" href="../index.html">Home</a>
+				<span role="heading" aria-level="1">Art</span>
+			</div>
+		</heading>
 		<div id="BannerBuffer" class="banner-buffer"></div>
-		<div id="mainPage">
+		<div id="mainPage" role="main">
 			<div class="content">
-				<div id="leftPane">
+				<div id="leftPane" role="region" aria-label="Sort and Filter">
 					<button id="getLink" onclick="Pages.Art.onLinkRequested()">Get Link</button>
 					<div class="card">
-						<div class="card-header">Sort</div>
+						<div class="card-header" role="heading" aria-level="2">Sort</div>
 						<div class="inputDiv">
 							<label for="CharaRad">Character</label>
 							<input id="CharaRad" type="radio" name="SortRadGroup" onChange="Pages.Art.sortBy('Character')" checked /><br />
@@ -46,7 +51,7 @@
 						</div>
 					</div>
 					<div class="card">
-						<div class="card-header">Filter</div>
+						<div class="card-header" role="heading" aria-level="2">Filter</div>
 						<button onclick="Pages.Art.showAll()">Show All</button>
 						<button onclick="Pages.Art.hideAll()">Hide All</button><br />
 						<!--<div class="inputDiv" style="margin-top: 5px;">
@@ -114,12 +119,12 @@
 				</div>
 
 				<div id="divVert" class="divider-vert"></div>
-				<button id="leftPaneCollapseBtn" class="button-like">
+				<button id="leftPaneCollapseBtn" class="button-like" aria-label="collapse Sort and Filter panel">
 					<span id="leftPaneCollapseChevron" class="chevron left"></span>
 				</button>
 
-				<div id="rightPane" class="mini-hide">
-					<div id="gallery">
+				<div id="rightPane" class="mini-hide" role="region" aria-label="Art Gallery">
+					<div id="gallery" aria-live="polite">
 					</div>
 				</div>
 			</div>

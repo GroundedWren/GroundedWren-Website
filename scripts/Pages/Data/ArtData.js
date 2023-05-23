@@ -93,6 +93,8 @@
 		date;
 		// A description of the work
 		description;
+		// Alt text for the image
+		altText;
 		// Whether the art is explicit, sexually or otherwise
 		__isExplicit;
 		// Delegate to get an artist's link from their identifer
@@ -106,6 +108,8 @@
 		 * @param characters An array of characters depicted
 		 * @param artists An array of artist names who contributed to the work
 		 * @param date A date object of when the art was produced
+		 * @param description A description of the work
+		 * @param altText Alt text for the image
 		 * @param isExplicit Whehter the art is explicit
 		 * @param artistLinkDelegate Delegate to get an artist's link from their identifer
 		 */
@@ -116,6 +120,7 @@
 			artists,
 			date,
 			description,
+			altText,
 			isExplicit,
 			artistLinkDelegate
 		)
@@ -126,6 +131,7 @@
 			this.artists = artists;
 			this.date = date;
 			this.description = description;
+			this.altText = altText;
 			this.__isExplicit = isExplicit;
 			this.__artistLinkDelegate = artistLinkDelegate;
 		}
@@ -144,6 +150,14 @@
 		getArtLink()
 		{
 			return this.__artLink;
+		}
+
+		/**
+		 * Fetches image alternat text
+		 */
+		getAltText()
+		{
+			return this.altText;
 		}
 
 		/**
@@ -200,6 +214,7 @@
 				+ " Once driven from her home, Freya returned to Chult to cleanse it of the undead menace."
 				+ " Tough but fair, Freya is a kind soul who is extremely protective of children in particular.<br /><br />"
 				+ " News of her death has been greatly exaggerated.",
+			altText: "A Chultan Human woman in splint armor holding an axe over her left shoulder. She has brown skin, green eyes, and braided black hair. She looks determined.",
 			isExplicit: false,
 		},
 		"Framed Nocturna Cross Stitch": {
@@ -209,6 +224,7 @@
 			date: new Date(2022, 06, 18),
 			description: "A cross stitch project I completed as a gift for my partner.<br /><br />"
 				+ "I am never stitching a white background again - it took forever and was not worth it!",
+			altText: "A framed pixel-art style cross-stitching of a vampiric woman with blue skin and orange hair standing at the ready. She is above three red hearts.",
 			isExplicit: false,
 		},
 		"The Original Risen": {
@@ -222,6 +238,7 @@
 				+ "- Lightsong, a Dwarven cleric who yet lives.<br /><br />"
 				+ "- Serin, a Dragonborn bard who yet lives.<br /><br />"
 				+ "- Ghodukk, a Human barbarian, who tragically fell at the culmination of his story.",
+			altText: "A circle of four heroic adventurers lunging towards danger.",
 			isExplicit: false,
 		},
 		"Risen Brunch": {
@@ -236,6 +253,7 @@
 				+ "- Serin, a Dragonborn bard<br /><br />"
 				+ "- Luric, a Half-Elf warlock<br /><br />"
 				+ "- Percy, an even more smug High-Elf wizard",
+			altText: "Four members of the Risen and Percy seated on the same side of a table eating eggs and bacon.",
 			isExplicit: false,
 		},
 		"Sindri Bust": {
@@ -244,14 +262,7 @@
 			artists: ["Despey"],
 			date: new Date(2016, 08, 22),
 			description: "A piece I won from a raffle almost as soon as I adopted Sindri's design! Something has perplexed the poor lad.",
-			isExplicit: false,
-		},
-		"Gardener Sindri": {
-			src: "../img/Sindri Garden Raiyk 2018-04-12.png",
-			characters: ["Sindri"],
-			artists: ["Despey"],
-			date: new Date(2016, 08, 22),
-			description: "A piece I won from a raffle almost as soon as I adopted Sindri's design! Something has perplexed the poor lad.",
+			altText: "A bust drawing of a purple male Turian with piercings on his left brow looking confused.",
 			isExplicit: false,
 		},
 		"Gardener Sindri": {
@@ -260,6 +271,7 @@
 			artists: ["Raiyk"],
 			date: new Date(2018, 03, 12),
 			description: "There are lots of things to love about Andromeda, not least of which is the exciting new plethora of flora to raise and study!",
+			altText: "A chibi-style depiction of a purple turian Male in overalls and flannel planting exotic plants with a hand shovel.",
 			isExplicit: false,
 		},
 		"Cowboy Sindri": {
@@ -268,6 +280,7 @@
 			artists: ["Despey"],
 			date: new Date(2016, 10, 19),
 			description: "During his time on Earth, Sindri would certainly have tried a cowboy hat or two.",
+			altText: "A smiling purple Turian male with a brown cowboy hat perched precariously atop his head.",
 			isExplicit: false,
 		},
 		//"\"Care to join?\"": {
@@ -285,6 +298,7 @@
 			date: new Date(2016, 09, 14),
 			description: "JesterDK was kind enough to post some free-to-use Turian lines I filled in!<br /><br />"
 				+ "Background is from my at-the-time musical hyperfixation, Blood on the Tracks",
+			altText: "A portrait of a purple Turian male looking left. The background is from the 1975 album 'Blood on the Tracks' by Bob Dylan.",
 			isExplicit: false,
 		},
 		"Sindri Reference": {
@@ -294,6 +308,7 @@
 			date: new Date(2016, 08, 10),
 			description: "A reference of Sindri designed by Raiyk as an adopt!<br /><br />"
 				+ "I really love his ombre-fringe design - I've written it into his backstory as a subtle regional tattoo pattern.",
+			altText: "A chibi character-sheet style depiction of a purple Turian male with two piercings in his left brow. ",
 			isExplicit: false,
 		},
 		"Pondering Her Orb": {
@@ -303,6 +318,7 @@
 			date: new Date(2021, 11, 08),
 			description: "A wonderfully shaded piece from Catty!<br /><br />"
 				+ "Hmm, I wonder who she's scrying on...",
+			altText: "A tiefling woman in blue robes looks deeply into a glowing blue orb.",
 			isExplicit: false,
 		},
 		"Siblings": {
@@ -312,6 +328,7 @@
 			date: new Date(2021, 07, 22),
 			description: "Vera posing for a photo with her non-canonical sibling, my real-sibling's character Jack!<br /><br />"
 				+ "In canon, I bet they would (playfully!) fight as much as we do.",
+			altText: "A anthropomorphic orange and white canine with a blue bandana with his arm around a Tiefling woman in purple robes flashing the peace sign.",
 			isExplicit: false,
 		},
 		"This Better be Good": {
@@ -320,6 +337,7 @@
 			artists: ["Chelsea-Rhi"],
 			date: new Date(2022, 0, 23),
 			description: "A wonderful icon commission I got from Chelsea-Rhi on twitter. Do not mess with Vera before she's had her coffee!",
+			altText: "An annoyed Tiefling woman holding a mug of coffee with the word 'NO' printed on it.",
 			isExplicit: false,
 		},
 		//"One of Your Tiefling Girls": {
@@ -338,6 +356,7 @@
 			description: "This is the very first piece of Vera I ever commissioned!<br /><br />"
 				+ "Berenice only had some found reference images to work with and effectively created Vera's canon look from them.<br /><br />"
 				+ "I consider this to be the authoritative depiction of Vera.",
+			altText: "A smirking tiefling woman wrapped in a purple blanket with a spellbook laid across her lap.",
 			isExplicit: false,
 		},
 		"Confusion": {
@@ -347,6 +366,7 @@
 			date: new Date(2023, 0, 20),
 			description: "Whimiscal piece from Catty!<br /><br />"
 				+ "Vera seems a bit perplexed, probably by some plan Serin has just pitched.",
+			altText: "A confused tiefling woman stares perplexedly at trigonometry equations.",
 			isExplicit: false,
 		},
 		"Inspiration, inspiration everywhere": {
@@ -356,6 +376,7 @@
 			date: new Date(2023, 1, 18),
 			description: "Meme draw-over from Catty!<br /><br />"
 				+ "When Serin has cast Magnificient Mansion, he may have just a litttle too much power...",
+			altText: "A confident brass dragonborn man gestures ahead while speaking with his right arm around a very concerned Tiefling woman.",
 			isExplicit: false,
 		},
 		"Melancholia": {
@@ -365,6 +386,7 @@
 			date: new Date(2023, 1, 19),
 			description: "Wonderful depiction of Vera in a low moment by Lilian<br /><br />"
 				+ "If she'd never done any of this, maybe he'd still be alive...",
+			altText: "A bust of a sad-looking Tiefling woman.",
 			isExplicit: false,
 		},
 	};

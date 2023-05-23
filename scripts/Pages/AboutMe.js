@@ -36,7 +36,8 @@ window.onload = () =>
 			"socialsCtrl_tab_Twitter": document.getElementById("socialsCtrl_page_Twitter"),
 			"socialsCtrl_tab_Other": document.getElementById("socialsCtrl_page_Other"),
 		},
-		"No Tab Selected"
+		"No Tab Selected",
+		"Socials"
 	);
 	Pages.AboutMe.socialsControl.addOnActivate("socialsCtrl_tab_Cohost", Common.fcd(Pages.AboutMe, Pages.AboutMe.buildCohostEmbed));
 

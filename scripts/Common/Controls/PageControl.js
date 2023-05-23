@@ -6,7 +6,7 @@ registerNamespace("Common.Controls.PageControl", function (ns)
 	/**
 	 * Namespace function to build a new page control
 	 */
-	function buildPageControl(parentEl, zeroStateMessage)
+	function buildPageControl(parentEl, zeroStateMessage, name)
 	{
 		const { el: pageControl } = Common.DOMLib.createElement(
 			"div",
@@ -30,7 +30,7 @@ registerNamespace("Common.Controls.PageControl", function (ns)
 			pageControl,
 			["page-container"]
 		);
-		return new PageControl(pageControl, tabStrip, pageContainer, {}, zeroStateMessage);
+		return new PageControl(pageControl, tabStrip, pageContainer, {}, zeroStateMessage, name);
 	};
 	ns.buildPageControl = buildPageControl;
 
@@ -58,11 +58,15 @@ registerNamespace("Common.Controls.PageControl", function (ns)
 		/**
 		 * Create a page control from existing DOM elements
 		 */
-		constructor(pageControl, tabStrip, pageContainer, tabPageMap, zeroStateMessage)
+		constructor(pageControl, tabStrip, pageContainer, tabPageMap, zeroStateMessage, name)
 		{
 			this.controlEl = pageControl;
 			this.__tabStripEl = tabStrip;
 			this.__pageContainerEl = pageContainer;
+
+			this.controlEl.setAttribute("role", "region");
+			this.controlEl.setAttribute("aria-label", (name || "") + " page control");
+			this.__pageContainerEl.setAttribute("aria-live", "polite");
 
 			this.__tabDict = {};
 			for (var tabId of Object.keys(tabPageMap))
@@ -92,7 +96,6 @@ registerNamespace("Common.Controls.PageControl", function (ns)
 				["tab-strip-tab", "button-like"]
 			);
 			newTabEl.innerHTML = `<span>${tabText}</span>`;
-			newTabEl.tabIndex = "0";
 
 			if (this.__lastTabId != null)
 			{
@@ -128,18 +131,8 @@ registerNamespace("Common.Controls.PageControl", function (ns)
 		registerTab(tab, page, onActivate)
 		{
 			this.__tabDict[tab.id] = new Tab(tab, page, onActivate);
-
-			tab.onclick = Common.fcd(this, this.setActiveTab, [tab.id]);
-
-			tab.addEventListener('keydown', (keyEv) =>
-			{
-				if (keyEv.keyCode === Common.KeyCodes.Space
-					|| keyEv.keyCode === Common.KeyCodes.Enter)
-				{
-					tab.onclick();
-					keyEv.preventDefault();
-				}
-			});
+			
+			Common.DOMLib.setAsButton(tab, Common.fcd(this, this.setActiveTab, [tab.id]));
 		}
 
 		/**
@@ -184,6 +177,8 @@ registerNamespace("Common.Controls.PageControl", function (ns)
 			this.tabEl = tabEl;
 			this.__pageEl = pageEl;
 			this.onActivate = onActivate;
+
+			tabEl.setAttribute("aria-pressed", "false");
 		}
 
 		/**
@@ -194,6 +189,7 @@ registerNamespace("Common.Controls.PageControl", function (ns)
 			if (this.onActivate) { this.onActivate(); }
 			this.tabEl.classList.add("selected");
 			this.__pageEl.classList.add("selected");
+			this.tabEl.setAttribute("aria-pressed", "true");
 		};
 
 		/**
@@ -203,6 +199,7 @@ registerNamespace("Common.Controls.PageControl", function (ns)
 		{
 			this.tabEl.classList.remove("selected");
 			this.__pageEl.classList.remove("selected");
+			this.tabEl.setAttribute("aria-pressed", "true");
 		};
 	};
 });

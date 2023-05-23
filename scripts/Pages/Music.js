@@ -5,8 +5,8 @@ registerNamespace("Pages.Music", function (ns)
 {
 	const COLLECTION_LIST_ID = "collectionsList";
 	const COLLECTION_IMG_ID = "collectionImg";
-	const COLLECTION_INFO_ID = "collectionsInfoPane";
-	const RIGHT_PANE_ID = "rightPane";
+	const COLLECTION_INFO_ID = "collectionInfoContent";
+	const TRACK_LIST_ID = "trackListContent";
 
 	const COLLECTION_PARAM = "collection";
 
@@ -63,6 +63,7 @@ registerNamespace("Pages.Music", function (ns)
 
 		const collectionImg = document.getElementById(COLLECTION_IMG_ID);
 		collectionImg.setAttribute("src", ns.Data.Collections[collectionId].Art);
+		collectionImg.setAttribute("alt", ns.Data.Collections[collectionId].ArtAlt);
 
 		if (event)
 		{
@@ -90,7 +91,7 @@ registerNamespace("Pages.Music", function (ns)
 	function buildSongList(collectionId)
 	{
 		const songs = ns.Data.Collections[collectionId].Songs;
-		const rightPane = document.getElementById(RIGHT_PANE_ID);
+		const rightPane = document.getElementById(TRACK_LIST_ID);
 
 		rightPane.innerHTML = "";
 
@@ -107,39 +108,11 @@ registerNamespace("Pages.Music", function (ns)
 		const songTitleContainer = Common.DOMLib.createElement("div", containerEl, ["songTitleContainer"]).el;
 		Common.DOMLib.createElement("h3", songTitleContainer).el.innerText = song.title;
 		const chevronEl = Common.DOMLib.createElement("span", songTitleContainer, ["chevron", "bottom"]).el;
+		Common.DOMLib.setAttributes(chevronEl, {
+			tabindex: 0,
+			"aria-label": "Show track details for " + song.title
+		});
 		chevronEl.setAttribute("tabindex", 0);
-
-		const showDetailDelegate = () =>
-		{
-			detailEl.classList.remove("hidden");
-			chevronEl.classList.remove("bottom");
-		};
-
-		const hideDetailDelegate = () =>
-		{
-			detailEl.classList.add("hidden");
-			chevronEl.classList.add("bottom");
-		};
-
-		const toggleDetailDelegate = (event) =>
-		{
-			if (event.keyCode
-				&& event.keyCode !== Common.KeyCodes.Space
-				&& event.keyCode !== Common.KeyCodes.Enter
-			)
-			{
-				return;
-			}
-			if (detailEl.classList.contains("hidden"))
-			{
-				showDetailDelegate();
-			}
-			else
-			{
-				hideDetailDelegate();
-			}
-			event.preventDefault();
-		};
 
 		const audioEl = Common.DOMLib.createElement("audio", containerEl).el;
 		ns.audioList.push(audioEl);
@@ -152,14 +125,16 @@ registerNamespace("Pages.Music", function (ns)
 					audioListEl.pause();
 				}
 			});
-			showDetailDelegate();
+			Common.Components.GetVisToggle(chevronEl.id).doToggle(true);
 		});
 
 		Common.DOMLib.setAttributes(audioEl, { "controls": null });
 		const sourceEl = Common.DOMLib.createElement("source", audioEl).el;
 		Common.DOMLib.setAttributes(sourceEl, { "src": song.src, "type": song.type });
 
-		const detailEl = Common.DOMLib.createElement("div", containerEl, ["hidden"]).el;
+		const detailEl = Common.DOMLib.createElement("div", containerEl).el;
+		Common.DOMLib.addStyle(detailEl, { display: "none" });
+
 		Common.DOMLib.createElement("h3", detailEl).el.innerText = "Details";
 		const detailTable = Common.DOMLib.createElement("table", detailEl).el;
 		addTableRow(detailTable, "Performers", song.performers.join(", "));
@@ -177,8 +152,28 @@ registerNamespace("Pages.Music", function (ns)
 		Common.DOMLib.createElement("h3", detailEl).el.innerText = "Lyrics";
 		Common.DOMLib.createElement("p", detailEl).el.innerHTML = song.lyrics;
 
-		songTitleContainer.addEventListener("click", toggleDetailDelegate);
-		chevronEl.addEventListener("keydown", toggleDetailDelegate);
+		//songTitleContainer.addEventListener("click", toggleDetailDelegate);
+		//chevronEl.addEventListener("keydown", toggleDetailDelegate);
+		Common.Components.RegisterVisToggle(
+			chevronEl,
+			[
+				detailEl,
+			],
+			(visible, event) =>
+			{
+				if (visible)
+				{
+					chevronEl.classList.remove("bottom");
+				}
+				else
+				{
+					chevronEl.classList.add("bottom");
+				}
+				event.stopPropagation();
+			},
+			false,
+			[songTitleContainer]
+		);
 	}
 
 	function addTableRow(tableEl, labelText, labelValueHTML)

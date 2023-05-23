@@ -8,6 +8,7 @@ registerNamespace("Pages.Music.Data", function (ns)
 			ContributingArtists: ["Vera"],
 			DateString: "2023",
 			Art: "../img/Music/Untitled2.png",
+			ArtAlt: "A low-fidelity image of a snowy urban street.",
 			Description: "In-progress collection of things I'm recording this year.",
 			Songs: [
 				{
@@ -38,6 +39,7 @@ registerNamespace("Pages.Music.Data", function (ns)
 			ContributingArtists: ["Vera"],
 			DateString: "2022",
 			Art: "../img/Music/Grounded Wren.png",
+			ArtAlt: "Composie images of a mountainous park edited to resemble a water-colored painting",
 			Description: "This is a collection of songs I recorded from the onset of the pandemic thru 2023. <br />"
 				+ "Most are pretty low-fidelity, recorded on a phone or computer microphone. Doing these sketches helped keep me sane in a very isolating time.<br />"
 				+ "I've uploaded a sample subset of the full collection here.",
@@ -91,6 +93,7 @@ registerNamespace("Pages.Music.Data", function (ns)
 			ContributingArtists: ["Vera"],
 			DateString: "2016",
 			Art: "../img/Music/Non Sequitur.png",
+			ArtAlt: "A guitar slide resting atop a wooden cigar box. It reads 'TABACALERA DE GARCIA, 25 CIGARS, HAND MADE IN LA ROMANA, DOMINICAN REUBLIC'",
 			Description: "This is the second collection of music I ever recorded. It was very different from the first, hence the title.<br />"
 				+ "I recorded all of these in my college apartment's bedroom. College was a pretty dark time for me, and recording these gave me a good creative outlet which lifted my spirits.<br />"
 				+ "The songs recorded here are a subset of the full collection.",

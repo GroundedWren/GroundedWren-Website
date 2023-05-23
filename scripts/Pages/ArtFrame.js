@@ -41,6 +41,7 @@ registerNamespace("Pages.ArtFrame", function (ns)
 			artData.artists,
 			artData.date,
 			artData.description,
+			artData.altText,
 			artData.isExplicit,
 			(name) => ns.Artists[name].getLink()
 		);
@@ -54,6 +55,7 @@ registerNamespace("Pages.ArtFrame", function (ns)
 		}
 
 		document.getElementById("imgElement").setAttribute("src", artFrame.getArtLink());
+		document.getElementById("imgElement").setAttribute("alt", artFrame.getAltText());
 
 		if (!inFrame)
 		{

@@ -11,6 +11,10 @@ registerNamespace("Common", function (ns)
 		Enter: 13,
 		Esc: 27,
 		Space: 32,
+		LeftArrow: 37,
+		UpArrow: 38,
+		RightArrow: 39,
+		DownArrow: 40,
 	};
 	ns.KeyCodes = KeyCodes;
 
@@ -92,4 +96,10 @@ registerNamespace("Common", function (ns)
 		return "#" + r + g + b;
 	}
 	ns.rgbToHex = rgbToHex;
+
+	function navTo(href)
+	{
+		window.location.href = href;
+	};
+	ns.navTo = navTo;
 });

@@ -195,14 +195,14 @@ window.onload = () =>
 			"tab 1": {
 				action: () => { window.alert("tab 1"); },
 				childActionMap: {
-					"child 1": () => { window.alert("tab 1 child 1"); },
-					"child 2": () => { window.alert("tab 1 child 2"); },
+					"child 1": { action: () => { window.alert("tab 1 child 1"); } },
+					"child 2": { action: () => { window.alert("tab 1 child 2"); } },
 				}
 			},
 			"tab 2": {
 				action: () => { window.alert("tab 2"); },
 				childActionMap: {
-					"child 1": () => { window.alert("tab 2 child 1"); },
+					"child 1": { action: () => { window.alert("tab 2 child 1"); } },
 				}
 			},
 			"tab 3": {

@@ -3,6 +3,7 @@
 	ns.Characters = {
 		"Vera": {
 			profileSrc: "../../img/Profiles/Vera Reading - Headshot - Ravenluck.png",
+			profileAlt: "Bust of a smirking Tiefling woman",
 
 			name: "Vera Konigin",
 			pronouns: "She/Her",
@@ -61,6 +62,7 @@
 		},
 		"Freya": {
 			profileSrc: "../../img/Profiles/Freya Shaded Halfbody Cropped - Chelsea-Rhi - 2022-02-24.png",
+			profileAlt: "Waist-up depiction of a Chultan woman looking on.",
 
 			name: "Freya Visser",
 			pronouns: "She/Her",
@@ -161,6 +163,7 @@
 		},
 		"Sindri": {
 			profileSrc: "../../img/Profiles/Sindri Reference - Crop - Raiyk - 2016-09-10.png",
+			profileAlt: "Profile of a smiling Turian",
 
 			name: "Sindri Laelius",
 			pronouns: "He/Him",
@@ -225,6 +228,7 @@
 		},
 		"Veryn": {
 			//profileSrc: "../../img/Profiles/x.png",
+			//profileAlt: "descr",
 
 			name: "Veryn Laelius",
 			pronouns: "He/Him",
@@ -269,6 +273,7 @@
 
 		"template": {
 			profileSrc: "../../img/Profiles/x.png",
+			profileAlt: "Description",
 
 			name: "",
 			pronouns: "",

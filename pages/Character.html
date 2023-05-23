@@ -29,41 +29,51 @@
 </head>
 <body>
 	<div id="subveil">
-		<div class="banner fixed-header"><a style="float: left;" href="../index.html">Home</a><span>Character</span></div>
+		<header>
+			<div class="banner fixed-header">
+				<a style="float: left;" href="../index.html">Home</a>
+				<span role="heading" aria-level="1">Character</span>
+			</div>
+		</header>
 		<div class="banner-buffer"></div>
-		<div class="main-page">
+		<div class="main-page" role="main">
 			<div class="content">
-				<div id="LeftPane">
+				<div id="LeftPane" role="region" aria-label="Misc Statistics">
 					<img id="ProfilePicture" style="width: 100%" />
-					<table id="BasicInfo">
+					<table id="BasicInfo" aria-label="Basic information">
 						<tr><td class="row-label">Name</td><td id="tdName"></td></tr>
 						<tr><td class="row-label">Pronouns</td><td id="tdPronouns"></td></tr>
 						<tr><td class="row-label">Gender</td><td id="tdGender"></td></tr>
 						<tr><td class="row-label">Orientation</td><td id="tdOrientation"></td></tr>
 					</table>
-					<table id="PhysicalInfo">
+					<table id="PhysicalInfo" aria-label="Physical information">
 						<tr><td class="row-label">Species</td><td id="tdSpecies"></td></tr>
 						<tr>
 							<td class="row-label">Sex</td>
-							<td><div id="tdSex" class="tooltip-target"><span id="sexTooltip" class="tooltip-text right"></span></div></td>
+							<td id="sexRow">
+								<div id="tdSex" class="tooltip-target">
+									<span id="sexTooltip" class="tooltip-text right"></span>
+								</div>
+								<div id="tdSexSR" class="sr-only"></div>
+							</td>
 						</tr>
 						<tr><td class="row-label">Age</td><td id="tdAge"></td></tr>
 						<tr><td class="row-label">Height</td><td id="tdHeight"></td></tr>
 					</table>
-					<table id="Colors">
+					<table id="Colors" aria-label="Colors">
 						<!-- JS generated :) -->
 					</table>
-					<table id="MetaInfo">
+					<table id="MetaInfo" aria-label="Metadata">
 						<tr><td class="row-label">Created by</td><td id="tdCreatedBy"></td></tr>
 						<tr><td class="row-label">Date created</td><td id="tdCreatedDate"></td></tr>
 						<tr><td class="row-label">Status</td><td id="tdStatus"></td></tr>
 					</table>
 				</div>
 				<div id="divVert" class="divider-vert"></div>
-				<button id="leftPaneCollapseBtn" class="button-like">
+				<button id="leftPaneCollapseBtn" class="button-like" aria-label="Collapse the misc statistics section">
 					<span id="leftPaneCollapseChevron" class="chevron left"></span>
 				</button>
-				<div id="RightPane" class="mini-hide">
+				<div id="RightPane" class="mini-hide" role="region" aria-label="Longform description">
 					<!-- JS generated :) -->
 				</div>
 			</div>

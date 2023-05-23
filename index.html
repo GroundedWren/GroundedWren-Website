@@ -33,12 +33,12 @@
 <body>
 	<div id="subveil">
 		<div class="main-page">
-			<h1>GroundedWren.com</h1>
-			<div id="Directory"></div>
-			<div id="content">
+			<header><h1><a href="https://www.groundedwren.com/">GroundedWren.com</a></h1></header>
+			<nav><div id="Directory" role="toolbar"></div></nav>
+			<div id="content" role="main">
 				<div id="textPanes">
 					<div id="about" class="card">
-						<div class="card-header">About the site</div>
+						<div class="card-header" role="heading" aria-level="2">About the site</div>
 						<p>Hi!</p>
 						<p>
 							My name is Vera, welcome to my website. I've created this place primarily as an exercise for myself;
@@ -60,14 +60,30 @@
 					</div>
 					<div class="text-pane-row">
 						<div id="updateCard" class="card">
-							<div id="updatesCardHeader" class="card-header">Updates<span id="updateChevron" class="chevron card-chevron bottom" tabindex="0"></span></div>
-							<h2>3/19/23</h2>
+							<div
+								 id="updatesCardHeader"
+								 class="card-header"
+							>
+								<span role="heading" aria-level="2">Updates</span>
+								<span
+									  id="updateChevron"
+									  class="chevron card-chevron bottom"
+									  aria-label="Show all updates"
+									  tabindex="0"
+								></span>
+							</div>
+							<h3>5/22/23</h3>
 							<ul>
-								<li>New music</li>
-								<li>New poetry</li>
+								<li>Enhanced screen reader and keyboard accessibility</li>
+								<li>Updated styling for the Music page</li>
 							</ul>
-							<div id="updateContent" class="hidden">
-								<h2>2/19/23</h2>
+							<div id="updateContent" style="display: none">
+								<h3>3/19/23</h3>
+								<ul>
+									<li>New music</li>
+									<li>New poetry</li>
+								</ul>
+								<h3>2/19/23</h3>
 								<ul>
 									<li>New Vera and Serin art!</li>
 									<li>Tweaks to art frames</li>
@@ -75,7 +91,7 @@
 									<li>Character updates</li>
 									<li>+ Veryn</li>
 								</ul>
-								<h2>2/5/23 - 2/6/23</h2>
+								<h3>2/5/23 - 2/6/23</h3>
 								<ul>
 									<li>Add contact email and rearrange About Me page</li>
 									<li>Expand song cards on play</li>
@@ -84,18 +100,18 @@
 									<li>Style tweaks to the DnDWorkbook page</li>
 									<li>Vast mobile improvements</li>
 								</ul>
-								<h2>2/3/23</h2>
+								<h3>2/3/23</h3>
 								<ul>
 									<li>Reverse chevrons</li>
 									<li>Make it so only one song plays at a time</li>
 									<li>This card is collapsible!</li>
 								</ul>
-								<h2>2/2/23</h2>
+								<h3>2/2/23</h3>
 								<ul>
 									<li>Tweaks to the Music page</li>
 									<li>Minor tweak to index page styling</li>
 								</ul>
-								<h2>1/29/23</h2>
+								<h3>1/29/23</h3>
 								<ul>
 									<li>Updates to the <a href="/pages/AboutMe.html">About Me</a> page formatting</li>
 									<li>Updated <a href="/pages/Writing.html">writing</a> folders to use radio buttons & misc cleanup there</li>
@@ -106,7 +122,7 @@
 							</div>
 						</div>
 						<div id="seeAlso" class="card">
-							<div class="card-header">See Also</div>
+							<div class="card-header" role="heading" aria-level="2">See Also</div>
 							<ul>
 								<li>
 									<a href="https://www.serinscorner.com/" target="_blank">SerinsCorner.com</a><br />
@@ -126,8 +142,12 @@
 				</div>
 				
 				<div id="avi" class="card">
-					<div class="card-header">Featured Avi Photo</div>
-					<img src="img/Avi/Featured Avi 2022-12-28.png" style="width: 100%" />
+					<div class="card-header" role="heading" aria-level="2">Featured Avi Photo</div>
+					<img
+						 src="img/Avi/Featured Avi 2022-12-28.png"
+						 style="width: 100%"
+						 aria-label="A photo of a black cat sitting on a stool in front of a table with a cup of coffee and a plate of toast. He is eyeing the toast and has a paw tenatively raised."
+					/>
 					<footer>He likes toast</footer>
 				</div>
 			</div>

@@ -36,8 +36,8 @@ registerNamespace("Common.DOMLib", function (ns)
 		{
 			prepend
 				? parent.prepend(el)
-				: parent.appendChild(el); 
-			
+				: parent.appendChild(el);
+
 		}
 
 		return { el: el, id: id };
@@ -61,7 +61,7 @@ registerNamespace("Common.DOMLib", function (ns)
 		{
 			el.style[property] = style[property];
 		}
-	}
+	};
 	ns.addStyle = addStyle;
 
 	/**
@@ -75,6 +75,42 @@ registerNamespace("Common.DOMLib", function (ns)
 		{
 			el.setAttribute(attribute, attrs[attribute]);
 		}
-	}
+	};
 	ns.setAttributes = setAttributes;
+
+	function setAsButton(el, action)
+	{
+		if (!el.getAttribute("role"))
+		{
+			el.setAttribute("role", "button");
+		}
+		el.setAttribute("tabindex", "0");
+		el.addEventListener("keyup", (event) => { __buttonKeyup(action, event); });
+		el.addEventListener("click", (event) => { __buttonPress(action, event); });
+	};
+	ns.setAsButton = setAsButton;
+
+	function setAsLink(el, href)
+	{
+		el.setAttribute("role", "link");
+		el.addEventListener("keyup", (event) => { __buttonKeyup(() => { Common.navTo(href); }, event); });
+		el.addEventListener("click", (event) => { __buttonPress(() => { Common.navTo(href); }, event); });
+	};
+	ns.setAsLink = setAsLink;
+
+	function __buttonKeyup(action, event)
+	{
+		if (!event.keyCode
+			|| (event.keyCode !== Common.KeyCodes.Space && event.keyCode !== Common.KeyCodes.Enter)
+		)
+		{
+			return;
+		}
+		__buttonPress(action, event);
+	};
+
+	function __buttonPress(action, event)
+	{
+		action(event);
+	};
 });
