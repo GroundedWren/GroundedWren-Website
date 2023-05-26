@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Namespace for a dropdown menu
  */
 registerNamespace("Common.Controls.DropdownMenu", function (ns)
@@ -297,10 +297,6 @@ registerNamespace("Common.Controls.DropdownMenu", function (ns)
 
 		__setFocus(index, childIndex)
 		{
-			this.__tabContainerDict[this.__tabStripEl.children[this.__focusIndex].id].setUnfocused();
-			this.__tabContainerDict[this.__tabStripEl.children[index].id].setFocused(childIndex);
-			this.__focusIndex = index;
-
 			for (var i = 0; i < this.__tabStripEl.children.length - 1; i++)
 			{
 				if (i !== index)
@@ -308,6 +304,10 @@ registerNamespace("Common.Controls.DropdownMenu", function (ns)
 					this.__tabContainerDict[this.__tabStripEl.children[i].id].clearChildFocus();
 				}
 			}
+
+			this.__tabContainerDict[this.__tabStripEl.children[this.__focusIndex].id].setUnfocused();
+			this.__tabContainerDict[this.__tabStripEl.children[index].id].setFocused(childIndex);
+			this.__focusIndex = index;
 		};
 		//#endregion
 
@@ -456,6 +456,7 @@ registerNamespace("Common.Controls.DropdownMenu", function (ns)
 			{
 				this.children[this.__focusedChildIndex].tabIndex = "-1";
 				this.__focusedChildIndex = -1;
+				this.tabEl.tabIndex = "0";
 			}
 		}
 
