@@ -4,7 +4,7 @@
 registerNamespace("Pages.Index", function (ns)
 {
 	// Threshold to enter "mini" or mobile mode
-	ns.MINI_THRESHOLD = 940;
+	ns.MINI_THRESHOLD = 755;
 
 	ns.resizeListener = () =>
 	{
@@ -40,6 +40,8 @@ registerNamespace("Pages.Index", function (ns)
  */
 window.onload = () =>
 {
+	Common.setUpAccessibility();
+
 	var directoryContainer = document.getElementById("Directory");
 	Common.Controls.DropdownMenu.buildDropdownMenu(
 		directoryContainer,
@@ -66,7 +68,7 @@ window.onload = () =>
 					"Poetry": { linkHref: "pages/Writing.html?folder=Poetry" },
 				}
 			},
-			"Coding Projects": {
+			"Coding": {
 				childActionMap: {
 					"Text Adventure": { linkHref: "https://textadventure.groundedwren.com" },
 					"DnD Workbook": { linkHref: "pages/DnDWorkbook.html" },

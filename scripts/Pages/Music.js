@@ -193,6 +193,8 @@ registerNamespace("Pages.Music", function (ns)
  */
 window.onload = () =>
 {
+	Common.setUpAccessibility();
+
 	Pages.Music.buildCollectionList();
 
 	Pages.Music.interperetUrlParams(Common.getUrlParams());

@@ -248,6 +248,8 @@ registerNamespace("Pages.Writing", function (ns)
  */
 window.onload = () =>
 {
+	Common.setUpAccessibility();
+
 	Pages.Writing.entryFrame = document.getElementById("entryFrame");
 	Pages.Writing.entryHeader = document.getElementById("entryHeader");
 

@@ -11,5 +11,5 @@ registerNamespace("Pages.Blank", function (ns)
  */
 window.onload = () =>
 {
-
+	Common.setUpAccessibility();
 };

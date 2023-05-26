@@ -18,7 +18,7 @@ h1 {
 }
 
 /* Pages.Index.MINI_THRESHOLD */
-@media (max-width: 940px) {
+@media (max-width: 755px) {
 	.main-page {
 		margin-left: 5px;
 		margin-right: 5px;
@@ -27,18 +27,18 @@ h1 {
 
 #Directory {
 	margin: auto;
-	width: calc(150px * 6);
+	width: calc(120px * 6);
 }
 
 .z { /* Fix auto-indent */
 }
 
 #Directory div.tab-strip-tab {
-	flex-basis: 150px;
+	flex-basis: 120px;
 }
 
 /* Pages.Index.MINI_THRESHOLD */
-@media (max-width: 940px) {
+@media (max-width: 755px) {
 	#Directory {
 		width: 100%;
 	}

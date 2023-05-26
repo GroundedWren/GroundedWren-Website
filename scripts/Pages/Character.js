@@ -180,6 +180,8 @@ registerNamespace("Pages.Character", function (ns)
  */
 window.onload = () =>
 {
+	Common.setUpAccessibility();
+
 	const params = Common.getUrlParams();
 	if (params.has(Pages.Character.CHARACTER_PARAM))
 	{

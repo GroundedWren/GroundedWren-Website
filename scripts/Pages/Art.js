@@ -690,6 +690,8 @@ registerNamespace("Pages.Art", function (ns)
  */
 window.onload = () =>
 {
+	Common.setUpAccessibility();
+
 	Pages.Art.Data.InitializeArtists(Pages.Art, "Artists");
 	Pages.Art.initializeFrames();
 

@@ -25,6 +25,8 @@ registerNamespace("Pages.AboutMe", function (ns)
  */
 window.onload = () =>
 {
+	Common.setUpAccessibility();
+
 	Pages.AboutMe.socialsCohostEl = document.getElementById("socialsCtrl_page_Cohost");
 	Pages.AboutMe.socialsControl = new Common.Controls.PageControl.PageControl(
 		document.getElementById("socialsCtrl"),

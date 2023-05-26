@@ -102,4 +102,43 @@ registerNamespace("Common", function (ns)
 		window.location.href = href;
 	};
 	ns.navTo = navTo;
+
+	ns.axAssertiveElId = "axAssertiveElId";
+	ns.axPoliteElId = "axPoliteElId";
+	ns.setUpAccessibility = function setUpAccessibility()
+	{
+		var axParentEl = document.createElement("div");
+		axParentEl.id = "axParentEl";
+		axParentEl.classList.add("sr-only");
+
+		axParentEl.appendChild(__getAxLiveEl(ns.axAssertiveElId, "assertive"));
+		axParentEl.appendChild(__getAxLiveEl(ns.axPoliteElId, "polite"));
+
+		document.body.appendChild(axParentEl);
+	}
+	function __getAxLiveEl(id, live)
+	{
+		var axLiveEl = document.createElement("div");
+		axLiveEl.id = id;
+		axLiveEl.setAttribute("aria-live", live);
+		return axLiveEl;
+	}
+
+	ns.axAlertAssertive = function (message)
+	{
+		__axAlert(document.getElementById(ns.axAssertiveElId), message);
+	}
+	ns.axAlertPolite = function (message)
+	{
+		__axAlert(document.getElementById(ns.axPoliteElId), message);
+	}
+	function __axAlert(parentEl, message)
+	{
+		parentEl.innerHTML = "";
+
+		var messageEl = document.createElement("p");
+		messageEl.innerText = message;
+
+		parentEl.appendChild(messageEl);
+	}
 });

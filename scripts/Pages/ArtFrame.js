@@ -72,6 +72,8 @@ registerNamespace("Pages.ArtFrame", function (ns)
  */
 window.onload = () =>
 {
+	Common.setUpAccessibility();
+
 	Pages.Art.Data.InitializeArtists(Pages.ArtFrame, "Artists");
 	Pages.ArtFrame.render(Common.getUrlParams());
 };

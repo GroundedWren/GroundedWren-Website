@@ -84,7 +84,10 @@ registerNamespace("Common.DOMLib", function (ns)
 		{
 			el.setAttribute("role", "button");
 		}
-		el.setAttribute("tabindex", "0");
+		if (el.getAttribute("tabIndex" === ""))
+		{
+			el.setAttribute("tabindex", "0");
+		}
 		el.addEventListener("keyup", (event) => { __buttonKeyup(action, event); });
 		el.addEventListener("click", (event) => { __buttonPress(action, event); });
 	};

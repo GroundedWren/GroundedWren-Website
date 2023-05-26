@@ -1,8 +1,9 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="A page describing a Dungeons and Dragons excel workbook created by Vera Konigin">
 	<title>DnD Workbook</title>
 
 	<!-- Styles -->
@@ -19,11 +20,16 @@
 </head>
 <body>
 	<div id="subveil">
-		<div id="Banner" , class="banner fixed-header"><a style="float: left;" href="../index.html">Home</a><span>DnD Workbook</span></div>
-		<div id="BannerBuffer" class="banner-buffer"></div>
-		<div id="mainPage">
+		<header>
+			<div class="banner fixed-header">
+				<a style="float: left;" href="../index.html">Home</a>
+				<span role="heading" aria-level="1">DnD Workbook</span>
+			</div>
+		</header>
+		<div class="banner-buffer"></div>
+		<div id="mainPage" role="main">
 			<div id="downloadsCard" class="card">
-				<div class="card-header">Download Links</div>
+				<div class="card-header" role="heading" aria-level="2">Download Links</div>
 				<ul>
 					<li><a href="../xlsm/Template 3.2.1-Anonymized.xlsm" download>Character Sheet Workbook Template</a></li>
 					<li><a href="../xlsm/Stat Blocks 1.0-Anonymized.xlsm" download>Monster Statblocks Workbook</a></li>
@@ -31,26 +37,29 @@
 				</ul>
 			</div>
 			<div id="aboutCard" class="card">
-				<div class="card-header">About</div>
+				<div class="card-header" role="heading" aria-level="2">About</div>
 				<div id="aboutContent">
-					<h2>So, what's this then?</h2>
+					<h3>So, what's this then?</h3>
 					<p>
 						These are the macro-enabled Excel workbooks I made to play D&D with my friends.
 						They're kind of a lot - I've spent at least a few hundred hours on this project.<br />
 						I tried to make them flexible enough to be able to accomodate at least the main classes in D&D 5e (I've used them for a number of characters). Feel free to try to use them - your mileage may vary, though.
 					</p>
-					<h2>Wait, Excel?</h2>
+					<h3>Wait, Excel?</h3>
 					<p>
 						Yeah. If you didn't know, Excel, along with a lot of other MS Office products, supports scripting using "<a href="https://learn.microsoft.com/en-us/office/vba/library-reference/concepts/getting-started-with-vba-in-office" target="_blank">VBA</a>", or Visual Basic for Applications.<br />
 						It's seriously old-school. Like, just look at the IDE:
 					</p>
 					<div class="card image-frame">
-						<img src="../img/Misc/VBA.png" />
+						<img
+							 src="../img/Misc/VBA.png"
+							 alt="A screenshot of the VB IDE with some D&D workbook code open. It looks really old."
+						/>
 					</div>
 					<p>
 						People have used VBA to do terrible, awful things over the years, and Microsoft <a href="https://learn.microsoft.com/en-us/deployoffice/security/internet-macros-blocked" target="_blank">seems to really regret its existence.</a>
 					</p>
-					<h2>...and this is how you decided to program a character sheet?</h2>
+					<h3>...and this is how you decided to program a character sheet?</h3>
 					<p>
 						Yeah, I suppose I have some explaining to do.
 					</p>
@@ -59,7 +68,10 @@
 						As you can imagine, playing a Wizard was a little bit of a difficulty spike. I struggled in particular with keeping track of all my spells and what they did, so I eventually made a spreadsheet for them to augment my pdf character sheet. It looked something like this:
 					</p>
 					<div class="card image-frame">
-						<img src="../img/Misc/OldSpellSheet.png" />
+						<img
+							 src="../img/Misc/OldSpellSheet.png"
+							 alt="An excel sheet with various tables describing spells. There is also an image of a tiefling and a screenshot of the movie '50 Shades of Grey'"
+						/>
 						<footer>The 50 Shades thing is because Vera kept her spell book in the sleeve of a smutty romance novel</footer>
 					</div>
 					<p>

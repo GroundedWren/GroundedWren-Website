@@ -72,6 +72,9 @@ registerNamespace("Pages.Example", function (ns)
  */
 window.onload = () =>
 {
+	Common.setUpAccessibility();
+
+
 	//#region greeter
 	const greeter = new Common.Components.Timekeeper(
 		document.getElementById("content"),
