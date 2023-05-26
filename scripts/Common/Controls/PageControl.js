@@ -139,7 +139,7 @@ registerNamespace("Common.Controls.PageControl", function (ns)
 		 * Tab pages
 		 * @param tabId id of the tab to activate
 		 */
-		setActiveTab(tabId)
+		setActiveTab(tabId, event)
 		{
 			if (this.__tabDict[tabId] == null) { return; }
 
@@ -152,6 +152,8 @@ registerNamespace("Common.Controls.PageControl", function (ns)
 
 			this.__tabDict[tabId].activate();
 			this.__activeTabId = tabId;
+
+			if (event) { event.preventDefault(); }
 		};
 
 		__exitZeroState()

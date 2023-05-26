@@ -84,11 +84,15 @@ registerNamespace("Common.DOMLib", function (ns)
 		{
 			el.setAttribute("role", "button");
 		}
-		if (el.getAttribute("tabIndex" === ""))
+		if (el.getAttribute("tabIndex") === null
+			|| el.getAttribute("tabIndex") === undefined
+			|| el.getAttribute("tabIndex") === ""
+		)
 		{
 			el.setAttribute("tabindex", "0");
 		}
 		el.addEventListener("keyup", (event) => { __buttonKeyup(action, event); });
+		el.addEventListener("keydown", (event) => { __buttonKeydown(event); });
 		el.addEventListener("click", (event) => { __buttonPress(action, event); });
 	};
 	ns.setAsButton = setAsButton;
@@ -110,6 +114,17 @@ registerNamespace("Common.DOMLib", function (ns)
 			return;
 		}
 		__buttonPress(action, event);
+	};
+
+	function __buttonKeydown(event)
+	{
+		if (!event.keyCode
+			|| (event.keyCode !== Common.KeyCodes.Space && event.keyCode !== Common.KeyCodes.Enter)
+		)
+		{
+			return;
+		}
+		event.preventDefault();
 	};
 
 	function __buttonPress(action, event)
