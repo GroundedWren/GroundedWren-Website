@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Namespace for a dropdown menu
  */
 registerNamespace("Common.Controls.DropdownMenu", function (ns)
@@ -43,6 +43,12 @@ registerNamespace("Common.Controls.DropdownMenu", function (ns)
 	};
 	ns.buildDropdownMenu = buildDropdownMenu;
 
+	//Available menu orientations
+	ns.Orientations = {
+		vertical: "vertical",
+		horizontal: "horizontal",
+	};
+
 	class DropdownMenu
 	{
 		//#region fields
@@ -62,6 +68,8 @@ registerNamespace("Common.Controls.DropdownMenu", function (ns)
 		__focusIndex;
 		// Whether the menu has focus
 		__hasFocus;
+		// Control orientation
+		__orientation;
 		//#endregion
 
 		/**
@@ -77,8 +85,9 @@ registerNamespace("Common.Controls.DropdownMenu", function (ns)
 		 *						}
 		 * @param nonExclusive Whether one tab can be expanded at a time
 		 * @param durable Whether tabs stay expanded after a child is clicked
+		 * @param orientation Control orientation (default=Horizontal)
 		 */
-		constructor(controlEl, tabStripEl, tabActionMap, nonExclusive, durable)
+		constructor(controlEl, tabStripEl, tabActionMap, nonExclusive, durable, orientation)
 		{
 			this.controlEl = controlEl;
 			this.__tabStripEl = tabStripEl;
@@ -96,8 +105,26 @@ registerNamespace("Common.Controls.DropdownMenu", function (ns)
 			});
 
 			this.__focusIndex = 0;
-			this.__tabContainerDict[this.__tabStripEl.children[this.__focusIndex].id].tabEl.tabIndex = "0";
+			this.__getTabAtIndex(this.__focusIndex).tabEl.tabIndex = "0";
 			this.__tabStripEl.addEventListener("keydown", Common.fcd(this, this.__onKeyDown));
+
+			this.setOrientation(orientation);
+		}
+
+		/**
+		 * Configure the control orientation
+		 */
+		setOrientation(orientation)
+		{
+			this.__orientation = orientation || Common.Controls.DropdownMenu.Orientations.horizontal;
+			if (this.__orientation === Common.Controls.DropdownMenu.Orientations.vertical)
+			{
+				this.controlEl.classList.add("vertical");
+			}
+			else
+			{
+				this.controlEl.classList.remove("vertical");
+			}
 		}
 
 		//#region Tab construction
@@ -255,14 +282,21 @@ registerNamespace("Common.Controls.DropdownMenu", function (ns)
 		//#region focus
 		__onKeyDown(event)
 		{
+			var leftRightEnabled = this.__orientation === Common.Controls.DropdownMenu.Orientations.horizontal;
 			switch (event.keyCode)
 			{
 				case Common.KeyCodes.LeftArrow:
-					this.__focusLeft();
+					if (leftRightEnabled)
+					{
+						this.__focusLeft();
+					}
 					event.preventDefault();
 					break;
 				case Common.KeyCodes.RightArrow:
-					this.__focusRight();
+					if (leftRightEnabled)
+					{
+						this.__focusRight();
+					}
 					event.preventDefault();
 					break;
 				case Common.KeyCodes.UpArrow:
@@ -288,11 +322,31 @@ registerNamespace("Common.Controls.DropdownMenu", function (ns)
 		}
 		__focusUp()
 		{
-			this.__tabContainerDict[this.__tabStripEl.children[this.__focusIndex].id].focusUp();
+			var curTab = this.__getTabAtIndex(this.__focusIndex);
+			if (this.__orientation === Common.Controls.DropdownMenu.Orientations.horizontal
+				|| curTab.areChildrenShown()
+			)
+			{
+				this.__getTabAtIndex(this.__focusIndex).focusUp();
+			}
+			else
+			{
+				this.__focusLeft();
+			}
 		}
 		__focusDown()
 		{
-			this.__tabContainerDict[this.__tabStripEl.children[this.__focusIndex].id].focusDown();
+			var curTab = this.__getTabAtIndex(this.__focusIndex);
+			if (this.__orientation === Common.Controls.DropdownMenu.Orientations.horizontal
+				|| curTab.areChildrenShown()
+			)
+			{
+				curTab.focusDown();
+			}
+			else
+			{
+				this.__focusRight();
+			}
 		}
 
 		__setFocus(index, childIndex)
@@ -301,12 +355,12 @@ registerNamespace("Common.Controls.DropdownMenu", function (ns)
 			{
 				if (i !== index)
 				{
-					this.__tabContainerDict[this.__tabStripEl.children[i].id].clearChildFocus();
+					this.__getTabAtIndex(i).clearChildFocus();
 				}
 			}
 
-			this.__tabContainerDict[this.__tabStripEl.children[this.__focusIndex].id].setUnfocused();
-			this.__tabContainerDict[this.__tabStripEl.children[index].id].setFocused(childIndex);
+			this.__getTabAtIndex(this.__focusIndex).setUnfocused();
+			this.__getTabAtIndex(index).setFocused(childIndex);
 			this.__focusIndex = index;
 		};
 		//#endregion
@@ -333,6 +387,12 @@ registerNamespace("Common.Controls.DropdownMenu", function (ns)
 			}
 			return -1;
 		}
+
+		__getTabAtIndex(index)
+		{
+			return this.__tabContainerDict[this.__tabStripEl.children[index].id];
+		};
+
 	}
 
 	/**
@@ -426,6 +486,13 @@ registerNamespace("Common.Controls.DropdownMenu", function (ns)
 				this.clearChildFocus();
 				this.chevronEl?.classList.add("bottom");
 			}
+		}
+
+		areChildrenShown()
+		{
+			if (!this.children.length) { return false; }
+			const visToggle = Common.Components.GetVisToggle(this.tabEl.id);
+			return visToggle.getIsVisible();
 		}
 
 		//#region focus

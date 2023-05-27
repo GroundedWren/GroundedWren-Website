@@ -6,16 +6,20 @@ registerNamespace("Pages.Index", function (ns)
 	// Threshold to enter "mini" or mobile mode
 	ns.MINI_THRESHOLD = 755;
 
+	ns.directoryMenu = null;
+
 	ns.resizeListener = () =>
 	{
 		var directoryContainer = document.getElementById("Directory");
 		if (window.innerWidth <= Pages.Index.MINI_THRESHOLD)
 		{
 			directoryContainer.classList.add("mini");
+			ns.directoryMenu.setOrientation(Common.Controls.DropdownMenu.Orientations.vertical);
 		}
 		else
 		{
 			directoryContainer.classList.remove("mini");
+			ns.directoryMenu.setOrientation(Common.Controls.DropdownMenu.Orientations.horizontal);
 		}
 	};
 
@@ -43,7 +47,7 @@ window.onload = () =>
 	Common.setUpAccessibility();
 
 	var directoryContainer = document.getElementById("Directory");
-	Common.Controls.DropdownMenu.buildDropdownMenu(
+	Pages.Index.directoryMenu = Common.Controls.DropdownMenu.buildDropdownMenu(
 		directoryContainer,
 		{
 			"Art Gallery": {

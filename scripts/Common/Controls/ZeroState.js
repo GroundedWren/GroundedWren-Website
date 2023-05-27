@@ -1,6 +1,6 @@
 ﻿registerNamespace("Common.Controls.ZeroState", function (ns)
 {
-	function embedZSC(parent, text)
+	ns.embedZSC = function(parent, text)
 	{
 		var SVGLib = Common.SVGLib;
 		var svg = SVGLib.createChildElement(
@@ -12,11 +12,24 @@
 				"class": "zero-state-control"
 			}
 		);
+
 		var svgDefs = SVGLib.createChildElement(svg, SVGLib.ElementTypes.defs);
 		const gradientId = "gradId";
-		var gradient = SVGLib.createChildElement(svgDefs, SVGLib.ElementTypes.linearGradient, { "id": gradientId });
-		SVGLib.createChildElement(gradient, SVGLib.ElementTypes.stop, { "offset": "0%", "stop-color": "rebeccapurple", "stop-opacity": 0.9 });
-		SVGLib.createChildElement(gradient, SVGLib.ElementTypes.stop, { "offset": "100%", "stop-opacity": 0 });
+		var gradient = SVGLib.createChildElement(
+			svgDefs,
+			SVGLib.ElementTypes.linearGradient,
+			{ "id": gradientId }
+		);
+		SVGLib.createChildElement(
+			gradient,
+			SVGLib.ElementTypes.stop,
+			{ "offset": "0%", "stop-color": "rebeccapurple", "stop-opacity": 0.9 }
+		);
+		SVGLib.createChildElement(
+			gradient,
+			SVGLib.ElementTypes.stop,
+			{ "offset": "100%", "stop-opacity": 0 }
+		);
 
 		SVGLib.createChildElement(
 			svg,
@@ -44,5 +57,4 @@
 		);
 		return svg;
 	}
-	ns.embedZSC = embedZSC;
 });

@@ -59,6 +59,7 @@
 			{
 				togglerEl.addEventListener("click", Common.fcd(this, this.doToggle, [undefined]));
 				togglerEl.addEventListener("keyup", this.onKeyUp);
+				togglerEl.addEventListener("keydown", this.onKeyDown);
 			});
 
 			this.__toggleHandler = handler || function () { };
@@ -85,7 +86,19 @@
 			{
 				return;
 			}
+			event.preventDefault();
 			this.doToggle(undefined, event);
+		};
+
+		onKeyDown = (event) =>
+		{
+			if (!event.keyCode
+				|| (event.keyCode !== Common.KeyCodes.Space && event.keyCode !== Common.KeyCodes.Enter)
+			)
+			{
+				return;
+			}
+			event.preventDefault();
 		};
 
 		/**
