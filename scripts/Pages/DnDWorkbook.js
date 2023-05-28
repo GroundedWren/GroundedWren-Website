@@ -1,7 +1,7 @@
 ﻿/**
- * Namespace for Blank.html
+ * Namespace for DnDWorkbook.html
  */
-registerNamespace("Pages.Blank", function (ns)
+registerNamespace("Pages.DnDWorkbook", function (ns)
 {
 
 });

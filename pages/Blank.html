@@ -18,6 +18,7 @@
 	<script src="../scripts/Common/Common.js"></script>
 	<script src="../scripts/Common/DOMLib.js"></script>
 	<script src="../scripts/Common/FileLib.js"></script>
+	<script src="../scripts/Common/Components/Shortcuts.js"></script>
 	<script src="../scripts/Common/Components/ElementDragger.js"></script>
 	<script src="../scripts/Common/Controls/Dialog.js"></script>
 	<script src="../scripts/Common/Controls/Modal.js"></script>
@@ -26,13 +27,23 @@
 </head>
 <body>
 	<div id="subveil">
-		<!--<header>
+		<header>
 			<div class="banner fixed-header">
-				<a style="float: left;" href="../index.html">Home</a>
+				<div class="header-left">
+					<button id="homeButton"
+							role="link"
+							onclick="Common.navTo('../index.html')">
+						<u>H</u>ome
+					</button>
+					<button id="shortcutsButton"
+							onclick="Common.Components.displayShortcuts('shortcutsButton')">
+						<u>S</u>hortcuts
+					</button>
+				</div>
 				<span role="heading" aria-level="1">Blank</span>
 			</div>
 		</header>
-		<div id="BannerBuffer" class="banner-buffer"></div>-->
+		<div id="BannerBuffer" class="banner-buffer"></div>
 		<div id="mainPage" role="main">
 
 		</div>

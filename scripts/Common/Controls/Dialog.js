@@ -37,6 +37,9 @@
 
 		// Whether the dialog is currently shown
 		__isShowing = false;
+
+		//Element where focus will return once out of the dialog
+		__anchorEl = null;
 		//#endregion
 
 		/**
@@ -50,8 +53,10 @@
 		 *					- onHide
 		 *					- onDestroy
 		 */
-		constructor(parentEl, title, content, style, delegates)
+		constructor(parentEl, title, content, style, delegates, anchorEl)
 		{
+			this.__anchorEl = anchorEl;
+
 			this.__createDOM(parentEl);
 			Common.DOMLib.addStyle(this.__dialogEl, style || {});
 
@@ -66,6 +71,13 @@
 					this.destroy();
 				}
 			});
+			this.__dialogEl.addEventListener('focusout', (event) =>
+			{
+				if (this.__anchorEl && !this.__dialogEl.contains(event.relatedTarget))
+				{
+					this.__anchorEl.focus();
+				}
+			});
 
 			this.__delegates = delegates || {};
 			this.__delegates.onShow = this.__delegates.onShow || function () { };
@@ -77,6 +89,8 @@
 
 		__createDOM(parentEl)
 		{
+			var focusTrapBefore = Common.DOMLib.createElement("div", parentEl).el;
+
 			const { el: dialogEl, id: dialogId } = Common.DOMLib.createElement(
 				"div",
 				parentEl,
@@ -85,9 +99,30 @@
 			this.__dialogEl = dialogEl;
 			this.__dialogId = dialogId;
 
-			this.__dialogEl.setAttribute("tabIndex", "0");
-			this.__dialogEl.setAttribute("aria-live", "polite");
-			Common.DOMLib.addStyle(this.__dialogEl, { display: "None" });
+			var focusTrapAfter = Common.DOMLib.createElement("div", parentEl).el;
+
+			if (this.__anchorEl)
+			{
+				focusTrapBefore.tabIndex = 0;
+				focusTrapAfter.tabIndex = 0;
+
+				focusTrapBefore.addEventListener('focus', () =>
+				{
+					this.__dialogEl.focus();
+				});
+				focusTrapAfter.addEventListener('focus', () =>
+				{
+					this.__dialogEl.focus();
+				});
+				this.__anchorEl.addEventListener('keydown', this.__anchorKeydown);
+				setTimeout(() =>
+				{
+					this.__anchorEl.setAttribute(
+						"aria-description",
+						"Press F2 to focus associated dialog."
+					);
+				}, 10);
+			}
 
 			const { el: dialogHeader } = Common.DOMLib.createElement(
 				"div",
@@ -96,12 +131,12 @@
 			);
 			this.__dialogHeader = dialogHeader;
 
-			const { el: dialogTitle } = Common.DOMLib.createElement(
+			const { el: dialogTitle, id: dialogTitleId } = Common.DOMLib.createElement(
 				"span",
 				dialogHeader,
 				["popup-title"]
 			);
-			Common.DOMLib.setAttributes(dialogHeader, {
+			Common.DOMLib.setAttributes(dialogTitle, {
 				"role": "heading",
 				"aria-level": "1"
 			});
@@ -124,6 +159,24 @@
 				["popup-content"]
 			);
 			this.__dialogContent = dialogContent;
+
+			Common.DOMLib.setAttributes(this.__dialogEl, {
+				"tabIndex": "-1",
+				"aria-live": "polite",
+				"role": "dialog",
+				"aria-labelledBy": dialogTitleId
+			});
+			Common.DOMLib.addStyle(this.__dialogEl, { display: "None" });
+		}
+
+		__anchorKeydown = (event) =>
+		{
+			if (event.keyCode !== Common.KeyCodes.F2) { return; }
+			if (!this.__isShowing)
+			{
+				Common.axAlertAssertive("Dialog is currently hidden");
+			}
+			this.__dialogEl.focus();
 		}
 
 		/**
@@ -153,7 +206,6 @@
 		{
 			Dialog.LastShowLeft = left;
 			Dialog.LastShowTop = top;
-			Dialog.NumberShowing++;
 
 			Common.DOMLib.addStyle(
 				this.__dialogEl,
@@ -163,11 +215,16 @@
 					left: left + "px"
 				}
 			);
-			this.__dragger.enableDragging();
 			this.__dialogEl.focus();
 
-			this.__isShowing = true;
-			this.__delegates.onShow();
+			if (!this.__isShowing)
+			{
+				Dialog.NumberShowing++;
+				this.__isShowing = true;
+
+				this.__dragger.enableDragging();
+				this.__delegates.onShow();
+			}
 		}
 
 		/**
@@ -191,6 +248,11 @@
 		{
 			this.hide();
 			this.__dialogEl.remove();
+			if (this.__anchorEl)
+			{
+				this.__anchorEl.setAttribute("aria-description", "");
+			}
+
 			delete this.__dragger;
 
 			delete DialogMap[this.__dialogId];

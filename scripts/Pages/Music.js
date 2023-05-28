@@ -194,6 +194,17 @@ registerNamespace("Pages.Music", function (ns)
 window.onload = () =>
 {
 	Common.setUpAccessibility();
+	Common.Components.registerShortcuts({
+		"ALT+H": {
+			action: () => { document.getElementById("homeButton").click(); },
+			description: "Return to the home page"
+		},
+		"ALT+S": {
+			action: () => { document.getElementById("shortcutsButton").click(); },
+			description: "Show shortcut keys"
+		},
+	});
+
 
 	Pages.Music.buildCollectionList();
 

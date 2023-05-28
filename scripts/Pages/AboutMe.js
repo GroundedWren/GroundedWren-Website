@@ -26,6 +26,16 @@ registerNamespace("Pages.AboutMe", function (ns)
 window.onload = () =>
 {
 	Common.setUpAccessibility();
+	Common.Components.registerShortcuts({
+		"ALT+H": {
+			action: () => { document.getElementById("homeButton").click(); },
+			description: "Return to the home page"
+		},
+		"ALT+S": {
+			action: () => { document.getElementById("shortcutsButton").click(); },
+			description: "Show shortcut keys"
+		},
+	});
 
 	Pages.AboutMe.socialsCohostEl = document.getElementById("socialsCtrl_page_Cohost");
 	Pages.AboutMe.socialsControl = new Common.Controls.PageControl.PageControl(

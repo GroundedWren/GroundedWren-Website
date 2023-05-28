@@ -5,6 +5,7 @@ registerNamespace("Common", function (ns)
 {
 	/**
 	 * Key codes for quick reference
+	 * https://www.toptal.com/developers/keycode
 	 */
 	const KeyCodes = {
 		Tab: 9,
@@ -15,6 +16,8 @@ registerNamespace("Common", function (ns)
 		UpArrow: 38,
 		RightArrow: 39,
 		DownArrow: 40,
+		F1: 112,
+		F2: 113,
 	};
 	ns.KeyCodes = KeyCodes;
 

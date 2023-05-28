@@ -320,3 +320,25 @@ table, th, td {
 	left: -99999999px;
 }
 /*#endregion*/
+
+/*#region Header*/
+.header-left {
+	float: left;
+	position: absolute;
+}
+
+.header-left > *{
+	margin-left: 2px;
+	margin-right: 2px;
+}
+
+/*#endregion*/
+/*#region Elements*/
+kbd {
+	font-family: Consolas;
+	border: 1px solid white;
+	border-radius: 3px;
+	padding: 1px;
+	margin: 3px;
+}
+/*#endregion*/

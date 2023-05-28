@@ -20,6 +20,7 @@
 	<script src="../scripts/Common/Components/ElementDragger.js"></script>
 	<script src="../scripts/Common/Components/Timekeeper.js"></script>
 	<script src="../scripts/Common/Components/VisibilityToggle.js"></script>
+	<script src="../scripts/Common/Components/Shortcuts.js"></script>
 	<script src="../scripts/Common/Controls/Dialog.js"></script>
 	<script src="../scripts/Common/Controls/Modal.js"></script>
 	<script src="../scripts/Common/Controls/PageControl.js"></script>
@@ -30,7 +31,24 @@
 </head>
 <body>
 	<div id="subveil">
-		<header class="banner fixed-header"><a style="float: left" href="../index.html">Home</a><span>Example page!</span></header>
+		<header>
+			<div class="banner fixed-header">
+				<div class="header-left">
+					<button
+						id="homeButton"
+						role="link"
+						onclick="Common.navTo('../index.html')"
+					><u>H</u>ome
+					</button>
+					<button
+						id="shortcutsButton"
+						onclick="Common.Components.displayShortcuts('shortcutsButton')"
+					><u>S</u>hortcuts
+					</button>
+				</div>
+				<span role="heading" aria-level="1">Example page!</span>
+			</div>
+		</header>
 		<div class="banner-buffer"></div>
 		<div class="main-page">
 			<h1>Hello world!</h1>
@@ -134,6 +152,15 @@
 			<div id="dropdownMenuContainer" style="margin: auto; width: 500px"></div>
 			<br />
 			<br />
+			<div id="shortcutsCard" class="card">
+				<div class="card-header" role="heading" aria-level="2">Shortcuts</div>
+				<ul>
+					<li>
+						<kbd>Ctrl</kbd>+<kbd>z</kbd>
+					</li>
+				</ul>
+				<footer>He likes toast</footer>
+			</div>
 		</div>
 		<div class="banner-buffer"></div>
 		<footer class="banner fixed-footer">This is just a proving ground for things I'm working on</footer>

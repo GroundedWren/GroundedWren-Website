@@ -82,6 +82,7 @@ window.onload = () =>
 				childActionMap: {
 					"About Me": { linkHref: "pages/AboutMe.html" },
 					"Demo page": { linkHref: "pages/Example.html" },
+					"Shortcuts": { action: () => { Common.Components.displayShortcuts(); } },
 				}
 			},
 		}

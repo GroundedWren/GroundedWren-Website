@@ -20,6 +20,7 @@
 	<script src="../scripts/Common/SVGLib.js"></script>
 	<script src="../scripts/Common/Components/ElementDragger.js"></script>
 	<script src="../scripts/Common/Components/VisibilityToggle.js"></script>
+	<script src="../scripts/Common/Components/Shortcuts.js"></script>
 	<script src="../scripts/Common/Controls/Dialog.js"></script>
 	<script src="../scripts/Common/Controls/Modal.js"></script>
 	<script src="../scripts/Common/Controls/ZeroState.js"></script>
@@ -31,7 +32,17 @@
 	<div id="subveil">
 		<heading>
 			<div id="Banner" class="banner fixed-header">
-				<a style="float: left;" href="../index.html">Home</a>
+				<div class="header-left">
+					<button id="homeButton"
+							role="link"
+							onclick="Common.navTo('../index.html')">
+						<u>H</u>ome
+					</button>
+					<button id="shortcutsButton"
+							onclick="Common.Components.displayShortcuts('shortcutsButton')">
+						<u>S</u>hortcuts
+					</button>
+				</div>
 				<span role="heading" aria-level="1">Art</span>
 			</div>
 		</heading>
@@ -56,9 +67,9 @@
 						<button onclick="Pages.Art.showAll()">Show All</button>
 						<button onclick="Pages.Art.hideAll()">Hide All</button><br />
 						<!--<div class="inputDiv" style="margin-top: 5px;">
-							<label for="ExplicitCB">Enable explicit art</label>
-							<input id="ExplicitCB" type="checkbox" onchange="Pages.Art.showExplicit(arguments[0].target.checked)" />
-						</div>-->
+						<label for="ExplicitCB">Enable explicit art</label>
+						<input id="ExplicitCB" type="checkbox" onchange="Pages.Art.showExplicit(arguments[0].target.checked)" />
+					</div>-->
 
 						<h3>Characters</h3>
 						<button onclick="Pages.Art.showAllChars()">All</button>
@@ -100,7 +111,7 @@
 							<label for="ChelseaRhiCB">Chelsea-Rhi</label>
 							<input id="ChelseaRhiCB" type="checkbox" onchange="Pages.Art.togArtistFilter('Chelsea-Rhi', arguments[0].target.checked)" /><br />
 							<!--<label for="BonnieCB">Bonnie Guerra</label>
-							<input id="BonnieCB" type="checkbox" onchange="Pages.Art.togArtistFilter('Bonnie Guerra', arguments[0].target.checked)" /><br />-->
+						<input id="BonnieCB" type="checkbox" onchange="Pages.Art.togArtistFilter('Bonnie Guerra', arguments[0].target.checked)" /><br />-->
 							<label for="DespeyCB">Despey</label>
 							<input id="DespeyCB" type="checkbox" onchange="Pages.Art.togArtistFilter('Despey', arguments[0].target.checked)" /><br />
 							<label for="JestCB">JesterDK</label>
@@ -108,7 +119,7 @@
 							<label for="LiliVicCB">LiliVic Creations</label>
 							<input id="LiliVicCB" type="checkbox" onchange="Pages.Art.togArtistFilter('LiliVic Creations', arguments[0].target.checked)" /><br />
 							<!--<label for="PalavenmoonsCB">Palavenmoons</label>
-							<input id="PalavenmoonsCB" type="checkbox" onchange="Pages.Art.togArtistFilter('Palavenmoons', arguments[0].target.checked)" /><br />-->
+						<input id="PalavenmoonsCB" type="checkbox" onchange="Pages.Art.togArtistFilter('Palavenmoons', arguments[0].target.checked)" /><br />-->
 							<label for="RaiykCB">Raiyk</label>
 							<input id="RaiykCB" type="checkbox" onchange="Pages.Art.togArtistFilter('Raiyk', arguments[0].target.checked)" /><br />
 							<label for="SLCCB">ShrimpLoverCat</label>
