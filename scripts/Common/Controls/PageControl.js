@@ -6,7 +6,7 @@ registerNamespace("Common.Controls.PageControl", function (ns)
 	/**
 	 * Namespace function to build a new page control
 	 */
-	function buildPageControl(parentEl, zeroStateMessage, name, orientation)
+	function buildPageControl(parentEl, zeroStateMessage, name)
 	{
 		const { el: pageControl } = Common.DOMLib.createElement(
 			"div",
@@ -30,7 +30,7 @@ registerNamespace("Common.Controls.PageControl", function (ns)
 			pageControl,
 			["page-container"]
 		);
-		return new PageControl(pageControl, tabStrip, pageContainer, {}, zeroStateMessage, name, orientation);
+		return new PageControl(pageControl, tabStrip, pageContainer, {}, zeroStateMessage, name);
 	};
 	ns.buildPageControl = buildPageControl;
 
@@ -58,7 +58,7 @@ registerNamespace("Common.Controls.PageControl", function (ns)
 		/**
 		 * Create a page control from existing DOM elements
 		 */
-		constructor(pageControl, tabStrip, pageContainer, tabPageMap, zeroStateMessage, name, orientation)
+		constructor(pageControl, tabStrip, pageContainer, tabPageMap, zeroStateMessage, name)
 		{
 			this.controlEl = pageControl;
 			this.__tabStripEl = tabStrip;
