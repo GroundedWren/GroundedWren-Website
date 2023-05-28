@@ -204,7 +204,7 @@ registerNamespace("Common.Controls.PageControl", function (ns)
 		{
 			this.tabEl.classList.remove("selected");
 			this.__pageEl.classList.remove("selected");
-			this.tabEl.setAttribute("aria-pressed", "true");
+			this.tabEl.setAttribute("aria-pressed", "false");
 		};
 	};
 });
