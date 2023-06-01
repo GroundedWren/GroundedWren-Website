@@ -599,6 +599,9 @@ registerNamespace("Pages.Art", function (ns)
 			"leftPane": "leftPane",
 			"banner": "Banner",
 			"bannerBuffer": "BannerBuffer",
+		},
+		"disable": {
+			"shortcuts": "shortcuts"
 		}
 	};
 	ns.interperetUrlParams = function (params)
@@ -656,6 +659,12 @@ registerNamespace("Pages.Art", function (ns)
 			rightPane.classList.remove("mini-hide");
 			Common.DOMLib.addStyle(document.getElementById("divVert"), { "display": "none" });
 			Common.DOMLib.addStyle(document.getElementById("leftPaneCollapseBtn"), { "display": "none" });
+		}
+
+		var disabledItms = params.getAll("disable");
+		if (disabledItms.indexOf("shortcuts") >= 0)
+		{
+			Common.Components.clearShortcuts();
 		}
 	};
 

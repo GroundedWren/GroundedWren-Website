@@ -54,15 +54,42 @@ registerNamespace("Pages.Character", function (ns)
 		tdSex.innerHTML += character.sex;
 		if (character.sexInfo)
 		{
-			document.getElementById("sexTooltip").innerHTML += character.sexInfo;
+			//document.getElementById("sexTooltip").innerHTML += character.sexInfo;
+			const sexChevronEl = Common.DOMLib.createElement(
+				"span",
+				tdSex,
+				["chevron", "bottom", "td-chevron"]
+			).el;
+			Common.DOMLib.setAttributes(sexChevronEl, {
+				tabindex: 0,
+				"aria-label": "Show additional sex information"
+			});
+			sexChevronEl.setAttribute("tabindex", 0);
 
-			document.getElementById("tdSexSR").innerHTML += character.sex + ": " + character.sexInfo;
-			tdSex.setAttribute("aria-hidden", "true");
-		}
-		else
-		{
-			document.getElementById("sexTooltip").remove();
-			tdSex.classList.remove("tooltip-target");
+			const sexInfoEl = Common.DOMLib.createElement("div", tdSex).el;
+			Common.DOMLib.addStyle(sexInfoEl, { display: "none" });
+			sexInfoEl.innerHTML += character.sexInfo;
+
+			Common.Components.RegisterVisToggle(
+				sexChevronEl,
+				[
+					sexInfoEl,
+				],
+				(visible, event) =>
+				{
+					if (visible)
+					{
+						sexChevronEl.classList.remove("bottom");
+					}
+					else
+					{
+						sexChevronEl.classList.add("bottom");
+					}
+					event.stopPropagation();
+				},
+				false,
+				[tdSex]
+			);
 		}
 		document.getElementById("tdAge").innerHTML += character.age;
 		document.getElementById("tdHeight").innerHTML += character.height;
@@ -128,22 +155,69 @@ registerNamespace("Pages.Character", function (ns)
 	{
 		if (character.appearanceDetails)
 		{
-			ns.infoControl.addNewTab("Appearance", getBasicDiv(character.appearanceDetails));
+			var tabId = ns.infoControl.addNewTab("<u>A</u>ppearance", getBasicDiv(character.appearanceDetails));
+			Common.Components.registerShortcuts({
+				"ALT+A": {
+					action: Common.fcd(this, function(tabId)
+					{
+						ns.infoControl.setActiveTab(tabId);
+						document.getElementById(tabId).focus();
+					}, [tabId]),
+					description: "Open appearance information"
+				}
+			});
 		}
 		if (character.personality)
 		{
-			ns.infoControl.addNewTab("Personality", getBasicDiv(character.personality));
+			var tabId = ns.infoControl.addNewTab("<u>P</u>ersonality", getBasicDiv(character.personality));
+			Common.Components.registerShortcuts({
+				"ALT+P": {
+					action: Common.fcd(this, function (tabId)
+					{
+						ns.infoControl.setActiveTab(tabId);
+						document.getElementById(tabId).focus();
+					}, [tabId]),
+					description: "Open personality information"
+				}
+			});
 		}
 		if (character.backstory)
 		{
-			ns.infoControl.addNewTab("Backstory", getBasicDiv(character.backstory));
+			var tabId = ns.infoControl.addNewTab("<u>B</u>ackstory", getBasicDiv(character.backstory));
+			Common.Components.registerShortcuts({
+				"ALT+B": {
+					action: Common.fcd(this, function (tabId)
+					{
+						ns.infoControl.setActiveTab(tabId);
+						document.getElementById(tabId).focus();
+					}, [tabId]),
+					description: "Open backstory information"
+				}
+			});
 		}
 		if (character.galleryLink)
 		{
 			var galleryContainerEl = Common.DOMLib.createElement("div").el;
-			Common.DOMLib.addStyle(galleryContainerEl, { height: "100%", width: "100%", overflow: "hidden" });
-			var galleryTabId = ns.infoControl.addNewTab("Gallery", galleryContainerEl);
-			ns.infoControl.addOnActivate(galleryTabId, Common.fcd(ns, buildGalleryPage, [character, galleryContainerEl]));
+			Common.DOMLib.addStyle(
+				galleryContainerEl,
+				{ height: "100%", width: "100%", overflow: "hidden" }
+			);
+			var galleryTabId = ns.infoControl.addNewTab("<u>G</u>allery", galleryContainerEl);
+			ns.infoControl.addOnActivate(
+				galleryTabId,
+				Common.fcd(ns, buildGalleryPage, [character, galleryContainerEl])
+			);
+
+			Common.Components.registerShortcuts({
+				"ALT+G": {
+					action: Common.fcd(this, function (tabId)
+					{
+						ns.infoControl.setActiveTab(tabId);
+						document.getElementById(tabId).focus();
+					}, [galleryTabId]),
+					description: "Open character art gallery"
+				}
+			});
 		}
 	}
 
@@ -173,6 +247,14 @@ registerNamespace("Pages.Character", function (ns)
 		Common.DOMLib.addStyle(el, { width: "100%", height: "100%", border: "0" });
 		return el;
 	}
+
+	ns.resizeListener = () =>
+	{
+		if (window.innerWidth > Pages.Character.MINI_THRESHOLD)
+		{
+			Common.Components.GetVisToggle("leftPaneCollapseBtn").doToggle(true);
+		}
+	};
 });
 
 /**
@@ -235,4 +317,5 @@ window.onload = () =>
 			}
 		}
 	);
+	window.addEventListener("resize", Pages.Character.resizeListener);
 };

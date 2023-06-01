@@ -69,7 +69,7 @@ ul {
 	padding-left: 20px;
 }
 
-/* Pages.Common.MINI_THRESHOLD */
+/* Common.MINI_THRESHOLD */
 @media (max-width: 600px) {
 	#content {
 		justify-content: center;

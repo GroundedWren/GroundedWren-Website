@@ -24,6 +24,11 @@
 			ns.Shortcuts.removeShortcut(code);
 		});
 	}
+
+	ns.clearShortcuts = function ()
+	{
+		ns.Shortcuts.shortcutMap = {};
+	}
 });
 
 registerNamespace("Common.Components.Shortcuts", function (ns)
@@ -44,7 +49,7 @@ registerNamespace("Common.Components.Shortcuts", function (ns)
 		}
 		if (event.shiftKey)
 		{
-			mapLevel = mapLevel["ALT"] = mapLevel["ALT"] || {};
+			mapLevel = mapLevel["SHIFT"] = mapLevel["SHIFT"] || {};
 		}
 		var stack = mapLevel[event.key.toUpperCase()];
 		if (stack && stack.length)
@@ -62,7 +67,7 @@ registerNamespace("Common.Components.Shortcuts", function (ns)
 	ns.removeShortcut = function (code)
 	{
 		var codeStack = ns.findShortcutStack(code);
-		codeStack.pop();
+		codeStack.shift();
 	}
 
 	ns.activateShortcut = function (code)

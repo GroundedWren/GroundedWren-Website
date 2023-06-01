@@ -241,6 +241,14 @@ registerNamespace("Pages.Writing", function (ns)
 			metaContent.remove();
 		}
 	}
+
+	ns.resizeListener = () =>
+	{
+		if (window.innerWidth <= Common.MINI_THRESHOLD)
+		{
+			Common.Components.GetVisToggle("leftPaneCollapseBtn").doToggle(true);
+		}
+	};
 });
 
 /**
@@ -283,4 +291,5 @@ window.onload = () =>
 			visTogChevron.classList.add(visible ? "left" : "right");
 		}
 	);
+	window.addEventListener("resize", Pages.Writing.resizeListener);
 };

@@ -58,7 +58,7 @@
 				+ "<p>Cyrus, for all of his shortcomings, is one of the few people in Vera’s life who is not wary of her infernal heritage - he doesn’t seem to notice at all. This alone has earned Vera’s respect and loyalty.</P>"
 				+ "<p>Vera is concerned by her father’s declining health, but lacks the courage to visit often.</P>",
 
-			galleryLink: "/pages/Art.html?charFilt=Vera&showAll=artist&sort=date&hide=leftPane&hide=banner&hide=bannerBuffer"
+			galleryLink: "/pages/Art.html?charFilt=Vera&showAll=artist&sort=date&hide=leftPane&hide=banner&hide=bannerBuffer&disable=shortcuts"
 		},
 		"Freya": {
 			profileSrc: "../../img/Profiles/Freya Shaded Halfbody Cropped - Chelsea-Rhi - 2022-02-24.png",
@@ -114,7 +114,7 @@
 				+ "<p>Seeing her single-minded devotion to the righteous cause of destroying the undead, and her leadership in rallying her town in a noble cause, Lathander blessed her as a paladin.</p>"
 				+ "<p>When she felt she was strong enough, Freya took a boat to Port Nyanzaru, finally returning to  her homeland....</p>",
 
-			galleryLink: "/pages/Art.html?charFilt=Freya&showAll=artist&sort=date&hide=leftPane&hide=banner&hide=bannerBuffer"
+			galleryLink: "/pages/Art.html?charFilt=Freya&showAll=artist&sort=date&hide=leftPane&hide=banner&hide=bannerBuffer&disable=shortcuts"
 		},
 		"Orianna": {
 			name: "Orianna Nailo",
@@ -224,7 +224,7 @@
 				+ "<h1>Andromeda (2819-)</h1>"
 				+ "<p>Following the events of Mass Effect: Andromeda, Dr. Alerius' team is awakened from cryo-sleep. Supplied a new frigate by the initiative - the Wasp - they are let loose into the cluster to scout for new interesting floral life. Technically their primary goal is to find useful plants for cultivation by the Initiative, but their unofficial goal is to study local ecosystems and expand knowledge about how life works on the inter-galactic scale. Sindri is highly excited to begin this new phase of his life, and endless possibilities no doubt await....</p>",
 
-			galleryLink: "/pages/Art.html?charFilt=Sindri&showAll=artist&sort=date&hide=leftPane&hide=banner&hide=bannerBuffer"
+			galleryLink: "/pages/Art.html?charFilt=Sindri&showAll=artist&sort=date&hide=leftPane&hide=banner&hide=bannerBuffer&disable=shortcuts"
 		},
 		"Veryn": {
 			//profileSrc: "../../img/Profiles/x.png",
@@ -268,7 +268,7 @@
 
 			backstory: "<p>Forthcoming</p>",
 
-			/*galleryLink: "/pages/Art.html?charFilt=Veryn&showAll=artist&sort=date&hide=leftPane&hide=banner&hide=bannerBuffer"*/
+			/*galleryLink: "/pages/Art.html?charFilt=Veryn&showAll=artist&sort=date&hide=leftPane&hide=banner&hide=bannerBuffer&disable=shortcuts"*/
 		},
 
 		"template": {
@@ -308,7 +308,7 @@
 				+ "<p></p>"
 				+ "<p></p>",
 
-			galleryLink: "/pages/Art.html?charFilt=<char>&showAll=artist&sort=date&hide=leftPane&hide=banner&hide=bannerBuffer"
+			galleryLink: "/pages/Art.html?charFilt=<char>&showAll=artist&sort=date&hide=leftPane&hide=banner&hide=bannerBuffer&disable=shortcuts"
 		},
 	};
 });

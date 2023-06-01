@@ -152,8 +152,6 @@ registerNamespace("Pages.Music", function (ns)
 		Common.DOMLib.createElement("h3", detailEl).el.innerText = "Lyrics";
 		Common.DOMLib.createElement("p", detailEl).el.innerHTML = song.lyrics;
 
-		//songTitleContainer.addEventListener("click", toggleDetailDelegate);
-		//chevronEl.addEventListener("keydown", toggleDetailDelegate);
 		Common.Components.RegisterVisToggle(
 			chevronEl,
 			[

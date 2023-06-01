@@ -263,6 +263,13 @@ table, th, td {
 	width: 25px;
 	margin-top: 5px;
 }
+
+.td-chevron {
+	margin-top: 3px;
+	margin-bottom: -3px; 
+	margin-right: 10px;
+	float: right;
+}
 /*#endregion*/
 
 /*#region Tooltips*/
@@ -312,6 +319,9 @@ table, th, td {
 }
 
 .tooltip-target:hover .tooltip-text {
+	visibility: visible;
+}
+.tooltip-target:focus .tooltip-text {
 	visibility: visible;
 }
 

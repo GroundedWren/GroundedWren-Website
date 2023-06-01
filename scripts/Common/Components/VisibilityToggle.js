@@ -81,7 +81,7 @@
 		onKeyUp = (event) =>
 		{
 			if (!event.keyCode
-				|| (event.keyCode !== Common.KeyCodes.Space && event.keyCode !== Common.KeyCodes.Enter)
+				|| (event.keyCode !== Common.KeyCodes.Space)
 			)
 			{
 				return;
@@ -99,6 +99,10 @@
 				return;
 			}
 			event.preventDefault();
+			if (event.keyCode === Common.KeyCodes.Enter)
+			{
+				this.doToggle(undefined, event);
+			}
 		};
 
 		/**

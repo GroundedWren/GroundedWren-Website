@@ -92,7 +92,7 @@ registerNamespace("Common.DOMLib", function (ns)
 			el.setAttribute("tabindex", "0");
 		}
 		el.addEventListener("keyup", (event) => { __buttonKeyup(action, event); });
-		el.addEventListener("keydown", (event) => { __buttonKeydown(event); });
+		el.addEventListener("keydown", (event) => { __buttonKeydown(action, event); });
 		el.addEventListener("click", (event) => { __buttonPress(action, event); });
 	};
 	ns.setAsButton = setAsButton;
@@ -101,6 +101,7 @@ registerNamespace("Common.DOMLib", function (ns)
 	{
 		el.setAttribute("role", "link");
 		el.addEventListener("keyup", (event) => { __buttonKeyup(() => { Common.navTo(href); }, event); });
+		el.addEventListener("keydown", (event) => { __buttonKeydown(() => { Common.navTo(href); }, event); });
 		el.addEventListener("click", (event) => { __buttonPress(() => { Common.navTo(href); }, event); });
 	};
 	ns.setAsLink = setAsLink;
@@ -108,7 +109,7 @@ registerNamespace("Common.DOMLib", function (ns)
 	function __buttonKeyup(action, event)
 	{
 		if (!event.keyCode
-			|| (event.keyCode !== Common.KeyCodes.Space && event.keyCode !== Common.KeyCodes.Enter)
+			|| (event.keyCode !== Common.KeyCodes.Space)
 		)
 		{
 			return;
@@ -116,7 +117,7 @@ registerNamespace("Common.DOMLib", function (ns)
 		__buttonPress(action, event);
 	};
 
-	function __buttonKeydown(event)
+	function __buttonKeydown(action, event)
 	{
 		if (!event.keyCode
 			|| (event.keyCode !== Common.KeyCodes.Space && event.keyCode !== Common.KeyCodes.Enter)
@@ -125,6 +126,10 @@ registerNamespace("Common.DOMLib", function (ns)
 			return;
 		}
 		event.preventDefault();
+		if (event.keyCode === Common.KeyCodes.Enter)
+		{
+			__buttonPress(action, event);
+		}
 	};
 
 	function __buttonPress(action, event)

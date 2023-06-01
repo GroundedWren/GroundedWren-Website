@@ -65,6 +65,25 @@ registerNamespace("Pages.Example", function (ns)
 		);
 	}
 	ns.saveTestFile = saveTestFile;
+
+	//#region Shortcuts
+	ns.shortcutIter = 0;
+	ns.addShortcut = function (code)
+	{
+		ns.shortcutIter++;
+		var shorts = {};
+		shorts[code] = {
+			action: Common.fcd(this, function (iter) { window.alert(iter); }, [ns.shortcutIter]),
+			description: ns.shortcutIter
+		};
+		Common.Components.registerShortcuts(shorts);
+	};
+
+	ns.removeShortcut = function (code)
+	{
+		Common.Components.unregisterShortcuts([code]);
+	};
+	//#endregion
 });
 
 /**
