@@ -536,6 +536,7 @@ registerNamespace("Common.Controls.DropdownMenu", function (ns)
 			}
 			if (this.__focusedChildIndex === 0)
 			{
+				this.children[this.__focusedChildIndex].tabIndex = "-1";
 				this.__focusedChildIndex = -1;
 				this.setFocused();
 				return;
