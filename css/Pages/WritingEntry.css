@@ -72,6 +72,7 @@ p {
 
 .centerimg img {
 	max-height: 500px;
+	width: 100%;
 }
 
 .card.right {
