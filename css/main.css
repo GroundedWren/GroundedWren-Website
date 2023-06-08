@@ -50,16 +50,16 @@ a {
 	padding-right: 5px;
 }
 
-/* Common.MINI_THRESHOLD */
-@media (max-width: 600px) {
-	.banner {
+/* We only get into trouble at very small widths */
+@media (max-width: 400px) {
+	.fixed-header {
 		text-align: right;
 	}
 
 	.z {
 	}
 
-	.banner > *[role="heading"] {
+	.fixed-header > *[role="heading"] {
 		margin-right: 50px;
 	}
 }
