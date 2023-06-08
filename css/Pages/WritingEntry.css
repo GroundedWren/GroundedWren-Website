@@ -125,3 +125,8 @@ hr {
 .poetry-line {
 	margin-bottom: 7px;
 }
+
+.white-bkg {
+	background-color: white;
+	padding: 2px;
+}

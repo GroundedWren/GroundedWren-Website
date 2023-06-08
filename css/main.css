@@ -50,6 +50,20 @@ a {
 	padding-right: 5px;
 }
 
+/* Common.MINI_THRESHOLD */
+@media (max-width: 600px) {
+	.banner {
+		text-align: right;
+	}
+
+	.z {
+	}
+
+	.banner > *[role="heading"] {
+		margin-right: 50px;
+	}
+}
+
 .banner-buffer {
 	height: 25px;
 }
@@ -161,6 +175,10 @@ input[type="radio"]:checked {
 	background-color: mediumpurple;
 }
 
+input[type="radio"]:hover {
+	cursor: pointer;
+}
+
 textarea {
 	color: white;
 	background-color: black;
@@ -183,6 +201,7 @@ button, input[type="button"], input[type="submit"], input[type="reset"], input[t
 button:hover, input[type="button"]:hover, input[type="submit"]:hover, input[type="reset"]:hover, input[type="file"]::file-selector-button:hover, .button-like:hover {
 	background-color: rgb(25, 25, 25);
 	border-color: rgb(73, 124, 171);
+	cursor: pointer;
 }
 /*#endregion */
 
@@ -191,11 +210,17 @@ table, th, td {
 	border: 1px solid;
 	border-color: mediumpurple;
 	border-collapse: collapse;
-	width: 100%;
-	table-layout: fixed;
 }
 
-.tableHeader {
+table {
+	width: 100%;
+}
+
+caption {
+	font-style: italic;
+}
+
+thead {
 	border-bottom: 2px solid;
 	border-bottom-color: #A853FC;
 	text-align: center;
@@ -266,7 +291,7 @@ table, th, td {
 
 .td-chevron {
 	margin-top: 3px;
-	margin-bottom: -3px; 
+	margin-bottom: -3px;
 	margin-right: 10px;
 	float: right;
 }
@@ -321,6 +346,7 @@ table, th, td {
 .tooltip-target:hover .tooltip-text {
 	visibility: visible;
 }
+
 .tooltip-target:focus .tooltip-text {
 	visibility: visible;
 }
@@ -328,6 +354,7 @@ table, th, td {
 .sr-only {
 	position: absolute;
 	left: -99999999px;
+	font-size: 1px;
 }
 /*#endregion*/
 
@@ -335,14 +362,19 @@ table, th, td {
 .header-left {
 	float: left;
 	position: absolute;
+	display: flex;
+	flex-direction: row;
+	height: 100%;
 }
 
-.header-left > *{
-	margin-left: 2px;
-	margin-right: 2px;
-}
+	.header-left > * {
+		margin-left: 2px;
+		margin-right: 2px;
+		margin-bottom: 2px;
+	}
 
 /*#endregion*/
+
 /*#region Elements*/
 kbd {
 	font-family: Consolas;
@@ -350,5 +382,17 @@ kbd {
 	border-radius: 3px;
 	padding: 1px;
 	margin: 3px;
+}
+
+button[role="link"], .button-like[role="link"] {
+	text-decoration: underline;
+}
+
+*[role="button"]:hover, *[role="link"]:hover {
+	cursor: pointer;
+}
+
+.clickable:hover {
+	cursor: pointer;
 }
 /*#endregion*/

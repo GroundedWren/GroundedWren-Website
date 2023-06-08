@@ -709,6 +709,21 @@ window.onload = () =>
 			action: () => { document.getElementById("shortcutsButton").click(); },
 			description: "Show shortcut keys"
 		},
+		"ALT+A": {
+			action: () =>
+			{
+				for (var i = 0; i < Pages.Art.ArtFrames.length; i++)
+				{
+					var frame = Pages.Art.ArtFrames[i];
+					if (!frame.filtered)
+					{
+						document.getElementById(frame.frameId).focus();
+						return;
+					}
+				}
+			},
+			description: "Focus the first artwork"
+		},
 	});
 
 	Pages.Art.Data.InitializeArtists(Pages.Art, "Artists");

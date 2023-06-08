@@ -80,9 +80,12 @@ registerNamespace("Pages.Music", function (ns)
 
 		Common.DOMLib.createElement("h3", collectionInfoEl).el.innerText = "Details";
 		const collectionMetaTable = Common.DOMLib.createElement("table", collectionInfoEl).el;
-		addTableRow(collectionMetaTable, "Collection Name", collectionId);
-		addTableRow(collectionMetaTable, "Date", collection.DateString);
-		addTableRow(collectionMetaTable, "Contributing Artists", collection.ContributingArtists.join(", "));
+		const collectionMetaTHead = Common.DOMLib.createElement("thead", collectionMetaTable, ["sr-only"]).el;
+		collectionMetaTHead.innerHTML = "<tr><th>Property</th><th>Value</th></tr>";
+		const collectionMetaTBody = Common.DOMLib.createElement("tbody", collectionMetaTable).el;
+		addTableRow(collectionMetaTBody, "Collection Name", collectionId);
+		addTableRow(collectionMetaTBody, "Date", collection.DateString);
+		addTableRow(collectionMetaTBody, "Contributing Artists", collection.ContributingArtists.join(", "));
 
 		Common.DOMLib.createElement("h3", collectionInfoEl).el.innerText = "Description";
 		Common.DOMLib.createElement("p", collectionInfoEl).el.innerHTML = collection.Description;
@@ -137,14 +140,17 @@ registerNamespace("Pages.Music", function (ns)
 
 		Common.DOMLib.createElement("h3", detailEl).el.innerText = "Details";
 		const detailTable = Common.DOMLib.createElement("table", detailEl).el;
-		addTableRow(detailTable, "Performers", song.performers.join(", "));
-		addTableRow(detailTable, "Composers", song.composers.join(", "));
+		const detailTHead = Common.DOMLib.createElement("thead", detailTable, ["sr-only"]).el;
+		detailTHead.innerHTML = "<tr><th>Property</th><th>Value</th></tr>";
+		const detailTBody = Common.DOMLib.createElement("tbody", detailTable).el;
+		addTableRow(detailTBody, "Performers", song.performers.join(", "));
+		addTableRow(detailTBody, "Composers", song.composers.join(", "));
 		addTableRow(
-			detailTable,
+			detailTBody,
 			"Recorded",
 			song.recorded ? song.recorded.toLocaleString(undefined, { dateStyle: "medium" }) : song.recordedString
 		);
-		addTableRow(detailTable, "Instruments", song.instruments.join(", "));
+		addTableRow(detailTBody, "Instruments", song.instruments.join(", "));
 
 		Common.DOMLib.createElement("h3", detailEl).el.innerText = "Description";
 		Common.DOMLib.createElement("p", detailEl).el.innerHTML = song.description;

@@ -236,7 +236,7 @@ registerNamespace("Pages.Character", function (ns)
 	{
 		var el = Common.DOMLib.createElement("div").el;
 		el.innerHTML = innerHTML;
-		Common.DOMLib.addStyle(el, { "margin-left": "10px", "margin-right": "10px" })
+		Common.DOMLib.addStyle(el, { "padding-left": "10px", "padding-right": "10px" })
 		return el;
 	}
 

@@ -35,7 +35,7 @@ h1, h2, h3 {
 	margin-top: 0;
 }
 
-/* Pages.Common.MINI_THRESHOLD */
+/* Common.MINI_THRESHOLD */
 @media (max-width: 600px) {
 	#mainPage {
 		margin-left: 5px;

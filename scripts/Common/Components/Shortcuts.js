@@ -114,7 +114,6 @@ registerNamespace("Common.Components.Shortcuts", function (ns)
 		});
 
 		ns.shortcutsDialog = new Common.Controls.Popups.Dialog(
-			document.getElementById('subveil'),
 			"Shortcuts",
 			shortcutHTML ? "<ul>" + shortcutHTML + "</ul>" : "No shortcuts",
 			{}, //style

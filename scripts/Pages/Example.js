@@ -10,7 +10,6 @@ registerNamespace("Pages.Example", function (ns)
 		var Dialog = Common.Controls.Popups.Dialog;
 
 		var dialog = new Dialog(
-			document.getElementById('subveil'),
 			"title",
 			"<p>Hi! I'll be your dialog this evening.</p>"
 			+ "<p>Move me around uwu</p>"

@@ -18,9 +18,13 @@ registerNamespace("Pages.Writing", function (ns)
 	const DIRECTORY_CONTENT_ID = "directoryContent";
 	const METADATA_CARD_ID = "metaCard";
 	const METADATA_CONTENT_ID = "metaContent";
+	const ENTRY_LINK_ID = "entryLink";
+	const ENTRY_LINK_WRAPPER_ID = "entryLinkWrapper";
 
 	// Map from folder name to radio element
 	ns.folderRadioMap = {};
+	// Map from entry name to radio element
+	ns.entryRadioMap = {};
 
 	/**
 	 * Builds the folder list card
@@ -48,6 +52,7 @@ registerNamespace("Pages.Writing", function (ns)
 			radioEl.addEventListener("change", Common.fcd(ns, openFolder, [folder]));
 
 			labelEl.setAttribute("for", radioEl.id);
+			labelEl.classList.add("clickable");
 
 			ns.folderRadioMap[folder] = radioEl;
 		});
@@ -72,8 +77,9 @@ registerNamespace("Pages.Writing", function (ns)
 
 		if (params.has(ENTRY_PARAM) && folder)
 		{
-			const entry = params.get(ENTRY_PARAM);
-			openToEntry(folder, entry);
+			const entryId = params.get(ENTRY_PARAM);
+			openToEntry(folder, entryId);
+			ns.entryRadioMap[entryId].checked = true;
 		}
 		else
 		{
@@ -136,25 +142,43 @@ registerNamespace("Pages.Writing", function (ns)
 			DIRECTORY_CONTENT_ID
 		).el;
 
-		const listEl = Common.DOMLib.createElement("ul", directoryEl).el;
-
 		const folderObj = ns.Data.Folders[folder];
 		Object.keys(folderObj.entries).forEach(entryId =>
 		{
 			const entry = folderObj.entries[entryId];
 
-			const listItemEL = Common.DOMLib.createElement("li", listEl).el;
+			const inputLineEl = Common.DOMLib.createElement("div", directoryEl, ["input-flex-line"]).el;
 
-			const linkEl = Common.DOMLib.createElement("a", listItemEL).el;
-			linkEl.innerHTML = `${entry.title}`;
-			linkEl.setAttribute("href", `?folder=${folder}&entry=${entryId}`);
-			linkEl.onclick = Common.fcd(
+			const labelEl = Common.DOMLib.createElement("label", inputLineEl).el;
+			labelEl.innerHTML = entry.title;
+			const radioEl = Common.DOMLib.createElement("input", inputLineEl).el;
+			Common.DOMLib.setAttributes(
+				radioEl,
+				{
+					"type": "radio",
+					"name": "entryList",
+					"value": entry.title
+				}
+			);
+			radioEl.addEventListener("change", Common.fcd(
 				ns,
 				openToEntry,
 				[folder, entryId]
-			);
+			));
+			ns.entryRadioMap[entryId] = radioEl;
+
+			labelEl.setAttribute("for", radioEl.id);
+			labelEl.classList.add("clickable");
 		});
 	}
+
+	ns.navToCurrent = function ()
+	{
+		var linkEl = document.getElementById(ENTRY_LINK_ID);
+		if (!linkEl) { return; }
+
+		Common.navTo(linkEl.getAttribute("href"));
+	};
 
 	/**
 	 * Opens the specified entry from the specified folder
@@ -190,22 +214,15 @@ registerNamespace("Pages.Writing", function (ns)
 	function loadEntry(filename, directory, extension, title)
 	{
 		const page = directory + filename + extension;
-		if (window.innerWidth <= Common.MINI_THRESHOLD)
-		{
-			if (window.innerWidth <= Common.MINI_THRESHOLD)
-			{
-				window.location.href = page;
-				return;
-			}
-		}
 		ns.entryFrame.setAttribute("src", page);
-		ns.entryHeader.innerHTML = `<a href="${page}">${title}</a>`;
+		ns.entryHeader.innerHTML = `<a id="${ENTRY_LINK_ID}" href="${page}">${title}</a>`;
 	}
 
 	function displayMetadata(entry)
 	{
 		const metaCard = document.getElementById(METADATA_CARD_ID);
 		metaCard.classList.remove("hidden");
+		document.getElementById(ENTRY_LINK_WRAPPER_ID).style["display"] = "flex";
 
 		var metaContent = document.getElementById(METADATA_CONTENT_ID);
 		if (metaContent)
@@ -234,6 +251,7 @@ registerNamespace("Pages.Writing", function (ns)
 	{
 		const metaCard = document.getElementById(METADATA_CARD_ID);
 		metaCard.classList.add("hidden");
+		document.getElementById(ENTRY_LINK_WRAPPER_ID).style["display"] = "none";
 
 		const metaContent = document.getElementById(METADATA_CONTENT_ID);
 		if (metaContent)

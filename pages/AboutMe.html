@@ -1,188 +1,223 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A page all about Vera Konigin and her interests">
-    <title>About Me</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="A page all about Vera Konigin and her interests">
+	<title>About Me</title>
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="../css/main.css" type="text/css" />
-    <link rel="stylesheet" href="../css/Common/Controls.css" type="text/css" />
+	<!-- Styles -->
+	<link rel="stylesheet" href="../css/main.css" type="text/css" />
+	<link rel="stylesheet" href="../css/Common/Controls.css" type="text/css" />
 
-    <link rel="stylesheet" href="../css/Pages/AboutMe.css" type="text/css" />
+	<link rel="stylesheet" href="../css/Pages/AboutMe.css" type="text/css" />
 
-    <!-- ../scripts -->
-    <script src="../scripts/main.js"></script>
+	<!-- ../scripts -->
+	<script src="../scripts/main.js"></script>
 
-    <script src="../scripts/Common/Common.js"></script>
-    <script src="../scripts/Common/DOMLib.js"></script>
-    <script src="../scripts/Common/SVGLib.js"></script>
-    <script src="../scripts/Common/Components/Timekeeper.js"></script>
-    <script src="../scripts/Common/Components/Shortcuts.js"></script>
-    <script src="../scripts/Common/Components/ElementDragger.js"></script>
-    <script src="../scripts/Common/Controls/PageControl.js"></script>
-    <script src="../scripts/Common/Controls/ZeroState.js"></script>
-    <script src="../scripts/Common/Controls/Dialog.js"></script>
+	<script src="../scripts/Common/Common.js"></script>
+	<script src="../scripts/Common/DOMLib.js"></script>
+	<script src="../scripts/Common/SVGLib.js"></script>
+	<script src="../scripts/Common/Components/Timekeeper.js"></script>
+	<script src="../scripts/Common/Components/Shortcuts.js"></script>
+	<script src="../scripts/Common/Components/ElementDragger.js"></script>
+	<script src="../scripts/Common/Controls/PageControl.js"></script>
+	<script src="../scripts/Common/Controls/ZeroState.js"></script>
+	<script src="../scripts/Common/Controls/Dialog.js"></script>
 
-    <script src="../scripts/Pages/AboutMe.js"></script>
+	<script src="../scripts/Pages/AboutMe.js"></script>
 </head>
 <body>
-    <div id="subveil">
-        <header><div class="banner fixed-header">
-            <div class="header-left">
-                <button id="homeButton"
-                        role="link"
-                        onclick="Common.navTo('../index.html')">
-                    <u>H</u>ome
-                </button>
-                <button id="shortcutsButton"
-                        onclick="Common.Components.displayShortcuts('shortcutsButton')">
-                    <u>S</u>hortcuts
-                </button>
-            </div>
-            <span role="heading" aria-level="1">About Me</span>
-           </div></header>
-        <div class="banner-buffer"></div>
-        <div class="main-page" role="main">
-            <div id="topContent">
-                <div id="contactCard" class="card">
-                    <div class="card-header" role="heading" aria-level="2">Contact</div>
-                    <table id="contactTable">
-                        <tr><td class="row-label">Vera time</td><td id="veraTime">loading...</td></tr>
-                        <tr><td class="row-label">Email</td><td>vera@groundedwren.com</td></tr>
-                        <tr><td class="row-label">Discord</td><td>Vera#9518</td></tr>
-                    </table>
-                </div>
-            </div>
-            <div id="content">
-                <div id="quickFactCard" class="card">
-                    <div class="card-header" role="heading" aria-level="2">Quick Facts</div>
-                    <table id="quickFactTable">
-                        <tr><td class="row-label">Pseudonym</td><td>Vera</td></tr>
-                        <tr><td class="row-label">Age</td><td>20s</td></tr>
-                        <tr><td class="row-label">Sign</td><td>Gemini</td></tr>
-                        <tr><td class="row-label">Pronouns</td><td>She/Her</td></tr>
-                        <tr><td class="row-label">Gender</td><td>What, are you a cop?</td></tr>
-                        <tr><td class="row-label">Orientation</td><td>Bisexual (taken; monogamous)</td></tr>
-                        <tr><td class="row-label">Politics</td><td>Left</td></tr>
-                        <tr><td class="row-label">Occupation</td><td>Software</td></tr>
-                        <tr><td class="row-label">Location</td><td>Midwest United States</td></tr>
-                    </table>
-                </div>
-                <div id="quickOpinionCard" class="card">
-                    <div class="card-header" role="heading" aria-level="2">Quick Opinions</div>
-                    <h3>Likes</h3>
-                    <ul>
-                        <li>Music</li>
-                        <li>Embroidery</li>
-                        <li>Sad movies</li>
-                        <li>Taking notes</li>
-                        <li>RPGs</li>
-                        <li>Vinyl</li>
-                        <li>Baths</li>
-                        <li>Blankets</li>
-                        <li>Umami</li>
-                        <li>Guitar</li>
-                    </ul>
-                    <h3>Dislikes</h3>
-                    <ul>
-                        <li>Crowds</li>
-                        <li>Being cold</li>
-                        <li>Big meetings</li>
-                        <li>Congestion</li>
-                        <li>Getting out of bed</li>
-                    </ul>
-                    <h3>Favorites</h3>
-                    <table id="favoritesTable">
-                        <tr><td class="row-label">Food</td><td>Navratan Korma</td></tr>
-                        <tr><td class="row-label">Drink</td><td>Coffee</td></tr>
-                        <tr><td class="row-label">Game</td><td>Mass Effect 3</td></tr>
-                        <tr><td class="row-label">Movie</td><td>The Shining</td></tr>
-                        <tr><td class="row-label">Animal</td><td>Cat</td></tr>
-                        <tr><td class="row-label">Song</td><td><a href="https://www.youtube.com/watch?v=Ou9U7Zl0Sz0" target="_blank">Flightless Bird, American Mouth</a></td></tr>
-                        <tr><td class="row-label">Album</td><td><a href="https://www.youtube.com/watch?v=uTsbNMRQa1E" target="_blank">The Creek Drank the Cradle</a></td></tr>
-                    </table>
-                </div>
-                <div id="thisOrThatCard" class="card">
-                    <div class="card-header" role="heading" aria-level="2">This or That?</div>
-                    <table id="thisOrThatTable">
-                        <tr>
-                            <td class="long-row-label">Bad haircut or bad dye job?</td>
-                            <td>Dye job for sure. Way more reversable.</td>
-                        </tr>
-                        <tr>
-                            <td class="long-row-label">Pineapple pizza or candy corn?</td>
-                            <td>I actually like pineapple pizza. Candy corn is a biohazard.</td>
-                        </tr>
-                        <tr>
-                            <td class="long-row-label">Day or night?</td>
-                            <td>I wrote this at 1:51 in the morning.</td>
-                        </tr>
-                        <tr>
-                            <td class="long-row-label">Talking pets or talking babies?</td>
-                            <td>Pets - babies will get their chance.</td>
-                        </tr>
-                        <tr>
-                            <td class="long-row-label">Winning the lottery or finding your soulmate?</td>
-                            <td>Sonny, true love is the greatest thing in the world. Except for a nice MLT.</td>
-                        </tr>
-                        <tr>
-                            <td class="long-row-label">Misquoted movies or mistaken lyrics?</td>
-                            <td>Girl I do both.</td>
-                        </tr>
-                        <tr>
-                            <td class="long-row-label">Test the waters or dive in the deep end?</td>
-                            <td>I wasn't allowed in the (literal) deep end as a kid, so I'm definitely going for that now.</td>
-                        </tr>
-                        <tr>
-                            <td class="long-row-label">Glass half full or glass half empty?</td>
-                            <td>What's in the glass? <i>WHAT'S IN THE GLASS?</i></td>
-                        </tr>
-                        <tr>
-                            <td class="long-row-label">Crunchy or smooth peanut butter?</td>
-                            <td>I hear that the responses to this are statistically gendered? How weird is that? (question dodge)</td>
-                        </tr>
-                        <tr>
-                            <td class="long-row-label">Zombies or Vampires?</td>
-                            <td>Depends on how hot the vampires are.</td>
-                        </tr>
-                    </table>
-                    <footer>Source: <a href="https://teambuilding.com/blog/this-or-that-questions#funny" target="_blank">teambuilding.com</a></footer>
-                </div>
-                <div id="socialsCard" class="card">
-                    <div class="card-header" role="heading" aria-level="2">Socials</div>
-                    <div id="socialsCtrl" class="page-control loading">
-                        <div id="socialsCtrl_ts" class="tab-strip">
-                            <div id="socialsCtrl_tab_Twitter" class="tab-strip-tab button-like"><span>Twitter</span></div>
-                            <div id="socialsCtrl_tab_Cohost" class="tab-strip-tab button-like"><span>Cohost</span></div>
-                            <div id="socialsCtrl_tab_Tumblr" class="tab-strip-tab button-like"><span>Tumblr</span></div>
-                            <div id="socialsCtrl_tab_Other" class="tab-strip-tab button-like"><span>Other</span></div>
-                            <div class="tab-gutter"></div>
-                        </div>
-                        <div id="socialsCtrl_pgc" class="page-container">
-                            <div id="socialsCtrl_page_Twitter" class="page-control-page">
-                                <a class="twitter-timeline" data-width="500" data-height="700" data-dnt="true" data-theme="dark" href="https://twitter.com/TearsHoldLight?ref_src=twsrc%5Etfw">Tweets by TearsHoldLight</a>
-                                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-                            </div>
-                            <div id="socialsCtrl_page_Cohost" class="page-control-page" style="overflow: hidden">
-                                <!-- To be added by JS -->
-                            </div>
-                            <div id="socialsCtrl_page_Tumblr" class="page-control-page" style="overflow: hidden">
-                                <div class="tumblr-post" data-href="https://embed.tumblr.com/embed/post/DU2ipG5WI_VUsZg_8jTGjA/704131884206194689" data-did="4de863624eaaa48895d516b4bd8b0f17465f9940"><a href="https://vakarianfan.tumblr.com/post/704131884206194689/hi">https://vakarianfan.tumblr.com/post/704131884206194689/hi</a></div>
-                                <script async src="https://assets.tumblr.com/post.js"></script>
-                            </div>
-                            <div id="socialsCtrl_page_Other" class="page-control-page" style="overflow: hidden">
-                                <ul>
-                                    <li>GitHub: <a href="https://github.com/GroundedWren">GroundedWren</a></li>
-                                    <li>AO3: <a href="https://archiveofourown.org/users/Grounded_Wren96">Grounded_Wren96</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+	<div id="subveil">
+		<header><div class="banner fixed-header">
+			<div class="header-left">
+				<button id="homeButton"
+						role="link"
+						onclick="Common.navTo('../index.html')">
+					<u>H</u>ome
+				</button>
+				<button id="shortcutsButton"
+						onclick="Common.Components.displayShortcuts('shortcutsButton')">
+					<u>S</u>hortcuts
+				</button>
+			</div>
+			<span role="heading" aria-level="1">About Me</span>
+		   </div></header>
+		<div class="banner-buffer"></div>
+		<div class="main-page" role="main">
+			<div id="topContent">
+				<div id="contactCard" class="card">
+					<div class="card-header" role="heading" aria-level="2">Contact</div>
+					<table id="contactTable">
+						<thead class="sr-only">
+							<tr><th>Property</th><th>Value</th></tr>
+						</thead>
+						<tbody>
+							<tr><td class="row-label">Vera time</td><td id="veraTime">CT</td></tr>
+							<tr><td class="row-label">Email</td><td>vera@groundedwren.com</td></tr>
+							<tr><td class="row-label">Discord</td><td>Vera#9518</td></tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div id="content">
+				<div id="quickFactCard" class="card">
+					<div class="card-header" role="heading" aria-level="2">Quick Facts</div>
+					<table id="quickFactTable">
+						<thead class="sr-only">
+							<tr><th>Property</th><th>Value</th></tr>
+						</thead>
+						<tbody>
+							<tr><td class="row-label">Pseudonym</td><td>Vera</td></tr>
+							<tr><td class="row-label">Age</td><td>20s</td></tr>
+							<tr><td class="row-label">Sign</td><td>Gemini</td></tr>
+							<tr><td class="row-label">Pronouns</td><td>She/Her</td></tr>
+							<tr><td class="row-label">Gender</td><td>What, are you a cop?</td></tr>
+							<tr><td class="row-label">Orientation</td><td>Bisexual (taken; monogamous)</td></tr>
+							<tr><td class="row-label">Politics</td><td>Left</td></tr>
+							<tr><td class="row-label">Occupation</td><td>Software</td></tr>
+							<tr><td class="row-label">Location</td><td>Midwest United States</td></tr>
+						</tbody>
+					</table>
+				</div>
+				<div id="quickOpinionCard" class="card">
+					<div class="card-header" role="heading" aria-level="2">Quick Opinions</div>
+					<h3>Likes</h3>
+					<ul>
+						<li>Music</li>
+						<li>Embroidery</li>
+						<li>Sad movies</li>
+						<li>Taking notes</li>
+						<li>RPGs</li>
+						<li>Vinyl</li>
+						<li>Baths</li>
+						<li>Blankets</li>
+						<li>Umami</li>
+						<li>Guitar</li>
+					</ul>
+					<h3>Dislikes</h3>
+					<ul>
+						<li>Crowds</li>
+						<li>Being cold</li>
+						<li>Big meetings</li>
+						<li>Congestion</li>
+						<li>Getting out of bed</li>
+					</ul>
+					<h3>Favorites</h3>
+					<table id="favoritesTable">
+						<thead class="sr-only">
+							<tr><th>Item</th><th>Value</th></tr>
+						</thead>
+						<tbody>
+							<tr><td class="row-label">Food</td><td>Navratan Korma</td></tr>
+							<tr><td class="row-label">Drink</td><td>Coffee</td></tr>
+							<tr><td class="row-label">Game</td><td>Mass Effect 3</td></tr>
+							<tr><td class="row-label">Movie</td><td>The Shining</td></tr>
+							<tr><td class="row-label">Animal</td><td>Cat</td></tr>
+							<tr>
+								<td class="row-label">Song</td>
+								<td>
+									<a href="https://www.youtube.com/watch?v=Ou9U7Zl0Sz0" target="_blank">
+										Flightless Bird, American Mouth
+									</a>
+								</td>
+							</tr>
+							<tr>
+								<td class="row-label">Album</td>
+								<td>
+									<a href="https://www.youtube.com/watch?v=uTsbNMRQa1E" target="_blank">
+										The Creek Drank the Cradle
+									</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div id="thisOrThatCard" class="card">
+					<div class="card-header" role="heading" aria-level="2">This or That?</div>
+					<table id="thisOrThatTable">
+						<thead class="sr-only">
+							<tr><th>Question</th><th>Answer</th></tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td class="long-row-label">Bad haircut or bad dye job?</td>
+								<td>Dye job for sure. Way more reversable.</td>
+							</tr>
+							<tr>
+								<td class="long-row-label">Pineapple pizza or candy corn?</td>
+								<td>I actually like pineapple pizza. Candy corn is a biohazard.</td>
+							</tr>
+							<tr>
+								<td class="long-row-label">Day or night?</td>
+								<td>I wrote this at 1:51 in the morning.</td>
+							</tr>
+							<tr>
+								<td class="long-row-label">Talking pets or talking babies?</td>
+								<td>Pets - babies will get their chance.</td>
+							</tr>
+							<tr>
+								<td class="long-row-label">Winning the lottery or finding your soulmate?</td>
+								<td>Sonny, true love is the greatest thing in the world. Except for a nice MLT.</td>
+							</tr>
+							<tr>
+								<td class="long-row-label">Misquoted movies or mistaken lyrics?</td>
+								<td>Girl I do both.</td>
+							</tr>
+							<tr>
+								<td class="long-row-label">Test the waters or dive in the deep end?</td>
+								<td>I wasn't allowed in the (literal) deep end as a kid, so I'm definitely going for that now.</td>
+							</tr>
+							<tr>
+								<td class="long-row-label">Glass half full or glass half empty?</td>
+								<td>What's in the glass? <i>WHAT'S IN THE GLASS?</i></td>
+							</tr>
+							<tr>
+								<td class="long-row-label">Crunchy or smooth peanut butter?</td>
+								<td>I hear that the responses to this are statistically gendered? How weird is that? (question dodge)</td>
+							</tr>
+							<tr>
+								<td class="long-row-label">Zombies or Vampires?</td>
+								<td>Depends on how hot the vampires are.</td>
+							</tr>
+						</tbody>
+					</table>
+					<footer>Source: <a href="https://teambuilding.com/blog/this-or-that-questions#funny" target="_blank">teambuilding.com</a></footer>
+				</div>
+				<div id="socialsCard" class="card">
+					<div class="card-header" role="heading" aria-level="2">Socials</div>
+					<div id="socialsCtrl" class="page-control loading">
+						<div id="socialsCtrl_ts" class="tab-strip">
+							<div id="socialsCtrl_tab_Twitter" class="tab-strip-tab button-like"><span>Twitter</span></div>
+							<div id="socialsCtrl_tab_Cohost" class="tab-strip-tab button-like"><span>Cohost</span></div>
+							<div id="socialsCtrl_tab_Tumblr" class="tab-strip-tab button-like"><span>Tumblr</span></div>
+							<div id="socialsCtrl_tab_Other" class="tab-strip-tab button-like"><span>Other</span></div>
+							<div class="tab-gutter"></div>
+						</div>
+						<div id="socialsCtrl_pgc" class="page-container">
+							<div id="socialsCtrl_page_Twitter" class="page-control-page">
+								<a class="twitter-timeline" data-width="500" data-height="700" data-dnt="true" data-theme="dark" href="https://twitter.com/TearsHoldLight?ref_src=twsrc%5Etfw">Tweets by TearsHoldLight</a>
+								<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+							</div>
+							<div id="socialsCtrl_page_Cohost" class="page-control-page" style="overflow: hidden">
+								<!-- To be added by JS -->
+							</div>
+							<div id="socialsCtrl_page_Tumblr" class="page-control-page" style="overflow: hidden">
+								<div class="tumblr-post" data-href="https://embed.tumblr.com/embed/post/DU2ipG5WI_VUsZg_8jTGjA/704131884206194689" data-did="4de863624eaaa48895d516b4bd8b0f17465f9940"><a href="https://vakarianfan.tumblr.com/post/704131884206194689/hi">https://vakarianfan.tumblr.com/post/704131884206194689/hi</a></div>
+								<script async src="https://assets.tumblr.com/post.js"></script>
+							</div>
+							<div id="socialsCtrl_page_Other" class="page-control-page" style="overflow: hidden">
+								<ul>
+									<li>GitHub: <a href="https://github.com/GroundedWren">GroundedWren</a></li>
+									<li>AO3: <a href="https://archiveofourown.org/users/Grounded_Wren96">Grounded_Wren96</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="dialogRegion" role="region" aria-label="dialogs"></div>
+	</div>
 </body>
 </html>

@@ -69,6 +69,10 @@ ul {
 	padding-left: 20px;
 }
 
+#openEntryButton {
+	display: none;
+}
+
 /* Common.MINI_THRESHOLD */
 @media (max-width: 600px) {
 	#content {
@@ -89,5 +93,12 @@ ul {
 
 	#leftPaneCollapseBtn {
 		display:none;
+	}
+
+	#openEntryButton {
+		display: block;
+		width: 100%;
+		margin: 10px;
+		height: 44px;
 	}
 }

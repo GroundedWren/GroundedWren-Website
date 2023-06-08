@@ -6,6 +6,8 @@
 	var DialogMap = {};
 	ns.DialogMap = DialogMap;
 
+	ns.DialogContainerID = "dialogRegion";
+
 	/**
 	 * An amodal popup
 	 */
@@ -44,7 +46,6 @@
 
 		/**
 		 * Creates the dialog without displaying it
-		 * @param parentEl Element the dialog will be created under
 		 * @param title HTML title for the dialog
 		 * @param content HTML Content for the dialog
 		 * @param style Object of properties to set into the top-level popup style
@@ -53,11 +54,11 @@
 		 *					- onHide
 		 *					- onDestroy
 		 */
-		constructor(parentEl, title, content, style, delegates, anchorEl)
+		constructor(title, content, style, delegates, anchorEl)
 		{
 			this.__anchorEl = anchorEl;
 
-			this.__createDOM(parentEl);
+			this.__createDOM(document.getElementById(Common.Controls.Popups.DialogContainerID));
 			Common.DOMLib.addStyle(this.__dialogEl, style || {});
 
 			this.__dialogTitle.innerHTML = title;

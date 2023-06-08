@@ -52,13 +52,23 @@
 			<div class="content">
 				<div id="LeftPane" role="region" aria-label="Misc Statistics">
 					<img id="ProfilePicture" style="width: 100%" />
-					<table id="BasicInfo" aria-label="Basic information">
-						<tr><td class="row-label">Name</td><td id="tdName"></td></tr>
-						<tr><td class="row-label">Pronouns</td><td id="tdPronouns"></td></tr>
-						<tr><td class="row-label">Gender</td><td id="tdGender"></td></tr>
-						<tr><td class="row-label">Orientation</td><td id="tdOrientation"></td></tr>
+					<table id="BasicInfo">
+						<caption>Basic Information</caption>
+						<thead class="sr-only">
+							<tr><th>Property</th><th>Value</th></tr>
+						</thead>
+						<tbody>
+							<tr><td class="row-label">Name</td><td id="tdName"></td></tr>
+							<tr><td class="row-label">Pronouns</td><td id="tdPronouns"></td></tr>
+							<tr><td class="row-label">Gender</td><td id="tdGender"></td></tr>
+							<tr><td class="row-label">Orientation</td><td id="tdOrientation"></td></tr>
+						</tbody>
 					</table>
-					<table id="PhysicalInfo" aria-label="Physical information">
+					<table id="PhysicalInfo">
+						<caption>Physical Information</caption>
+						<thead class="sr-only">
+							<tr><th>Property</th><th>Value</th></tr>
+						</thead>
 						<tr><td class="row-label">Species</td><td id="tdSpecies"></td></tr>
 						<tr>
 							<td class="row-label">Sex</td>
@@ -69,13 +79,23 @@
 						<tr><td class="row-label">Age</td><td id="tdAge"></td></tr>
 						<tr><td class="row-label">Height</td><td id="tdHeight"></td></tr>
 					</table>
-					<table id="Colors" aria-label="Colors">
+					<table id="Colors">
+						<caption>Colors</caption>
+						<thead class="sr-only">
+							<tr><th>Property</th><th>Value</th></tr>
+						</thead>
 						<!-- JS generated :) -->
 					</table>
-					<table id="MetaInfo" aria-label="Metadata">
-						<tr><td class="row-label">Created by</td><td id="tdCreatedBy"></td></tr>
-						<tr><td class="row-label">Date created</td><td id="tdCreatedDate"></td></tr>
-						<tr><td class="row-label">Status</td><td id="tdStatus"></td></tr>
+					<table id="MetaInfo">
+						<caption>Metadata</caption>
+						<thead class="sr-only">
+							<tr><th>Property</th><th>Value</th></tr>
+						</thead>
+						<tbody>
+							<tr><td class="row-label">Created by</td><td id="tdCreatedBy"></td></tr>
+							<tr><td class="row-label">Date created</td><td id="tdCreatedDate"></td></tr>
+							<tr><td class="row-label">Status</td><td id="tdStatus"></td></tr>
+						</tbody>
 					</table>
 				</div>
 				<div id="divVert" class="divider-vert"></div>
@@ -87,6 +107,7 @@
 				</div>
 			</div>
 		</div>
+		<div id="dialogRegion" role="region" aria-label="dialogs"></div>
 	</div>
 </body>
 </html>

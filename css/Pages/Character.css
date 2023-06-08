@@ -50,6 +50,11 @@ table {
 	margin-bottom: 20px;
 }
 
+caption {
+	font-size: small;
+	caption-side: bottom
+}
+
 .row-label {
 	width: 100px;
 }

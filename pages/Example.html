@@ -34,16 +34,14 @@
 		<header>
 			<div class="banner fixed-header">
 				<div class="header-left">
-					<button
-						id="homeButton"
-						role="link"
-						onclick="Common.navTo('../index.html')"
-					><u>H</u>ome
+					<button id="homeButton"
+							role="link"
+							onclick="Common.navTo('../index.html')">
+						<u>H</u>ome
 					</button>
-					<button
-						id="shortcutsButton"
-						onclick="Common.Components.displayShortcuts('shortcutsButton')"
-					><u>S</u>hortcuts
+					<button id="shortcutsButton"
+							onclick="Common.Components.displayShortcuts('shortcutsButton')">
+						<u>S</u>hortcuts
 					</button>
 				</div>
 				<span role="heading" aria-level="1">Example page!</span>
@@ -77,7 +75,7 @@
 				<input id="Button1" type="button" value="button" onclick="window.alert('hey there friend')" /><br /><br />
 
 				<br />
-				<form id="form1">
+				<form id="form1" autocomplete="off">
 					<div class="inputDiv">
 						<label for="Text1">Username</label>
 						<input id="Text1" type="text" />
@@ -118,9 +116,14 @@
 				<textarea id="TextArea1" rows="2" cols="20" placeholder="I'm a text area uwu"></textarea><br />
 
 				<table id="myTable1" style="width: 50%;">
-					<tr class="tableHeader"><td>cell 1</td><td>cell 2</td><td>cell 3</td></tr>
-					<tr><td>cell 1</td><td>cell 2</td><td>cell 3</td></tr>
-					<tr><td>cell 1</td><td>cell 2</td><td>cell 3</td></tr>
+					<caption>Caption</caption>
+					<thead>
+						<tr class="tableHeader"><th>Col 1</th><th>Col 2</th><th>Col 3</th></tr>
+					</thead>
+					<tbody>
+						<tr><td>cell 1</td><td>cell 2</td><td>cell 3</td></tr>
+						<tr><td>cell 1</td><td>cell 2</td><td>cell 3</td></tr>
+					</tbody>
 				</table><br />
 
 				<button onclick="Pages.Example.showModal()">It's modal time!</button><br /><br />
@@ -164,6 +167,7 @@
 				<footer>He likes toast</footer>
 			</div>
 		</div>
+		<div id="dialogRegion" role="region" aria-label="dialogs"></div>
 		<div class="banner-buffer"></div>
 		<footer class="banner fixed-footer">This is just a proving ground for things I'm working on</footer>
 	</div>

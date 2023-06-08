@@ -169,24 +169,27 @@
 			var dce = Common.DOMLib.createElement;
 
 			const { el: metaTable } = dce("table", parent);
+			const tHead = dce("thead", metaTable, ["sr-only"]).el;
+			tHead.innerHTML = "<tr><th>Property</th><th>Value</th></tr>";
+			const tBody = dce("tbody", metaTable).el;
 
 			this.__addTableRow(
-				metaTable,
+				tBody,
 				"Title",
 				this.__title
 			);
 			this.__addTableRow(
-				metaTable,
+				tBody,
 				"Artists",
 				this.artists.map((artist) => this.__artistLinkDelegate(artist)).join(", ")
 			);
 			this.__addTableRow(
-				metaTable,
+				tBody,
 				"Characters",
 				this.characters.join(", ")
 			);
 			this.__addTableRow(
-				metaTable,
+				tBody,
 				"Date",
 				this.date.toLocaleDateString(undefined, { weekday: undefined, year: "numeric", month: "long", day: "numeric" })
 			);

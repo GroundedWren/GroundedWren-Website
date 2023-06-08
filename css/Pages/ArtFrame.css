@@ -12,7 +12,7 @@ table {
 	margin: auto;
 }
 
-/* Pages.Common.MINI_THRESHOLD */
+/* Common.MINI_THRESHOLD */
 @media (max-width: 600px) {
 	table {
 		width: 100%;

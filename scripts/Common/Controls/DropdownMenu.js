@@ -145,7 +145,7 @@ registerNamespace("Common.Controls.DropdownMenu", function (ns)
 				tabContainerEl,
 				["tab-strip-tab", "button-like"]
 			).el;
-			newTabEl.innerHTML = `<span>${tabText}</span>`;
+			newTabEl.innerHTML = `<span class='tab-text'>${tabText}</span>`;
 
 			if (this.__lastTabContainerId != null)
 			{
@@ -193,7 +193,7 @@ registerNamespace("Common.Controls.DropdownMenu", function (ns)
 				tabContainerEl,
 				["tab-strip-tab", "button-like", "child"]
 			).el;
-			childTabEl.innerHTML = `<span>${childName}</span>`;
+			childTabEl.innerHTML = `<span class='tab-text'>${childName}</span>`;
 			childTabEl.tabIndex = "-1";
 			childTabEl.setAttribute(
 				"aria-label",
