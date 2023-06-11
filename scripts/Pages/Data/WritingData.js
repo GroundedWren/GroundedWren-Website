@@ -8,6 +8,11 @@ registerNamespace("Pages.Writing.Data", function (ns)
 			entriesDirectory: "./blog_entries/",
 			entryExtension: ".html",
 			entries: {
+				"2023_06_10": {
+					title: "The Social Loom",
+					author: "Vera",
+					date: new Date(2023, 5, 10),
+				},
 				"2023_01_22": {
 					title: "Memories and Bedrooms",
 					author: "Vera",

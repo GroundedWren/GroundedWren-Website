@@ -7,16 +7,26 @@
 	padding-left: 10px;
 }
 
+h2 {
+	border-bottom: 1px solid white;
+}
+
 h2, h3, h4, h5, h6 {
 	margin: 0px;
 	margin-bottom: 5px;
-	border-bottom: 1px solid white;
 }
 
 h1 {
 	text-align: center;
 	margin: 0px;
 	font-size: 32px;
+}
+
+.subtitle {
+	text-align: center;
+	font-style: italic;
+	font-size: small;
+	margin: 0px;
 }
 
 .z {
@@ -26,19 +36,28 @@ h1.subtitle {
 	font-size: 20px;
 }
 
-.titleContainer {
+header {
 	display: flex;
 	flex-direction: row;
+	width: 100%;
+}
+
+header > button {
+	flex-basis: 90px;
+}
+
+.title-container {
+	flex-grow: 1;
 }
 
 .z {
 }
 
-.titleContainer > h1 {
+.title-container > h1 {
 	flex-grow: 1;
 }
 
-.titleContainer > button {
+.title-container > button {
 	flex-basis: 100px;
 }
 
@@ -95,16 +114,15 @@ p {
 	width: 100%;
 }
 
-.blockquote-container {
+.centertext-container {
 	text-align: center;
 	width: 100%;
 	margin-bottom: 32px;
 }
 
-.blockquote {
+blockquote, .centertext {
 	display: inline-block;
 	max-width: 775px;
-	font-style: italic;
 }
 
 hr {
