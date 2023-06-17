@@ -33,6 +33,18 @@ registerNamespace("Pages.Music.Data", function (ns)
 						+ "<br />"
 						+ "I get nervous when she comes around<br />",
 				},
+				{
+					title: "Summer's Smoke",
+					src: "../music/Untitled 2023/Summers_Smoke.mp3",
+					type: "audio/mp3",
+					performers: ["Vera"],
+					composers: ["Vera"],
+					instruments: ["Acoustic Guitar"],
+					recorded: new Date(2023, 5, 17),
+					description: "Wildfires up north have made for apocalyptic ambience this summer.<br />"
+						+"This is the first music I've written in a long while.",
+					lyrics: "(Instrumental)",
+				},
 			]
 		},
 		"Grounded Wren": {
