@@ -127,6 +127,7 @@ div.input-flex {
 .input-flex-line > label {
 	text-align: left;
 	flex-grow: 1;
+	margin-right: 5px;
 }
 
 input[type="text"], input[type="password"] {
