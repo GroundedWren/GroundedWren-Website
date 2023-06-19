@@ -288,6 +288,7 @@ thead {
 }
 
 .card-chevron {
+	height: 0px;
 	width: 25px;
 	margin-top: 5px;
 }
