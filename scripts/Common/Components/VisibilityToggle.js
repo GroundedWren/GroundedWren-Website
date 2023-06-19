@@ -60,6 +60,7 @@
 				togglerEl.addEventListener("click", Common.fcd(this, this.doToggle, [undefined]));
 				togglerEl.addEventListener("keyup", this.onKeyUp);
 				togglerEl.addEventListener("keydown", this.onKeyDown);
+				togglerEl.classList.add("ans-toggler");
 			});
 
 			this.__toggleHandler = handler || function () { };

@@ -47,9 +47,6 @@
 		"Despey": {
 			link: "https://www.furaffinity.net/user/despey/",
 		},
-		//"Palavenmoons": {
-		//	link: "https://palavenmoons.tumblr.com/",
-		//},
 		"Raiyk": {
 			link: "https://www.furaffinity.net/user/Raiyk/",
 		},
@@ -68,9 +65,6 @@
 		"JesterDK": {
 			link: "https://www.deviantart.com/jesterdk",
 		},
-		//"Bonnie Guerra": {
-		//	link: "https://www.patreon.com/Bonnieguerra",
-		//},
 		"LiliVic Creations": {
 			link: "https://liliviccreationsart.carrd.co/",
 		},
@@ -286,14 +280,6 @@
 			altText: "A smiling purple Turian male with a brown cowboy hat perched precariously atop his head.",
 			isExplicit: false,
 		},
-		//"\"Care to join?\"": {
-		//	src: "../img/Sindri Pinup - Palavenmoons - 2017-10-25.png",
-		//	characters: ["Sindri"],
-		//	artists: ["Palavenmoons"],
-		//	date: new Date(2017, 09, 25),
-		//	description: "",
-		//	isExplicit: true,
-		//},
 		"Tangled up in Blue": {
 			src: "../img/Sindri Profile - jesterdk & Vera - 2016-10-14.png",
 			characters: ["Sindri"],
@@ -343,14 +329,6 @@
 			altText: "An annoyed Tiefling woman holding a mug of coffee with the word 'NO' printed on it.",
 			isExplicit: false,
 		},
-		//"One of Your Tiefling Girls": {
-		//	src: "../img/Vera Pinup - Bxxxnie - 2022-04-22.png",
-		//	characters: ["Vera"],
-		//	artists: ["Bonnie Guerra"],
-		//	date: new Date(2022, 03, 22),
-		//	description: "",
-		//	isExplicit: true,
-		//},
 		"Studious": {
 			src: "../img/Vera Reading - Ravenluck - 2021-02-11.png",
 			characters: ["Vera"],

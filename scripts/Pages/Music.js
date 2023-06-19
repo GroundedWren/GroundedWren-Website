@@ -56,6 +56,61 @@ registerNamespace("Pages.Music", function (ns)
 		openCollection(collectionId);
 	};
 
+	ns.PlayIndex = -1;
+	ns.playTracks = function ()
+	{
+		markTracksPlaying();
+		if (ns.PlayIndex === -1)
+		{
+			ns.PlayIndex = 0;
+		}
+		ns.audioList[ns.PlayIndex].play();
+	};
+
+	ns.pauseTracks = function ()
+	{
+		markTracksPaused();
+		ns.audioList[ns.PlayIndex].pause();
+	};
+
+	ns.togglePlayback = () =>
+	{
+		if (document.getElementById("pauseBtn").classList.contains("hidden"))
+		{
+			ns.playTracks();
+		}
+		else
+		{
+			ns.pauseTracks();
+		}
+	};
+
+	function onTrackEnded()
+	{
+		var nextAudio = ns.audioList[++ns.PlayIndex];
+		if (nextAudio)
+		{
+			nextAudio.play();
+		}
+		else
+		{
+			markTracksPaused();
+			ns.PlayIndex = -1;
+		}
+	};
+
+	function markTracksPlaying()
+	{
+		document.getElementById("playBtn").classList.add("hidden");
+		document.getElementById("pauseBtn").classList.remove("hidden");
+	};
+
+	function markTracksPaused()
+	{
+		document.getElementById("pauseBtn").classList.add("hidden");
+		document.getElementById("playBtn").classList.remove("hidden");
+	};
+
 	function openCollection(collectionId, event)
 	{
 		populateCollectionInfo(collectionId);
@@ -70,6 +125,9 @@ registerNamespace("Pages.Music", function (ns)
 			event.preventDefault();
 			window.history.replaceState(null, "", `?${COLLECTION_PARAM}=${collectionId}`);
 		}
+
+		markTracksPaused();
+		ns.PlayIndex = -1;
 	}
 
 	function populateCollectionInfo(collectionId)
@@ -93,6 +151,7 @@ registerNamespace("Pages.Music", function (ns)
 
 	function buildSongList(collectionId)
 	{
+		ns.audioList = [];
 		const songs = ns.Data.Collections[collectionId].Songs;
 		const rightPane = document.getElementById(TRACK_LIST_ID);
 
@@ -125,11 +184,25 @@ registerNamespace("Pages.Music", function (ns)
 			{
 				if (audioListEl.id !== audioEl.id)
 				{
+					audioListEl.currentTime = 0;
 					audioListEl.pause();
 				}
+				else
+				{
+					ns.PlayIndex = ns.audioList.indexOf(audioListEl);
+					markTracksPlaying();
+				}
 			});
-			Common.Components.GetVisToggle(chevronEl.id).doToggle(true);
 		});
+		audioEl.addEventListener("pause", () =>
+		{
+			if (ns.PlayIndex === 0) { return; }
+			if (ns.audioList[ns.PlayIndex] && ns.audioList[ns.PlayIndex].id === audioEl.id)
+			{
+				markTracksPaused();
+			}
+		});
+		audioEl.addEventListener("ended", Common.fcd(ns, onTrackEnded, [audioEl]));
 
 		Common.DOMLib.setAttributes(audioEl, { "controls": null });
 		const sourceEl = Common.DOMLib.createElement("source", audioEl).el;
@@ -173,7 +246,10 @@ registerNamespace("Pages.Music", function (ns)
 				{
 					chevronEl.classList.add("bottom");
 				}
-				event.stopPropagation();
+				if (event)
+				{
+					event.stopPropagation();
+				}
 			},
 			false,
 			[songTitleContainer]
@@ -206,6 +282,10 @@ window.onload = () =>
 		"ALT+S": {
 			action: () => { document.getElementById("shortcutsButton").click(); },
 			description: "Show shortcut keys"
+		},
+		"ALT+P": {
+			action: Pages.Music.togglePlayback,
+			description: "Toggle playback"
 		},
 	});
 

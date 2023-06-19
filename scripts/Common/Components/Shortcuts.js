@@ -7,7 +7,7 @@
 			ns.Shortcuts.__buildDialog(anchorId);
 		}
 		ns.Shortcuts.shortcutsDialog.showInView(50, 50);
-	}
+	};
 
 	ns.registerShortcuts = function (shortcutMap)
 	{
@@ -15,7 +15,7 @@
 		{
 			ns.Shortcuts.addShortcut(code, shortcutMap[code]);
 		}
-	}
+	};
 
 	ns.unregisterShortcuts = function (codesArray)
 	{
@@ -23,12 +23,12 @@
 		{
 			ns.Shortcuts.removeShortcut(code);
 		});
-	}
+	};
 
 	ns.clearShortcuts = function ()
 	{
 		ns.Shortcuts.shortcutMap = {};
-	}
+	};
 });
 
 registerNamespace("Common.Components.Shortcuts", function (ns)
@@ -68,7 +68,7 @@ registerNamespace("Common.Components.Shortcuts", function (ns)
 	{
 		var codeStack = ns.findShortcutStack(code);
 		codeStack.shift();
-	}
+	};
 
 	ns.activateShortcut = function (code)
 	{
@@ -77,7 +77,7 @@ registerNamespace("Common.Components.Shortcuts", function (ns)
 		{
 			codeStack[0].action();
 		}
-	}
+	};
 
 	ns.findShortcutStack = function (code)
 	{
@@ -98,7 +98,7 @@ registerNamespace("Common.Components.Shortcuts", function (ns)
 			mapLevel = mapLevel["SHIFT"] = mapLevel["SHIFT"] || {};
 		}
 		return mapLevel[key] = mapLevel[key] || [];
-	}
+	};
 
 	ns.__buildDialog = function (anchorId)
 	{
@@ -106,16 +106,21 @@ registerNamespace("Common.Components.Shortcuts", function (ns)
 		var shortcutHTML = "";
 		allShorts.forEach(function (short)
 		{
-			var line = short.desc
-				+ "<span style='float: right; margin-left: 5px'>"
-				+ short.code.map(key => "<kbd>" + key + "</kbd>").join("+")
-				+ "</span>";
-			shortcutHTML += "<li style='margin-top: 5px'>" + line + "</li>";
+			shortcutHTML += "<tr>"
+				+ `<td>${short.desc}</td>`
+				+ `<td style='text-align: right'>${short.code.map(key => "<kbd>" + key + "</kbd>").join("+")}</td>`
+				+ "</tr>";
 		});
+
+		var popupBodyHTML = shortcutHTML
+			? `<table><thead class='sr-only'><tr><th>Description</th><th>Shortcut</th></tr></thead><tbody>${shortcutHTML}</tbody></table>`
+			: "No shortcuts"
 
 		ns.shortcutsDialog = new Common.Controls.Popups.Dialog(
 			"Shortcuts",
-			shortcutHTML ? "<ul>" + shortcutHTML + "</ul>" : "No shortcuts",
+			popupBodyHTML + (anchorId
+				? "<footer>Pressing F2 on the element which launched this dialog will return focus here</footer>"
+				: ""),
 			{}, //style
 			{ onDestroy: () => { ns.shortcutsDialog = null; } },
 			anchorId ? document.getElementById(anchorId) : null

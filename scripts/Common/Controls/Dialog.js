@@ -40,6 +40,9 @@
 		// Whether the dialog is currently shown
 		__isShowing = false;
 
+		// Whether the dialog is destroyed
+		__isDestroyed = false;
+
 		//Element where focus will return once out of the dialog
 		__anchorEl = null;
 		//#endregion
@@ -172,7 +175,7 @@
 
 		__anchorKeydown = (event) =>
 		{
-			if (event.keyCode !== Common.KeyCodes.F2) { return; }
+			if (this.__isDestroyed || event.keyCode !== Common.KeyCodes.F2) { return; }
 			if (!this.__isShowing)
 			{
 				Common.axAlertAssertive("Dialog is currently hidden");
@@ -259,6 +262,8 @@
 			delete DialogMap[this.__dialogId];
 
 			this.__delegates.onDestroy();
+
+			this.__isDestroyed = true;
 		}
 	}
 	ns.Dialog = Dialog;

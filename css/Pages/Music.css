@@ -66,7 +66,6 @@ h1, h2, h3 {
 
 #trackList {
 	flex-grow: 1;
-	min-width: 360px;
 	flex-basis: 360px;
 	overflow: auto;
 	margin-left: 10px;
@@ -79,15 +78,21 @@ audio {
 .songTitleContainer {
 	padding-right: 5px;
 	cursor: pointer;
+	display: grid;
+	grid-template-columns: 1fr 0fr;
+	column-gap: 5px;
 }
 
-	.songTitleContainer h3 {
-		display: inline-block;
-	}
+.z {
+}
 
-	.songTitleContainer span {
-		float: right;
-	}
+.songTitleContainer h3 {
+	display: inline-block;
+}
+
+.songTitleContainer span {
+	width: 10px;
+}
 
 .hidden {
 	display: none;
@@ -110,6 +115,15 @@ table {
 	width: 175px;
 }
 
+#trackListRight {
+	display: flex;
+	width: 40px;
+}
+
+	#trackListRight > button {
+		flex-grow: 1;
+	}
+
 @media (max-width: 1000px) {
 	#mainPage {
 		margin-left: 5px;
@@ -126,7 +140,16 @@ table {
 /* Common.MINI_THRESHOLD */
 @media (max-width: 600px) {
 	#collectionImg {
-		min-width: 340px;
+		min-width: auto;
 		width: 100%;
+	}
+}
+
+@media (max-width: 400px) {
+	.row-label {
+		width: 100px;
+	}
+	audio {
+		width: 200px;
 	}
 }

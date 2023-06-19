@@ -146,17 +146,6 @@ registerNamespace("Pages.Music.Data", function (ns)
 					lyrics: "(Instrumental)",
 				},
 				{
-					title: "Polly",
-					src: "../music/Non Sequitur/Polly.mp3",
-					type: "audio/mp3",
-					performers: ["Vera"],
-					composers: ["Nirvana"],
-					instruments: ["Acoustic Guitar", "Acoustic Bass Guitar"],
-					recordedString: "2016",
-					description: "This ended up sounding waaaay too happy for the subject matter. Recording it as an instrumental though, the groove just let me get carried away with it.",
-					lyrics: "(Instrumental)",
-				},
-				{
 					title: "Offend in Every Way",
 					src: "../music/Non Sequitur/Offend in Every Way.mp3",
 					type: "audio/mp3",

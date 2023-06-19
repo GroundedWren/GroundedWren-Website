@@ -149,8 +149,6 @@ registerNamespace("Pages.Art", function (ns)
 	ns.shownArtists = [];
 	// Array of characters currently shown
 	ns.shownCharacters = [];
-	// Whether to show explicit art
-	ns.isExplicitAllowed = false;
 	// Whether to pause re-siting frames as changes come in
 	ns.pauseUpdates = false;
 
@@ -185,51 +183,6 @@ registerNamespace("Pages.Art", function (ns)
 
 		ns.showingAllChars = false;
 		ns.showingAllArtists = false;
-	};
-
-	/**
-	 * Toggles explicit content on or off
-	 */
-	ns.showExplicit = function (enable)
-	{
-		if (enable)
-		{
-			Common.Controls.Popups.showModal(
-				"Explicit content",
-				`<h3>Are you sure?</h3>`
-				+ `<p>To view explicit content you must be over 18 and legally allowed to view such material.</p>`
-				+ `<button style="float: right; height: 25px; margin-left: 5px;" onclick="Pages.Art.__explicitModalAccepted()">`
-				+ `I'm sure</button>`
-				+ `<button style="float: right; height: 25px;" onclick="Pages.Art.__explicitModalRejected()">`
-				+ `Never mind</button>`,
-				undefined,
-				() =>
-				{
-					if (!ns.isExplicitAllowed)
-					{
-						document.getElementById("ExplicitCB").checked = false;
-					}
-				}
-			);
-		}
-		else
-		{
-			ns.isExplicitAllowed = false;
-			updateForFilters();
-		}
-	};
-
-	ns.__explicitModalAccepted = function ()
-	{
-		ns.isExplicitAllowed = true;
-		updateForFilters();
-		Common.Controls.Popups.hideModal();
-	};
-	ns.__explicitModalRejected = function ()
-	{
-		ns.isExplicitAllowed = false;
-		updateForFilters();
-		Common.Controls.Popups.hideModal();
 	};
 
 	/**
@@ -400,8 +353,7 @@ registerNamespace("Pages.Art", function (ns)
 		 */
 		passesFilters()
 		{
-			return (!this.__isExplicit || ns.isExplicitAllowed)
-				&& this.characters.some(character => ns.shownCharacters.includes(character))
+			return this.characters.some(character => ns.shownCharacters.includes(character))
 				&& this.artists.some(artist => ns.shownArtists.includes(artist));
 		}
 
@@ -582,11 +534,9 @@ registerNamespace("Pages.Art", function (ns)
 			"Bastien Aufrere": "BACB",
 			"Berenice Borggrefe": "BerBorCB",
 			"Chelsea-Rhi": "ChelseaRhiCB",
-			/*"Bonnie Guerra": "BonnieCB",*/
 			"Despey": "DespeyCB",
 			"JesterDK": "JestCB",
 			"LiliVic Creations": "LiliVicCB",
-			/*"Palavenmoons": "PalavenmoonsCB",*/
 			"Raiyk": "RaiykCB",
 			"ShrimpLoverCat": "SLCCB",
 			"Vera": "VeraArtCB",

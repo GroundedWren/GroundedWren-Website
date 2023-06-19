@@ -38,6 +38,11 @@
 	overflow: hidden;
 	height: 100%
 }
+
+.popup-content footer {
+	font-style: italic;
+	font-size: small;
+}
 /*#endregion*/
 
 /*#region Dialog*/
