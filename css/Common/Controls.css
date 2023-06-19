@@ -56,6 +56,22 @@
 	z-index: 2;
 	cursor: move;
 }
+
+.dialog-shortcut-table {
+	border: none;
+	width: 100%;
+}
+
+.z {
+}
+
+.dialog-shortcut-table td {
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	padding-top: 5px;
+	width: auto;
+}
 /*#endregion*/
 
 /*#region Modal */
