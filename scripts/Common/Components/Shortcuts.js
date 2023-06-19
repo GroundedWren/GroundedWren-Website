@@ -113,7 +113,7 @@ registerNamespace("Common.Components.Shortcuts", function (ns)
 		});
 
 		var popupBodyHTML = shortcutHTML
-			? `<table style='width: 100%'><thead class='sr-only'><tr><th>Description</th><th>Shortcut</th></tr></thead><tbody>${shortcutHTML}</tbody></table>`
+			? `<table class='dialog-shortcut-table'><thead class='sr-only'><tr><th>Description</th><th>Shortcut</th></tr></thead><tbody>${shortcutHTML}</tbody></table>`
 			: "No shortcuts"
 
 		ns.shortcutsDialog = new Common.Controls.Popups.Dialog(
