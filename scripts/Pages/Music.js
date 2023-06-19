@@ -73,6 +73,43 @@ registerNamespace("Pages.Music", function (ns)
 		ns.audioList[ns.PlayIndex].pause();
 	};
 
+	ns.nextTrack = function ()
+	{
+		if (ns.PlayIndex > -1)
+		{
+			ns.audioList[ns.PlayIndex].pause();
+		}
+		onTrackEnded();
+	};
+
+	ns.prevTrack = function ()
+	{
+		if (ns.PlayIndex === -1)
+		{
+			ns.PlayIndex = ns.audioList.length - 1;
+			ns.playTracks();
+			return;
+		}
+		var audioEl = ns.audioList[ns.PlayIndex];
+		if (audioEl.currentTime > 3)
+		{
+			audioEl.currentTime = 0;
+			return;
+		}
+		if (ns.PlayIndex === 0)
+		{
+			ns.audioList[ns.PlayIndex].pause();
+			audioEl.currentTime = 0;
+			markTracksPaused();
+			ns.PlayIndex = -1;
+			return;
+		}
+		ns.audioList[ns.PlayIndex].pause();
+		audioEl.currentTime = 0;
+		ns.PlayIndex--;
+		ns.playTracks();
+	};
+
 	ns.togglePlayback = () =>
 	{
 		if (document.getElementById("pauseBtn").classList.contains("hidden"))
@@ -101,12 +138,20 @@ registerNamespace("Pages.Music", function (ns)
 
 	function markTracksPlaying()
 	{
+		if (document.activeElement === document.getElementById("playBtn"))
+		{
+			document.getElementById("pauseBtn").focus();
+		}
 		document.getElementById("playBtn").classList.add("hidden");
 		document.getElementById("pauseBtn").classList.remove("hidden");
 	};
 
 	function markTracksPaused()
 	{
+		if (document.activeElement === document.getElementById("pauseBtn"))
+		{
+			document.getElementById("playBtn").focus();
+		}
 		document.getElementById("pauseBtn").classList.add("hidden");
 		document.getElementById("playBtn").classList.remove("hidden");
 	};
@@ -196,13 +241,13 @@ registerNamespace("Pages.Music", function (ns)
 		});
 		audioEl.addEventListener("pause", () =>
 		{
-			if (ns.PlayIndex === 0) { return; }
+			if (ns.PlayIndex === -1) { return; }
 			if (ns.audioList[ns.PlayIndex] && ns.audioList[ns.PlayIndex].id === audioEl.id)
 			{
 				markTracksPaused();
 			}
 		});
-		audioEl.addEventListener("ended", Common.fcd(ns, onTrackEnded, [audioEl]));
+		audioEl.addEventListener("ended", Common.fcd(ns, onTrackEnded, []));
 
 		Common.DOMLib.setAttributes(audioEl, { "controls": null });
 		const sourceEl = Common.DOMLib.createElement("source", audioEl).el;
@@ -286,6 +331,14 @@ window.onload = () =>
 		"ALT+P": {
 			action: Pages.Music.togglePlayback,
 			description: "Toggle playback"
+		},
+		"ALT+,": {
+			action: Pages.Music.prevTrack,
+			description: "Previous track"
+		},
+		"ALT+.": {
+			action: Pages.Music.nextTrack,
+			description: "Next track"
 		},
 	});
 

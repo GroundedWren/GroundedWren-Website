@@ -117,12 +117,19 @@ table {
 
 #trackListRight {
 	display: flex;
-	width: 40px;
+	width: 120px;
 }
 
-	#trackListRight > button {
-		flex-grow: 1;
-	}
+.z {
+}
+
+#trackListRight > button {
+	flex-grow: 1;
+}
+
+audio {
+	width: 100%;
+}
 
 @media (max-width: 1000px) {
 	#mainPage {
@@ -148,8 +155,5 @@ table {
 @media (max-width: 400px) {
 	.row-label {
 		width: 100px;
-	}
-	audio {
-		width: 200px;
 	}
 }

@@ -74,11 +74,17 @@
 				<div class="card-header">
 					<span role="heading" aria-level="2">Tracks</span>
 					<div id="trackListRight">
+						<button id="nextBtn" onclick="Pages.Music.prevTrack()">
+							<i class="fa-solid fa-backward-step" style="color: #ffffff;" title="Previous Track"></i>
+						</button>
 						<button id="playBtn" onclick="Pages.Music.playTracks()">
 							<i class="fa-solid fa-play" style="color: #03b025;" title="Play"></i>
 						</button>
 						<button id="pauseBtn" onclick="Pages.Music.pauseTracks()" class="hidden">
 							<i class="fa-solid fa-pause" style="color: #ffffff;" title="Pause"></i>
+						</button>
+						<button id="nextBtn" onclick="Pages.Music.nextTrack()">
+							<i class="fa-solid fa-forward-step" style="color: #ffffff;" title="Next Track"></i>
 						</button>
 					</div>
 				</div>
