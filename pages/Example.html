@@ -75,43 +75,164 @@
 				<input id="Button1" type="button" value="button" onclick="window.alert('hey there friend')" /><br /><br />
 
 				<br />
-				<form id="form1" autocomplete="off" aria-labelledby="formTitle">
+				<form id="form1"
+					  autocomplete="off"
+					  aria-labelledby="formTitle">
 					<h3 id="formTitle">This is a form</h3>
-					<fieldset>
-						<legend id="fieldsetLabel">This is a fieldset</legend>
-						<div class="input-line">
-							<label for="Text1">Username</label>
-							<input id="Text1" type="text" />
-						</div>
+					<div style="display:grid; grid-template-columns: auto auto auto auto; grid-column-gap: 5px;">
+						<fieldset>
+							<legend id="fieldsetLabel">input-line fieldset</legend>
+							<div class="input-line">
+								<label for="Text1">Username</label>
+								<input id="Text1" type="text" />
+							</div>
 
-						<div class="input-line">
-							<label for="Password1">Password</label>
-							<input id="Password1" type="password" />
-						</div>
+							<div class="input-line">
+								<label for="Password1">Password</label>
+								<input id="Password1" type="password" />
+							</div>
 
-						<div class="input-line">
-							<label for="Checkbox1">Checkbox</label>
-							<input id="Checkbox1" type="checkbox" /><br />
-						</div>
+							<div class="input-line">
+								<label for="Checkbox1">Checkbox</label>
+								<input id="Checkbox1" type="checkbox" />
+							</div>
 
-						<div class="input-line">
-							<label id="radiosLabel">Radios</label>
-							<fieldset aria-labelledby="radiosLabel" class="transparent-fieldset">
-								<input id="Radio1" type="radio" name="radioName1" value="radioval1" />
-								<label for="Radio1">value 1</label>
-								<input id="Radio2" type="radio" name="radioName1" value="radioval2" />
-								<label for="Radio2">value 2</label>
-							</fieldset>
-						</div>
+							<div class="input-line">
+								<label id="radiosLabel">Radios</label>
+								<fieldset aria-labelledby="radiosLabel" class="transparent-fieldset">
+									<input id="Radio1" type="radio" name="radioName1" value="radioval1" />
+									<label for="Radio1">value 1</label>
+									<input id="Radio2" type="radio" name="radioName1" value="radioval2" />
+									<label for="Radio2">value 2</label>
+								</fieldset>
+							</div>
 
-						<div class="input-line">
-							<label for="Select1">Select 1</label>
-							<select id="Select1">
-								<option>Option 1</option>
-								<option>Option 2</option>
-							</select>
-						</div>
-					</fieldset>
+							<div class="input-line">
+								<label for="inBtn1">Button!</label>
+								<button type="button" id="inBtn1" onclick="console.log('ope')">Button</button>
+							</div>
+
+							<div class="input-line">
+								<label for="Select1">Select 1</label>
+								<select id="Select1">
+									<option>Option 1</option>
+									<option>Option 2</option>
+								</select>
+							</div>
+						</fieldset>
+						<fieldset class="input-flex">
+							<legend id="fieldsetLabel">input-flex-line fieldset</legend>
+							<div class="input-flex-line">
+								<label for="Text2">Username</label>
+								<input id="Text2" type="text" />
+							</div>
+
+							<div class="input-flex-line">
+								<label for="Password2">Password</label>
+								<input id="Password2" type="password" />
+							</div>
+
+							<div class="input-flex-line">
+								<label for="Checkbox2">Checkbox</label>
+								<input id="Checkbox2" type="checkbox" />
+							</div>
+
+							<div class="input-flex-line">
+								<label id="radiosLabel2">Radios</label>
+								<fieldset aria-labelledby="radiosLabel2" class="transparent-fieldset">
+									<input id="Radio3" type="radio" name="radioName2" value="radioval3" />
+									<label for="Radio3">value 3</label>
+									<input id="Radio4" type="radio" name="radioName2" value="radioval4" />
+									<label for="Radio4">value 4</label>
+								</fieldset>
+							</div>
+
+							<div class="input-flex-line">
+								<label for="inBtn2">Button!</label>
+								<button type="button" id="inBtn2" onclick="console.log('ope2')">Button</button>
+							</div>
+
+							<div class="input-flex-line">
+								<label for="Select2">Select 2</label>
+								<select id="Select2">
+									<option>Option 1</option>
+									<option>Option 2</option>
+								</select>
+							</div>
+						</fieldset>
+						<fieldset>
+							<legend id="fieldsetLabel">input-vertical-line fieldset</legend>
+							<div class="input-vertical-line">
+								<label for="Text3">Username</label>
+								<input id="Text3" type="text" />
+							</div>
+
+							<div class="input-vertical-line">
+								<label for="Password3">Password</label>
+								<input id="Password3" type="password" />
+							</div>
+
+							<div class="input-vertical-line">
+								<label for="Checkbox3">Checkbox</label>
+								<input id="Checkbox3" type="checkbox" />
+							</div>
+
+							<div class="input-vertical-line">
+								<label id="radiosLabel3">Radios</label>
+								<fieldset aria-labelledby="radiosLabel3" class="transparent-fieldset">
+									<input id="Radio5" type="radio" name="radioName3" value="radioval5" />
+									<label for="Radio5">value 5</label>
+									<input id="Radio6" type="radio" name="radioName3" value="radioval6" />
+									<label for="Radio6">value 6</label>
+								</fieldset>
+							</div>
+
+							<div class="input-vertical-line">
+								<label for="inBtn3">Button!</label>
+								<button type="button" id="inBtn3" onclick="console.log('ope3')">Button</button>
+							</div>
+
+							<div class="input-vertical-line">
+								<label for="Select3">Select 3</label>
+								<select id="Select3">
+									<option>Option 1</option>
+									<option>Option 2</option>
+								</select>
+							</div>
+						</fieldset>
+						<fieldset>
+							<legend id="fieldsetLabel">input-grid fieldset</legend>
+							<div class="input-grid">
+								<label for="Text4">Username</label>
+								<input id="Text4" type="text" />
+
+								<label for="Password4">Password</label>
+								<input id="Password4" type="password" />
+
+								<label for="Checkbox4">Checkbox</label>
+								<div>
+									<input id="Checkbox4" type="checkbox" />
+								</div>
+
+								<label id="radiosLabel4">Radios</label>
+								<fieldset aria-labelledby="radiosLabel4" class="transparent-fieldset">
+									<input id="Radio7" type="radio" name="radioName4" value="radioval7" />
+									<label for="Radio7">value 7</label>
+									<input id="Radio8" type="radio" name="radioName4" value="radioval8" />
+									<label for="Radio2">value 8</label>
+								</fieldset>
+
+								<label for="inBtn4">Button!</label>
+								<button type="button" id="inBtn4" onclick="console.log('ope')">Button</button>
+
+								<label for="Select4">Select 4</label>
+								<select id="Select4">
+									<option>Option 1</option>
+									<option>Option 2</option>
+								</select>
+							</div>
+						</fieldset>
+					</div>
 					<div class="form-footer">
 						<input id="Reset1" type="reset" value="reset" />
 						<input id="Submit1" type="submit" value="submit" />

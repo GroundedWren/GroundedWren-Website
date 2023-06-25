@@ -111,7 +111,6 @@ form > h1, form > h2, form > h3, form > h4, form > h5, form > h6 {
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-end;
-	margin-bottom: -5px;
 }
 
 .z {
@@ -138,14 +137,6 @@ form > h1, form > h2, form > h3, form > h4, form > h5, form > h6 {
 .z {
 }
 
-.input-line label {
-	cursor: pointer;
-}
-
-.input-line > button {
-	height: 30px;
-}
-
 .input-flex {
 	display: flex;
 	flex-direction: column;
@@ -165,11 +156,38 @@ form > h1, form > h2, form > h3, form > h4, form > h5, form > h6 {
 .z {
 }
 
-.input-flex-line label {
+.input-vertical-line {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	justify-content: flex-start;
+	align-items: flex-start;
+	margin-bottom: 6px;
+}
+
+.z {
+}
+
+.input-vertical-line > label {
+	padding-bottom: 2px;
+}
+
+.input-grid {
+	display: grid;
+	grid-template-columns: 1fr 0fr;
+	grid-auto-rows: minmax(25px, auto);
+	grid-column-gap: 5px;
+	grid-row-gap: 2px;
+}
+
+.z {
+}
+
+.input-line label, .input-flex-line label, .input-vertical-line label, .input-grid label {
 	cursor: pointer;
 }
 
-.input-flex-line > button {
+.input-line > button, .input-flex-line > button, .input-vertical-line > button, .input-grid button {
 	height: 30px;
 }
 
@@ -182,9 +200,20 @@ form > h1, form > h2, form > h3, form > h4, form > h5, form > h6 {
 	padding-right: 10px;
 }
 
-input[type="text"], input[type="password"] {
+input[type="text"], input[type="password"], input[type="number"] {
 	background-color: black;
 	color: white;
+}
+
+.z { /* Fix auto-indent */
+}
+
+input[type="text"]:invalid, input[type="password"]:invalid, input[type="number"]:invalid {
+	box-shadow: inset 0px 0px 5px 2px rebeccapurple;
+}
+
+input[type=number]::-webkit-inner-spin-button {
+	-webkit-appearance: none;
 }
 
 input[type="checkbox"] {
@@ -252,6 +281,23 @@ button, input[type="button"], input[type="submit"], input[type="reset"], input[t
 	border: 1px solid rgb(91, 154, 213);
 }
 
+.z {
+}
+
+button[disabled], input[type="button"][disabled], input[type="submit"][disabled], input[type="reset"][disabled], input[type="file"][disabled]::file-selector-button, .button-like[disabled] {
+	background-color: rgb(25, 25, 25);
+	border: 1px solid rgb(71, 71, 71);
+}
+
+.z {
+}
+
+button[disabled]:hover, input[type="button"][disabled]:hover, input[type="submit"][disabled]:hover, input[type="reset"][disabled]:hover, input[type="file"][disabled]::file-selector-button:hover, .button-like[disabled]:hover {
+	background-color: rgb(25, 25, 25);
+	border: 1px solid rgb(71, 71, 71);
+	cursor: not-allowed;
+}
+
 .z { /* Fix auto-indent */
 }
 
@@ -288,6 +334,22 @@ thead {
 	font-weight: bold;
 }
 /*#endregion */
+
+/*#region Inline Banner */
+.inline-banner {
+	margin: 10px;
+	border: 1px solid white;
+	background-color: #404040;
+	padding: 10px;
+	word-break: break-word;
+	display: inline-block;
+	width: 100%;
+}
+
+.inline-banner.warning {
+	background-color: #766000;
+}
+/*endregion */
 
 /*#region Card */
 .card {

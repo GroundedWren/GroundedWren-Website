@@ -76,6 +76,7 @@ window.onload = () =>
 				childActionMap: {
 					"Text Adventure": { linkHref: "https://textadventure.groundedwren.com" },
 					"DnD Workbook": { linkHref: "pages/DnDWorkbook.html" },
+					"Winnings Calc": { linkHref: "pages/Winnings.html" },
 				}
 			},
 			"Misc": {
