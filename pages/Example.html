@@ -75,41 +75,47 @@
 				<input id="Button1" type="button" value="button" onclick="window.alert('hey there friend')" /><br /><br />
 
 				<br />
-				<form id="form1" autocomplete="off">
-					<div class="inputDiv">
-						<label for="Text1">Username</label>
-						<input id="Text1" type="text" />
-					</div>
-
-					<div class="inputDiv">
-						<label for="Password1">Password</label>
-						<input id="Password1" type="password" />
-					</div>
-
-					<div class="inputDiv">
-						<label for="Checkbox1">Checkbox</label>
-						<input id="Checkbox1" type="checkbox" /><br />
-					</div>
-
-					<div class="inputDiv">
-						<label for="radios1">Radios</label>
-						<div id="radios1">
-							<input id="Radio1" type="radio" name="radioName1" value="radioval1" />
-							<label for="Radio1">value 1</label>
-							<input id="Radio2" type="radio" name="radioName1" value="radioval2" />
-							<label for="Radio2">value 2</label>
+				<form id="form1" autocomplete="off" aria-labelledby="formTitle">
+					<h3 id="formTitle">This is a form</h3>
+					<fieldset>
+						<legend id="fieldsetLabel">This is a fieldset</legend>
+						<div class="input-line">
+							<label for="Text1">Username</label>
+							<input id="Text1" type="text" />
 						</div>
-					</div>
 
-					<div class="inputDiv">
-						<label for="Select1">select 1</label>
-						<select id="Select1">
-							<option>Option 1</option>
-							<option>Option 2</option>
-						</select>
+						<div class="input-line">
+							<label for="Password1">Password</label>
+							<input id="Password1" type="password" />
+						</div>
+
+						<div class="input-line">
+							<label for="Checkbox1">Checkbox</label>
+							<input id="Checkbox1" type="checkbox" /><br />
+						</div>
+
+						<div class="input-line">
+							<label id="radiosLabel">Radios</label>
+							<fieldset aria-labelledby="radiosLabel" class="transparent-fieldset">
+								<input id="Radio1" type="radio" name="radioName1" value="radioval1" />
+								<label for="Radio1">value 1</label>
+								<input id="Radio2" type="radio" name="radioName1" value="radioval2" />
+								<label for="Radio2">value 2</label>
+							</fieldset>
+						</div>
+
+						<div class="input-line">
+							<label for="Select1">Select 1</label>
+							<select id="Select1">
+								<option>Option 1</option>
+								<option>Option 2</option>
+							</select>
+						</div>
+					</fieldset>
+					<div class="form-footer">
+						<input id="Reset1" type="reset" value="reset" />
+						<input id="Submit1" type="submit" value="submit" />
 					</div>
-					<input id="Reset1" type="reset" value="reset" />
-					<input id="Submit1" type="submit" value="submit" />
 				</form><br />
 
 				<input id="Hidden1" type="hidden" />

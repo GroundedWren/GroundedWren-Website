@@ -100,6 +100,13 @@ window.onload = () =>
 			action: () => { document.getElementById("shortcutsButton").click(); },
 			description: "Show shortcut keys"
 		},
+		"ALT+ArrowUp": {
+			action: () =>
+			{
+				window.scrollTo(0, 0);
+			},
+			description: "Jump to the top of the page"
+		},
 	});
 
 	//#region greeter
@@ -208,11 +215,11 @@ window.onload = () =>
 		],
 		(visible) =>
 		{
-			Common.DOMLib.addStyle(visTogButton, {
-				"background-color": visible
-					? "green"
-					: "red"
-			});
+			//Common.DOMLib.addStyle(visTogButton, {
+			//	"background-color": visible
+			//		? "green"
+			//		: "red"
+			//});
 		}
 	);
 	//#endregion

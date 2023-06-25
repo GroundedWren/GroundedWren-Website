@@ -152,3 +152,9 @@ iframe {
 	width: calc(100% - 20px);
 	height: 30px;
 }
+
+.filt-chev {
+	float: right;
+	margin-right: 5px;
+	margin-top: 7px;
+}

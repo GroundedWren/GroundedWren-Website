@@ -146,8 +146,10 @@ registerNamespace("Pages.Art", function (ns)
 
 	//#region Filtering
 	// Array of artists currently shown
+	ns.NUM_ARTISTS = 9;
 	ns.shownArtists = [];
 	// Array of characters currently shown
+	ns.NUM_CHARS = 10;
 	ns.shownCharacters = [];
 	// Whether to pause re-siting frames as changes come in
 	ns.pauseUpdates = false;
@@ -167,8 +169,7 @@ registerNamespace("Pages.Art", function (ns)
 		ns.pauseUpdates = false;
 		updateForFilters();
 
-		ns.showingAllChars = true;
-		ns.showingAllArtists = true;
+		setFilterAllStatuses({ characters: true, artists: true });
 	};
 	/**
 	 * Hides all frames (sets all filters)
@@ -181,8 +182,7 @@ registerNamespace("Pages.Art", function (ns)
 		ns.pauseUpdates = false;
 		updateForFilters();
 
-		ns.showingAllChars = false;
-		ns.showingAllArtists = false;
+		setFilterAllStatuses({ characters: false, artists: false });
 	};
 
 	/**
@@ -195,7 +195,7 @@ registerNamespace("Pages.Art", function (ns)
 		ns.pauseUpdates = false;
 		updateForFilters();
 
-		ns.showingAllChars = true;
+		setFilterAllStatuses({ characters: true });
 	};
 	/**
 	 * Filter every character
@@ -207,7 +207,7 @@ registerNamespace("Pages.Art", function (ns)
 		ns.pauseUpdates = false;
 		updateForFilters();
 
-		ns.showingAllChars = false;
+		setFilterAllStatuses({ characters: false });
 	};
 
 	/**
@@ -220,7 +220,7 @@ registerNamespace("Pages.Art", function (ns)
 		ns.pauseUpdates = false;
 		updateForFilters();
 
-		ns.showingAllArtists = true;
+		setFilterAllStatuses({ artists: true });
 	};
 	/**
 	 * Filter every artist
@@ -232,8 +232,51 @@ registerNamespace("Pages.Art", function (ns)
 		ns.pauseUpdates = false;
 		updateForFilters();
 
-		ns.showingAllArtists = false;
+		setFilterAllStatuses({ artists: false });
 	};
+
+	function setFilterAllStatuses(filterStatuses)
+	{
+		if (filterStatuses.characters === true)
+		{
+			ns.showingAllChars = true;
+			document.getElementById("showAllCharsBtn").setAttribute("aria-pressed", "true");
+		}
+		else if (filterStatuses.characters === false)
+		{
+			ns.showingAllChars = false;
+			document.getElementById("showAllCharsBtn").setAttribute("aria-pressed", "false");
+		}
+
+		if (filterStatuses.artists === true)
+		{
+			ns.showingAllArtists = true;
+			document.getElementById("showAllArtistsBtn").setAttribute("aria-pressed", "true");
+		}
+		else if (filterStatuses.artists === false)
+		{
+			ns.showingAllArtists = false;
+			document.getElementById("showAllArtistsBtn").setAttribute("aria-pressed", "false");
+		}
+
+		document.getElementById("showAllBtn").setAttribute(
+			"aria-pressed",
+			(ns.showingAllChars && ns.showingAllArtists) ? "true" : "false"
+		);
+
+		document.getElementById("hideAllBtn").setAttribute(
+			"aria-pressed",
+			(ns.shownCharacters.length === 0 && ns.shownArtists.length === 0) ? "true" : "false"
+		);
+		document.getElementById("hideAllCharsBtn").setAttribute(
+			"aria-pressed",
+			ns.shownCharacters.length === 0 ? "true" : "false"
+		);
+		document.getElementById("hideAllArtistsBtn").setAttribute(
+			"aria-pressed",
+			ns.shownArtists.length === 0 ? "true" : "false"
+		);
+	}
 
 	/**
 	 * Toggles every chexkbox which is a child of a particular element
@@ -244,6 +287,15 @@ registerNamespace("Pages.Art", function (ns)
 	{
 		for (const child of element.children)
 		{
+			if (element.children)
+			{
+				/**
+				 * Yeah I know.
+				 * The individual checkboxes should be auto-generated from the data, at which point we can
+				 * just maintain a map of them to do this.
+				 */
+				setAllChildCheckboxes(child, checked);
+			}
 			if (child.tagName
 				&& child.tagName.toLowerCase() === "input"
 				&& child.type.toLowerCase() === "checkbox"
@@ -273,7 +325,14 @@ registerNamespace("Pages.Art", function (ns)
 		if (!ns.pauseUpdates)
 		{
 			updateForFilters();
-			ns.showingAllChars = false;
+			if (ns.NUM_CHARS === ns.shownCharacters.length)
+			{
+				setFilterAllStatuses({ characters: true });
+			}
+			else
+			{
+				setFilterAllStatuses({ characters: false });
+			}
 		}
 
 	};
@@ -295,7 +354,14 @@ registerNamespace("Pages.Art", function (ns)
 		if (!ns.pauseUpdates)
 		{
 			updateForFilters();
-			ns.showingAllArtists = false;
+			if (ns.NUM_ARTISTS === ns.shownArtists.length)
+			{
+				setFilterAllStatuses({ artists: true });
+			}
+			else
+			{
+				setFilterAllStatuses({ artists: false });
+			}
 		};
 	};
 
@@ -674,6 +740,13 @@ window.onload = () =>
 			},
 			description: "Focus the first artwork"
 		},
+		"ALT+ArrowUp": {
+			action: () =>
+			{
+				window.scrollTo(0, 0);
+			},
+			description: "Jump to the top of the page"
+		},
 	});
 
 	Pages.Art.Data.InitializeArtists(Pages.Art, "Artists");
@@ -711,6 +784,46 @@ window.onload = () =>
 			{
 				rightPane.classList.remove("mini-hide");
 			}
+		}
+	);
+
+	var charTogChev = document.getElementById("chevViewCharacters");
+	Common.Components.RegisterVisToggle(
+		charTogChev,
+		[
+			document.getElementById("charToggles"),
+		],
+		(visible) =>
+		{
+			if (visible)
+			{
+				charTogChev.classList.remove("bottom");
+			}
+			else
+			{
+				charTogChev.classList.add("bottom");
+			}
+			charTogChev.focus();
+		}
+	);
+
+	var artTogChev = document.getElementById("chevViewArtists");
+	Common.Components.RegisterVisToggle(
+		artTogChev,
+		[
+			document.getElementById("artistToggles"),
+		],
+		(visible) =>
+		{
+			if (visible)
+			{
+				artTogChev.classList.remove("bottom");
+			}
+			else
+			{
+				artTogChev.classList.add("bottom");
+			}
+			artTogChev.focus();
 		}
 	);
 };

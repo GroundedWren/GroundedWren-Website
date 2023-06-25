@@ -13,7 +13,6 @@ registerNamespace("Pages.Writing", function (ns)
 	const FOLDER_PARAM = "folder";
 
 	const FOLDER_CONTENT_ID = "folderContent";
-	const DIRECTORY_CARD_ID = "directoryCard";
 	const DIRECTORY_HEADER_ID = "directoryHeader";
 	const DIRECTORY_CONTENT_ID = "directoryContent";
 	const METADATA_CARD_ID = "metaCard";
@@ -70,10 +69,10 @@ registerNamespace("Pages.Writing", function (ns)
 			buildDirectory(folder);
 			ns.folderRadioMap[folder].checked = true;
 		}
-		else
-		{
-			document.getElementById(DIRECTORY_CARD_ID).classList.add("hidden");
-		}
+		//else
+		//{
+		//	document.getElementById(DIRECTORY_CARD_ID).classList.add("hidden");
+		//}
 
 		if (params.has(ENTRY_PARAM) && folder)
 		{
@@ -114,7 +113,7 @@ registerNamespace("Pages.Writing", function (ns)
 	{
 		enterZeroState();
 		buildDirectory(folder);
-		document.getElementById(DIRECTORY_CARD_ID).classList.remove("hidden");
+		/*document.getElementById(DIRECTORY_CARD_ID).classList.remove("hidden");*/
 
 		if (event)
 		{
@@ -134,13 +133,8 @@ registerNamespace("Pages.Writing", function (ns)
 
 		document.getElementById(DIRECTORY_HEADER_ID).innerHTML = `${folder} Entries`
 
-		document.getElementById(DIRECTORY_CONTENT_ID).remove();
-		const directoryEl = Common.DOMLib.createElement(
-			"div",
-			document.getElementById(DIRECTORY_CARD_ID),
-			[],
-			DIRECTORY_CONTENT_ID
-		).el;
+		const directoryEl = document.getElementById(DIRECTORY_CONTENT_ID);
+		directoryEl.innerHTML = "";
 
 		const folderObj = ns.Data.Folders[folder];
 		Object.keys(folderObj.entries).forEach(entryId =>
@@ -221,7 +215,6 @@ registerNamespace("Pages.Writing", function (ns)
 	function displayMetadata(entry)
 	{
 		const metaCard = document.getElementById(METADATA_CARD_ID);
-		metaCard.classList.remove("hidden");
 		document.getElementById(ENTRY_LINK_WRAPPER_ID).style["display"] = "flex";
 
 		var metaContent = document.getElementById(METADATA_CONTENT_ID);
@@ -249,8 +242,6 @@ registerNamespace("Pages.Writing", function (ns)
 
 	function hideMetadata()
 	{
-		const metaCard = document.getElementById(METADATA_CARD_ID);
-		metaCard.classList.add("hidden");
 		document.getElementById(ENTRY_LINK_WRAPPER_ID).style["display"] = "none";
 
 		const metaContent = document.getElementById(METADATA_CONTENT_ID);

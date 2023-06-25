@@ -6,7 +6,6 @@ html, body {
 	margin: 0;
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	font-size: 16px;
-	overflow: auto;
 }
 
 ::-webkit-scrollbar {
@@ -93,20 +92,61 @@ form {
 	width: fit-content;
 }
 
-.inputDiv {
-	margin-bottom: 10px;
+.transparent-fieldset {
+	margin: 0;
+	padding: 0;
+	border: 0;
 }
 
-div.inputDiv > label {
+form > h1, form > h2, form > h3, form > h4, form > h5, form > h6 {
+	margin: 0;
+	text-align: center;
+}
+
+.transparent-fieldset > legend {
+	display: none !important;
+}
+
+.form-footer {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	margin-bottom: -5px;
+}
+
+.z {
+}
+
+.form-footer > * {
+	margin: 3px;
+	min-height: 30px;
+}
+
+.input-line > label {
 	text-align: left;
 	width: 150px;
 }
 
-div.inputDiv * {
+.input-line * {
 	display: inline-block;
 }
 
-div.input-flex {
+.input-line {
+	margin-bottom: 5px;
+}
+
+.z {
+}
+
+.input-line label {
+	cursor: pointer;
+}
+
+.input-line > button {
+	height: 30px;
+}
+
+.input-flex {
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
@@ -119,6 +159,18 @@ div.input-flex {
 	width: 100%;
 	justify-content: flex-start;
 	align-items: center;
+	margin-bottom: 5px;
+}
+
+.z {
+}
+
+.input-flex-line label {
+	cursor: pointer;
+}
+
+.input-flex-line > button {
+	height: 30px;
 }
 
 .z { /* Fix auto-indent */
@@ -127,7 +179,7 @@ div.input-flex {
 .input-flex-line > label {
 	text-align: left;
 	flex-grow: 1;
-	margin-right: 5px;
+	padding-right: 10px;
 }
 
 input[type="text"], input[type="password"] {
@@ -152,6 +204,10 @@ input[type="checkbox"] {
 
 input[type="checkbox"]:checked {
 	background-color: mediumpurple;
+}
+
+input[type="checkbox"]:hover {
+	cursor: pointer;
 }
 
 input[type="radio"] {
@@ -203,6 +259,10 @@ button:hover, input[type="button"]:hover, input[type="submit"]:hover, input[type
 	background-color: rgb(25, 25, 25);
 	border-color: rgb(73, 124, 171);
 	cursor: pointer;
+}
+
+button[aria-pressed="true"] {
+	background-color: rebeccapurple;
 }
 /*#endregion */
 
@@ -371,11 +431,14 @@ thead {
 	height: 100%;
 }
 
-	.header-left > * {
-		margin-left: 2px;
-		margin-right: 2px;
-		margin-bottom: 2px;
-	}
+.z {
+}
+
+.header-left > * {
+	margin-left: 2px;
+	margin-right: 5px;
+	margin-bottom: 2px;
+}
 
 /*#endregion*/
 
