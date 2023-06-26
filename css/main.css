@@ -287,6 +287,7 @@ button, input[type="button"], input[type="submit"], input[type="reset"], input[t
 button[disabled], input[type="button"][disabled], input[type="submit"][disabled], input[type="reset"][disabled], input[type="file"][disabled]::file-selector-button, .button-like[disabled] {
 	background-color: rgb(25, 25, 25);
 	border: 1px solid rgb(71, 71, 71);
+	color: lightgray;
 }
 
 .z {
@@ -342,12 +343,35 @@ thead {
 	background-color: #404040;
 	padding: 10px;
 	word-break: break-word;
-	display: inline-block;
+	display: flex;
+	align-items: center;
+	gap: 5px;
 	width: 100%;
+}
+
+.z {
 }
 
 .inline-banner.warning {
 	background-color: #766000;
+}
+
+.inline-banner.positive {
+	background-color: #195725;
+}
+
+.inline-banner-buttonWrpr {
+	height: 100%;
+	flex-grow: 1;
+}
+
+.z {
+}
+
+.inline-banner-buttonWrpr > button {
+	height: calc(100% + 10px);
+	margin-top: -5px;
+	float: right;
 }
 /*endregion */
 

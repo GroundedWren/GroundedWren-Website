@@ -45,6 +45,8 @@
 
 		//Element where focus will return once out of the dialog
 		__anchorEl = null;
+
+		__cleanupEls = [];
 		//#endregion
 
 		/**
@@ -94,6 +96,7 @@
 		__createDOM(parentEl)
 		{
 			var focusTrapBefore = Common.DOMLib.createElement("div", parentEl).el;
+			this.__cleanupEls.push(focusTrapBefore);
 
 			const { el: dialogEl, id: dialogId } = Common.DOMLib.createElement(
 				"div",
@@ -104,6 +107,7 @@
 			this.__dialogId = dialogId;
 
 			var focusTrapAfter = Common.DOMLib.createElement("div", parentEl).el;
+			this.__cleanupEls.push(focusTrapAfter);
 
 			if (this.__anchorEl)
 			{
@@ -171,6 +175,14 @@
 				"aria-labelledBy": dialogTitleId
 			});
 			Common.DOMLib.addStyle(this.__dialogEl, { display: "None" });
+
+			if (this.__anchorEl)
+			{
+				Common.DOMLib.createElement(
+					"footer",
+					this.__dialogEl
+				).el.innerText = "Pressing F2 on the element which launched this dialog will return focus here";
+			}
 		}
 
 		__anchorKeydown = (event) =>
@@ -181,7 +193,7 @@
 				Common.axAlertAssertive("Dialog is currently hidden");
 			}
 			this.__dialogEl.focus();
-		}
+		};
 
 		/**
 		 * Display the dialog in the current viewport
@@ -219,6 +231,7 @@
 					left: left + "px"
 				}
 			);
+			this.__cleanupEls.forEach(cleanupEl => Common.DOMLib.addStyle(cleanupEl, { display: "Block" }));
 			this.__dialogEl.focus();
 
 			if (!this.__isShowing)
@@ -241,6 +254,8 @@
 			Common.DOMLib.addStyle(this.__dialogEl, { display: "None" });
 			this.__dragger.disableDragging();
 
+			this.__cleanupEls.forEach(cleanupEl => Common.DOMLib.addStyle(cleanupEl, { display: "None" }));
+
 			this.__isShowing = false;
 			this.__delegates.onHide();
 		}
@@ -256,6 +271,8 @@
 			{
 				this.__anchorEl.setAttribute("aria-description", "");
 			}
+
+			this.__cleanupEls.forEach(cleanupEl => cleanupEl.remove());
 
 			delete this.__dragger;
 

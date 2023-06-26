@@ -118,9 +118,7 @@ registerNamespace("Common.Components.Shortcuts", function (ns)
 
 		ns.shortcutsDialog = new Common.Controls.Popups.Dialog(
 			"Shortcuts",
-			popupBodyHTML + (anchorId
-				? "<footer>Pressing F2 on the element which launched this dialog will return focus here</footer>"
-				: ""),
+			popupBodyHTML,
 			{}, //style
 			{ onDestroy: () => { ns.shortcutsDialog = null; } },
 			anchorId ? document.getElementById(anchorId) : null

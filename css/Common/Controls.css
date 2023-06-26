@@ -39,9 +39,12 @@
 	height: 100%
 }
 
-.popup-content footer {
+.popup > footer {
 	font-style: italic;
 	font-size: small;
+	margin-bottom: 3px;
+	margin-left: 3px;
+	margin-right: 3px;
 }
 /*#endregion*/
 
@@ -59,7 +62,6 @@
 
 .dialog-shortcut-table {
 	border: none;
-	margin-bottom: 20px;
 	width: 100%;
 }
 

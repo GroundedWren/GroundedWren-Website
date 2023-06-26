@@ -20,11 +20,14 @@ registerNamespace("Pages.Winnings", function (ns)
 
 	ns.updatePlayerForm = function (playerDef)
 	{
+		playerDef.chipCounts = {};
+
 		var startingAssets = 0;
 		for (var idx = 0; idx < ns.ChipTypes.length; idx++)
 		{
-			const playerCount = playerDef.startingCounts[idx].value;
+			const playerCount = parseInt(playerDef.startingCounts[idx].value) || 0;
 			startingAssets += (ns.ChipTypes[idx].valInput.value * playerCount);
+			playerDef.chipCounts[idx] = -playerCount;
 		}
 		playerDef.startingAssets = startingAssets;
 		playerDef.spanStartTotal.innerText = `$${startingAssets}`;
@@ -32,8 +35,9 @@ registerNamespace("Pages.Winnings", function (ns)
 		var endingAssets = 0;
 		for (var idx = 0; idx < ns.ChipTypes.length; idx++)
 		{
-			const playerCount = playerDef.endingCounts[idx].value;
+			const playerCount = parseInt(playerDef.endingCounts[idx].value) || 0;
 			endingAssets += (ns.ChipTypes[idx].valInput.value * playerCount);
+			playerDef.chipCounts[idx] += playerCount;
 		}
 		playerDef.spanEndTotal.innerText = `$${endingAssets}`;
 
@@ -60,14 +64,8 @@ registerNamespace("Pages.Winnings", function (ns)
 
 		updateStakes();
 		const netBalanced = (ns.NetTblVal === 0);
-		if (netBalanced)
-		{
-			document.getElementById("tblNetWarning").classList.add("hidden");
-		}
-		else
-		{
-			document.getElementById("tblNetWarning").classList.remove("hidden");
-		}
+		const chipsBalanced = Object.values(getOverallChipCounts()).every(count => count === 0);
+		updateBanners(netBalanced, chipsBalanced);
 
 		var allValid = gameForm.checkValidity();
 		ns.Players.forEach(playerDef =>
@@ -76,7 +74,49 @@ registerNamespace("Pages.Winnings", function (ns)
 		});
 		document.getElementById("btnCalcWinnings").disabled = !(allValid
 			&& ns.Players.length
-			&& netBalanced);
+			&& netBalanced
+			&& chipsBalanced
+		);
+	};
+
+	function updateBanners(netBalanced, chipsBalanced)
+	{
+		Common.Components.unregisterShortcuts(["ALT+W"]);
+		if (netBalanced)
+		{
+			document.getElementById("bnrTblNetWarning").classList.add("hidden");
+			if (ns.Players.length)
+			{
+				if (chipsBalanced)
+				{
+					document.getElementById("bnrReady").classList.remove("hidden");
+					document.getElementById("bnrChipsWarning").classList.add("hidden");
+				}
+				else
+				{
+					Common.Components.registerShortcuts({
+						"ALT+W": {
+							action: () => { document.getElementById("btnShowNetViaChips").click(); },
+							description: "Show chip balance details"
+						}
+					});
+					document.getElementById("bnrChipsWarning").classList.remove("hidden");
+					document.getElementById("bnrReady").classList.add("hidden");
+				}
+			}
+		}
+		else
+		{
+			Common.Components.registerShortcuts({
+				"ALT+W": {
+					action: () => { document.getElementById("btnShowNet").click(); },
+					description: "Show chip balance details"
+				}
+			});
+			document.getElementById("bnrTblNetWarning").classList.remove("hidden");
+			document.getElementById("bnrChipsWarning").classList.add("hidden");
+			document.getElementById("bnrReady").classList.add("hidden");
+		}
 	};
 
 	function updateStakes()
@@ -107,6 +147,8 @@ registerNamespace("Pages.Winnings", function (ns)
 	{
 		const dce = Common.DOMLib.createElement;
 		const dsa = Common.DOMLib.setAttributes;
+
+		document.getElementById("bnrAddPlayerInfo").classList.add("hidden");
 
 		var playerDef = { idx: ns.Players.length + 1 };
 		ns.Players.push(playerDef);
@@ -252,6 +294,45 @@ registerNamespace("Pages.Winnings", function (ns)
 
 		return cTypeInput;
 	}
+
+	ns.showNetDetails = function (btnId)
+	{
+		var overallChipCounts = getOverallChipCounts();
+
+		var tableMarkup = "";
+		for (var idx = 0; idx < ns.ChipTypes.length; idx++)
+		{
+			if (!overallChipCounts[idx]) { continue; }
+			const chipLabel = ns.ChipTypes[idx].lblInput.value;
+			const chipCount = (overallChipCounts[idx] > 0)
+				? `${overallChipCounts[idx]} excess in results`
+				: `${overallChipCounts[idx]*-1} missing in results`;
+			tableMarkup = tableMarkup + `<tr><td>${chipLabel}</td><td>${chipCount}</td></tr>`;
+		}
+
+		var Dialog = Common.Controls.Popups.Dialog;
+		var dialog = new Dialog(
+			"Net Chips",
+			`<table class=''><thead class='sr-only'><tr><th>Chip Type</th><th>Discrepancy</th></tr></thead><tbody>${tableMarkup}</tbody></table>`,
+			{},
+			{},
+			document.getElementById(btnId)
+		);
+		dialog.showInView(50, 50);
+	};
+
+	function getOverallChipCounts()
+	{
+		var overallChipCounts = {};
+		ns.Players.forEach(playerDef =>
+		{
+			for (var idx = 0; idx < ns.ChipTypes.length; idx++)
+			{
+				overallChipCounts[idx] = (overallChipCounts[idx] || 0) + playerDef.chipCounts[idx];
+			}
+		});
+		return overallChipCounts;
+	};
 });
 
 /**
@@ -269,5 +350,36 @@ window.onload = () =>
 			action: () => { document.getElementById("shortcutsButton").click(); },
 			description: "Show shortcut keys"
 		},
+		"ALT+P": {
+			action: () => { document.getElementById("btnAddPlayer").click(); },
+			description: "Add player"
+		},
+		"ALT+C": {
+			action: () => { document.getElementById("btnCalcWinnings").click(); },
+			description: "Calculate winnings"
+		},
 	});
+
+	Common.Components.RegisterVisToggle(
+		document.getElementById("showChipsChevron"),
+		[
+			document.getElementById("chipsFieldset")
+		],
+		function (visible, event)
+		{
+			const chipsChevron = document.getElementById("showChipsChevron");
+
+			if (visible)
+			{
+				chipsChevron.classList.remove("bottom");
+			}
+			else
+			{
+				chipsChevron.classList.add("bottom");
+			}
+			event.stopPropagation();
+		},
+		true,
+		[document.getElementById("chipsHeader")]
+	);
 };

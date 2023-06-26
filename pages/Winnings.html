@@ -77,6 +77,10 @@
 								 role="heading"
 								 aria-level="3">
 								Chips
+								<span id="showChipsChevron"
+									  class="chevron card-chevron"
+									  aria-label="Show chip types"
+									  tabindex="0"></span>
 							</div>
 							<fieldset id="chipsFieldset" class="transparent-fieldset input-grid"
 									  aria-labelledby="chipsHeader"
@@ -84,8 +88,8 @@
 								<div id="divChipTypesContainer">
 									<!-- Chip Types here -->
 								</div>
-								<button id="btnAddChipType" 
-										type="button" 
+								<button id="btnAddChipType"
+										type="button"
 										onclick="Pages.Winnings.addChipType();">
 									<i class="fa-solid fa-plus" style="color: #03b025;" title="Add"></i>
 									Chip Type
@@ -93,10 +97,38 @@
 							</fieldset>
 						</div>
 					</div>
-					<div style="display: flex;">
-						<div id="tblNetWarning" class="inline-banner warning hidden">
+					<div style="display: flex;" aria-live="polite" aria-relevant="all">
+						<div id="bnrAddPlayerInfo" class="inline-banner">
+							<i class="fa-solid fa-circle-info" style="color: #FFFFFF;" title="Info"></i>
+							Once players are added, chip types except starting counts will be read-only
+						</div>
+						<div id="bnrTblNetWarning" class="inline-banner warning hidden">
 							<i class="fa-solid fa-triangle-exclamation" style="color: #FFFFFF;" title="Warning"></i>
 							Table net is not zero
+							<div class="inline-banner-buttonWrpr">
+								<button type="button"
+										id="btnShowNet"
+										aria-label="Show Details for net chips (Alt+W)"
+										onclick="Pages.Winnings.showNetDetails('btnShowNet')">
+									Sho<u>w</u> Details
+								</button>
+							</div>
+						</div>
+						<div id="bnrChipsWarning" class="inline-banner warning hidden">
+							<i class="fa-solid fa-triangle-exclamation" style="color: #FFFFFF;" title="Warning"></i>
+							Table net is zero; chip type nets are unbalanced
+							<div class="inline-banner-buttonWrpr">
+								<button type="button"
+										id="btnShowNetViaChips"
+										aria-label="Show Details for net chips (Alt+W)"
+										onclick="Pages.Winnings.showNetDetails('btnShowNetViaChips')">
+									Sho<u>w</u> Details
+								</button>
+							</div>
+						</div>
+						<div id="bnrReady" class="inline-banner positive hidden">
+							<i class="fa-solid fa-circle-check" style="color: #FFFFFF;" title="Info"></i>
+							Chips balanced
 						</div>
 					</div>
 					<div class="form-footer">
@@ -106,13 +138,13 @@
 								onclick="Pages.Winnings.addPlayer();"
 								disabled>
 							<i class="fa-solid fa-plus" style="color: #03b025;" title="Add"></i>
-							Player
+							<u>P</u>layer
 						</button>
 						<button id="btnCalcWinnings"
 								type="button"
 								onclick="Pages.Winnings.calculatePayments()"
 								disabled>
-							Calculate Payments
+							<u>C</u>alculate Payments
 						</button>
 					</div>
 				</form>
