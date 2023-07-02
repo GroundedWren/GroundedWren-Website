@@ -52,6 +52,7 @@ registerNamespace("Pages.Winnings", function (ns)
 	{
 		var sorted = false;
 		var payments = {};
+		if (posPlayers.length === 0 || negPlayers.length === 0) { return {}; }
 
 		while (!sorted)
 		{
