@@ -69,10 +69,6 @@ registerNamespace("Pages.Writing", function (ns)
 			buildDirectory(folder);
 			ns.folderRadioMap[folder].checked = true;
 		}
-		//else
-		//{
-		//	document.getElementById(DIRECTORY_CARD_ID).classList.add("hidden");
-		//}
 
 		if (params.has(ENTRY_PARAM) && folder)
 		{

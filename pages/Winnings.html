@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="A tool to split a pool">
-	<title>Winnings Calculator</title>
+	<meta name="description" content="A page to display a pot split">
+	<title>Winnings</title>
 
 	<!-- Styles -->
 	<link rel="stylesheet" href="../css/main.css" type="text/css" />
@@ -20,13 +20,10 @@
 	<script src="../scripts/Common/FileLib.js"></script>
 	<script src="../scripts/Common/Components/Shortcuts.js"></script>
 	<script src="../scripts/Common/Components/ElementDragger.js"></script>
-	<script src="../scripts/Common/Components/VisibilityToggle.js"></script>
 	<script src="../scripts/Common/Controls/Dialog.js"></script>
 	<script src="../scripts/Common/Controls/Modal.js"></script>
 
 	<script src="../scripts/Pages/Winnings.js"></script>
-
-	<script src="https://kit.fontawesome.com/c6b6f471bd.js" crossorigin="anonymous"></script>
 </head>
 <body>
 	<div id="subveil">
@@ -43,116 +40,15 @@
 						<u>S</u>hortcuts
 					</button>
 				</div>
-				<span role="heading" aria-level="1">Winnings Calculator</span>
+				<span role="heading" aria-level="1">Winnings</span>
 			</div>
 		</header>
 		<div id="BannerBuffer" class="banner-buffer"></div>
-		<div id="mainPage" role="main">
-			<div id="content">
-				<form id="game" autocomplete="off" aria-labelledby="gameTitle">
-					<h2 id="gameTitle">Game</h2>
-					<div id="gameCards">
-						<div id="stakesCard" class="card">
-							<div id="stakesHeader"
-								 class="card-header"
-								 role="heading"
-								 aria-level="3">
-								Stakes
-							</div>
-							<table id="stakesTable">
-								<thead class="sr-only">
-									<tr><th>Property</th><th>Value</th></tr>
-								</thead>
-								<tbody>
-									<tr><td class="row-label">Pot</td><td id="tdPot">$0</td></tr>
-									<tr><td class="row-label">Table net</td><td id="tdTblNet">$0</td></tr>
-									<tr><td class="row-label">Buy-in</td><td id="tdBuyIn">$0</td></tr>
-									<tr><td class="row-label">Players</td><td id="tdPlayers">0</td></tr>
-								</tbody>
-							</table>
-						</div>
-						<div id="chipsCard" class="card">
-							<div id="chipsHeader"
-								 class="card-header"
-								 role="heading"
-								 aria-level="3">
-								Chips
-								<span id="showChipsChevron"
-									  class="chevron card-chevron"
-									  aria-label="Show chip types"
-									  tabindex="0"></span>
-							</div>
-							<fieldset id="chipsFieldset" class="transparent-fieldset input-grid"
-									  aria-labelledby="chipsHeader"
-									  style="">
-								<div id="divChipTypesContainer">
-									<!-- Chip Types here -->
-								</div>
-								<button id="btnAddChipType"
-										type="button"
-										onclick="Pages.Winnings.addChipType();">
-									<i class="fa-solid fa-plus" style="color: #03b025;" title="Add"></i>
-									Chip Type
-								</button>
-							</fieldset>
-						</div>
-					</div>
-					<div style="display: flex;" aria-live="polite" aria-relevant="all">
-						<div id="bnrAddPlayerInfo" class="inline-banner">
-							<i class="fa-solid fa-circle-info" style="color: #FFFFFF;" title="Info"></i>
-							Once players are added, chip types except starting counts will be read-only
-						</div>
-						<div id="bnrTblNetWarning" class="inline-banner warning hidden">
-							<i class="fa-solid fa-triangle-exclamation" style="color: #FFFFFF;" title="Warning"></i>
-							Table net is not zero
-							<div class="inline-banner-buttonWrpr">
-								<button type="button"
-										id="btnShowNet"
-										aria-label="Show Details for net chips (Alt+W)"
-										onclick="Pages.Winnings.showNetDetails('btnShowNet')">
-									Sho<u>w</u> Details
-								</button>
-							</div>
-						</div>
-						<div id="bnrChipsWarning" class="inline-banner warning hidden">
-							<i class="fa-solid fa-triangle-exclamation" style="color: #FFFFFF;" title="Warning"></i>
-							Table net is zero; chip type nets are unbalanced
-							<div class="inline-banner-buttonWrpr">
-								<button type="button"
-										id="btnShowNetViaChips"
-										aria-label="Show Details for net chips (Alt+W)"
-										onclick="Pages.Winnings.showNetDetails('btnShowNetViaChips')">
-									Sho<u>w</u> Details
-								</button>
-							</div>
-						</div>
-						<div id="bnrReady" class="inline-banner positive hidden">
-							<i class="fa-solid fa-circle-check" style="color: #FFFFFF;" title="Info"></i>
-							Chips balanced
-						</div>
-					</div>
-					<div class="form-footer">
-						<button id="btnAddPlayer"
-								type="button"
-								style="width: 100%;"
-								onclick="Pages.Winnings.addPlayer();"
-								disabled>
-							<i class="fa-solid fa-plus" style="color: #03b025;" title="Add"></i>
-							<u>P</u>layer
-						</button>
-						<button id="btnCalcWinnings"
-								type="button"
-								onclick="Pages.Winnings.calculatePayments()"
-								disabled>
-							<u>C</u>alculate Payments
-						</button>
-					</div>
-				</form>
-				<div id="playersPane">
-					<!-- Players here -->
-				</div>
+		<main id="mainPage">
+			<div id="cardList">
+
 			</div>
-		</div>
+		</main>
 		<div id="dialogRegion" role="region" aria-label="dialogs"></div>
 	</div>
 </body>
