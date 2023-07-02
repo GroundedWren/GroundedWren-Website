@@ -14,7 +14,7 @@ window.onload = () =>
 	switch (subdomain)
 	{
 		case "TEXTADVENTURE":
-			window.location.href = "";
+			window.location.href = "./TextAdventure/TextAdventure.html";
 			return;
 		default:
 			window.location.href = "./pages/Home.html"
