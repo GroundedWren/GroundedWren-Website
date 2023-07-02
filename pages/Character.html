@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="An original character of Vera Konigin">
+	<title>Character</title>
+
+	<!-- Styles -->
+	<link rel="stylesheet" href="../common/css/main.css" type="text/css" />
+	<link rel="stylesheet" href="../common/css/Controls.css" type="text/css" />
+	<link rel="stylesheet" href="./css/Character.css" type="text/css" />
+
+	<!-- ../scripts -->
+	<script src="../common/scripts/main.js"></script>
+
+	<script src="../common/scripts/Common.js"></script>
+	<script src="../common/scripts/DOMLib.js"></script>
+	<script src="../common/scripts/FileLib.js"></script>
+	<script src="../common/scripts/SVGLib.js"></script>
+	<script src="../common/scripts/Components/ElementDragger.js"></script>
+	<script src="../common/scripts/Components/VisibilityToggle.js"></script>
+	<script src="../common/scripts/Components/Shortcuts.js"></script>
+	<script src="../common/scripts/Controls/Dialog.js"></script>
+	<script src="../common/scripts/Controls/Modal.js"></script>
+	<script src="../common/scripts/Controls/PageControl.js"></script>
+	<script src="../common/scripts/Controls/ZeroState.js"></script>
+
+	<script src="./scripts/Data/CharacterData.js"></script>
+	<script src="./scripts/Character.js"></script>
+</head>
+<body>
+	<div id="subveil">
+		<header>
+			<div class="banner fixed-header">
+				<div class="header-left">
+					<button id="homeButton"
+							role="link"
+							onclick="Common.navTo('./Home.html')">
+						<u>H</u>ome
+					</button>
+					<button id="shortcutsButton"
+							onclick="Common.Components.displayShortcuts('shortcutsButton')">
+						<u>S</u>hortcuts
+					</button>
+				</div>
+				<span role="heading" aria-level="1">Character</span>
+			</div>
+		</header>
+		<div class="banner-buffer"></div>
+		<div class="main-page" role="main">
+			<div class="content">
+				<div id="LeftPane" role="region" aria-label="Misc Statistics">
+					<img id="ProfilePicture" style="width: 100%" />
+					<table id="BasicInfo">
+						<caption>Basic Information</caption>
+						<thead class="sr-only">
+							<tr><th>Property</th><th>Value</th></tr>
+						</thead>
+						<tbody>
+							<tr><td class="row-label">Name</td><td id="tdName"></td></tr>
+							<tr><td class="row-label">Pronouns</td><td id="tdPronouns"></td></tr>
+							<tr><td class="row-label">Gender</td><td id="tdGender"></td></tr>
+							<tr><td class="row-label">Orientation</td><td id="tdOrientation"></td></tr>
+						</tbody>
+					</table>
+					<table id="PhysicalInfo">
+						<caption>Physical Information</caption>
+						<thead class="sr-only">
+							<tr><th>Property</th><th>Value</th></tr>
+						</thead>
+						<tr><td class="row-label">Species</td><td id="tdSpecies"></td></tr>
+						<tr>
+							<td class="row-label">Sex</td>
+							<td id="sexRow">
+								<div id="tdSex" />
+							</td>
+						</tr>
+						<tr><td class="row-label">Age</td><td id="tdAge"></td></tr>
+						<tr><td class="row-label">Height</td><td id="tdHeight"></td></tr>
+					</table>
+					<table id="Colors">
+						<caption>Colors</caption>
+						<thead class="sr-only">
+							<tr><th>Property</th><th>Value</th></tr>
+						</thead>
+						<!-- JS generated :) -->
+					</table>
+					<table id="MetaInfo">
+						<caption>Metadata</caption>
+						<thead class="sr-only">
+							<tr><th>Property</th><th>Value</th></tr>
+						</thead>
+						<tbody>
+							<tr><td class="row-label">Created by</td><td id="tdCreatedBy"></td></tr>
+							<tr><td class="row-label">Date created</td><td id="tdCreatedDate"></td></tr>
+							<tr><td class="row-label">Status</td><td id="tdStatus"></td></tr>
+						</tbody>
+					</table>
+				</div>
+				<div id="divVert" class="divider-vert"></div>
+				<button id="leftPaneCollapseBtn" class="button-like" aria-label="Collapse the misc statistics section">
+					<span id="leftPaneCollapseChevron" class="chevron left"></span>
+				</button>
+				<div id="RightPane" class="mini-hide" role="region" aria-label="Longform description">
+					<!-- JS generated :) -->
+				</div>
+			</div>
+		</div>
+		<div id="dialogRegion" role="region" aria-label="dialogs"></div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,302 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="A testing page">
+	<title>Head Title!</title>
+
+	<!-- Styles -->
+	<link rel="stylesheet" href="../common/css/main.css" type="text/css" />
+	<link rel="stylesheet" href="../common/css/Controls.css" type="text/css" />
+
+	<!-- Scripts -->
+	<script src="../common/scripts/main.js"></script>
+
+	<script src="../common/scripts/Common.js"></script>
+	<script src="../common/scripts/DOMLib.js"></script>
+	<script src="../common/scripts/FileLib.js"></script>
+	<script src="../common/scripts/SVGLib.js"></script>
+	<script src="../common/scripts/Components/ElementDragger.js"></script>
+	<script src="../common/scripts/Components/Timekeeper.js"></script>
+	<script src="../common/scripts/Components/VisibilityToggle.js"></script>
+	<script src="../common/scripts/Components/Shortcuts.js"></script>
+	<script src="../common/scripts/Controls/Dialog.js"></script>
+	<script src="../common/scripts/Controls/Modal.js"></script>
+	<script src="../common/scripts/Controls/PageControl.js"></script>
+	<script src="../common/scripts/Controls/ZeroState.js"></script>
+	<script src="../common/scripts/Controls/DropdownMenu.js"></script>
+
+	<script src="./scripts/Example.js"></script>
+</head>
+<body>
+	<div id="subveil">
+		<header>
+			<div class="banner fixed-header">
+				<div class="header-left">
+					<button id="homeButton"
+							role="link"
+							onclick="Common.navTo('./Home.html')">
+						<u>H</u>ome
+					</button>
+					<button id="shortcutsButton"
+							onclick="Common.Components.displayShortcuts('shortcutsButton')">
+						<u>S</u>hortcuts
+					</button>
+				</div>
+				<span role="heading" aria-level="1">Example page!</span>
+			</div>
+		</header>
+		<div class="banner-buffer"></div>
+		<div class="main-page">
+			<h1>Hello world!</h1>
+			<div id="content"></div>
+
+			<hr />
+			<h2>SVG</h2>
+			<div id="SVGParent"></div>
+
+			<hr />
+			<h2>File interaction</h2>
+			<div>
+				<h3>Upload</h3>
+				<input id="fileUpload" type="file" /><br /><br />
+
+				<button onclick="Pages.Example.displayFileAsText()">displayFileAsText</button><br /><br />
+				<button onclick="Pages.Example.displayFileJSONsTestProperty()">displayFileJSONsTestProperty</button><br /><br />
+
+				<h3>Download</h3>
+				<input id="fileDownload" type="button" value="Download" onclick="Pages.Example.saveTestFile()" />
+			</div>
+
+			<hr />
+			<h2>HTML component testing</h2>
+			<div>
+				<input id="Button1" type="button" value="button" onclick="window.alert('hey there friend')" /><br /><br />
+
+				<br />
+				<form id="form1"
+					  autocomplete="off"
+					  aria-labelledby="formTitle">
+					<h3 id="formTitle">This is a form</h3>
+					<div style="display:grid; grid-template-columns: auto auto auto auto; grid-column-gap: 5px;">
+						<fieldset>
+							<legend id="fieldsetLabel">input-line fieldset</legend>
+							<div class="input-line">
+								<label for="Text1">Username</label>
+								<input id="Text1" type="text" />
+							</div>
+
+							<div class="input-line">
+								<label for="Password1">Password</label>
+								<input id="Password1" type="password" />
+							</div>
+
+							<div class="input-line">
+								<label for="Checkbox1">Checkbox</label>
+								<input id="Checkbox1" type="checkbox" />
+							</div>
+
+							<div class="input-line">
+								<label id="radiosLabel">Radios</label>
+								<fieldset aria-labelledby="radiosLabel" class="transparent-fieldset">
+									<input id="Radio1" type="radio" name="radioName1" value="radioval1" />
+									<label for="Radio1">value 1</label>
+									<input id="Radio2" type="radio" name="radioName1" value="radioval2" />
+									<label for="Radio2">value 2</label>
+								</fieldset>
+							</div>
+
+							<div class="input-line">
+								<label for="inBtn1">Button!</label>
+								<button type="button" id="inBtn1" onclick="console.log('ope')">Button</button>
+							</div>
+
+							<div class="input-line">
+								<label for="Select1">Select 1</label>
+								<select id="Select1">
+									<option>Option 1</option>
+									<option>Option 2</option>
+								</select>
+							</div>
+						</fieldset>
+						<fieldset class="input-flex">
+							<legend id="fieldsetLabel">input-flex-line fieldset</legend>
+							<div class="input-flex-line">
+								<label for="Text2">Username</label>
+								<input id="Text2" type="text" />
+							</div>
+
+							<div class="input-flex-line">
+								<label for="Password2">Password</label>
+								<input id="Password2" type="password" />
+							</div>
+
+							<div class="input-flex-line">
+								<label for="Checkbox2">Checkbox</label>
+								<input id="Checkbox2" type="checkbox" />
+							</div>
+
+							<div class="input-flex-line">
+								<label id="radiosLabel2">Radios</label>
+								<fieldset aria-labelledby="radiosLabel2" class="transparent-fieldset">
+									<input id="Radio3" type="radio" name="radioName2" value="radioval3" />
+									<label for="Radio3">value 3</label>
+									<input id="Radio4" type="radio" name="radioName2" value="radioval4" />
+									<label for="Radio4">value 4</label>
+								</fieldset>
+							</div>
+
+							<div class="input-flex-line">
+								<label for="inBtn2">Button!</label>
+								<button type="button" id="inBtn2" onclick="console.log('ope2')">Button</button>
+							</div>
+
+							<div class="input-flex-line">
+								<label for="Select2">Select 2</label>
+								<select id="Select2">
+									<option>Option 1</option>
+									<option>Option 2</option>
+								</select>
+							</div>
+						</fieldset>
+						<fieldset>
+							<legend id="fieldsetLabel">input-vertical-line fieldset</legend>
+							<div class="input-vertical-line">
+								<label for="Text3">Username</label>
+								<input id="Text3" type="text" />
+							</div>
+
+							<div class="input-vertical-line">
+								<label for="Password3">Password</label>
+								<input id="Password3" type="password" />
+							</div>
+
+							<div class="input-vertical-line">
+								<label for="Checkbox3">Checkbox</label>
+								<input id="Checkbox3" type="checkbox" />
+							</div>
+
+							<div class="input-vertical-line">
+								<label id="radiosLabel3">Radios</label>
+								<fieldset aria-labelledby="radiosLabel3" class="transparent-fieldset">
+									<input id="Radio5" type="radio" name="radioName3" value="radioval5" />
+									<label for="Radio5">value 5</label>
+									<input id="Radio6" type="radio" name="radioName3" value="radioval6" />
+									<label for="Radio6">value 6</label>
+								</fieldset>
+							</div>
+
+							<div class="input-vertical-line">
+								<label for="inBtn3">Button!</label>
+								<button type="button" id="inBtn3" onclick="console.log('ope3')">Button</button>
+							</div>
+
+							<div class="input-vertical-line">
+								<label for="Select3">Select 3</label>
+								<select id="Select3">
+									<option>Option 1</option>
+									<option>Option 2</option>
+								</select>
+							</div>
+						</fieldset>
+						<fieldset>
+							<legend id="fieldsetLabel">input-grid fieldset</legend>
+							<div class="input-grid">
+								<label for="Text4">Username</label>
+								<input id="Text4" type="text" />
+
+								<label for="Password4">Password</label>
+								<input id="Password4" type="password" />
+
+								<label for="Checkbox4">Checkbox</label>
+								<div>
+									<input id="Checkbox4" type="checkbox" />
+								</div>
+
+								<label id="radiosLabel4">Radios</label>
+								<fieldset aria-labelledby="radiosLabel4" class="transparent-fieldset">
+									<input id="Radio7" type="radio" name="radioName4" value="radioval7" />
+									<label for="Radio7">value 7</label>
+									<input id="Radio8" type="radio" name="radioName4" value="radioval8" />
+									<label for="Radio2">value 8</label>
+								</fieldset>
+
+								<label for="inBtn4">Button!</label>
+								<button type="button" id="inBtn4" onclick="console.log('ope')">Button</button>
+
+								<label for="Select4">Select 4</label>
+								<select id="Select4">
+									<option>Option 1</option>
+									<option>Option 2</option>
+								</select>
+							</div>
+						</fieldset>
+					</div>
+					<div class="form-footer">
+						<input id="Reset1" type="reset" value="reset" />
+						<input id="Submit1" type="submit" value="submit" />
+					</div>
+				</form><br />
+
+				<input id="Hidden1" type="hidden" />
+				<textarea id="TextArea1" rows="2" cols="20" placeholder="I'm a text area uwu"></textarea><br />
+
+				<table id="myTable1" style="width: 50%;">
+					<caption>Caption</caption>
+					<thead>
+						<tr class="tableHeader"><th>Col 1</th><th>Col 2</th><th>Col 3</th></tr>
+					</thead>
+					<tbody>
+						<tr><td>cell 1</td><td>cell 2</td><td>cell 3</td></tr>
+						<tr><td>cell 1</td><td>cell 2</td><td>cell 3</td></tr>
+					</tbody>
+				</table><br />
+
+				<button onclick="Pages.Example.showModal()">It's modal time!</button><br /><br />
+				<button onclick="Pages.Example.showDialog()">It's nonmodal dialog time!</button><br /><br />
+			</div>
+
+			<hr />
+			<h2>Page Control</h2>
+			<div>
+				<div id="pgC" class="page-control" style="width: 1000px; height: 700px;">
+					<div id="pgC_ts" class="tab-strip">
+						<div id="pgC_t1" tabindex="0" class="tab-strip-tab button-like"><span>Tab 1</span></div>
+						<div id="pgC_t2" tabindex="0" class="tab-strip-tab button-like"><span>Tab 2</span></div>
+						<div class="tab-gutter"></div>
+					</div>
+					<div id="pgC_pc" class="page-container">
+						<div id="pgC_p1" class="page-control-page">Page 1</div>
+						<div id="pgC_p2" class="page-control-page">Page 2</div>
+					</div>
+				</div>
+			</div>
+			<hr />
+			<h2>Visibility Toggle</h2>
+			<button id="VisTogButton">I toggle visibility</button>
+			<p id="togee">I get toggled :)</p>
+			<p id="togee2">me too</p>
+			<hr />
+			<h2>Dropdown Menu</h2>
+			<div id="dropdownMenuContainer" style="margin: auto; width: 500px"></div>
+			<br />
+			<br />
+			<div id="shortcutsCard" class="card">
+				<div class="card-header" role="heading" aria-level="2">Shortcuts</div>
+				<ul>
+					<li>
+						<kbd>Ctrl</kbd>+<kbd>z</kbd>
+					</li>
+				</ul>
+				<button onclick="Pages.Example.addShortcut('ALT+SHIFT+H')">Add Alt+Shift+H</button>
+				<button onclick="Pages.Example.removeShortcut('ALT+SHIFT+H')">Remove Alt+Shift+H</button>
+				<footer>He likes toast</footer>
+			</div>
+		</div>
+		<div id="dialogRegion" role="region" aria-label="dialogs"></div>
+		<div class="banner-buffer"></div>
+		<footer class="banner fixed-footer">This is just a proving ground for things I'm working on</footer>
+	</div>
+</body>
+</html>

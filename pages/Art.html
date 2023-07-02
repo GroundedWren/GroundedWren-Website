@@ -1,0 +1,272 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="An art gallery for the characters of Vera Konigin">
+	<title>Grounded Wren - Art</title>
+
+	<!-- Styles -->
+	<link rel="stylesheet" href="../common/css/main.css" type="text/css" />
+	<link rel="stylesheet" href="../common/css/Controls.css" type="text/css" />
+
+	<link rel="stylesheet" href="./css/Art.css" type="text/css" />
+
+	<!-- ../scripts -->
+	<script src="../common/scripts/main.js"></script>
+
+	<script src="../common/scripts/Common.js"></script>
+	<script src="../common/scripts/DOMLib.js"></script>
+	<script src="../common/scripts/SVGLib.js"></script>
+	<script src="../common/scripts/Components/ElementDragger.js"></script>
+	<script src="../common/scripts/Components/VisibilityToggle.js"></script>
+	<script src="../common/scripts/Components/Shortcuts.js"></script>
+	<script src="../common/scripts/Controls/Dialog.js"></script>
+	<script src="../common/scripts/Controls/Modal.js"></script>
+	<script src="../common/scripts/Controls/ZeroState.js"></script>
+
+	<script src="./scripts/Data/ArtData.js"></script>
+	<script src="./scripts/Art.js"></script>
+</head>
+<body>
+	<div id="subveil">
+		<heading>
+			<div id="Banner" class="banner fixed-header">
+				<div class="header-left">
+					<button id="homeButton"
+							role="link"
+							onclick="Common.navTo('./Home.html')">
+						<u>H</u>ome
+					</button>
+					<button id="shortcutsButton"
+							onclick="Common.Components.displayShortcuts('shortcutsButton')">
+						<u>S</u>hortcuts
+					</button>
+				</div>
+				<span role="heading" aria-level="1">Art</span>
+			</div>
+		</heading>
+		<div id="BannerBuffer" class="banner-buffer"></div>
+		<main id="mainPage">
+			<div class="content">
+				<div id="leftPane" role="form" aria-label="Sort and Filter">
+					<button id="getLink" onclick="Pages.Art.onLinkRequested()">Get Link</button>
+					<div class="card">
+						<div id="sortHeading" class="card-header" role="heading" aria-level="2">Sort</div>
+						<fieldset class="transparent-fieldset input-flex" aria-labelledby="sortHeading">
+							<div class="input-flex-line">
+								<label for="CharaRad">Character</label>
+								<input id="CharaRad" type="radio" name="SortRadGroup" onChange="Pages.Art.sortBy('Character')" checked />
+							</div>
+							<div class="input-flex-line">
+								<label for="ArtistRad">Artist</label>
+								<input id="ArtistRad" type="radio" name="SortRadGroup" onChange="Pages.Art.sortBy('Artist')" />
+							</div>
+							<div class="input-flex-line">
+								<label for="DateRad">Most Recent</label>
+								<input id="DateRad" type="radio" name="SortRadGroup" onChange="Pages.Art.sortBy('Date')" />
+							</div>
+						</fieldset>
+					</div>
+					<div class="card">
+						<div id="filterHeading" class="card-header" role="heading" aria-level="2">Filter</div>
+						<fieldset class="transparent-fieldset" aria-labelledby="filterHeading">
+							<div class="input-line">
+								<button id="showAllBtn"
+										onclick="Pages.Art.showAll()"
+										aria-pressed="false">
+									Show All
+								</button>
+								<button id="hideAllBtn"
+										onclick="Pages.Art.hideAll()"
+										aria-pressed="true">
+									Hide All
+								</button>
+							</div>
+							<h3 id="charactersHeading">Characters</h3>
+							<fieldset id="CharFilters" 
+									  class="transparent-fieldset"
+									  aria-labelledby="charactersHeading">
+								<div class="input-line">
+									<button id="showAllCharsBtn"
+											onclick="Pages.Art.showAllChars()"
+											aria-pressed="false">
+										Show All
+									</button>
+									<button id="hideAllCharsBtn"
+											onclick="Pages.Art.hideAllChars()"
+											aria-pressed="true">
+										Hide All
+									</button>
+									<span id="chevViewCharacters"
+										  class="chevron filt-chev bottom"
+										  aria-label="View character toggles"
+										  tabindex="0"></span>
+								</div>
+								<div id="charToggles" style="display: none">
+									<h4 id="verasOCsHeading">Vera's OCs</h4>
+									<fieldset class="transparent-fieldset input-flex" aria-labelledby="verasOCsHeading">
+										<div class="input-flex-line">
+											<label for="VeraCB">Vera</label>
+											<input id="VeraCB"
+												   type="checkbox"
+												   onchange="Pages.Art.setCharFilter('Vera', arguments[0].target.checked)" />
+										</div>
+										<div class="input-flex-line">
+											<label for="ErynCB">Eryn</label>
+											<input id="ErynCB"
+												   type="checkbox"
+												   onchange="Pages.Art.setCharFilter('Eryn', arguments[0].target.checked)" />
+										</div>
+										<div class="input-flex-line">
+											<label for="FreyaCB">Freya</label>
+											<input id="FreyaCB"
+												   type="checkbox"
+												   onchange="Pages.Art.setCharFilter('Freya', arguments[0].target.checked)" />
+										</div>
+										<div class="input-flex-line">
+											<label for="SindriCB">Sindri</label>
+											<input id="SindriCB"
+												   type="checkbox"
+												   onchange="Pages.Art.setCharFilter('Sindri', arguments[0].target.checked)" />
+										</div>
+									</fieldset>
+									<h4 id="othersOCsHeading">Others' OCs</h4>
+									<fieldset class="transparent-fieldset input-flex" aria-labelledby="othersOCsHeading">
+										<div class="input-flex-line">
+											<label for="GhodukkCB">Ghodukk</label>
+											<input id="GhodukkCB"
+												   type="checkbox"
+												   onchange="Pages.Art.setCharFilter('Ghodukk', arguments[0].target.checked)" />
+										</div>
+										<div class="input-flex-line">
+											<label for="JackCB">Jack</label>
+											<input id="JackCB"
+												   type="checkbox"
+												   onchange="Pages.Art.setCharFilter('Jack', arguments[0].target.checked)" />
+										</div>
+										<div class="input-flex-line">
+											<label for="LightsongCB">Lightsong</label>
+											<input id="LightsongCB"
+												   type="checkbox"
+												   onchange="Pages.Art.setCharFilter('Lightsong', arguments[0].target.checked)" />
+										</div>
+										<div class="input-flex-line">
+											<label for="PercyCB">Percy</label>
+											<input id="PercyCB"
+												   type="checkbox"
+												   onchange="Pages.Art.setCharFilter('Percy', arguments[0].target.checked)" />
+										</div>
+										<div class="input-flex-line">
+											<label for="SerinCB">Serin</label>
+											<input id="SerinCB"
+												   type="checkbox"
+												   onchange="Pages.Art.setCharFilter('Serin', arguments[0].target.checked)" />
+										</div>
+									</fieldset>
+									<h4 id="othersHeading">Others</h4>
+									<fieldset class="transparent-fieldset input-flex" aria-labelledby="othersHeading">
+										<div class="input-flex-line">
+											<label for="NocturnaCB">Nocturna</label>
+											<input id="NocturnaCB"
+												   type="checkbox"
+												   onchange="Pages.Art.setCharFilter('Nocturna', arguments[0].target.checked)" />
+										</div>
+									</fieldset>
+								</div>
+							</fieldset>
+
+							<h3 id="artistsHeading">Artists</h3>
+							<fieldset id="ArtistFilters" class="transparent-fieldset" aria-labelledby="artistsHeading">
+								<div class="input-line">
+									<button id="showAllArtistsBtn"
+											onclick="Pages.Art.showAllArtists()"
+											aria-pressed="false">
+										Show All
+									</button>
+									<button id="hideAllArtistsBtn"
+											onclick="Pages.Art.hideAllArtists()"
+											aria-pressed="true">
+										Hide All
+									</button>
+									<span id="chevViewArtists"
+										  class="chevron filt-chev bottom"
+										  aria-label="View artist toggles"
+										  tabindex="0"></span>
+								</div>
+								<div id="artistToggles" class="input-flex" style="display: none;">
+									<div class="input-flex-line">
+										<label for="BACB">Bastien Aufrere</label>
+										<input id="BACB"
+											   type="checkbox"
+											   onchange="Pages.Art.togArtistFilter('Bastien Aufrere', arguments[0].target.checked)" />
+									</div>
+									<div class="input-flex-line">
+										<label for="BerBorCB">Berenice Borggrefe</label>
+										<input id="BerBorCB"
+											   type="checkbox"
+											   onchange="Pages.Art.togArtistFilter('Berenice Borggrefe', arguments[0].target.checked)" />
+									</div>
+									<div class="input-flex-line">
+										<label for="ChelseaRhiCB">Chelsea-Rhi</label>
+										<input id="ChelseaRhiCB"
+											   type="checkbox"
+											   onchange="Pages.Art.togArtistFilter('Chelsea-Rhi', arguments[0].target.checked)" />
+									</div>
+									<div class="input-flex-line">
+										<label for="DespeyCB">Despey</label>
+										<input id="DespeyCB"
+											   type="checkbox"
+											   onchange="Pages.Art.togArtistFilter('Despey', arguments[0].target.checked)" />
+									</div>
+									<div class="input-flex-line">
+										<label for="JestCB">JesterDK</label>
+										<input id="JestCB"
+											   type="checkbox"
+											   onchange="Pages.Art.togArtistFilter('JesterDK', arguments[0].target.checked)" />
+									</div>
+									<div class="input-flex-line">
+										<label for="LiliVicCB">LiliVic Creations</label>
+										<input id="LiliVicCB"
+											   type="checkbox"
+											   onchange="Pages.Art.togArtistFilter('LiliVic Creations', arguments[0].target.checked)" />
+									</div>
+									<div class="input-flex-line">
+										<label for="RaiykCB">Raiyk</label>
+										<input id="RaiykCB"
+											   type="checkbox"
+											   onchange="Pages.Art.togArtistFilter('Raiyk', arguments[0].target.checked)" />
+									</div>
+									<div class="input-flex-line">
+										<label for="SLCCB">ShrimpLoverCat</label>
+										<input id="SLCCB"
+											   type="checkbox"
+											   onchange="Pages.Art.togArtistFilter('ShrimpLoverCat', arguments[0].target.checked)" />
+									</div>
+									<div class="input-flex-line">
+										<label for="VeraArtCB">Vera</label>
+										<input id="VeraArtCB"
+											   type="checkbox"
+											   onchange="Pages.Art.togArtistFilter('Vera', arguments[0].target.checked)" />
+									</div>
+								</div>
+							</fieldset>
+						</fieldset>
+					</div>
+				</div>
+
+				<div id="divVert" class="divider-vert"></div>
+				<button id="leftPaneCollapseBtn" class="button-like" aria-label="collapse Sort and Filter panel">
+					<span id="leftPaneCollapseChevron" class="chevron left"></span>
+				</button>
+
+				<div id="rightPane" class="mini-hide" role="region" aria-label="Art Gallery">
+					<div id="gallery">
+					</div>
+				</div>
+			</div>
+		</main>
+		<div id="dialogRegion" role="region" aria-label="dialogs"></div>
+	</div>
+</body>
+</html>

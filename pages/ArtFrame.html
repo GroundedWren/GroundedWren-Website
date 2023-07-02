@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="A work of art displayed by Vera Konigin">
+	<title>Art Frame</title>
+
+	<!-- Styles -->
+	<link rel="stylesheet" href="../common/css/main.css" type="text/css" />
+	<link rel="stylesheet" href="../common/css/Controls.css" type="text/css" />
+
+	<link rel="stylesheet" href="./css/ArtFrame.css" type="text/css" />
+
+	<!-- ../scripts -->
+	<script src="../common/scripts/main.js"></script>
+
+	<script src="../common/scripts/Common.js"></script>
+	<script src="../common/scripts/DOMLib.js"></script>
+	<script src="../common/scripts/FileLib.js"></script>
+	<script src="../common/scripts/Components/ElementDragger.js"></script>
+	<script src="../common/scripts/Controls/Dialog.js"></script>
+	<script src="../common/scripts/Controls/Modal.js"></script>
+
+	<script src="./scripts/Data/ArtData.js"></script>
+	<script src="./scripts/ArtFrame.js"></script>
+</head>
+<body>
+	<div id="subveil">
+		<header>
+			<div id="Banner" class="banner fixed-header">
+				<a style="float: left;" href="javascript:history.back()">Back</a>
+				<span role="heading" aria-level="1">Art Frame</span>
+			</div>
+		</header>
+		<div id="BannerBuffer" class="banner-buffer"></div>
+		<main id="mainPage">
+			<div id="imgContainer">
+				<img id="imgElement" />
+				<div id="metaContainer"></div>
+			</div>
+			<div id="commentContainer" class="card" aria-label="Image comment"></div>
+		</main>
+		<div id="dialogRegion" role="region" aria-label="dialogs"></div>
+	</div>
+</body>
+</html>
