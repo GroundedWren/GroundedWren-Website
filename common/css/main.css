@@ -92,6 +92,12 @@ form {
 	width: fit-content;
 }
 
+form.transparent-form {
+	border: none;
+	padding: 0px;
+	width: auto;
+}
+
 .transparent-fieldset {
 	margin: 0;
 	padding: 0;
@@ -337,6 +343,14 @@ thead {
 /*#endregion */
 
 /*#region Inline Banner */
+.inline-banner-wrapper {
+	display: flex;
+}
+
+.inline-banner-wrapper > .inline-banner {
+	width: 100%;
+}
+
 .inline-banner {
 	margin: 10px;
 	border: 1px solid white;
@@ -346,7 +360,10 @@ thead {
 	display: flex;
 	align-items: center;
 	gap: 5px;
-	width: 100%;
+}
+
+.inline-banner.center {
+	justify-content: center;
 }
 
 .z {

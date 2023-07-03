@@ -58,8 +58,7 @@ registerNamespace("Common.Controls.PageControl", function (ns)
 		/**
 		 * Create a page control from existing DOM elements
 		 */
-		constructor(pageControl, tabStrip, pageContainer, tabPageMap, zeroStateMessage, name
-		)
+		constructor(pageControl, tabStrip, pageContainer, tabPageMap, zeroStateMessage, name)
 		{
 			this.controlEl = pageControl;
 			this.__tabStripEl = tabStrip;
