@@ -102,4 +102,11 @@ registerNamespace("Common.FileLib", function (ns)
 		await writable.close();
 	};
 	ns.saveJSONFile = saveJSONFile;
+
+	ns.loadJSONFileFromDirectory = async function (path)
+	{
+		const response = await fetch(path);
+		if (!response.ok) { return null; }
+		return JSON.parse(await response.text());
+	};
 });
