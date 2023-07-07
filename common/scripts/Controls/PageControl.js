@@ -66,7 +66,6 @@ registerNamespace("Common.Controls.PageControl", function (ns)
 
 			this.controlEl.setAttribute("role", "region");
 			this.controlEl.setAttribute("aria-label", (name || "") + " page control");
-			this.__pageContainerEl.setAttribute("aria-live", "polite");
 
 			this.__tabDict = {};
 			for (var tabId of Object.keys(tabPageMap))
@@ -184,6 +183,11 @@ registerNamespace("Common.Controls.PageControl", function (ns)
 			this.onActivate = onActivate;
 
 			tabEl.setAttribute("aria-pressed", "false");
+
+			if (!this.__pageEl.hasAttribute("tabIndex"))
+			{
+				this.__pageEl.setAttribute("tabIndex", "-1");
+			}
 		}
 
 		/**
@@ -195,6 +199,8 @@ registerNamespace("Common.Controls.PageControl", function (ns)
 			this.tabEl.classList.add("selected");
 			this.__pageEl.classList.add("selected");
 			this.tabEl.setAttribute("aria-pressed", "true");
+
+			this.__pageEl.focus();
 		};
 
 		/**

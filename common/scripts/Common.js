@@ -8,6 +8,7 @@ registerNamespace("Common", function (ns)
 	 * https://www.toptal.com/developers/keycode
 	 */
 	const KeyCodes = {
+		Backspace: 8,
 		Tab: 9,
 		Enter: 13,
 		Esc: 27,
@@ -124,6 +125,7 @@ registerNamespace("Common", function (ns)
 		var axLiveEl = document.createElement("div");
 		axLiveEl.id = id;
 		axLiveEl.setAttribute("aria-live", live);
+		axLiveEl.setAttribute("aria-relevant", "all");
 		return axLiveEl;
 	}
 
@@ -140,7 +142,7 @@ registerNamespace("Common", function (ns)
 		parentEl.innerHTML = "";
 
 		var messageEl = document.createElement("p");
-		messageEl.innerText = message;
+		messageEl.innerText = message.replaceAll("<br />", " ");
 
 		parentEl.appendChild(messageEl);
 	}

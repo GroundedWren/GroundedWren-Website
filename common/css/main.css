@@ -186,6 +186,10 @@ form > h1, form > h2, form > h3, form > h4, form > h5, form > h6 {
 	grid-row-gap: 2px;
 }
 
+.input-grid > .full-line {
+	grid-column: 1 / -1;
+}
+
 .z {
 }
 
@@ -279,6 +283,11 @@ textarea {
 select {
 	color: white;
 	background-color: black;
+}
+
+button.button-like {
+	padding: unset;
+	text-align: unset;
 }
 
 button, input[type="button"], input[type="submit"], input[type="reset"], input[type="file"]::file-selector-button, .button-like {

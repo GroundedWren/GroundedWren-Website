@@ -37,6 +37,7 @@ registerNamespace("Common.Controls.Popups", function (ns)
 		__modalTitle.innerHTML = title;
 		__modalContent.innerHTML = content;
 
+		__modalEl.setAttribute("tabIndex", "-1");
 		__modalEl.focus();
 
 		document.body.addEventListener('keydown', __hideModalOnEsc);
