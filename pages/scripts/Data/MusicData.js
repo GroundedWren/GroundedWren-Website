@@ -158,5 +158,73 @@ registerNamespace("Pages.Music.Data", function (ns)
 				},
 			],
 		},
+		"Relics": {
+			ContributingArtists: ["Vera"],
+			DateString: "Various",
+			Art: "../img/Music/Relics.png",
+			ArtAlt: "A rural crossroads.",
+			Description: "Collection of things I've recorded in the distant past.",
+			Songs: [
+				{
+					title: "An End Once and for All",
+					src: "../music/Relics/An End Once and for All.mp3",
+					type: "audio/mp3",
+					performers: ["Vera"],
+					composers: ["Aaam Hulick", "Clint Mansell"],
+					instruments: ["Grand Piano"],
+					recorded: new Date(2014, 5, 5),
+					description: "I was absolutely obsessed with Mass Effect in high school, and one outlet for that was annoying my family by playing this piece over and over.<br />"
+						+ "<br />"
+						+ "Original upload comments from 2014:<br />"
+						+ "Yes I am a Mass Effect fan. Yes I liked the extended cut ending -- the soundtrack was just too badass!",
+					lyrics: "(Instrumental)",
+				},
+				{
+					title: "When The Levee Breaks",
+					src: "../music/Relics/When The Levee Breaks.mp3",
+					type: "audio/mp3",
+					performers: ["Vera"],
+					composers: ["Memphis Minnie", "Kansas Joe McCoy", "Led Zeppelin"],
+					instruments: ["Electric Guitar", "Synthetic drums"],
+					recorded: new Date(2015, 5, 12),
+					description: "This was back when I used to actually play electric guitar! Had a lot of fun learning to play with a slide for this.<br />"
+						+ "<br />"
+						+ "Original upload comments from 2015:<br />"
+						+ "Mama you got to move!<br />"
+						+ "Original is my favorite song of all time: [youtube link]",
+					lyrics: "(Instrumental)",
+				},
+				{
+					title: "It's That Time Again",
+					src: "../music/Relics/It_s That Time Again.mp3",
+					type: "audio/mp3",
+					performers: ["Vera"],
+					composers: ["Vera"],
+					instruments: ["Electric Guitar", "Synthetic drums"],
+					recorded: new Date(2015, 6, 19),
+					description: "The talk box effect'd guitar is meant to be a sub for vocals. I later recorded vocals for this, but they're not good.<br />"
+						+ "<br />"
+						+ "My original upload comments from 2015:<br />"
+						+ "Can't sing because my roommate won't leave >___> *glares*<br />"
+						+ "Do let me know if I ripped this off from somewhere xD I didn't mean to if I did",
+					lyrics: "(Instrumental)",
+				},
+				{
+					title: "Blowin' In The Wind",
+					src: "../music/Relics/Blowin In The Wind.mp3",
+					type: "audio/mp3",
+					performers: ["Vera"],
+					composers: ["Bob Dylan"],
+					instruments: ["Acoustic Guitar", "Vocals"],
+					recorded: new Date(2017, 3, 26),
+					description: "The more observant amongst you will notice I sound a little different on this track.<br />"
+						+ "<br />"
+						+ "My original upload comments from 2017:<br />"
+						+ "More Freewheelin'!<br />"
+						+ "I'm trying to record more now that school's out, we'll see how this goes",
+					lyrics: "(Instrumental)",
+				},
+			]
+		},
 	};
 });
