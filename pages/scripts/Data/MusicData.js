@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Data Namespace for Music.html
  */
 registerNamespace("Pages.Music.Data", function (ns)
@@ -170,7 +170,7 @@ registerNamespace("Pages.Music.Data", function (ns)
 					src: "../music/Relics/An End Once and for All.mp3",
 					type: "audio/mp3",
 					performers: ["Vera"],
-					composers: ["Aaam Hulick", "Clint Mansell"],
+					composers: ["Sam Hulick", "Clint Mansell"],
 					instruments: ["Grand Piano"],
 					recorded: new Date(2014, 5, 5),
 					description: "I was absolutely obsessed with Mass Effect in high school, and one outlet for that was annoying my family by playing this piece over and over.<br />"
@@ -215,14 +215,14 @@ registerNamespace("Pages.Music.Data", function (ns)
 					type: "audio/mp3",
 					performers: ["Vera"],
 					composers: ["Bob Dylan"],
-					instruments: ["Acoustic Guitar", "Vocals"],
+					instruments: ["Acoustic Guitar", "Bass Guitar" , "Vocals"],
 					recorded: new Date(2017, 3, 26),
 					description: "The more observant amongst you will notice I sound a little different on this track.<br />"
 						+ "<br />"
 						+ "My original upload comments from 2017:<br />"
 						+ "More Freewheelin'!<br />"
 						+ "I'm trying to record more now that school's out, we'll see how this goes",
-					lyrics: "(Instrumental)",
+					lyrics: "<a href='http://www.bobdylan.com/songs/blowin-wind/' target='_blank'>bobdylan.com</a>",
 				},
 			]
 		},
