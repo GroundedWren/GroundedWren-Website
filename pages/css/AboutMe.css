@@ -2,6 +2,7 @@
 
 body {
 	min-width: 320px;
+	font-size: large;
 }
 
 h1 {
@@ -65,7 +66,7 @@ li > span {
 	background-color: black;
 	margin-left: auto;
 	margin-right: auto;
-	min-width: calc(320px - 22px); /*10px padding x2 - 1px margin x2*/
+	max-width: 90%
 }
 
 
@@ -95,6 +96,9 @@ li > span {
 	padding-top: 5px;
 	padding-bottom: 5px;
 	text-align: center;
+	min-height: 44px;
+	min-width: 44px;
+	line-height: 44px;
 }
 
 .z {
@@ -105,11 +109,12 @@ li > span {
 	box-shadow: 0px 0px 34px 0px #D0ADED;
 }
 /*#endregion*/
+
+/*#region IDs*/
+
 #subveil {
 	background-color: #1A0D26;
 }
-
-/*#region IDs*/
 
 #dVera {
 	text-align: center;
@@ -140,7 +145,6 @@ li > span {
 #miscCard {
 	height: 500px;
 	width: calc(100% - 22px); /*10px padding x2 - 1px margin x2*/
-	max-width: 700px;
 }
 
 #miscCtrl {
