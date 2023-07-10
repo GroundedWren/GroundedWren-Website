@@ -1,13 +1,9 @@
-﻿#subveil {
-	height: 100%;
-}
-
-h1, h2, h3 {
+﻿h1, h2, h3 {
 	margin-top: 0;
 	margin-bottom: 10px;
 }
 
-#mainPage {
+main {
 	margin-left: 20px;
 	margin-right: 20px;
 	display: flex;
@@ -69,6 +65,7 @@ h1, h2, h3 {
 	flex-basis: 360px;
 	overflow: auto;
 	margin-left: 10px;
+	background-color: #331A4D;
 }
 
 audio {
@@ -115,15 +112,28 @@ table {
 	width: 175px;
 }
 
-#trackListRight {
+#trackControls {
 	display: flex;
-	width: 120px;
+	flex-basis: calc(88px * 3);
+	margin-right: 10px;
+	margin-left: 10px;
 }
 
 .z {
 }
 
-#trackListRight > button {
+#trackControls > button {
+	flex-grow: 1;
+	min-height: 44px;
+}
+
+#trackListHeader {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+#trackListHeader > h2 {
 	flex-grow: 1;
 }
 
@@ -132,7 +142,7 @@ audio {
 }
 
 @media (max-width: 1000px) {
-	#mainPage {
+	main {
 		margin-left: 5px;
 		margin-right: 5px;
 	}

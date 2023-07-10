@@ -1,4 +1,4 @@
-﻿#mainPage {
+﻿main {
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
@@ -37,7 +37,7 @@ h1, h2, h3 {
 
 /* Common.MINI_THRESHOLD */
 @media (max-width: 600px) {
-	#mainPage {
+	main {
 		margin-left: 5px;
 		margin-right: 5px;
 	}

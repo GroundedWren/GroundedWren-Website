@@ -1,4 +1,4 @@
-/*#region HTML Elements */
+﻿/*#region HTML Elements */
 
 body {
 	min-width: 320px;
@@ -14,8 +14,8 @@ h2 {
 }
 
 h2, h3, h4, h5, h6 {
-	margin-bottom: 0px;
-	margin-top: 10px;
+	margin-bottom: 5px;
+	margin-top: 5px;
 }
 
 table {
@@ -145,13 +145,14 @@ li > span {
 	padding-right: 5px;
 }
 
-#miscCard {
-	height: 500px;
-	width: calc(100% - 22px); /*10px padding x2 - 1px margin x2*/
+#miscDiv {
+	width: calc(100% - 2px);
+	margin-left: auto;
+	margin-right: auto;
 }
 
 #miscCtrl {
-	height: calc(100% - 20px); /*Padding*/
+	height: 500px;
 }
 
 /*#endregion*/

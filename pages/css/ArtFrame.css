@@ -1,4 +1,8 @@
-﻿td {
+﻿#subveil {
+	height: auto;
+}
+
+td {
 	border-top: none;
 	border-left: none;
 	border-right: none;
@@ -23,7 +27,7 @@ table {
 	/*width: 150px;*/
 }
 
-#mainPage {
+main {
 	display: flex;
 	flex-direction: column;
 	margin-left: 20px;
@@ -33,7 +37,7 @@ table {
 	align-items: center
 }
 
-#mainPage.frame {
+main.frame {
 	margin: 0;
 }
 

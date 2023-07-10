@@ -2,13 +2,9 @@
 	CSS Classes for Writing.html
 */
 
-#subveil {
-	height: 100%;
-}
-
-#main-page {
+main {
 	margin-right: 20px;
-	height: calc(100% - 25px); /*Header*/
+	height: calc(100vh - 25px); /*Header*/
 }
 
 #content {

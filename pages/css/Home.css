@@ -1,5 +1,5 @@
 ﻿/**
-	CSS Classes for index.html
+	CSS Classes for pages/home.html
 */
 
 h2, h3, h4, h5, h6 {
@@ -12,14 +12,14 @@ h1 {
 	text-align: center;
 }
 
-.main-page {
+main {
 	margin-left: 20px;
 	margin-right: 20px;
 }
 
 /* Pages.Index.MINI_THRESHOLD */
 @media (max-width: 755px) {
-	.main-page {
+	main {
 		margin-left: 5px;
 		margin-right: 5px;
 	}

@@ -1,6 +1,4 @@
 ﻿body {
-	width: calc(100% - 10px - 10px); /*padding*/
-	height: calc(100% - 10px - 10px); /*padding*/
 	padding-right: 10px;
 	padding-bottom: 10px;
 	padding-top: 10px;
@@ -42,8 +40,13 @@ header {
 	width: 100%;
 }
 
-header > button {
+header > a {
+	height: 44px;
+	line-height: 44px;
+	text-align: center;
 	flex-basis: 90px;
+	background-color: rebeccapurple;
+	border-radius: 25px;
 }
 
 .title-container {
@@ -151,9 +154,8 @@ hr {
 }
 
 nav {
-	margin: auto;
-	margin-top: 10px;
+	margin: auto !important;
+	margin-top: 10px !important;
 	width: fit-content;
-	border: 1px solid white;
 	padding: 10px;
 }
