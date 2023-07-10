@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Data Namespace for Music.html
  */
 registerNamespace("Pages.Music.Data", function (ns)

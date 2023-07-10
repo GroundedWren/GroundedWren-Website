@@ -49,6 +49,23 @@ a {
 	padding-right: 5px;
 }
 
+.banner-left {
+	float: left;
+	position: absolute;
+	display: flex;
+	flex-direction: row;
+	height: 100%;
+}
+
+.z {
+}
+
+.banner-left > * {
+	margin-left: 2px;
+	margin-right: 5px;
+	margin-bottom: 2px;
+}
+
 /* We only get into trouble at very small widths */
 @media (max-width: 400px) {
 	.fixed-header {
@@ -532,26 +549,6 @@ thead {
 	left: -99999999px;
 	font-size: 1px;
 }
-/*#endregion*/
-
-/*#region Header*/
-.header-left {
-	float: left;
-	position: absolute;
-	display: flex;
-	flex-direction: row;
-	height: 100%;
-}
-
-.z {
-}
-
-.header-left > * {
-	margin-left: 2px;
-	margin-right: 5px;
-	margin-bottom: 2px;
-}
-
 /*#endregion*/
 
 /*#region Elements*/
