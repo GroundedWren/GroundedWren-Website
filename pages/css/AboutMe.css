@@ -1,4 +1,4 @@
-﻿/*#region HTML Elements */
+/*#region HTML Elements */
 
 body {
 	min-width: 320px;
@@ -93,12 +93,15 @@ li > span {
 	border-radius: 25px;
 	width: 100%;
 	max-width: 320px;
-	padding-top: 5px;
-	padding-bottom: 5px;
 	text-align: center;
 	min-height: 44px;
 	min-width: 44px;
 	line-height: 44px;
+}
+
+.link-buttons a {
+	display: inline-block;
+	width: 100%;
 }
 
 .z {
