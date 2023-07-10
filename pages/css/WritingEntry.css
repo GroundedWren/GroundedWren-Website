@@ -136,6 +136,12 @@ hr {
 	max-width: 1100px;
 	margin: auto;
 	margin-top: 10px;
+	padding: 5px;
+	background-color: #331A4D;
+}
+
+.page-text.transparent {
+	background-color: inherit !important;
 }
 
 .stanza {
