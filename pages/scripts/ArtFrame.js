@@ -51,7 +51,7 @@ registerNamespace("Pages.ArtFrame", function (ns)
 		{
 			document.getElementById("Banner").remove();
 			document.getElementById("BannerBuffer").remove();
-			document.getElementById("mainPage").classList.add("frame");
+			document.getElementById("mainContent").classList.add("frame");
 		}
 
 		document.getElementById("imgElement").setAttribute("src", artFrame.getArtLink());

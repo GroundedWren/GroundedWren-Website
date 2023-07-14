@@ -152,7 +152,7 @@ registerNamespace("Pages.Winnings", function (ns)
 
 	function showLoadError()
 	{
-		const errHeading = Common.DOMLib.createElement("h2", document.getElementById("mainPage")).el;
+		const errHeading = Common.DOMLib.createElement("h2", document.getElementById("mainContent")).el;
 		errHeading.innerText = "Error: Malformed URL";
 	};
 });

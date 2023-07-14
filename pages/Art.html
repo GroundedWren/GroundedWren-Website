@@ -33,11 +33,17 @@
 		<heading>
 			<div id="Banner" class="banner fixed-header">
 				<div class="banner-left">
-					<button id="homeButton"
-							role="link"
-							onclick="Common.navTo('./Home.html')">
+					<a class="banner-button hide-until-focus"
+					   role="link"
+					   href="#mainContent">
+						Skip to content
+					</a>
+					<a id="homeButton"
+					   class="banner-button"
+					   role="link"
+					   href="./Home.html">
 						<u>H</u>ome
-					</button>
+					</a>
 					<button id="shortcutsButton"
 							onclick="Common.Components.displayShortcuts('shortcutsButton')">
 						<u>S</u>hortcuts
@@ -47,7 +53,7 @@
 			</div>
 		</heading>
 		<div id="BannerBuffer" class="banner-buffer"></div>
-		<main id="mainPage">
+		<main id="mainContent">
 			<div class="content">
 				<div id="leftPane" role="form" aria-label="Sort and Filter">
 					<button id="getLink" onclick="Pages.Art.onLinkRequested()">Get Link</button>
@@ -84,7 +90,7 @@
 								</button>
 							</div>
 							<h3 id="charactersHeading">Characters</h3>
-							<fieldset id="CharFilters" 
+							<fieldset id="CharFilters"
 									  class="transparent-fieldset"
 									  aria-labelledby="charactersHeading">
 								<div class="input-line">

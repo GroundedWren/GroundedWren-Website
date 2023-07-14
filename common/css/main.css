@@ -64,6 +64,15 @@ a {
 	height: 100%;
 }
 
+.banner-button {
+	background-color: #331A4D;
+	border-radius: 25px;
+	max-width: 320px;
+	text-align: center;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
 .z {
 }
 
@@ -564,7 +573,6 @@ tr > th {
 .sr-only {
 	position: absolute;
 	left: -99999999px;
-	font-size: 1px;
 }
 /*#endregion*/
 
@@ -593,5 +601,14 @@ button[role="link"], .button-like[role="link"] {
 /*#region Other*/
 .ans-toggler {
 	cursor: pointer;
+}
+
+.hide-until-focus {
+	position: absolute;
+	left: -99999999px;
+}
+.hide-until-focus:focus {
+	position: revert;
+	left: revert;
 }
 /*#endregion*/

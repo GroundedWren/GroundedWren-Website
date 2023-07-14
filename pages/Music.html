@@ -35,11 +35,17 @@
 		<header>
 			<div id="Banner" class="banner fixed-header">
 				<div class="banner-left">
-					<button id="homeButton"
-							role="link"
-							onclick="Common.navTo('./Home.html')">
+					<a class="banner-button hide-until-focus"
+					   role="link"
+					   href="#mainContent">
+						Skip to content
+					</a>
+					<a id="homeButton"
+					   class="banner-button"
+					   role="link"
+					   href="./Home.html">
 						<u>H</u>ome
-					</button>
+					</a>
 					<button id="shortcutsButton"
 							onclick="Common.Components.displayShortcuts('shortcutsButton')">
 						<u>S</u>hortcuts
@@ -49,7 +55,7 @@
 			</div>
 		</header>
 		<div id="BannerBuffer" class="banner-buffer"></div>
-		<main id="mainPage">
+		<main id="mainContent">
 			<div id="leftPane">
 				<div id="collectionsPane">
 					<div id="collectionsCard" class="card">
