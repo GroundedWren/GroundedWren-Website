@@ -183,8 +183,6 @@ registerNamespace("Pages.Music", function (ns)
 
 		Common.DOMLib.createElement("h3", collectionInfoEl).el.innerText = "Details";
 		const collectionMetaTable = Common.DOMLib.createElement("table", collectionInfoEl).el;
-		const collectionMetaTHead = Common.DOMLib.createElement("thead", collectionMetaTable, ["sr-only"]).el;
-		collectionMetaTHead.innerHTML = "<tr><th>Property</th><th>Value</th></tr>";
 		const collectionMetaTBody = Common.DOMLib.createElement("tbody", collectionMetaTable).el;
 		addTableRow(collectionMetaTBody, "Collection Name", collectionId);
 		addTableRow(collectionMetaTBody, "Date", collection.DateString);
@@ -258,8 +256,6 @@ registerNamespace("Pages.Music", function (ns)
 
 		Common.DOMLib.createElement("h3", detailEl).el.innerText = "Details";
 		const detailTable = Common.DOMLib.createElement("table", detailEl).el;
-		const detailTHead = Common.DOMLib.createElement("thead", detailTable, ["sr-only"]).el;
-		detailTHead.innerHTML = "<tr><th>Property</th><th>Value</th></tr>";
 		const detailTBody = Common.DOMLib.createElement("tbody", detailTable).el;
 		addTableRow(detailTBody, "Performers", song.performers.join(", "));
 		addTableRow(detailTBody, "Composers", song.composers.join(", "));
@@ -306,7 +302,8 @@ registerNamespace("Pages.Music", function (ns)
 		var dce = Common.DOMLib.createElement;
 
 		var { el: tableRow } = dce("tr", tableEl);
-		var { el: rowLabel } = dce("td", tableRow, ["row-label"]);
+		var { el: rowLabel } = dce("th", tableRow, []);
+		rowLabel.setAttribute("scope", "row");
 		rowLabel.innerText = labelText;
 		var { el: rowValue } = dce("td", tableRow);
 		rowValue.innerHTML = labelValueHTML;

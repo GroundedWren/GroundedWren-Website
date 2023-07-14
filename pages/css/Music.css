@@ -95,7 +95,7 @@ audio {
 	display: none;
 }
 
-td {
+td, th {
 	border-top: none;
 	border-left: none;
 	border-right: none;
@@ -108,7 +108,7 @@ table {
 	margin-bottom: 20px;
 }
 
-.row-label {
+th {
 	width: 175px;
 }
 
