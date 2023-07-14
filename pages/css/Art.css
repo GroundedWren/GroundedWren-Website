@@ -1,7 +1,7 @@
 ﻿main {
 	margin-left: 20px;
 	margin-right: 20px;
-	height: calc(100% - 25px); /*Header*/
+	min-height: calc(100vh - 25px); /*Header*/
 }
 
 /* Pages.Art.MINI_THRESHOLD */
@@ -16,7 +16,7 @@
 	display: flex;
 	flex-direction: row;
 	width: 100%;
-	min-height: 100vh;
+	min-height: inherit;
 	align-items: stretch;
 }
 

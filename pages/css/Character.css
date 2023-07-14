@@ -6,13 +6,13 @@ main {
 	margin-left: 20px;
 	margin-right: 20px;
 	margin-top: 10px;
-	height: calc(100vh - 25px - 10px); /*Header, margin-top*/
+	min-height: calc(100vh - 25px - 10px); /*Header, margin-top*/
 }
 
 .content {
 	display: flex;
 	flex-direction: row;
-	height: inherit;
+	min-height: inherit;
 }
 
 #LeftPane {

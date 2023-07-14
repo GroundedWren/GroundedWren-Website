@@ -3,6 +3,8 @@
  */
 registerNamespace("Pages.Writing", function (ns)
 {
+	ns.MINI_THRESHOLD = 640;
+
 	ns.entryFrame = null;
 	ns.entryHeader = null;
 	ns.zsc = null;
@@ -249,7 +251,7 @@ registerNamespace("Pages.Writing", function (ns)
 
 	ns.resizeListener = () =>
 	{
-		if (window.innerWidth <= Common.MINI_THRESHOLD)
+		if (window.innerWidth <= ns.MINI_THRESHOLD)
 		{
 			Common.Components.GetVisToggle("leftPaneCollapseBtn").doToggle(true);
 		}

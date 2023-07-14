@@ -4,17 +4,16 @@
 
 main {
 	margin-right: 20px;
-	height: calc(100vh - 25px); /*Header*/
+	min-height: calc(100vh - 25px); /*Header*/
 }
 
 #content {
 	display: flex;
 	flex-direction: row;
-	height: 100%;
+	min-height: inherit;
 }
 
 .divider {
-	height: 100%;
 	border-left: 1px solid rgb(91, 154, 213);
 }
 
@@ -69,8 +68,8 @@ ul {
 	display: none;
 }
 
-/* Common.MINI_THRESHOLD */
-@media (max-width: 600px) {
+/* Pages.Writing.MINI_THRESHOLD */
+@media (max-width: 640px) {
 	#content {
 		justify-content: center;
 	}
