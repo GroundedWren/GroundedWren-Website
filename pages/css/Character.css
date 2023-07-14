@@ -34,13 +34,18 @@ main {
 	height: inherit;
 }
 
-td {
+td, th {
 	border-top: none;
 	border-left: none;
 	border-right: none;
 	padding-top: 5px;
 	width: auto;
-	word-wrap:break-word;
+	word-wrap: break-word;
+}
+
+th {
+	text-align: left;
+	width: 100px;
 }
 
 table {
@@ -51,10 +56,6 @@ table {
 caption {
 	font-size: small;
 	caption-side: bottom
-}
-
-.row-label {
-	width: 100px;
 }
 
 .color-cell {

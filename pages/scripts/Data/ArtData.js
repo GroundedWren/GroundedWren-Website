@@ -163,8 +163,6 @@
 			var dce = Common.DOMLib.createElement;
 
 			const { el: metaTable } = dce("table", parent);
-			const tHead = dce("thead", metaTable, ["sr-only"]).el;
-			tHead.innerHTML = "<tr><th>Property</th><th>Value</th></tr>";
 			const tBody = dce("tbody", metaTable).el;
 
 			this.__addTableRow(
@@ -194,7 +192,8 @@
 			var dce = Common.DOMLib.createElement;
 
 			var { el: tableRow } = dce("tr", tableEl);
-			var { el: rowLabel } = dce("td", tableRow, ["row-label"]);
+			var { el: rowLabel } = dce("th", tableRow, ["row-label"]);
+			rowLabel.setAttribute("scope", "row");
 			rowLabel.innerText = labelText;
 			var { el: rowValue } = dce("td", tableRow);
 			rowValue.innerHTML = labelValueHTML;

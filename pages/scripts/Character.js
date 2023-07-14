@@ -114,7 +114,9 @@ registerNamespace("Pages.Character", function (ns)
 		Object.keys(colors).forEach(label =>
 		{
 			var tRow = Common.DOMLib.createElement("tr", tbody).el;
-			Common.DOMLib.createElement("td", tRow, ["row-label"]).el.innerText = label;
+			var thLabel = Common.DOMLib.createElement("th", tRow, []).el
+			thLabel.setAttribute("scope", "row")
+			thLabel.innerText = label;
 
 			var svg = Common.SVGLib.createChildElement(
 				Common.DOMLib.createElement("td", tRow, ["color-cell"]).el,

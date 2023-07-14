@@ -378,6 +378,10 @@ thead {
 	text-align: center;
 	font-weight: bold;
 }
+
+tr > th {
+	text-align: left;
+}
 /*#endregion */
 
 /*#region Inline Banner */
@@ -428,7 +432,7 @@ thead {
 	margin-top: -5px;
 	float: right;
 }
-/*endregion */
+/*#endregion*/
 
 /*#region Card */
 .card {

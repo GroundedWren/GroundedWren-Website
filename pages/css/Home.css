@@ -92,3 +92,25 @@ ul {
 #updateCard {
 	width: 500px;
 }
+
+table {
+	border: none;
+}
+
+td, th {
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	padding-top: 5px;
+	width: auto;
+}
+
+th {
+	text-align: left;
+	padding-right: 5px;
+}
+	
+.color-cell {
+	height: 21.5px;
+	width: 100px;
+}

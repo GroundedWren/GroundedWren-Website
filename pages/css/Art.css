@@ -74,7 +74,7 @@ h1, h2, h3, h4, h5, h6 {
 	flex-grow: 0;
 }
 
-td {
+td, th {
 	border-top: none;
 	border-left: none;
 	border-right: none;
@@ -85,7 +85,7 @@ table{
 	border: none;
 	margin-bottom: 20px;
 }
-.row-label{
+tr > th {
 	width: 100px;
 }
 
