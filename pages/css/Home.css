@@ -3,11 +3,11 @@
 */
 
 header {
-	background-color: #663399;
+	background-color: var(--accent-color);
 }
 
 nav {
-	background-color: #331A4D;
+	background-color: var(--content-color);
 	padding-top: 5px;
 	padding-bottom: 5px;
 }

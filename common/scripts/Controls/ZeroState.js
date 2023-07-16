@@ -23,7 +23,11 @@
 		SVGLib.createChildElement(
 			gradient,
 			SVGLib.ElementTypes.stop,
-			{ "offset": "0%", "stop-color": "rebeccapurple", "stop-opacity": 0.9 }
+			{
+				"offset": "0%",
+				"stop-color": Common.Themes[Common.currentTheme]["--accent-color"],
+				"stop-opacity": 0.9
+			}
 		);
 		SVGLib.createChildElement(
 			gradient,
@@ -51,7 +55,7 @@
 				"y": "50%",
 				"dominant-baseline": "middle",
 				"text-anchor": "middle",
-				"fill": "white"
+				"fill": Common.Themes[Common.currentTheme]["--text-color"]
 			},
 			text
 		);

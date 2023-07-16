@@ -106,7 +106,7 @@ iframe {
 }
 
 .divider-vert {
-	border-left: 1px solid rgb(91, 154, 213);
+	border-left: 1px solid var(--button-border);
 }
 
 #leftPaneCollapseBtn {
@@ -122,7 +122,7 @@ iframe {
 	flex-shrink: 0;
 	flex-grow: 0;
 	flex-basis: 210px;
-	background-color: #331A4D;
+	background-color: var(--content-color);
 }
 
 #rightPane {

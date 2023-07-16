@@ -1,19 +1,70 @@
-﻿/*#region Body */
+﻿/*#region Themes*/
+.theme-purple {
+	--background-color: #1A0D26;
+	--content-color: #331A4D;
+	--content-color-2: #000000;
+	--input-background: #000000;
+	--input-text: #FFFFFF;
+	--accent-color: #663399;
+	--accent-color-hover: #A853FC;
+	--accent-color-2: #4D2673;
+	--text-color: #FFFFFF;
+	--button-face: #262626;
+	--button-hover: #191919;
+	--button-border: #5B9AD5;
+	--button-border-hover: #497CAB;
+	--button-text: #FFFFFF;
+	--clickable-border-color: #FFFFFF;
+	--link-color: #FFFFFF;
+	--general-border: #FFFFFF;
+	--scrollbar-track: #2C1642;
+	--inline-banner-color: #404040;
+	--inline-banner-warn-color: #766000;
+	--inline-banner-pos-color: #195725;
+	--icon-color: #FFFFFF;
+}
+
+.theme-test {
+	--background-color: #FAF5AE;
+	--content-color: #DBBA73;
+	--content-color-2: #DBBA4C;
+	--input-background: #FAF5AE;
+	--input-text: #000000;
+	--accent-color: #C8FAA2;
+	--accent-color-hover: #91C750;
+	--accent-color-2: #91C750;
+	--text-color: #000000;
+	--button-face: #D5D8DC;
+	--button-hover: #C6C9CC;
+	--button-border: #5B9AD5;
+	--button-border-hover: #5087BA;
+	--button-text: #000000;
+	--clickable-border-color: #0118AB;
+	--link-color: #0118AB;
+	--general-border: #3D62DC;
+	--scrollbar-track: #FAF5AE;
+	--inline-banner-color: #B3B3B3;
+	--inline-banner-warn-color: #EDC200;
+	--inline-banner-pos-color: #3FD95E;
+	--icon-color: #000000;
+}
+/*#endregion*/
+
+/*#region Body */
 html {
-	height: 100%;
 }
 
 html, body {
-	background-color: black;
-	color: white;
+	background-color: var(--background-color);
+	color: var(--text-color);
 	margin: 0;
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	font-size: 16px;
 }
 
 body {
-	min-height: 100%;
-	background-color: #1A0D26;
+	min-height: 100vh;
+	background-color: var(--background-color);
 }
 
 ::-webkit-scrollbar {
@@ -21,22 +72,22 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-	background: #2C1642;
+	background: var(--scrollbar-track);
 }
 
 ::-webkit-scrollbar-thumb {
-	background: rebeccapurple;
+	background: var(--accent-color);
 }
 
 .z { /* Fix auto-indent */
 }
 
 ::-webkit-scrollbar-thumb:hover {
-	background: #A853FC;
+	background: var(--accent-color-hover);
 }
 
 a {
-	color: white;
+	color: var(--link-color);
 }
 
 #subveil {
@@ -47,25 +98,25 @@ a {
 
 .banner {
 	text-align: center;
-	background-color: rebeccapurple;
+	background-color: var(--accent-color);
 	width: calc(100% - 10px);
 	height: 20px;
 	padding-top: 1px;
 	padding-bottom: 4px;
 	padding-left: 5px;
 	padding-right: 5px;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
 }
 
 .banner-left {
-	float: left;
-	position: absolute;
 	display: flex;
 	flex-direction: row;
 	height: 100%;
 }
 
-.banner-button {
-	background-color: #331A4D;
+.banner-link {
+	background-color: var(--content-color);
 	border-radius: 25px;
 	max-width: 320px;
 	text-align: center;
@@ -80,20 +131,6 @@ a {
 	margin-left: 2px;
 	margin-right: 5px;
 	margin-bottom: 2px;
-}
-
-/* We only get into trouble at very small widths */
-@media (max-width: 400px) {
-	.fixed-header {
-		text-align: right;
-	}
-
-	.z {
-	}
-
-	.fixed-header > *[role="heading"] {
-		margin-right: 50px;
-	}
 }
 
 .banner-buffer {
@@ -121,9 +158,9 @@ a {
 form {
 	border: 1px solid;
 	padding: 5px;
-	border-color: white;
+	border-color: var(--general-border);
 	width: fit-content;
-	background-color: #331A4D;
+	background-color: var(--content-color);
 }
 
 .z {
@@ -249,15 +286,15 @@ form > h1, form > h2, form > h3, form > h4, form > h5, form > h6 {
 }
 
 input[type="text"], input[type="password"], input[type="number"] {
-	background-color: black;
-	color: white;
+	background-color: var(--input-background);
+	color: var(--input-text);
 }
 
 .z { /* Fix auto-indent */
 }
 
 input[type="text"]:invalid, input[type="password"]:invalid, input[type="number"]:invalid {
-	box-shadow: inset 0px 0px 5px 2px rebeccapurple;
+	box-shadow: inset 0px 0px 5px 2px var(--accent-color);
 }
 
 input[type=number]::-webkit-inner-spin-button {
@@ -266,13 +303,13 @@ input[type=number]::-webkit-inner-spin-button {
 
 input[type="checkbox"] {
 	appearance: none;
-	background-color: black;
+	background-color: var(--input-background);
 	margin: 0;
 	vertical-align: middle;
-	color: black;
+	color: var(--input-background);
 	width: 13px;
 	height: 13px;
-	border: 2px solid white;
+	border: 2px solid var(--general-border);
 	border-radius: 3px;
 }
 
@@ -280,7 +317,7 @@ input[type="checkbox"] {
 }
 
 input[type="checkbox"]:checked {
-	background-color: mediumpurple;
+	background-color: var(--accent-color);
 }
 
 input[type="checkbox"]:hover {
@@ -289,12 +326,12 @@ input[type="checkbox"]:hover {
 
 input[type="radio"] {
 	appearance: none;
-	background-color: black;
+	background-color: var(--input-background);
 	margin: 0;
 	vertical-align: middle;
 	width: 13px;
 	height: 13px;
-	border: 2px solid white;
+	border: 2px solid var(--general-border);
 	border-radius: 50%;
 }
 
@@ -306,7 +343,7 @@ input[type="radio"] + label {
 }
 
 input[type="radio"]:checked {
-	background-color: mediumpurple;
+	background-color: var(--accent-color);
 }
 
 input[type="radio"]:hover {
@@ -314,13 +351,13 @@ input[type="radio"]:hover {
 }
 
 textarea {
-	color: white;
-	background-color: black;
+	color: var(--input-text);
+	background-color: var(--input-background);
 }
 
 select {
-	color: white;
-	background-color: black;
+	color: var(--input-text);
+	background-color: var(--input-background);
 }
 
 button.button-like {
@@ -329,9 +366,9 @@ button.button-like {
 }
 
 button, input[type="button"], input[type="submit"], input[type="reset"], input[type="file"]::file-selector-button, .button-like {
-	background-color: rgb(38, 38, 38);
-	color: white;
-	border: 1px solid rgb(91, 154, 213);
+	background-color: var(--button-face);
+	color: var(--button-text);
+	border: 1px solid var(--button-border);
 }
 
 .z {
@@ -356,20 +393,20 @@ button[disabled]:hover, input[type="button"][disabled]:hover, input[type="submit
 }
 
 button:hover, input[type="button"]:hover, input[type="submit"]:hover, input[type="reset"]:hover, input[type="file"]::file-selector-button:hover, .button-like:hover {
-	background-color: rgb(25, 25, 25);
-	border-color: rgb(73, 124, 171);
+	background-color: var(--button-hover);
+	border-color: var(--button-border-hover);
 	cursor: pointer;
 }
 
 button[aria-pressed="true"] {
-	background-color: rebeccapurple;
+	background-color: var(--accent-color);
 }
 /*#endregion */
 
 /*#region Table*/
 table, th, td {
 	border: 1px solid;
-	border-color: mediumpurple;
+	border-color: var(--accent-color);
 	border-collapse: collapse;
 }
 
@@ -383,7 +420,7 @@ caption {
 
 thead {
 	border-bottom: 2px solid;
-	border-bottom-color: #A853FC;
+	border-bottom-color: var(--accent-color);
 	text-align: center;
 	font-weight: bold;
 }
@@ -404,8 +441,8 @@ tr > th {
 
 .inline-banner {
 	margin: 10px;
-	border: 1px solid white;
-	background-color: #404040;
+	border: 1px solid var(--general-border);
+	background-color: var(--inline-banner-color);
 	padding: 10px;
 	word-break: break-word;
 	display: flex;
@@ -421,11 +458,11 @@ tr > th {
 }
 
 .inline-banner.warning {
-	background-color: #766000;
+	background-color: var(--inline-banner-warn-color);
 }
 
 .inline-banner.positive {
-	background-color: #195725;
+	background-color: var(--inline-banner-pos-color);
 }
 
 .inline-banner-buttonWrpr {
@@ -446,16 +483,16 @@ tr > th {
 /*#region Card */
 .card {
 	margin: 10px;
-	border: 1px solid white;
+	border: 1px solid var(--general-border);
 	padding: 10px;
 	box-shadow: 0 0 10px 5px rgba(100, 100, 100, 0.4);
 	word-break: break-word;
-	background-color: black;
+	background-color: var(--content-color-2);
 }
 
 .card-header {
-	background-color: rebeccapurple;
-	color: white;
+	background-color: var(--accent-color);
+	color: var(--input-text);
 	font-size: larger;
 	margin: -10px;
 	margin-bottom: 10px;
@@ -520,7 +557,7 @@ tr > th {
 .tooltip-target {
 	position: relative;
 	display: inline-block;
-	border-bottom: 1px dotted white;
+	border-bottom: 1px dotted var(--general-border);
 }
 
 .z { /* Fix auto-indent */
@@ -528,8 +565,8 @@ tr > th {
 
 .tooltip-target .tooltip-text {
 	visibility: hidden;
-	background-color: rebeccapurple;
-	color: white;
+	background-color: var(--accent-color);
+	color: var(--text-color);
 	text-align: center;
 	padding-left: 5px;
 	padding-right: 5px;
@@ -579,7 +616,7 @@ tr > th {
 /*#region Elements*/
 kbd {
 	font-family: Consolas;
-	border: 1px solid white;
+	border: 1px solid var(--general-border);
 	border-radius: 3px;
 	padding: 1px;
 	margin: 3px;
@@ -610,5 +647,9 @@ button[role="link"], .button-like[role="link"] {
 .hide-until-focus:focus {
 	position: revert;
 	left: revert;
+}
+
+.icon {
+	color: var(--icon-color);
 }
 /*#endregion*/

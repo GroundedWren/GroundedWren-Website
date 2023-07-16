@@ -5,7 +5,7 @@
 /*#region Popup Common*/
 .popup {
 	box-shadow: 0 0 10px 5px rgba(100, 100, 100, 0.4);
-	border: 1px solid rebeccapurple;
+	border: 1px solid var(--accent-color);
 }
 
 .popup-content {
@@ -20,7 +20,7 @@
 	width: 100%;
 	flex-direction: row;
 	align-items: center;
-	background-color: rebeccapurple;
+	background-color: var(--accent-color);
 }
 
 .popup-title {
@@ -52,7 +52,7 @@
 .dialog {
 	position: absolute;
 	z-index: 1;
-	background-color: black;
+	background-color: var(--content-color-2);
 }
 
 .dialog-header {
@@ -90,7 +90,7 @@
 
 .modal {
 	position: relative;
-	background-color: black;
+	background-color: var(--content-color-2);
 	width: 500px;
 	top: 50%;
 	left: 50%;
@@ -137,14 +137,14 @@
 	flex-grow: 0;
 	position: relative;
 	border-right: none;
-	border-color: white;
+	border-color: var(--clickable-border-color);
 }
 
 .z { /* Fix auto-indent */
 }
 
 .tab-strip-tab:hover {
-	border-color: white;
+	border-color: var(--clickable-border-color);
 }
 
 .tab-strip-tab span {
@@ -157,12 +157,12 @@
 }
 
 .tab-strip-tab.selected {
-	background-color: rebeccapurple;
+	background-color: var(--accent-color);
 }
 
 .tab-gutter {
 	flex-grow: 1;
-	border-left: 1px solid white;
+	border-left: 1px solid var(--clickable-border-color);
 }
 /*#endregion*/
 
@@ -180,7 +180,7 @@
 }
 
 .tab-strip-tab.child {
-	border-right: 1px solid white;
+	border-right: 1px solid var(--clickable-border-color);
 	border-top: none;
 	z-index: 1;
 	width: calc(100% - 1px);
@@ -209,7 +209,7 @@
 .dropdown-menu.vertical .tab-strip-tab {
 	width: calc(100% - 1px);
 	flex-basis: 30px;
-	border-right: 1px solid white;
+	border-right: 1px solid var(--clickable-border-color);
 	border-bottom: 0;
 	font-size: initial !important;
 }
@@ -222,12 +222,12 @@
 	margin-left: 25%;
 	width: calc(75% - 1px);
 	border-top: 1px solid rgba(255, 255, 255, 0.2);
-	border-bottom: 1px solid white;
+	border-bottom: 1px solid var(--clickable-border-color);
 	box-shadow: -5px 5px 2px 2px rgba(0, 0, 0, 0.4);
 }
 
 .dropdown-menu.vertical .tab-gutter {
-	border-top: 2px solid white;
+	border-top: 2px solid var(--clickable-border-color);
 }
 
 .tab-text {
@@ -257,11 +257,11 @@
 
 .page-container {
 	flex-grow: 1;
-	border: 2px inset white;
+	border: 2px inset var(--general-border);
 	padding: 3px;
 	min-height: 0;
 	min-width: 0;
-	background-color: black;
+	background-color: var(--content-color-2);
 }
 
 .z { /* Fix auto-indent */

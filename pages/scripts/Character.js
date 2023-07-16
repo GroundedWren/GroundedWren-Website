@@ -264,10 +264,11 @@ registerNamespace("Pages.Character", function (ns)
  */
 window.onload = () =>
 {
+	Common.loadTheme();
 	Common.setUpAccessibility();
 	Common.Components.registerShortcuts({
 		"ALT+H": {
-			action: () => { document.getElementById("homeButton").click(); },
+			action: () => { document.getElementById("homeLink").click(); },
 			description: "Return to the home page"
 		},
 		"ALT+S": {

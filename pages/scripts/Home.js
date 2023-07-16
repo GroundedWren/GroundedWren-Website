@@ -44,6 +44,8 @@ registerNamespace("Pages.Home", function (ns)
  */
 window.onload = () =>
 {
+	Common.loadTheme();
+	Common.loadTheme();
 	Common.setUpAccessibility();
 
 	var directoryContainer = document.getElementById("Directory");

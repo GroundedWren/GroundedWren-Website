@@ -14,7 +14,7 @@ main {
 }
 
 .divider {
-	border-left: 1px solid rgb(91, 154, 213);
+	border-left: 1px solid var(--button-border);
 }
 
 #leftPaneCollapseBtn {
@@ -36,7 +36,7 @@ main {
 	word-wrap: break-word;
 	flex-shrink: 0;
 	flex-grow: 0;
-	background-color: #331A4D;
+	background-color: var(--content-color);
 }
 
 #rightPane {

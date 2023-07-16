@@ -6,7 +6,7 @@
 }
 
 h2 {
-	border-bottom: 1px solid white;
+	border-bottom: 1px solid var(--text-color);
 }
 
 h2, h3, h4, h5, h6 {
@@ -40,12 +40,15 @@ header {
 	width: 100%;
 }
 
+.z {
+}
+
 header > a {
 	height: 44px;
 	line-height: 44px;
 	text-align: center;
 	flex-basis: 90px;
-	background-color: rebeccapurple;
+	background-color: var(--accent-color);
 	border-radius: 25px;
 }
 
@@ -137,12 +140,12 @@ hr {
 	margin: auto;
 	margin-top: 10px;
 	padding: 5px;
-	background-color: #331A4D;
+	background-color: var(--content-color);
 }
 
-.page-text.transparent {
-	background-color: inherit !important;
-}
+	.page-text.transparent {
+		background-color: inherit !important;
+	}
 
 .stanza {
 	max-width: 775px;
@@ -150,6 +153,7 @@ hr {
 	margin-right: auto;
 	margin-bottom: 20px;
 }
+
 .poetry-line {
 	margin-bottom: 7px;
 }

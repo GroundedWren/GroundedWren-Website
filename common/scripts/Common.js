@@ -33,7 +33,7 @@ registerNamespace("Common", function (ns)
 		return function generatedDelegate()
 		{
 			method.apply(context, (args || []).concat(...arguments));
-		}
+		};
 	}
 	ns.fcd = fcd;
 
@@ -85,7 +85,7 @@ registerNamespace("Common", function (ns)
 			r: parseInt(hex.slice(0, 2), 16),
 			g: parseInt(hex.slice(2, 4), 16),
 			b: parseInt(hex.slice(4, 6), 16)
-		}
+		};
 	}
 	ns.hexToRGB = hexToRGB;
 
@@ -119,7 +119,7 @@ registerNamespace("Common", function (ns)
 		axParentEl.appendChild(__getAxLiveEl(ns.axPoliteElId, "polite"));
 
 		document.body.appendChild(axParentEl);
-	}
+	};
 	function __getAxLiveEl(id, live)
 	{
 		var axLiveEl = document.createElement("div");
@@ -132,11 +132,11 @@ registerNamespace("Common", function (ns)
 	ns.axAlertAssertive = function (message)
 	{
 		__axAlert(document.getElementById(ns.axAssertiveElId), message);
-	}
+	};
 	ns.axAlertPolite = function (message)
 	{
 		__axAlert(document.getElementById(ns.axPoliteElId), message);
-	}
+	};
 	function __axAlert(parentEl, message)
 	{
 		parentEl.innerHTML = "";
@@ -146,4 +146,44 @@ registerNamespace("Common", function (ns)
 
 		parentEl.appendChild(messageEl);
 	}
+
+	ns.Themes = {
+		"theme-purple": {
+			"--background-color": "#1A0D26",
+			"--content-color": "#331A4D",
+			"--content-color-2": "#000000",
+			"--input-background": "#000000",
+			"--input-text": "#FFFFFF",
+			"--accent-color": "#663399",
+			"--accent-color-hover": "#A853FC",
+			"--accent-color-2": "#4D2673",
+			"--text-color": "#FFFFFF",
+			"--button-face": "#262626",
+			"--button-hover": "#191919",
+			"--button-border": "#5B9AD5",
+			"--button-border-hover": "#497CAB",
+			"--button-text": "#FFFFFF",
+			"--clickable-border-color": "#FFFFFF",
+			"--link-color": "#FFFFFF",
+			"--general-border": "#FFFFFF",
+			"--scrollbar-track": "#2C1642",
+			"--inline-banner-color": "#404040",
+			"--inline-banner-warn-color": "#766000",
+			"--inline-banner-pos-color": "#195725",
+			"--icon-color": "#FFFFFF",
+		}
+	};
+
+	ns.currentTheme = "theme-purple";
+
+	ns.loadTheme = function loadTheme()
+	{
+		document.documentElement.className = "theme-purple";
+	};
+
+	ns.setTheme = function setTheme(thName)
+	{
+		ns.currentTheme = thName;
+		document.documentElement.className = thName;
+	};
 });

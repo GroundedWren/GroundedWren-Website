@@ -53,6 +53,14 @@ registerNamespace("Pages.ArtFrame", function (ns)
 			document.getElementById("BannerBuffer").remove();
 			document.getElementById("mainContent").classList.add("frame");
 		}
+		else if (window.parent.location.pathname.includes("Character.html"))
+		{
+			document.getElementById("homeLink").remove();
+		}
+		else
+		{
+			document.getElementById("backLink").remove();
+		}
 
 		document.getElementById("imgElement").setAttribute("src", artFrame.getArtLink());
 		document.getElementById("imgElement").setAttribute("alt", artFrame.getAltText());
@@ -72,6 +80,7 @@ registerNamespace("Pages.ArtFrame", function (ns)
  */
 window.onload = () =>
 {
+	Common.loadTheme();
 	Common.setUpAccessibility();
 
 	Pages.Art.Data.InitializeArtists(Pages.ArtFrame, "Artists");

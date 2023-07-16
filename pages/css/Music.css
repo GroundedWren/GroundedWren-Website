@@ -55,17 +55,12 @@ main {
 	margin-right: 20px;
 }
 
-.divider-horiz {
-	width: 100%;
-	border-top: 1px solid rebeccapurple;
-}
-
 #trackList {
 	flex-grow: 1;
 	flex-basis: 360px;
 	overflow: auto;
 	margin-left: 10px;
-	background-color: #331A4D;
+	background-color: var(--content-color);
 }
 
 audio {
