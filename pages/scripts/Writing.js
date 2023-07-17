@@ -207,7 +207,7 @@ registerNamespace("Pages.Writing", function (ns)
 	{
 		const page = directory + filename + extension;
 		ns.entryFrame.setAttribute("src", page);
-		ns.entryHeader.innerHTML = `<a id="${ENTRY_LINK_ID}" href="${page}">${title}</a>`;
+		ns.entryHeader.innerHTML = `<a id="${ENTRY_LINK_ID}" href="${page}" class="heading-text">${title}</a>`;
 	}
 
 	function displayMetadata(entry)

@@ -106,7 +106,7 @@ iframe {
 }
 
 .divider-vert {
-	border-left: 1px solid var(--button-border);
+	border-left: 1px solid var(--button-border-color);
 }
 
 #leftPaneCollapseBtn {

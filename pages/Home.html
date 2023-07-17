@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="theme-vera">
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,6 +22,7 @@
 
 	<script src="../common/scripts/Common.js"></script>
 	<script src="../common/scripts/DOMLib.js"></script>
+	<script src="../common/scripts/SVGLib.js"></script>
 	<script src="../common/scripts/Components/ElementDragger.js"></script>
 	<script src="../common/scripts/Components/VisibilityToggle.js"></script>
 	<script src="../common/scripts/Components/Shortcuts.js"></script>
@@ -31,13 +32,11 @@
 	<script src="../common/scripts/Controls/DropdownMenu.js"></script>
 
 	<script src="./scripts/Home.js"></script>
-
-	<script src="https://kit.fontawesome.com/c6b6f471bd.js" crossorigin="anonymous"></script>
 </head>
 <body>
 	<div id="subveil">
 		<header>
-			<h1><a href="https://www.groundedwren.com/">GroundedWren.com</a></h1>
+			<h1><a href="https://www.groundedwren.com/" class="heading-text">GroundedWren.com</a></h1>
 			<a class="banner-link hide-until-focus"
 			   role="link"
 			   href="#mainContent"
@@ -82,7 +81,7 @@
 						<h3>7/16/23</h3>
 						<ul>
 							<li>Minor bug fixes and tweaks</li>
-							<li>Lay the groundwork for switching themes</li>
+							<li>Theme switching</li>
 						</ul>
 						<div id="updateContent" style="display: none">
 							<h3>7/13/23</h3>
@@ -215,77 +214,34 @@
 					<div id="colors" class="card">
 						<div class="card-header" role="heading" aria-level="2">
 							<span id="spColors">Site Colors</span>
+							<div class="input-vertical-line" style="margin-bottom: 0px">
+								<label style="font-size: small;" for="selTheme">Theme</label>
+								<select id="selTheme">
+									<!--<option>Smoothie</option>
+									<option>Test</option>-->
+								</select>
+							</div>
 						</div>
 						<table aria-labelledby="spColors">
 							<tbody>
 								<tr>
 									<th scope="row">Background</th>
-									<td class="color-cell">
-										<svg width="100%"
-											 height="100%">
-											<rect x="0"
-												  y="0"
-												  width="100%"
-												  height="100%"
-												  fill="#1A0D26">
-											</rect>
-											<text x="50%"
-												  y="50%"
-												  dominant-baseline="middle"
-												  text-anchor="middle"
-												  font-size="14"
-												  fill="#FFFFFF">
-												#1A0D26
-											</text>
-										</svg>
+									<td id="tdBackground" class="color-cell">
 									</td>
 								</tr>
 								<tr>
-									<th scope="row">Content</th>
-									<td class="color-cell">
-										<svg width="100%"
-											 height="100%">
-											<rect x="0"
-												  y="0"
-												  width="100%"
-												  height="100%"
-												  fill="#331A4D">
-											</rect>
-											<text x="50%"
-												  y="50%"
-												  dominant-baseline="middle"
-												  text-anchor="middle"
-												  font-size="14"
-												  fill="#FFFFFF">
-												#331A4D
-											</text>
-										</svg>
+									<th scope="row">Content 1</th>
+									<td id="tdContent1" class="color-cell">
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">Content 2</th>
+									<td id="tdContent2" class="color-cell">
 									</td>
 								</tr>
 								<tr>
 									<th scope="row">Accent</th>
-									<td class="color-cell">
-										<svg width="100%"
-											 height="100%">
-											<rect x="0"
-												  y="0"
-												  width="100%"
-												  height="100%"
-												  fill="#663399">
-											</rect>
-											<a href="https://meyerweb.com/eric/thoughts/2014/06/19/rebeccapurple/"
-											   target="_blank">
-												<text x="50%"
-													  y="50%"
-													  dominant-baseline="middle"
-													  text-anchor="middle"
-													  font-size="14"
-													  text-decoration="underline"
-													  fill="#FFFFFF">
-													#663399
-												</text>
-											</a>
-										</svg>
+									<td id="tdAccent" class="color-cell">
 									</td>
 								</tr>
 							</tbody>
@@ -323,7 +279,7 @@
 		<div class="banner-buffer"></div>
 		<footer class="banner fixed-footer">
 			<span></span>
-			<span>Created by Vera in 2022</span>
+			<span class="heading-text">Created by Vera in 2022</span>
 		</footer>
 	</div>
 </body>

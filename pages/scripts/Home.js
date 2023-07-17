@@ -37,6 +37,78 @@ registerNamespace("Pages.Home", function (ns)
 		}
 		event.stopPropagation();
 	};
+
+	ns.onSelectTheme = () =>
+	{
+		const themeKey = document.getElementById("selTheme").value;
+		Common.setTheme(themeKey);
+		ns.buildColorsTable();
+	};
+
+	ns.buildColorsTable = () =>
+	{
+		const theme = Common.Themes[Common.currentTheme];
+		buildColorCell(document.getElementById("tdBackground"), theme["--background-color"], theme["--text-color"]);
+		buildColorCell(document.getElementById("tdContent1"), theme["--content-color"], theme["--text-color"]);
+		buildColorCell(document.getElementById("tdContent2"), theme["--content-color-2"], theme["--text-color"]);
+		buildColorCell(document.getElementById("tdAccent"), theme["--accent-color"], theme["--heading-color"]);
+	};
+
+	function buildColorCell(tdElement, color, textColor)
+	{
+		tdElement.innerHTML = null;
+
+		const SVGLib = Common.SVGLib;
+		const svgTypes = Common.SVGLib.ElementTypes;
+
+		var svg = SVGLib.createChildElement(
+			tdElement,
+			svgTypes.svg,
+			{
+				"width": "100%",
+				"height": "100%",
+			}
+		);
+		Common.SVGLib.createChildElement(
+			svg,
+			svgTypes.rect,
+			{
+				"x": "0",
+				"y": "0",
+				"width": "100%",
+				"height": "100%",
+				"fill": color
+			}
+		);
+
+		var linkEl = null;
+		if (color === "#663399") //rebeccapurple
+		{
+			linkEl = Common.SVGLib.createChildElement(
+				svg,
+				svgTypes.a,
+				{
+					"href": "https://meyerweb.com/eric/thoughts/2014/06/19/rebeccapurple/",
+					"target": "_blank",
+				}
+			);
+		}
+
+		Common.SVGLib.createChildElement(
+			!!linkEl ? linkEl : svg,
+			svgTypes.text,
+			{
+				"x": "50%",
+				"y": "50%",
+				"dominant-baseline": "middle",
+				"text-anchor": "middle",
+				"font-size": "14",
+				"text-decoration": !!linkEl ? "underline" : "",
+				"fill": textColor
+			},
+			color
+		);
+	}
 });
 
 /**
@@ -104,4 +176,13 @@ window.onload = () =>
 		false,
 		[document.getElementById("updatesCardHeader")]
 	);
+
+	const selTheme = document.getElementById("selTheme");
+	for (const themeName in Common.ThemeNames)
+	{
+		selTheme.add(new Option(themeName, Common.ThemeNames[themeName]));
+	}
+	selTheme.value = Common.currentTheme;
+	Pages.Home.buildColorsTable();
+	selTheme.addEventListener("change", Pages.Home.onSelectTheme);
 };

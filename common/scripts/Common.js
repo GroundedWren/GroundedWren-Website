@@ -147,43 +147,80 @@ registerNamespace("Common", function (ns)
 		parentEl.appendChild(messageEl);
 	}
 
+	ns.ThemeNames = {
+		"Vera": "theme-vera",
+		"Serin": "theme-serin",
+	};
+
 	ns.Themes = {
-		"theme-purple": {
+		"theme-vera": {
 			"--background-color": "#1A0D26",
 			"--content-color": "#331A4D",
 			"--content-color-2": "#000000",
-			"--input-background": "#000000",
-			"--input-text": "#FFFFFF",
+			"--input-background-color": "#000000",
+			"--input-text-color": "#FFFFFF",
+			"--input-selected-color": "#663399",
 			"--accent-color": "#663399",
 			"--accent-color-hover": "#A853FC",
 			"--accent-color-2": "#4D2673",
 			"--text-color": "#FFFFFF",
-			"--button-face": "#262626",
-			"--button-hover": "#191919",
-			"--button-border": "#5B9AD5",
-			"--button-border-hover": "#497CAB",
-			"--button-text": "#FFFFFF",
+			"--button-face-color": "#262626",
+			"--button-face-color-hover": "#191919",
+			"--button-face-color-disabled": "#191919",
+			"--button-border-color": "#5B9AD5",
+			"--button-border-color-hover": "#497CAB",
+			"--button-border-color-disabled": "#474747",
+			"--button-text-color": "#FFFFFF",
 			"--clickable-border-color": "#FFFFFF",
 			"--link-color": "#FFFFFF",
-			"--general-border": "#FFFFFF",
-			"--scrollbar-track": "#2C1642",
+			"--general-border-color": "#FFFFFF",
+			"--scrollbar-track-color": "#2C1642",
 			"--inline-banner-color": "#404040",
 			"--inline-banner-warn-color": "#766000",
 			"--inline-banner-pos-color": "#195725",
 			"--icon-color": "#FFFFFF",
-		}
+			"--heading-color": "#FFFFFF",
+		},
+		"theme-serin": {
+			"--background-color": "#FEFAE0",
+			"--content-color": "#D7D7B6",
+			"--content-color-2": "#FFF194",
+			"--input-background-color": "#FFFFFF",
+			"--input-text-color": "#000000",
+			"--input-selected-color": "#B5CC6A",
+			"--accent-color": "#606C38",
+			"--accent-color-hover": "#606C38",
+			"--accent-color-2": "#9FA872",
+			"--text-color": "#283618",
+			"--button-face-color": "#FEFAE0",
+			"--button-face-color-hover": "#F4F07D",
+			"--button-face-color-disabled": "#A6A6A6",
+			"--button-border-color": "#DFDCC5",
+			"--button-border-color-hover": "#DFDCC5",
+			"--button-border-color-disabled": "#DFDCC5",
+			"--button-text-color": "#2E2E2E",
+			"--clickable-border-color": "#DFDCC5",
+			"--link-color": "#551A8B",
+			"--general-border-color": "#606C38",
+			"--scrollbar-track-color": "#32381D",
+			"--inline-banner-color": "#B3B3B3",
+			"--inline-banner-warn-color": "#EDC200",
+			"--inline-banner-pos-color": "#3FD95E",
+			"--icon-color": "#000000",
+			"--heading-color": "#FFFFFF",
+		},
 	};
 
-	ns.currentTheme = "theme-purple";
-
+	ns.currentTheme = "theme-vera";
 	ns.loadTheme = function loadTheme()
 	{
-		document.documentElement.className = "theme-purple";
+		ns.setTheme(localStorage.getItem("theme"));
 	};
 
 	ns.setTheme = function setTheme(thName)
 	{
-		ns.currentTheme = thName;
-		document.documentElement.className = thName;
+		ns.currentTheme = thName || "theme-vera";
+		document.documentElement.className = ns.currentTheme;
+		localStorage.setItem("theme", ns.currentTheme);
 	};
 });

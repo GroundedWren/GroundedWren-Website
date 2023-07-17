@@ -91,7 +91,7 @@ caption {
 
 	#divVert {
 		display: block;
-		border-left: 1px solid var(--button-border);
+		border-left: 1px solid var(--button-border-color);
 	}
 
 	#leftPaneCollapseBtn {

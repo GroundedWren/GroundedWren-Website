@@ -16,6 +16,7 @@ registerNamespace("Common.SVGLib", function (ns)
 		defs: "defs", //https://www.w3.org/TR/SVG/struct.html#DefsElement
 		rect: "rect", //x, y, width, height, rx, ry - https://www.w3.org/TR/SVG/shapes.html#RectElement
 		text: "text", //x, y, dominant-baseline, text-anchor, fill - https://www.w3.org/TR/SVG/text.html#TextElement
+		a: "a", //href, target - https://developer.mozilla.org/en-US/docs/Web/SVG/Element/a
 	};
 
 	/**
