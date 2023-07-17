@@ -504,7 +504,7 @@ registerNamespace("Pages.Art", function (ns)
 
 				Common.DOMLib.addStyle(image, { display: "block", "margin-left": "auto", "margin-right": "auto", "height": "100%" });
 				Common.Controls.Popups.showModal(
-					`<a href="${artLocation}" target="_blank">${this.__title}</a>`,
+					`<a href="${artLocation}" target="_blank" class="heading-text">${this.__title}</a>`,
 					`<iframe src="/pages/ArtFrame.html?art=${encodeURIComponent(this.__title)}&inFrame=true">`,
 					{
 						width: "80%",
