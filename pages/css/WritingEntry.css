@@ -49,6 +49,7 @@ header > a {
 	text-align: center;
 	flex-basis: 90px;
 	background-color: var(--accent-color);
+	color: var(--heading-color);
 	border-radius: 25px;
 }
 
