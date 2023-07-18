@@ -254,7 +254,7 @@ registerNamespace("Pages.Music", function (ns)
 		const detailEl = Common.DOMLib.createElement("div", containerEl).el;
 		Common.DOMLib.addStyle(detailEl, { display: "none" });
 
-		Common.DOMLib.createElement("h3", detailEl).el.innerText = "Details";
+		Common.DOMLib.createElement("h4", detailEl).el.innerText = "Details";
 		const detailTable = Common.DOMLib.createElement("table", detailEl).el;
 		const detailTBody = Common.DOMLib.createElement("tbody", detailTable).el;
 		addTableRow(detailTBody, "Performers", song.performers.join(", "));
@@ -266,10 +266,10 @@ registerNamespace("Pages.Music", function (ns)
 		);
 		addTableRow(detailTBody, "Instruments", song.instruments.join(", "));
 
-		Common.DOMLib.createElement("h3", detailEl).el.innerText = "Description";
+		Common.DOMLib.createElement("h4", detailEl).el.innerText = "Description";
 		Common.DOMLib.createElement("p", detailEl).el.innerHTML = song.description;
 
-		Common.DOMLib.createElement("h3", detailEl).el.innerText = "Lyrics";
+		Common.DOMLib.createElement("h4", detailEl).el.innerText = "Lyrics";
 		Common.DOMLib.createElement("p", detailEl).el.innerHTML = song.lyrics;
 
 		Common.Components.RegisterVisToggle(
