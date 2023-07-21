@@ -55,7 +55,7 @@
 				"y": "50%",
 				"dominant-baseline": "middle",
 				"text-anchor": "middle",
-				"fill": Common.Themes[Common.currentTheme]["--text-color"]
+				"fill": Common.Themes[Common.currentTheme]["--heading-color"]
 			},
 			text
 		);

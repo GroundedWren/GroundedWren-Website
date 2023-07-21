@@ -290,7 +290,7 @@
 			isExplicit: false,
 		},
 		"Sindri Reference": {
-			src: "../img/Sindri Reference - Raiyk - 2016-09-10.png",
+			src: "https://d.furaffinity.net/art/groundedwren/1689654127/1689654127.groundedwren_sindri_reference_-_raiyk_-_2016-09-10.png",
 			characters: ["Sindri"],
 			artists: ["Raiyk"],
 			date: new Date(2016, 08, 10),
