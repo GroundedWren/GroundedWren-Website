@@ -219,7 +219,7 @@ registerNamespace("Common", function (ns)
 			"--input-text-color": "#000000",
 			"--input-selected-color": "#D9BDA5",
 			"--accent-color": "#E1CAA4",
-			"--accent-color-hover": "#65CFE6",
+			"--accent-color-hover": "#614C2A",
 			"--accent-color-2": "#EBE1C3",
 			"--text-color": "#000000",
 			"--button-face-color": "#E5DECF",
