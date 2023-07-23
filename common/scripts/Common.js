@@ -241,8 +241,8 @@ registerNamespace("Common", function (ns)
 		},
 		"theme-nighthawks": {
 			"--background-color": "#1D2323",
-			"--content-color": "#72301A",
-			"--content-color-2": "#683F23",
+			"--content-color": "#2E4052",
+			"--content-color-2": "#72301A",
 			"--input-background-color": "#000000",
 			"--input-text-color": "#FFFFFF",
 			"--input-selected-color": "#C91B18",

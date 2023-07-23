@@ -253,7 +253,7 @@
 			isExplicit: false,
 		},
 		"Sindri Bust": {
-			src: "../img/Sindri Bust - Despey - 2016-09-22.png",
+			src: "https://d.furaffinity.net/art/groundedwren/1690126429/1690126429.groundedwren_sindri_bust_-_despey_-_2016-09-22.jpg",
 			characters: ["Sindri"],
 			artists: ["Despey"],
 			date: new Date(2016, 08, 22),
@@ -271,7 +271,7 @@
 			isExplicit: false,
 		},
 		"Cowboy Sindri": {
-			src: "../img/Sindri Hat - Despey - 2016-11-19.png",
+			src: "https://d.furaffinity.net/art/groundedwren/1690126951/1690126951.groundedwren_sindri_hat_-_despey_-_2016-11-19.png",
 			characters: ["Sindri"],
 			artists: ["Despey"],
 			date: new Date(2016, 10, 19),
