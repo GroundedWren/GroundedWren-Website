@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Namespace for Home.html
  */
 registerNamespace("Pages.Home", function (ns)
@@ -109,6 +109,16 @@ registerNamespace("Pages.Home", function (ns)
 			color
 		);
 	}
+
+	ns.displayA11yStatement = () =>
+	{
+		Common.Controls.Popups.showModal(
+			"Accessibility Statement",
+			`<p>Web content accessibility has been a recent focus of mine as it relates to my job and as a general skill I’m working to develop for its own sake because accessible content is better content. As such, this site strives to meet the <a href="https://www.w3.org/TR/WCAG21/" target="_blank">Web Content Accessibility Guidelines 2.1</a> as published by the World Wide Web Consortium at levels A and AA. If you notice any violations, please let me know; my contact info lives on my <a href="./AboutMe.html" target="_blank">About Me</a> page.</p>`
+			+ `<p>In the interest of transparency, I test nonvisual operability using <a href="https://www.nvaccess.org/" target=”blank”>NVDA</a> with Chrome and using <a href="https://support.google.com/accessibility/android/answer/6283677?hl=en" target="blank">TalkBack</a> on Android. If you use a different combination of technologies to access this site, you are more likely to find issues.</p>`
+			+ `<p>If you have any feedback about GroundedWren.com, especially if you use a screen reader, I want to hear from you!</p>`
+		);
+	};
 });
 
 /**
@@ -157,6 +167,7 @@ window.onload = () =>
 				childActionMap: {
 					"About Me": { linkHref: "./AboutMe.html" },
 					"Demo page": { linkHref: "./Example.html" },
+					"Accessibility": { action: () => { Pages.Home.displayA11yStatement(); } },
 					"Shortcuts": { action: () => { Common.Components.displayShortcuts(); } },
 				}
 			},
