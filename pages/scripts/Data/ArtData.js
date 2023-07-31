@@ -1,4 +1,4 @@
-registerNamespace("Pages.Art.Data", function (ns)
+﻿registerNamespace("Pages.Art.Data", function (ns)
 {
 	//#region Artists
 	/**

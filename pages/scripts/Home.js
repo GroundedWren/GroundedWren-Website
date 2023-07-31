@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Namespace for Home.html
  */
 registerNamespace("Pages.Home", function (ns)

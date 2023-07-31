@@ -45,6 +45,18 @@ registerNamespace("Pages.Music.Data", function (ns)
 						+"This is the first music I've written in a long while.",
 					lyrics: "(Instrumental)",
 				},
+				{
+					title: "Ladybug's Duet",
+					src: "../music/Untitled 2023/Ladybugs_Duet.mp3",
+					type: "audio/mp3",
+					performers: ["Vera"],
+					composers: ["Vera"],
+					instruments: ["Acoustic Guitar"],
+					recorded: new Date(2023, 6, 30),
+					description: "I haven't made an entry in the Ladybug's story for a while!<br />"
+						+ "This one is so short because I didn't know where to take it haha.",
+					lyrics: "(Instrumental)",
+				},
 			]
 		},
 		"Grounded Wren": {
