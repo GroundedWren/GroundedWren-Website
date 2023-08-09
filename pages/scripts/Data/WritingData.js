@@ -57,6 +57,16 @@ registerNamespace("Pages.Writing.Data", function (ns)
 			entriesDirectory: "./poetry_entries/",
 			entryExtension: ".html",
 			entries: {
+				"PastOne": {
+					title: "Past One",
+					author: "Vera",
+					date: new Date(2023, 7, 9),
+				},
+				"NightFlight": {
+					title: "Night Flight",
+					author: "Vera",
+					date: new Date(2023, 7, 5),
+				},
 				"TheRainPersists": {
 					title: "The Rain Persists",
 					author: "Vera",
