@@ -136,4 +136,11 @@ registerNamespace("Common.DOMLib", function (ns)
 	{
 		action(event);
 	};
+
+	ns.getAbsoluteHeight = function getAbsoluteHeight(el)
+	{
+		const styles = window.getComputedStyle(el);
+		const margin = parseFloat(styles['marginTop']) + parseFloat(styles['marginBottom']);
+		return el.offsetHeight + margin;
+	};
 });

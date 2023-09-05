@@ -42,7 +42,7 @@ registerNamespace("Pages.Music.Data", function (ns)
 					instruments: ["Acoustic Guitar"],
 					recorded: new Date(2023, 5, 17),
 					description: "Wildfires up north have made for apocalyptic ambience this summer.<br />"
-						+"This is the first music I've written in a long while.",
+						+ "This is the first music I've written in a long while.",
 					lyrics: "(Instrumental)",
 				},
 				{
@@ -56,6 +56,44 @@ registerNamespace("Pages.Music.Data", function (ns)
 					description: "I haven't made an entry in the Ladybug's story for a while!<br />"
 						+ "This one is so short because I didn't know where to take it haha.",
 					lyrics: "(Instrumental)",
+				},
+				{
+					title: "Random Encounter",
+					src: "../music/Untitled 2023/Random_Encounter.mp3",
+					type: "audio/mp3",
+					performers: ["Vera"],
+					composers: ["Vera", "Blackmore's Night"],
+					instruments: ["Acoustic Guitar", "Vocals"],
+					recorded: new Date(2023, 8, 4),
+					description: "A parody of 'Wind in the Willows' by Blackmore's night to fit a DnD Campaign I'm in.<br />"
+						+ "Recorded on a whim with a potato.",
+					lyrics: "As I went a-walking one morning in spring<br />"
+						+ "I met with some travlers on an old country lane<br />"
+						+ "One was a fighter, the second a mage<br />"
+						+ "The third was a cultist fanatic who said<br/>"
+						+ "<br />"
+						+ "(Chorus) With the Hobgoblin warlords' wyverns in the sky<br />"
+						+ "There are nightmares to haunt you wherever you lie<br />"
+						+ "We have black and purple hooded robe fashion lines<br />"
+						+ "To wear on our journey to conquer mankind<br />"
+						+ "<br />"
+						+ "So I sat down beside them, Serin tuned up his sound<br />"
+						+ "A very drunk Lightsong spread out on the ground<br />"
+						+ "They told us of relics, and archons and kings<br />"
+						+ "And all of the Velkus who knows everything<br />"
+						+ "'We're travling to Bluecrest over these fine green lanes<br />"
+						+ "To hear of man's troubles, to hear of their pains<br />"
+						+ "We've traveled the wide-world over land and the sea<br />"
+						+ "To kill all the people, so they can be free'<br />"
+						+ "<br />"
+						+ "(Chorus)<br />"
+						+ "<br />"
+						+ "So sadly (Gho)dukk killed them to protect his green lanes<br />"
+						+ "'Are you all bandits?' he asked of the slain<br />"
+						+ "One was a fighter, the second a mage<br />"
+						+ "And the third was a cultist fanatic who said<br/>"
+						+ "<br />"
+						+ "(Chorus)",
 				},
 			]
 		},
@@ -227,7 +265,7 @@ registerNamespace("Pages.Music.Data", function (ns)
 					type: "audio/mp3",
 					performers: ["Vera"],
 					composers: ["Bob Dylan"],
-					instruments: ["Acoustic Guitar", "Bass Guitar" , "Vocals"],
+					instruments: ["Acoustic Guitar", "Bass Guitar", "Vocals"],
 					recorded: new Date(2017, 3, 26),
 					description: "The more observant amongst you will notice I sound a little different on this track.<br />"
 						+ "<br />"
