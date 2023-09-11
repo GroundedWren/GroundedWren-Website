@@ -136,6 +136,17 @@ audio {
 	width: 100%;
 }
 
+.song-info-btn {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.song-info-icon {
+	padding-bottom: 7px;
+	padding-right: 3px;
+}
+
 @media (max-width: 1000px) {
 	main {
 		margin-left: 5px;

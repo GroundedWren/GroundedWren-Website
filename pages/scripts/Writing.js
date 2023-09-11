@@ -76,7 +76,10 @@ registerNamespace("Pages.Writing", function (ns)
 		{
 			const entryId = params.get(ENTRY_PARAM);
 			openToEntry(folder, entryId);
-			ns.entryRadioMap[entryId].checked = true;
+			if (ns.entryRadioMap[entryId])
+			{
+				ns.entryRadioMap[entryId].checked = true;
+			}
 		}
 		else
 		{
@@ -196,7 +199,7 @@ registerNamespace("Pages.Writing", function (ns)
 		{
 			window.history.replaceState(null, "", "Writing.html");
 			enterZeroState();
-			Common.Controls.Popups.showModal("Writing", `Entry not found: ${entry}`);
+			Common.Controls.Popups.showModal("Writing", `Entry not found: ${entryId}`);
 		}
 	}
 

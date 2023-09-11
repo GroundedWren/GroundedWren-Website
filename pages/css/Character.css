@@ -75,6 +75,18 @@ caption {
 	width: 150px;
 }
 
+#tdSex {
+	display: grid;
+	grid-template-columns: 1fr auto;
+}
+
+.sex-button {
+	display: inline-flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 3px;
+}
+
 /* Pages.Character.MINI_THRESHOLD */
 @media (max-width: 750px) {
 	main {

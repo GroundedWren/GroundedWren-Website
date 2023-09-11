@@ -85,7 +85,7 @@
 					  autocomplete="off"
 					  aria-labelledby="formTitle">
 					<h3 id="formTitle">This is a form</h3>
-					<div style="display:grid; grid-template-columns: auto auto auto auto; grid-column-gap: 5px;">
+					<div style="display:grid; grid-template-columns: 1fr 1fr 1fr; grid-column-gap: 5px;">
 						<fieldset>
 							<legend id="fieldsetLabel">input-line fieldset</legend>
 							<div class="input-line">
@@ -238,6 +238,46 @@
 								</select>
 							</div>
 						</fieldset>
+						<fieldset class="input-horizontal-flex">
+							<legend>input-horizontal-flex</legend>
+							<div class="input-flex-line">
+								<label for="Text2">Username</label>
+								<input id="Text2" type="text" />
+							</div>
+
+							<div class="input-flex-line">
+								<label for="Password2">Password</label>
+								<input id="Password2" type="password" />
+							</div>
+
+							<div class="input-flex-line">
+								<label for="Checkbox2">Checkbox</label>
+								<input id="Checkbox2" type="checkbox" />
+							</div>
+
+							<div class="input-flex-line">
+								<label id="radiosLabel2">Radios</label>
+								<fieldset aria-labelledby="radiosLabel2" class="transparent-fieldset">
+									<input id="Radio3" type="radio" name="radioName2" value="radioval3" />
+									<label for="Radio3">value 3</label>
+									<input id="Radio4" type="radio" name="radioName2" value="radioval4" />
+									<label for="Radio4">value 4</label>
+								</fieldset>
+							</div>
+
+							<div class="input-flex-line">
+								<label for="inBtn2">Button!</label>
+								<button type="button" id="inBtn2" onclick="console.log('ope2')">Button</button>
+							</div>
+
+							<div class="input-flex-line">
+								<label for="Select2">Select 2</label>
+								<select id="Select2">
+									<option>Option 1</option>
+									<option>Option 2</option>
+								</select>
+							</div>
+						</fieldset>
 					</div>
 					<div class="form-footer">
 						<input id="Reset1" type="reset" value="reset" />
@@ -298,6 +338,10 @@
 				<button onclick="Pages.Example.addShortcut('ALT+SHIFT+H')">Add Alt+Shift+H</button>
 				<button onclick="Pages.Example.removeShortcut('ALT+SHIFT+H')">Remove Alt+Shift+H</button>
 				<footer>He likes toast</footer>
+			</div>
+			<h2>Icons</h2>
+			<div id="iconContainer">
+				<span class="icon-container" data-icon="play" data-description="This is a description">Play</span>
 			</div>
 		</main>
 		<div id="dialogRegion" role="region" aria-label="dialogs"></div>

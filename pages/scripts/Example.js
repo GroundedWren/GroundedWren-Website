@@ -146,7 +146,7 @@ window.onload = () =>
 			"pgC_t2": document.getElementById("pgC_p2"),
 		}
 	);
-	Pages.Example.pageControl.setActiveTab("pgC_t1");
+	/*Pages.Example.pageControl.setActiveTab("pgC_t1");*/
 
 	const { el: dynPage } = Common.DOMLib.createElement("div");
 	Pages.Example.pageControl.addNewTab("Dynamic", dynPage, () => { window.alert("on activate"); });
@@ -250,5 +250,11 @@ window.onload = () =>
 		false,
 		false
 	);
+	//#endregion
+
+	//#region Icons
+	var icon = Common.SVGLib.createIcon(Common.SVGLib.Icons["circle-info"]);
+	document.getElementById("iconContainer").appendChild(icon);
+	Common.SVGLib.insertIcons();
 	//#endregion
 };

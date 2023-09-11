@@ -212,12 +212,15 @@ registerNamespace("Pages.Music", function (ns)
 
 		const songTitleContainer = Common.DOMLib.createElement("div", containerEl, ["songTitleContainer"]).el;
 		Common.DOMLib.createElement("h3", songTitleContainer).el.innerText = song.title;
-		const chevronEl = Common.DOMLib.createElement("span", songTitleContainer, ["chevron", "bottom"]).el;
-		Common.DOMLib.setAttributes(chevronEl, {
+		const expandButton = Common.DOMLib.createElement("div", songTitleContainer, ["song-info-btn"]).el;
+		const infoIcon = Common.SVGLib.createIcon(Common.SVGLib.Icons["circle-info"],undefined,undefined,["song-info-icon"]);
+		infoIcon.setAttribute("aria-hidden", "true");
+		expandButton.appendChild(infoIcon);
+		const chevronEl = Common.DOMLib.createElement("span", expandButton, ["chevron", "bottom"]).el;
+		Common.DOMLib.setAttributes(expandButton, {
 			tabindex: 0,
 			"aria-label": "Show track details for " + song.title
 		});
-		chevronEl.setAttribute("tabindex", 0);
 
 		const audioEl = Common.DOMLib.createElement("audio", containerEl).el;
 		ns.audioList.push(audioEl);
@@ -273,7 +276,7 @@ registerNamespace("Pages.Music", function (ns)
 		Common.DOMLib.createElement("p", detailEl).el.innerHTML = song.lyrics;
 
 		Common.Components.RegisterVisToggle(
-			chevronEl,
+			expandButton,
 			[
 				detailEl,
 			],
@@ -339,6 +342,7 @@ window.onload = () =>
 			description: "Next track"
 		},
 	});
+	Common.SVGLib.insertIcons();
 
 
 	Pages.Music.buildCollectionList();

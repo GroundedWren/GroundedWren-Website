@@ -112,10 +112,12 @@ li > span {
 	cursor: pointer;
 	box-shadow: 0px 0px 34px 0px #D0ADED;
 }
+
+.icon {
+	width: 32px;
+}
 /*#endregion*/
-
 /*#region IDs*/
-
 #subveil {
 	background-color: var(--background-color);
 }
@@ -133,8 +135,14 @@ li > span {
 	background-color: var(--accent-color);
 }
 
-#dVera ul, #dVera li {
+#dVera ul {
 	display: inline-block;
+}
+
+#dVera li {
+	display: inline-flex;
+	flex-direction: row;
+	align-items: center;
 }
 
 #dVera ul {
@@ -154,6 +162,14 @@ li > span {
 
 #miscCtrl {
 	height: 500px;
+}
+
+#opinionsPageInner {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	gap: 5px;
 }
 
 /*#endregion*/

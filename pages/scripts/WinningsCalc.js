@@ -367,6 +367,7 @@ window.onload = () =>
 			description: "Calculate winnings"
 		},
 	});
+	Common.SVGLib.insertIcons();
 
 	Common.Components.RegisterVisToggle(
 		document.getElementById("showChipsChevron"),

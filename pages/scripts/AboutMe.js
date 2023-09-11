@@ -19,6 +19,7 @@ window.onload = () =>
 			description: "Return to the home page"
 		},
 	});
+	Common.SVGLib.insertIcons();
 
 	Pages.AboutMe.miscControl = new Common.Controls.PageControl.PageControl(
 		document.getElementById("miscCtrl"),
@@ -26,7 +27,7 @@ window.onload = () =>
 		document.getElementById("miscCtrl_pgc"),
 		{
 			"miscCtrl_tab_Identity": document.getElementById("miscCtrl_page_Identity"),
-			"miscCtrl_tab_Opinions": document.getElementById("miscCtrl_page_Opinoins"),
+			"miscCtrl_tab_Opinions": document.getElementById("miscCtrl_page_Opinions"),
 			"miscCtrl_tab_Favs": document.getElementById("miscCtrl_page_Favs"),
 			"miscCtrl_tab_QA": document.getElementById("miscCtrl_page_QA"),
 		},

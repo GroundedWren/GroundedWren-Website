@@ -27,8 +27,6 @@
 
 	<script src="./scripts/Data/MusicData.js"></script>
 	<script src="./scripts/Music.js"></script>
-
-	<script src="https://kit.fontawesome.com/c6b6f471bd.js" crossorigin="anonymous"></script>
 </head>
 <body>
 	<div id="subveil">
@@ -79,17 +77,30 @@
 				<div id="trackListHeader">
 					<h2>Tracks</h2>
 					<div id="trackControls">
-						<button id="nextBtn" onclick="Pages.Music.prevTrack()">
-							<i class="fa-solid fa-backward-step icon" title="Previous Track"></i>
+						<button id="nextBtn"
+								class="icon-container"
+								data-icon="backward-step"
+								onclick="Pages.Music.prevTrack()">
+							Previous Track
 						</button>
-						<button id="playBtn" onclick="Pages.Music.playTracks()">
-							<i class="fa-solid fa-play" style="color: #03b025;" title="Play"></i>
+						<button id="playBtn"
+								class="icon-container" 
+								data-icon="play"
+								data-icon-style="fill: #03b025"
+								onclick="Pages.Music.playTracks()">
+							Play
 						</button>
-						<button id="pauseBtn" onclick="Pages.Music.pauseTracks()" class="hidden">
-							<i class="fa-solid fa-pause icon" title="Pause"></i>
+						<button id="pauseBtn" 
+								class ="icon-container hidden"
+								data-icon="pause" 
+								onclick="Pages.Music.pauseTracks()">
+							Pause
 						</button>
-						<button id="nextBtn" onclick="Pages.Music.nextTrack()">
-							<i class="fa-solid fa-forward-step icon" title="Next Track"></i>
+						<button id="nextBtn"
+								class="icon-container" 
+								data-icon="forward-step" 
+								onclick="Pages.Music.nextTrack()">
+							Next Track
 						</button>
 					</div>
 				</div>

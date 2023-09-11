@@ -23,4 +23,5 @@ window.onload = () =>
 			description: "Show shortcut keys"
 		},
 	});
+	Common.SVGLib.insertIcons();
 };

@@ -54,24 +54,29 @@ registerNamespace("Pages.Character", function (ns)
 		tdSex.innerHTML += character.sex;
 		if (character.sexInfo)
 		{
-			//document.getElementById("sexTooltip").innerHTML += character.sexInfo;
-			const sexChevronEl = Common.DOMLib.createElement(
-				"span",
-				tdSex,
-				["chevron", "bottom", "td-chevron"]
-			).el;
-			Common.DOMLib.setAttributes(sexChevronEl, {
+			const sexButtonEl = Common.DOMLib.createElement("div", tdSex, ["sex-button"]).el
+			Common.DOMLib.setAttributes(sexButtonEl, {
 				tabindex: 0,
 				"aria-label": "Show additional sex information"
 			});
-			sexChevronEl.setAttribute("tabindex", 0);
+			sexButtonEl.setAttribute("tabindex", 0);
+
+			const sexIconEl = Common.SVGLib.createIcon(Common.SVGLib.Icons["circle-info"]);
+			sexIconEl.setAttribute("aria-hidden", "true");
+			sexButtonEl.appendChild(sexIconEl);
+
+			const sexChevronEl = Common.DOMLib.createElement(
+				"span",
+				sexButtonEl,
+				["chevron", "bottom", "td-chevron"]
+			).el;
 
 			const sexInfoEl = Common.DOMLib.createElement("div", tdSex).el;
 			Common.DOMLib.addStyle(sexInfoEl, { display: "none" });
 			sexInfoEl.innerHTML += character.sexInfo;
 
 			Common.Components.RegisterVisToggle(
-				sexChevronEl,
+				sexButtonEl,
 				[
 					sexInfoEl,
 				],

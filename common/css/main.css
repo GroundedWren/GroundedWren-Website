@@ -27,6 +27,7 @@
 	--icon-color: #FFFFFF;
 	--heading-color: #FFFFFF;
 }
+
 .theme-serin {
 	--background-color: #FEFAE0;
 	--content-color: #D7D7B6;
@@ -52,9 +53,10 @@
 	--inline-banner-color: #B3B3B3;
 	--inline-banner-warn-color: #EDC200;
 	--inline-banner-pos-color: #3FD95E;
-	--icon-color: #000000; 
+	--icon-color: #000000;
 	--heading-color: #FFFFFF;
 }
+
 .theme-paper {
 	--background-color: #EDEDED;
 	--content-color: #FFFFEE;
@@ -83,6 +85,7 @@
 	--icon-color: #000000;
 	--heading-color: #000000;
 }
+
 .theme-nighthawks {
 	--background-color: #1D2323;
 	--content-color: #2E4052;
@@ -171,7 +174,7 @@ a {
 	padding-right: 5px;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
-	overflow:hidden;
+	overflow: hidden;
 	white-space: nowrap;
 }
 
@@ -187,11 +190,12 @@ a {
 	height: 100%;
 	justify-content: space-between;
 }
-.banner-center button {
-	flex-grow: 1;
-	margin-left: 2px;
-	margin-right: 2px;
-}
+
+	.banner-center button {
+		flex-grow: 1;
+		margin-left: 2px;
+		margin-right: 2px;
+	}
 
 .banner-link {
 	background-color: var(--content-color);
@@ -287,6 +291,7 @@ form > h1, form > h2, form > h3, form > h4, form > h5, form > h6 {
 .input-line > label {
 	text-align: left;
 	width: 150px;
+	min-width: 100px;
 }
 
 .input-line * {
@@ -324,10 +329,10 @@ form > h1, form > h2, form > h3, form > h4, form > h5, form > h6 {
 	align-items: center;
 }
 
-.input-horizontal-flex > .input-flex-line {
-	width: auto;
-	margin-right: 10px;
-}
+	.input-horizontal-flex > .input-flex-line {
+		width: auto;
+		margin-right: 10px;
+	}
 
 .z {
 }
@@ -350,10 +355,11 @@ form > h1, form > h2, form > h3, form > h4, form > h5, form > h6 {
 
 .input-grid {
 	display: grid;
-	grid-template-columns: 1fr 0fr;
+	grid-template-columns: minmax(75px, 1fr) minmax(75px, auto);
 	grid-auto-rows: minmax(25px, auto);
 	grid-column-gap: 5px;
 	grid-row-gap: 2px;
+	align-items: baseline;
 }
 
 	.input-grid > .full-line {
@@ -741,12 +747,27 @@ button[role="link"], .button-like[role="link"] {
 	position: absolute;
 	left: -99999999px;
 }
-.hide-until-focus:focus {
-	position: revert;
-	left: revert;
-}
+
+	.hide-until-focus:focus {
+		position: revert;
+		left: revert;
+	}
 
 .icon {
-	color: var(--icon-color);
+	fill: var(--icon-color);
+	width: 16px;
+	height: 16px;
+}
+
+	.icon.unloaded-icon {
+		width: auto !important;
+		height: auto !important;
+	}
+
+.icon-container {
+	display: inline-flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
 }
 /*#endregion*/

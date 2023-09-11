@@ -17,6 +17,7 @@
 
 	<script src="../common/scripts/Common.js"></script>
 	<script src="../common/scripts/DOMLib.js"></script>
+	<script src="../common/scripts/SVGLib.js"></script>
 	<script src="../common/scripts/FileLib.js"></script>
 	<script src="../common/scripts/Components/Shortcuts.js"></script>
 	<script src="../common/scripts/Components/ElementDragger.js"></script>
@@ -26,8 +27,6 @@
 
 	<script src="./scripts/Winnings.js"></script>
 	<script src="./scripts/WinningsCalc.js"></script>
-
-	<script src="https://kit.fontawesome.com/c6b6f471bd.js" crossorigin="anonymous"></script>
 </head>
 <body>
 	<div id="subveil">
@@ -95,7 +94,7 @@
 								<button id="btnAddChipType"
 										type="button"
 										onclick="Pages.WinningsCalc.addChipType();">
-									<i class="fa-solid fa-plus" style="color: #03b025;" title="Add"></i>
+									<span class="icon-container" data-icon="plus" data-icon-style="fill: #03b025;">Add</span>
 									Chip Type
 								</button>
 							</fieldset>
@@ -103,11 +102,11 @@
 					</div>
 					<div class="inline-banner-wrapper" aria-live="polite" aria-relevant="all">
 						<div id="bnrAddPlayerInfo" class="inline-banner">
-							<i class="fa-solid fa-circle-info icon" title="Info"></i>
+							<span class="icon-container" data-icon="circle-info">Info:</span>
 							Once players are added, chip types except starting counts will be read-only
 						</div>
 						<div id="bnrTblNetWarning" class="inline-banner warning hidden">
-							<i class="fa-solid fa-triangle-exclamation icon" title="Warning"></i>
+							<span class="icon-container" data-icon="triangle-exclamation">Warning:</span>
 							Table net is not zero
 							<div class="inline-banner-buttonWrpr">
 								<button type="button"
@@ -119,7 +118,7 @@
 							</div>
 						</div>
 						<div id="bnrChipsWarning" class="inline-banner warning hidden">
-							<i class="fa-solid fa-triangle-exclamation icon" title="Warning"></i>
+							<span class="icon-container" data-icon="triangle-exclamation">Warning:</span>
 							Table net is zero; chip type nets are unbalanced
 							<div class="inline-banner-buttonWrpr">
 								<button type="button"
@@ -131,7 +130,7 @@
 							</div>
 						</div>
 						<div id="bnrReady" class="inline-banner positive hidden">
-							<i class="fa-solid fa-circle-check icon" title="Info"></i>
+							<span class="icon-container" data-icon="circle-check">Info:</span>
 							Chips balanced
 						</div>
 					</div>
@@ -154,7 +153,7 @@
 								type="button"
 								onclick="Pages.WinningsCalc.addPlayer();"
 								disabled>
-							<i class="fa-solid fa-plus" style="color: #03b025;" title="Add"></i>
+							<span class="icon-container" data-icon="plus" data-icon-style="fill: #03b025;">Add</span>
 							<u>P</u>layer
 						</button>
 					</div>

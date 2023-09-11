@@ -24,19 +24,29 @@
 	<script src="../common/scripts/Controls/ZeroState.js"></script>
 
 	<script src="./scripts/AboutMe.js"></script>
-
-	<script src="https://kit.fontawesome.com/c6b6f471bd.js" crossorigin="anonymous"></script>
 </head>
 <body>
 	<div id="subveil">
 		<main>
 			<div id="dVera">
 				<h1>Vera Konigin</h1>
-				<ul style="display: inline-block;">
-					<li><i class="fa-solid fa-laptop-code icon"></i><span>Programmer</span></li>
-					<li><i class="fa-solid fa-guitar icon"></i><span>Musician</span></li>
-					<li><i class="fa-solid fa-pen-fancy icon"></i><span>Writer</span></li>
-					<li><i class="fa-solid fa-glasses icon"></i><span>Patron of the arts</span></li>
+				<ul>
+					<li>
+						<span aria-hidden="true" class="icon-container" data-icon="laptop-code"></span>
+						<span>Programmer</span>
+					</li>
+					<li>
+						<span aria-hidden="true" class="icon-container" data-icon="guitar"></span>
+						<span>Musician</span>
+					</li>
+					<li>
+						<span aria-hidden="true" class="icon-container" data-icon="pen-fancy"></span>
+						<span>Writer</span>
+					</li>
+					<li>
+						<span aria-hidden="true" class="icon-container" data-icon="glasses"></span>
+						<span>Patron of the arts</span>
+					</li>
 				</ul>
 			</div>
 			<div id="basicInfoCard" class="card">
@@ -68,19 +78,19 @@
 					<tbody>
 						<tr>
 							<th scope="row">
-								<i class="fa-solid fa-clock icon" title="Vera time"></i>
+								<span class="icon-container" data-icon="clock">Vera Time</span>
 							</th>
 							<td id="veraTime">CT</td>
 						</tr>
 						<tr>
 							<th scope="row">
-								<i class="fa-solid fa-envelope icon" title="Email"></i>
+								<span class="icon-container" data-icon="envelope">Email</span>
 							</th>
 							<td><a href="mailto:vera@groundedwren.com">vera@groundedwren.com</a></td>
 						</tr>
 						<tr>
 							<th scope="row">
-								<i class="fa-brands fa-discord icon" title="Discord"></i>
+								<span class="icon-container" data-icon="discord">Discord</span>
 							</th>
 							<td>groundedwren</td>
 						</tr>
@@ -110,28 +120,34 @@
 								</tbody>
 							</table>
 						</div>
-						<div id="miscCtrl_page_Opinoins" class="page-control-page">
-							<h3>Likes</h3>
-							<ul>
-								<li>Music</li>
-								<li>Embroidery</li>
-								<li>Sad movies</li>
-								<li>Taking notes</li>
-								<li>RPGs</li>
-								<li>Vinyl</li>
-								<li>Baths</li>
-								<li>Blankets</li>
-								<li>Umami</li>
-								<li>Guitar</li>
-							</ul>
-							<h3>Dislikes</h3>
-							<ul>
-								<li>Crowds</li>
-								<li>Being cold</li>
-								<li>Big meetings</li>
-								<li>Congestion</li>
-								<li>Getting out of bed</li>
-							</ul>
+						<div id="miscCtrl_page_Opinions" class="page-control-page">
+							<div id="opinionsPageInner">
+								<div>
+									<h3>Likes</h3>
+									<ul>
+										<li>Music</li>
+										<li>Embroidery</li>
+										<li>Sad movies</li>
+										<li>Taking notes</li>
+										<li>RPGs</li>
+										<li>Vinyl</li>
+										<li>Baths</li>
+										<li>Blankets</li>
+										<li>Umami</li>
+										<li>Guitar</li>
+									</ul>
+								</div>
+								<div>
+									<h3>Dislikes</h3>
+									<ul>
+										<li>Crowds</li>
+										<li>Being cold</li>
+										<li>Big meetings</li>
+										<li>Congestion</li>
+										<li>Getting out of bed</li>
+									</ul>
+								</div>
+							</div>
 						</div>
 						<div id="miscCtrl_page_Favs" class="page-control-page">
 							<table id="favoritesTable" aria-labelledby="miscCtrl_tab_Favs">
@@ -211,7 +227,7 @@
 						</div>
 					</div>
 				</div>
-			</div>			
+			</div>
 		</main>
 		<div id="dialogRegion" role="region" aria-label="dialogs"></div>
 		<div class="banner-buffer"></div>
