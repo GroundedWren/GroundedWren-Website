@@ -17,12 +17,12 @@
 			height: "5'4\" (163 cm)",
 
 			colors: {
-				"Skin darkest": "#A82D2F",
-				"Skin lightest": "#CB3B3A",
-				Hair: "#121015",
-				Iris: "#532C1E",
-				Sclera: "#C79A96",
-				Lips: "#6C2529",
+				"Skin darkest": { color: "#A82D2F", text: "#FFFFFF"},
+				"Skin lightest": { color: "#CB3B3A", text: "#FFFFFF" },
+				Hair: { color: "#121015", text: "#FFFFFF" },
+				Iris: { color: "#532C1E", text: "#FFFFFF" },
+				Sclera: { color: "#C79A96", text: "#000000" },
+				Lips: { color: "#6C2529", text: "#FFFFFF" },
 			},
 
 			createdBy: "Vera & Cryo",
@@ -76,11 +76,11 @@
 			height: "6'0\" (183 cm)",
 
 			colors: {
-				Skin: "#63312E",
-				Hair: "#000000",
-				Iris: "#4C7958",
-				Sclera: "#FFFFFF",
-				Lips: "#532A28",
+				Skin: { color: "#63312E", text: "#FFFFFF" },
+				Hair: { color: "#000000", text: "#FFFFFF" },
+				Iris: { color: "#4C7958", text: "#FFFFFF" },
+				Sclera: { color: "#FFFFFF", text: "#000000" },
+				Lips: { color: "#532A28", text: "#FFFFFF" },
 			},
 
 			createdBy: "Vera",
@@ -129,11 +129,11 @@
 			height: "5'6\" (168 cm)",
 
 			colors: {
-				Skin: "#D29794",
-				Hair: "#914424",
-				Iris: "#2E4C89",
-				Sclera: "#FFFFFF",
-				Lips: "#BC77A4",
+				Skin: { color: "#D29794", text: "#000000" },
+				Hair: { color: "#914424", text: "#FFFFFF" },
+				Iris: { color: "#2E4C89", text: "#FFFFFF" },
+				Sclera: { color: "#FFFFFF", text: "#000000" },
+				Lips: { color: "#BC77A4", text: "#000000" },
 			},
 
 			createdBy: "Vera",
@@ -177,13 +177,13 @@
 			height: "6'0\" (183 cm)",
 
 			colors: {
-				"Carapace 1": "#746A6F",
-				"Carapace 2": "#675D62",
-				"Skin 1": "#4E4249",
-				"Skin 2, tattoo": "#3A2D35",
-				Iris: "#822297",
-				Sclera: "#BFA7C4",
-				"Caruncle, tongue": "#2D5573",
+				"Carapace 1": { color: "#746A6F", text: "#FFFFFF" },
+				"Carapace 2": { color: "#675D62", text: "#FFFFFF" },
+				"Skin 1": { color: "#4E4249", text: "#FFFFFF" },
+				"Skin 2, tattoo": { color: "#3A2D35", text: "#FFFFFF" },
+				Iris: { color: "#822297", text: "#FFFFFF" },
+				Sclera: { color: "#BFA7C4", text: "#000000" },
+				"Caruncle, tongue": { color: "#2D5573", text: "#FFFFFF" },
 			},
 
 			createdBy: "Vera & Raiyk",
@@ -242,14 +242,14 @@
 			height: "5'8\" (173 cm)",
 
 			colors: {
-				"Chitinous Exodermus": "#CB3B3A", 
-				"Dorsal Abdomen": "#121015",
-				"Ventral Abdomen, Wings": "#A82D2F",
-				"Antennae, Mandibles": "#6C2529",
-				"Freckles": "#59AFBC",
-				Hair: "#282119",
-				Iris: "#532C1E",
-				Sclera: "#C79A96",
+				"Chitinous Exodermus": { color: "#CB3B3A", text: "#FFFFFF" }, 
+				"Dorsal Abdomen": { color: "#121015", text: "#FFFFFF" },
+				"Ventral Abdomen, Wings": { color: "#A82D2F", text: "#FFFFFF" },
+				"Antennae, Mandibles": { color: "#6C2529", text: "#FFFFFF" },
+				"Freckles": { color: "#59AFBC", text: "#000000" },
+				Hair: { color: "#282119", text: "#FFFFFF" },
+				Iris: { color: "#532C1E", text: "#FFFFFF" },
+				Sclera: { color: "#C79A96", text: "#000000" },
 			},
 
 			createdBy: "CW Foxfaer",

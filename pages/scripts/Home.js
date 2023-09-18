@@ -11,7 +11,8 @@ registerNamespace("Pages.Home", function (ns)
 	ns.resizeListener = () =>
 	{
 		var directoryContainer = document.getElementById("Directory");
-		if (window.innerWidth <= Pages.Home.MINI_THRESHOLD)
+		var directoryStyles = getComputedStyle(directoryContainer);
+		if (directoryStyles.getPropertyValue("--gw-sized-down") == 1)
 		{
 			directoryContainer.classList.add("mini");
 			ns.directoryMenu.setOrientation(Common.Controls.DropdownMenu.Orientations.vertical);
@@ -102,7 +103,7 @@ registerNamespace("Pages.Home", function (ns)
 				"y": "50%",
 				"dominant-baseline": "middle",
 				"text-anchor": "middle",
-				"font-size": "14",
+				"font-size": "0.8em",
 				"text-decoration": !!linkEl ? "underline" : "",
 				"fill": textColor
 			},
@@ -158,9 +159,9 @@ window.onload = () =>
 			},
 			"Coding": {
 				childActionMap: {
-					"Text Adventure": { linkHref: "https://textadventure.groundedwren.com" },
-					"DnD Workbook": { linkHref: "./DnDWorkbook.html" },
 					"Winnings Calc": { linkHref: "./WinningsCalc.html" },
+					"DnD Workbook": { linkHref: "./DnDWorkbook.html" },
+					"Text Adventure": { linkHref: "https://textadventure.groundedwren.com" },
 				}
 			},
 			"Misc": {

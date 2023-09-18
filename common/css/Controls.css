@@ -27,13 +27,16 @@
 	flex-grow: 1;
 	vertical-align: middle;
 	padding-left: 5px;
-	font-size: 30px;
+	font-size: 2em;
 	color: var(--heading-color);
 }
 
 .popup-close {
 	border: 2px;
-	font-size: 30px;
+	display:flex;
+	flex-direction: row;
+	align-items: center;
+	font-size: 2em;
 	font-weight: bold;
 	cursor: pointer;
 	overflow: hidden;
@@ -109,7 +112,7 @@
 	}
 
 	.tab-strip-tab {
-		font-size: small !important;
+		font-size: 0.75em !important;
 	}
 
 	.vertical-tabs > .tab-strip-tab span {
@@ -131,7 +134,7 @@
 .tab-strip {
 	display: flex;
 	flex-direction: row;
-	flex-basis: 30px;
+	flex-basis: 2em;
 	flex-grow: 0;
 	flex-shrink: 0;
 }
@@ -142,7 +145,7 @@
 
 .tab-strip-tab {
 	height: 100%;
-	flex-basis: 100px;
+	flex-basis: 7em;
 	flex-grow: 0;
 	position: relative;
 	border-right: none;

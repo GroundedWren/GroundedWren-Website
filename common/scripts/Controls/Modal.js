@@ -92,7 +92,7 @@ registerNamespace("Common.Controls.Popups", function (ns)
 		);
 		modalClose.setAttribute("aria-label", "Close the modal");
 		modalClose.onclick = () => { hideModal(); };
-		modalClose.innerHTML = "<span>&times;</span>";
+		modalClose.innerHTML = "&times;";
 
 		const { el: modalContent } = Common.DOMLib.createElement(
 			"div",

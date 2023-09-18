@@ -62,6 +62,17 @@ registerNamespace("Common", function (ns)
 	}
 	ns.getContrastingBorW = getContrastingBorW;
 
+	ns.getInvertedColor = function getInvertedColor(hex)
+	{
+		var rgb = hexToRGB(hex);
+		var invRgb = {
+			r: (255 - rgb.r).toString(16),
+			g: (255 - rgb.b).toString(16),
+			b: (255 - rgb.g).toString(16)
+		}
+		return ns.rgbToHex(invRgb);
+	}
+
 	/**
 	 * Converts a hex color to RGB
 	 * https://stackoverflow.com/a/35970186

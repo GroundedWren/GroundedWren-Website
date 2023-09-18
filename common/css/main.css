@@ -125,7 +125,7 @@ html, body {
 	color: var(--text-color);
 	margin: 0;
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-	font-size: 16px;
+	font-size: 1em;
 }
 
 body {
@@ -167,7 +167,8 @@ a {
 	background-color: var(--accent-color);
 	color: var(--heading-color);
 	width: calc(100% - 10px);
-	height: 20px;
+	/*height: 20px;*/
+	height: 1.25em;
 	padding-top: 1px;
 	padding-bottom: 4px;
 	padding-left: 5px;
@@ -216,7 +217,8 @@ a {
 }
 
 .banner-buffer {
-	height: 25px;
+	/*height: 25px;*/
+	height: 1.25em;
 }
 
 .fixed-header {
@@ -596,7 +598,7 @@ tr > th {
 .card-header {
 	background-color: var(--accent-color);
 	color: var(--heading-color);
-	font-size: larger;
+	font-size: 1.25em;
 	margin: -10px;
 	margin-bottom: 10px;
 	padding-left: 5px;

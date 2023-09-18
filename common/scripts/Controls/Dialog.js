@@ -159,7 +159,7 @@
 				"aria-label": "Close the dialog"
 			});
 			Common.DOMLib.setAsButton(dialogClose, () => { this.destroy(); });
-			dialogClose.innerHTML = "<span>&times;</span>";
+			dialogClose.innerHTML = "&times;";
 
 			const { el: dialogContent } = Common.DOMLib.createElement(
 				"div",

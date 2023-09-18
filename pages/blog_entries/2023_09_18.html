@@ -301,45 +301,47 @@
 		<h3 id="DataTables">Data Tables</h3>
 		<p><a target="_blank" href="https://www.w3.org/WAI/tutorials/tables/" class="element-name">&lt;table&gt;</a>s are a great tool for presenting information accessibly.</p>
 		<p>Specifying the <span class="property-name">scope</span> property on the header, <span class="element-name">&lt;th&gt;</span>, elements define their associative directions. This is important for large or complicated tables.</p>
-		<figure aria-labelledby="dataTblCptn">
-			<table>
-				<caption id="dataTblCptn">Horizontal Table Example</caption>
-				<tbody>
-					<tr>
-						<th scope="row">S Tier</th>
-						<td>Garrus Vakarian</td>
-					</tr>
-					<tr>
-						<th scope="row">A Tier</th>
-						<td>Tali'Zorah nar Rayya</td>
-						<td>Urdnot Wrex</td>
-						<td>Legion</td>
-						<td>Mordin Solus</td>
-					</tr>
-					<tr>
-						<th scope="row">B Tier</th>
-						<td>Liara T'Soni</td>
-						<td>Grunt</td>
-						<td>Thane Krios</td>
-						<td>Jack</td>
-						<td>James Vega</td>
-						<td>EDI</td>
-					</tr>
-					<tr>
-						<th scope="row">C Tier</th>
-						<td>Zaeed Massani</td>
-						<td>Samara</td>
-						<td>Kaidan Alenko</td>
-					</tr>
-					<tr>
-						<th scope="row">D Tier</th>
-						<td>Miranda Lawson</td>
-						<td>Jacob Taylor</td>
-						<td>Ashley Williams</td>
-					</tr>
-				</tbody>
-			</table>
-		</figure>
+		<div class="center-content-container">
+			<figure aria-labelledby="dataTblCptn">
+				<table class="small-cells">
+					<caption id="dataTblCptn">Horizontal Table Example</caption>
+					<tbody>
+						<tr>
+							<th scope="row">S Tier</th>
+							<td>Garrus Vakarian</td>
+						</tr>
+						<tr>
+							<th scope="row">A Tier</th>
+							<td>Tali'Zorah nar Rayya</td>
+							<td>Urdnot Wrex</td>
+							<td>Legion</td>
+							<td>Mordin Solus</td>
+						</tr>
+						<tr>
+							<th scope="row">B Tier</th>
+							<td>Liara T'Soni</td>
+							<td>Grunt</td>
+							<td>Thane Krios</td>
+							<td>Jack</td>
+							<td>James Vega</td>
+							<td>EDI</td>
+						</tr>
+						<tr>
+							<th scope="row">C Tier</th>
+							<td>Zaeed Massani</td>
+							<td>Samara</td>
+							<td>Kaidan Alenko</td>
+						</tr>
+						<tr>
+							<th scope="row">D Tier</th>
+							<td>Miranda Lawson</td>
+							<td>Jacob Taylor</td>
+							<td>Ashley Williams</td>
+						</tr>
+					</tbody>
+				</table>
+			</figure>
+		</div>
 		<p>Screen readers provide features to easily navigate through tables which rely on them being set-up properly and only used for presenting data.</p>
 		<p><a target="_blank" href="https://webaim.org/articles/nvda/tables.htm">NVDA Practice: Tables.</a></p>
 		<h3 id="LayoutTables">Layout Tables</h3>
@@ -358,28 +360,30 @@
 			Layout tables are, overall, difficult to maintain and are
 			<a target="_blank" href="https://www.w3.org/TR/2014/REC-html5-20141028/tabular-data.html#:~:text=Tables%20should%20not,from%20the%20document.">recommended against by the W3C</a>.
 		</p>
-		<figure>
-			<form autocomplete="off" aria-labelledby="ltCaption">
-				<figcaption id="ltCaption">Layout Table Form</figcaption>
-				<table class="layout-table">
-					<tbody>
-						<tr><td><label for="ltName">Name:</label></td><td><input id="ltName" type="text" /></td></tr>
-						<tr><td><label for="ltEmail">Email:</label></td><td><input id="ltEmail" type="email" /></td></tr>
-						<tr>
-							<td><label id="ltGender">Gender:</label></td>
-							<td>
-								<fieldset aria-labelledby="ltGender" class="transparent-fieldset">
-									<input id="ltRadioNo" type="radio" name="ltRadioGender" value="No" />
-									<label for="ltRadioNo">No</label>
-									<input id="ltRadioYes" type="radio" name="ltRadioGender" value="Yes" />
-									<label for="ltRadioYes">Yes</label>
-								</fieldset>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</form>
-		</figure>
+		<div class="center-content-container">
+			<figure>
+				<form autocomplete="off" aria-labelledby="ltCaption">
+					<figcaption id="ltCaption">Layout Table Form</figcaption>
+					<table class="layout-table">
+						<tbody>
+							<tr><td><label for="ltName">Name:</label></td><td><input id="ltName" type="text" /></td></tr>
+							<tr><td><label for="ltEmail">Email:</label></td><td><input id="ltEmail" type="email" /></td></tr>
+							<tr>
+								<td><label id="ltGender">Gender:</label></td>
+								<td>
+									<fieldset aria-labelledby="ltGender" class="transparent-fieldset">
+										<input id="ltRadioNo" type="radio" name="ltRadioGender" value="No" />
+										<label for="ltRadioNo">No</label>
+										<input id="ltRadioYes" type="radio" name="ltRadioGender" value="Yes" />
+										<label for="ltRadioYes">Yes</label>
+									</fieldset>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</form>
+			</figure>
+		</div>
 		<h2 id="Landmarks">Landmarks</h2>
 		<h3 id="Structure">Structuring a Page</h3>
 		<p>Representing the logical structure of a page explicitly in HTML (and not just visually) is achievable via Landmarks.</p>
@@ -411,21 +415,23 @@
 		<p>These roles allow users to both identify what section of the page they’re in and to quickly navigate between landmarks. For example, the NVDA Elements List popup provides a list of landmarks on the current page, as well as its headers, links, and form elements.</p>
 		<h3 id="Sectioning">HTML Sectioning Elements</h3>
 		<p>Common components of webpages, as specified by semantic HTML elements, are associated with a predefined set of roles.</p>
-		<figure aria-labelledby="secElsTblCptn">
-			<table>
-				<caption id="secElsTblCptn">Semantic Sectioning Elements</caption>
-				<thead><tr><th scope="col">HTML Element</th><th scope="col">Default Landmark Role</th></tr></thead>
-				<tbody>
-					<tr><td><span class="element-name">&lt;aside&gt;</span></td><td>Complimentary</td></tr>
-					<tr><td><span class="element-name">&lt;footer&gt;</span></td><td>Contentinfo when in context of the <span class="element-name">&lt;body&gt;</span> element</td></tr>
-					<tr><td><span class="element-name">&lt;header&gt;</span></td><td>Banner when in context of the <span class="element-name">&lt;body&gt;</span> element</td></tr>
-					<tr><td><span class="element-name">&lt;main&gt;</span></td><td>Main</td></tr>
-					<tr><td><span class="element-name">&lt;nav&gt;</span></td><td>Navigation</td></tr>
-					<tr><td><span class="element-name">&lt;section&gt;</span></td><td>Region when it has an accessible name using <span class="property-name">aria-labelledby</span> or <span class="property-name">aria-label</span>.</td></tr>
-				</tbody>
-			</table>
-			<footer><cite><a target="_blank" href="https://www.w3.org/WAI/ARIA/apg/practices/landmark-regions/#htmlsectioningelements">w3.org</a></cite></footer>
-		</figure>
+		<div class="center-content-container">
+			<figure aria-labelledby="secElsTblCptn">
+				<table>
+					<caption id="secElsTblCptn">Semantic Sectioning Elements</caption>
+					<thead><tr><th scope="col">HTML Element</th><th scope="col">Default Landmark Role</th></tr></thead>
+					<tbody>
+						<tr><td><span class="element-name">&lt;aside&gt;</span></td><td>Complimentary</td></tr>
+						<tr><td><span class="element-name">&lt;footer&gt;</span></td><td>Contentinfo when in context of the <span class="element-name">&lt;body&gt;</span> element</td></tr>
+						<tr><td><span class="element-name">&lt;header&gt;</span></td><td>Banner when in context of the <span class="element-name">&lt;body&gt;</span> element</td></tr>
+						<tr><td><span class="element-name">&lt;main&gt;</span></td><td>Main</td></tr>
+						<tr><td><span class="element-name">&lt;nav&gt;</span></td><td>Navigation</td></tr>
+						<tr><td><span class="element-name">&lt;section&gt;</span></td><td>Region when it has an accessible name using <span class="property-name">aria-labelledby</span> or <span class="property-name">aria-label</span>.</td></tr>
+					</tbody>
+				</table>
+				<footer><cite><a target="_blank" href="https://www.w3.org/WAI/ARIA/apg/practices/landmark-regions/#htmlsectioningelements">w3.org</a></cite></footer>
+			</figure>
+		</div>
 		<p>One common pattern seen in a lot of webpages is to include a link in the banner to the <span class="element-name">&lt;main&gt;</span> element, so that keyboard-only users may skip past repeated elements across multiple pages. Non-keyboard-only users frequently don’t notice these links since they are generally stylistically hidden until focused. In my experience, the presence of such links is a hallmark of a website which takes accessibility seriously.</p>
 		<h2 id="Conclusion">Conclusion</h2>
 		<p>This post is by no means comprehensive, but it is a hearty chunk of information I had ready to go. I plan to expand on more technical topics in follow-up posts, but in the interest of digestibility we’ll end here. I kind of like this style of more technical blogging; I’ll have to do it more often.</p>

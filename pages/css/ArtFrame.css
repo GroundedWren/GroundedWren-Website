@@ -33,7 +33,7 @@ main {
 	margin-left: 20px;
 	margin-right: 20px;
 	margin-top: 10px;
-	height: calc(100% - 25px - 10px); /*Header, margin-top*/
+	height: calc(100% - 1.25em - 10px); /*Header, margin-top*/
 	align-items: center
 }
 

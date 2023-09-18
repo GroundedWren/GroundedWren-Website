@@ -139,7 +139,7 @@ registerNamespace("Pages.Character", function (ns)
 					"y": "0",
 					"width": "100%",
 					"height": "100%",
-					"fill": colors[label]
+					"fill": colors[label].color
 				}
 			);
 			Common.SVGLib.createChildElement(
@@ -150,10 +150,10 @@ registerNamespace("Pages.Character", function (ns)
 					"y": "50%",
 					"dominant-baseline": "middle",
 					"text-anchor": "middle",
-					"font-size": "14",
-					"fill": Common.getContrastingBorW(colors[label])
+					"font-size": "0.8em",
+					"fill": colors[label].text
 				},
-				colors[label]
+				colors[label].color
 			);
 		});
 	}

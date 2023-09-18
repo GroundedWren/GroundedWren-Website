@@ -28,6 +28,14 @@ table {
 	border: none;
 }
 
-	.layout-table td {
-		padding: 3px;
-	}
+figure {
+	margin: unset;
+}
+
+.layout-table td {
+	padding: 3px;
+}
+
+.small-cells td {
+	font-size: 0.8em;
+}
