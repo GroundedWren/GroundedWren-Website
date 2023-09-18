@@ -386,7 +386,7 @@ form > h1, form > h2, form > h3, form > h4, form > h5, form > h6 {
 	padding-right: 10px;
 }
 
-input[type="text"], input[type="password"], input[type="number"] {
+input[type="text"], input[type="password"], input[type="number"], input[type="email"] {
 	background-color: var(--input-background-color);
 	color: var(--input-text-color);
 }
@@ -394,7 +394,7 @@ input[type="text"], input[type="password"], input[type="number"] {
 .z { /* Fix auto-indent */
 }
 
-input[type="text"]:invalid, input[type="password"]:invalid, input[type="number"]:invalid {
+input[type="text"]:invalid, input[type="password"]:invalid, input[type="number"]:invalid, input[type="email"]:invalid {
 	box-shadow: inset 0px 0px 5px 2px var(--accent-color);
 }
 
@@ -608,6 +608,17 @@ tr > th {
 .card footer {
 	font-style: italic;
 	font-size: small;
+}
+/*#endregion*/
+
+/*#region Figure*/
+figure footer {
+	font-style: italic;
+	font-size: small;
+}
+figcaption {
+	border-bottom: 1px solid var(--accent-color);
+	margin-bottom: 5px;
 }
 /*#endregion*/
 

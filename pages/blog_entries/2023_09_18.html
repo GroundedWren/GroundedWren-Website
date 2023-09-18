@@ -1,0 +1,442 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="theme-vera">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Sixth blog entry by Vera Konigin">
+	<title>Organizing Information Accessibly</title>
+	<link rel="stylesheet" href="../../common/css/main.css" type="text/css" />
+	<link rel="stylesheet" href=".././css/WritingEntry.css" type="text/css" />
+	<link rel="stylesheet" href=".././css/blog_entries/2023_09_18.css" type="text/css" />
+
+	<script src="../../common/scripts/main.js"></script>
+	<script src="../../common/scripts/Common.js"></script>
+	<script src="../scripts/WritingEntry.js"></script>
+</head>
+<body>
+	<header>
+		<div class="title-container">
+			<h1>Organizing Information Accessibly</h1>
+			<p class="subtitle">By Vera @ <a href="https://www.GroundedWren.com" target="_blank">GroundedWren.com</a> 9/16/23</p>
+		</div>
+	</header>
+	<nav class="card">
+		<h2>Contents</h2>
+		<ol>
+			<li>
+				<a href="#Introduction">Introduction</a>
+				<ol>
+					<li><a href="#WhoAreWebpagesFor">Who Are Webpages For?</a></li>
+					<li><a href="#ThePromiseOfTheWeb">The Promise of The Web</a></li>
+					<li><a href="#OurCrossedFingers">Our Crossed Fingers</a></li>
+					<li><a href="#WhereDoWeGoFromHere">Where Do We Go from Here?</a></li>
+				</ol>
+			</li>
+			<li>
+				<a href="#LabellingData">Labelling Data</a>
+				<ol>
+					<li><a href="#Label"><span class="element-name">&lt;label&gt;</span></a></li>
+					<li><a href="#MultipleLabels">Labelling Multiple Elements & Multiple Labels</a></li>
+					<li>
+						<a href="#AriaLabel"><span class="property-name">aria-label</span> & <span class="property-name">aria-labelled-by</span></a>
+						<ol>
+							<li><a href="#AntiPatterns">Anti-Patterns</a></li>
+						</ol>
+					</li>
+					<li><a href="#Context">Providing Additional Context</a></li>
+					<li><a href="#Strings">Labelling Strings</a></li>
+				</ol>
+			</li>
+			<li>
+				<a href="#Tables">Tables</a>
+				<ol>
+					<li><a href="#DataTables">Data Tables</a></li>
+					<li><a href="#LayoutTables">Layout Tables</a></li>
+				</ol>
+			</li>
+			<li>
+				<a href="#Landmarks">Landmarks</a>
+				<ol>
+					<li><a href="#Structure">Structuring a Page</a></li>
+					<li><a href="#Sectioning">HTML Sectioning Elements</a></li>
+				</ol>
+			</li>
+			<li><a href="#Conclusion">Conclusion</a></li>
+			<li><a href="#Sources">Sources</a></li>
+		</ol>
+	</nav>
+	<main>
+		<h2 id="Introduction">Introduction</h2>
+		<h3 id="WhoAreWebpagesFor">Who Are Webpages For?</h3>
+		<p>It is obvious that one of the primary uses of webpages is to convey information. When one uses a website, what that means by majority time spent is almost invariably reading, even if the overall goal is to submit information or carry out some other action.</p>
+		<p>
+			It can be easy to forget all about the technology which makes up the membrane of access and interaction with webpages as most of us surf the web as absent-mindedly as we drive our cars, but the fact that we are interacting directly only with browsers has important implications for how web pages can be understood as the web’s grammar of content. Before a webpage can convey information to you, it must first convey information to your browser, a machine which directly empowers the Human to interact with the system - a
+			<a target="_blank" href="https://developer.mozilla.org/en-US/docs/Glossary/User_agent">user agent</a>.
+		</p>
+		<p>This is an extremely important feature of webpages which set them apart from many other modes of Human communication; they are primarily designed to be interpreted by machines. As any software developer will tell you, communicating with machines is not at all like communicating with Humans. Machines demand structure, consistency, and explicitness where Humans may fall back on inference and contextual analysis. The power of structuring content for a machine lies in that the content is not really structured for a particular machine, but for any entity with knowledge of the syntax.</p>
+		<h3 id="ThePromiseOfTheWeb">The Promise of The Web</h3>
+		<p>
+			By formatting information in a rigorous structure, webpages make themselves available to many different kinds of machines, not all of which are interested in rendering their interpretation to a visual display or are even operated by Humans.
+		</p>
+		<p>
+			<aside class="card right">
+				<img src="https://upload.wikimedia.org/wikipedia/commons/b/bc/Robotic_spider.png"
+					 alt="A robotic spider" />
+				<footer>
+					Web Crawler is a great name.<br />
+					<cite>TheDigitalArtist, CC0, via Wikimedia Commons</cite>
+				</footer>
+			</aside>
+			Web crawlers, the vanguard programs which make search engines and large-scale internet research possible, do not care about the spatial positioning of UI elements, nor do they understand ASCII art or that red text should signify emphasis. These exceedingly powerful and important machines, as
+			<a target="_blank" href="https://dl.acm.org/doi/10.5555/1816645">Jeffrey Zeldman has pointed out</a>, are functionally blind.
+		</p>
+		<p>
+			If blind machines can interpret webpages, it follows that they are in-turn able to present them non-visually to Humans. This is precisely the purpose of screen reader software like
+			<a target="_blank" href="https://www.nvaccess.org/">NVDA</a> (NonVisual Desktop Access), which interfaces with standard visual browsers to present webpage information audibly.
+		</p>
+		<p>
+			The promise and potential of the web is that this works out of the box. When crafted properly to convey meaning, HyperText Markup Language, HTML, has everything screen readers like NVDA need to render the content of the page into the airwaves as browsers render it onto monitors. It also affords means of interaction for those using all sorts of user-agents, including those who use a keyboard only and those who use
+			<a target="_blank" href="https://www.lipsurf.com/">voice-controlled browsing technologies</a>.
+		</p>
+		<p>
+			This represents a brave new world of possibilities for those who are unable to process visual information or have other impairments. Where commonly they would require information mediums specifically crafted for them, such as
+			<a target="_blank" href="https://bils.klas.com/">braille magazines, books, and newspapers</a>, webpages can in theory be equally accessible to people using all kinds of user-agents and technologies to engage according to their unique ability set. Not only do we have the Library of Alexandria at our fingertips, we also have it at the tips of our tongues and at the flick of our eyes.
+		</p>
+		<h3 id="OurCrossedFingers">Our Crossed Fingers</h3>
+		<p>
+			There is a tendency among software developers to view their craft as transcendental. Programming is difficult, and with it you can do a lot of very cool things. Therefore, the act of crafting procedurally executing programs is the highest and most important skill to learn; once that skill is attained, spending time on other things is a comparative waste.
+			<a target="_blank" href="https://www.youtube.com/watch?si=OaJvhH4-WwbJGw_m&t=1408&v=YQ_xWvX1n9g&feature=youtu.be">As Folding Ideas put it</a>, specifically about programming with cryptography, “all other complicated things must be lesser in complexity and naturally lower in the hierarchy of reality, nails easily driven by the hammer that they have created.”
+			<aside class="card right">
+				<img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Anonymous_Hacker.png"
+					 alt="A super cool hacker guy" />
+				<footer>
+					We tend to see ourselves this way.<br />
+					<cite>בר, <a target="_blank" href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a>, via Wikimedia Commons</cite>
+				</footer>
+			</aside>
+		</p>
+		<p>This mentality is pervasive; it is an extremely common sentiment among software developers that font-end, i.e., user-facing, development is naturally easier and less interesting than back-end, i.e., business logic, development. HTML (and its styling language, CSS) is commonly dismissed as “not a programming language”, which, while true in the strictest sense of the words, is not a valid reason for dismissal. It is openly ignorant of the power of semantic HTML and disdainful of the effort required to learn how to properly construct it. This is not always a gendered indictment, but it certainly can be; to some, any skill which might consider user experience or aesthetic design is more feminine than the logic-forward “masculine” and “detached” craft of business logic. The predominance of men and masculine culture among developers does have a part to play in the prevalence of this opinion among software professionals.</p>
+		<p>This sentiment is reflected by a talk the CEO of the company I work for which described crafting prompts for modern Large Language Model programs as “more like web development than programming.” This is a value judgement about the worth of two related skillsets which is very funny coming from someone whose company’s primary product is a web application.</p>
+		<p>
+			The result of this is that there is a massive knowledge deficit among web developers, especially younger developers, about how HTML is meant to function. Frequently, we receive no explicit training on HTML; the knowledge is often just assumed as obvious. It is not, as evidenced by the utter haplessness of many developers using CSS and the ubiquity of non-semantic elements where they do not belong. The web, crafted by these unskilled hands, sees HTML as an antiquated
+			<a target="_blank" href="https://dev.to/kmruiz/the-conjunction-of-the-web-2anf">front-end library for their thick-client scripting language apps</a> that we’re simply stuck with for historical reasons.
+		</p>
+		<p>
+			When an end-product webpage influenced by these social forces does not rely on third-party UI libraries, it often fails to follow established best-practices despite decades of maturity in the paradigm.
+			<a target="_blank" href="https://www.smashingmagazine.com/2022/05/you-dont-need-ui-framework/">Even when third-party UI libraries</a>, or even accessibility-focused libraries, are used, they cannot fully mask a lack of basic understanding of how the technology functions by the Humans assembling the components – there will be mistakes which will either go unnoticed entirely or will be extremely difficult to resolve due to a lack of familiarity with the underlying system.
+		</p>
+		<p>
+			The impact of this is obvious, and tragic. The WebAIM Million report in 2023 found that
+			<a target="blank" href="https://webaim.org/projects/million/#wcag">96.3% of surveyed home pages had accessibility errors</a> – failures to meet the World Wide Web Consortium’s Web Content Accessibility Guidelines version 2.1 at level AA – the gold standard of web accessibility. The web is a great opportunity for equitable access to information like we’ve never seen, and we are failing to live up to its potential.
+		</p>
+		<h3 id="WhereDoWeGoFromHere">Where Do We Go from Here?</h3>
+		<p>Web technology did not get us into this situation, human behavior and paradigms did. Therefore, our best way out of this is a Human solution – education.</p>
+		<p>Any developer who creates webpage content should respect the technology enough to understand how it works. Most developers, fortunately, have at least a basic grasp of HTML, but fail to spend the time needed to understand it deeply enough to create content which has true semantic meaning on top of visual associations. This is not an easy skill, but it is eminently learnable; there are numerous resources and courses available, but the only way to really understand is by doing. It is my opinion that any web developer should spend time interacting with the DOM directly, frameworkless, and that they should spend time learning the basics of screen reader operation.</p>
+		<p>I’m going to use the rest of this blog post to pass along some of the knowledge I’ve accrued about structuring webpage information accessibly both from constructing this website and from my day job.</p>
+		<h2 id="LabellingData">Labelling Data</h2>
+		<p>
+			When a data element, or an input element, is displayed on a webpage, the most important semantic association it has is its name, which will inform users what it is referring to. This concept is called an
+			<a target="_blank" href="https://w3c.github.io/accname/#dfn-accessible-name">accessible name</a>, and there are multiple techniques possible to create this meaning using the structure of the page itself.
+		</p>
+		<h3 id="Label"><span class="element-name">&lt;label&gt;</span></h3>
+		<p>
+			<a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label" class="element-name">&lt;label&gt;</a> is the dedicated HTML element for labeling UI elements, primarily
+			<a target="_blank" href="https://www.w3schools.com/html/html_form_elements.asp"><span class="element-name">&lt;form&gt;</span> elements.</a>
+		</p>
+		<p>
+			<span class="element-name">&lt;label&gt;</span>s are associated with elements by specifying the element’s ID in the
+			<a class="property-name" target="blank" href="https://developer.mozilla.org/en-US/docs/Web/HTML/ELement/label#:~:text=global%20attributes.-,for,-The%20value%20of">for</a> property (or by nesting the element inside the <span class="element-name">&lt;label&gt;</span>).
+		</p>
+		<p>
+			Only <a target="blank" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Content_categories#labelable">labelable</a> elements will be meaningfully associated. These are:
+			<ul>
+				<li><a class="element-name" target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button">&lt;button&gt;</a></li>
+				<li><a class="element-name" target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;</a></li>
+				<li><a class="element-name" target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meter">&lt;meter&gt;</a></li>
+				<li><a class="element-name" target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/output">&lt;output&gt;</a></li>
+				<li><a class="element-name" target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress">&lt;progress&gt;</a></li>
+				<li><a class="element-name" target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select">&lt;select&gt;</a></li>
+				<li><a class="element-name" target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea">&lt;textarea&gt;</a></li>
+			</ul>
+		</p>
+		<p>
+			Other elements will not have their accessible name specified by a <span class="element-name">&lt;label&gt;</span> out of the box. One framework technique I’ve seen, though is to have a control use scripting to scan the DOM for labels which reference it, and then set its accessible name programmatically. On top of being over-engineered, this is a fragile pattern since the content of the label can conceivably change after the control is constructed, leading to mismatches. It is better to label controls using accessible attributes directly, as discussed later.
+		</p>
+		<p>
+			UI elements not structurally associated with their labelling text fail <a target="_blank" href="https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html">WCAG 1.3.1</a> – Info and Relationships (Level A). This is an upsettingly common failure since it’s fairly basic to get right; looking at it positively, this means that minimal education can yield substantial benefits.
+		</p>
+		<div class="center-content-container">
+			<figure class="card">
+				<form id="egForm1" autocomplete="off" aria-labelledby="egForm1Title">
+					<figcaption id="egForm1Title">WCAG 1.3.1 Failure Example</figcaption>
+					<div class="input-grid">
+						<label id="egForm1Label1" for="egForm1Field1">Correct label</label>
+						<input id="egForm1Field1" type="text" />
+						<label id="egForm1Label2">Incorrect label</label>
+						<input id="egForm1Field2" type="text" />
+					</div>
+				</form>
+				<footer>Two fields and labels; the second is hooked up improperly.</footer>
+			</figure>
+		</div>
+		<h3 id="MultipleLabels">Labelling Multiple Elements & Multiple Labels</h3>
+		<p>Associating one <span class="element-name">&lt;label&gt;</span> with multiple elements or one element with multiple <span class="element-name">&lt;label&gt;</span>s can cause issues with screen readers and is not recommended.</p>
+		<p>One good alternative is to group elements under a <span class="element-name">&lt;fieldset&gt;</span>; screen readers ensure that the <span class="element-name">&lt;fieldset&gt;</span>’s name is presented to the user in addition to the normal label.</p>
+		<div class="center-content-container">
+			<figure class="card">
+				<form id="egForm2" autocomplete="off" aria-labelledby="egForm2Title">
+					<figcaption id="egForm2Title">Fieldset Example</figcaption>
+					<fieldset>
+						<legend>Fieldset 1</legend>
+						<div class="input-grid">
+							<label id="egForm2Label1" for="egForm2Field1">Label 1</label>
+							<input id="egForm2Field1" type="text" />
+							<label id="egForm2Label2" for="egForm2Field2">Label 2</label>
+							<input id="egForm2Field2" type="text" />
+						</div>
+					</fieldset>
+					<fieldset>
+						<legend>Fieldset 2</legend>
+						<div class="input-grid">
+							<label id="egForm2Label3" for="egForm2Field3">Label 1</label>
+							<input id="egForm2Field3" type="text" />
+							<label id="egForm2Label4" for="egForm2Field4">Label 2</label>
+							<input id="egForm2Field4" type="text" />
+						</div>
+					</fieldset>
+				</form>
+				<footer>Fieldsets can make complex forms more legible</footer>
+			</figure>
+		</div>
+		<p>Additionally, it is possible to specify multiple labels for an element using semantic properties. This is discussed next.</p>
+		<h3 id="AriaLabel"><span class="property-name">aria-label</span> & <span class="property-name">aria-labelled-by</span></h3>
+		<p>
+			The Web Accessibility Initiative specifies a set of HTML techniques to explicitly configure information accessibly, called the Accessible Rich Internet Applications suite, or
+			<a target="_blank" href="https://www.w3.org/WAI/standards-guidelines/aria/">WAI-ARIA</a>. The element attributes in this suite may set the accessible name on HTML elements. Generally, an element’s accessible name is determined automatically by related HTML elements, e.g., <span class="element-name">&lt;table&gt;</span>s are named by their <span class="element-name">&lt;caption&gt;</span>, but WAI_ARIA offers a superset of these associations which often better afford determining names dynamically via scripting.
+		</p>
+		<p><a target="_blank" class="property-name" href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label">aria-label</a> is specified on the labelled element as a string, and it used directly as the element’s accessible name.</p>
+		<p><a target="_blank" class="property-name" href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-labelledby">aria-labelledby</a> is specified on the labelled element as a space-delimited list of IDs of labelling elements. The inner text of these elements joined together is considered the element’s accessible name.</p>
+		<p>
+			These attributes, usefully, can name a wider array of elements than <span class="element-name">&lt;label&gt;</span>s.
+		</p>
+		<p>
+			Here are some general rules of thumb for using ARIA attributes:
+			<ul>
+				<li>Use <span class="element-name">&lt;label&gt;</span>s or semantically associated HTML elements if you can instead.</li>
+				<li>Prefer <span class="property-name">aria-labelledby</span> over <span class="property-name">aria-label</span> to provide a consistent experience for all users.</li>
+				<li><span class="property-name">aria-label</span>s are intended primarily for interactive elements.</li>
+			</ul>
+		</p>
+		<h4 id="AntiPatterns">Anti-Patterns</h4>
+		<p>
+			With very few exceptions, elements with visible text should not be assigned a different accessible name with <span class="property-name">aria-label</span>. This creates an inconsistent experience for users who use screen readers and users who do not. Our goal, as the architects of web applications, should be
+			<a target="_blank" href="https://en.wikipedia.org/wiki/Universal_design">Universal Design</a> where at all possible.
+		</p>
+		<p>
+			Additionally, changing the accessible name of interactable elements from their visible label can have
+			<a target="_blank" href="https://ashleemboyer.com/blog/don-t-overwrite-visual-labels-with-aria-label#why-does-aria-label-need-to-match-the-visible-label">negative implications for those using voice-controlled technology</a>.
+		</p>
+		<div class="center-content-container">
+			<figure class="card">
+				<figcaption>ARIA Anti-Pattern Example</figcaption>
+				<button aria-label="Schedule for 13:05">Schedule for 1305</button>
+				<footer>A well-meaning developer has added a colon to the time in the aria-label to have screen readers interperet it as a time.</footer>
+			</figure>
+		</div>
+		<p>Branching logic based on user-agent type and extensive additional handling unique to nonvisual interaction also makes code more difficult to maintain. While developing, the goal should be to write as little WAI-ARIA and user-agent-specific logic as possible, opting instead for semantic HTML and universal design.</p>
+		<p>
+			See also:
+			<a target="_blank" href="https://www.accessibility-developer-guide.com/knowledge/aria/bad-practices/">Bad ARIA Practices</a>.
+		</p>
+		<h3 id="Context">Providing Additional Context</h3>
+		<p>
+			In addition to the accessible name of an element, there is also the concept of an
+			<a target="_blank" href="https://www.w3.org/WAI/ARIA/apg/practices/names-and-descriptions/#whatareaccessiblenamesanddescriptions?">accessible description</a>.
+		</p>
+		<p>
+			An accessible description may be used to provide more information about a UI element beyond the basics of what it is. This is done by using the
+			<a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-describedby" class="property-name">aria-describedby</a> attribute. Like <span class="property-name">aria-labelledby</span>, it is specified as a space-delimited list of element IDs.
+		</p>
+		<div class="center-content-container">
+			<figure class="card">
+				<figcaption>Accessible Description Example</figcaption>
+				<button aria-describedby="1305Availability scheduleAside">Schedule for 1305</button>
+				<p class="short" id="1305Availability">Only three slots remain for this time!</p>
+				<br />
+				<button aria-describedby="1405Availability scheduleAside">Schedule for 1405</button>
+				<p class="short" id="1405Availability">Only two slots remain for this time!</p>
+				<br />
+				<aside id="scheduleAside">Note: appointments must be canceled with 24 hours notice.</aside>
+			</figure>
+		</div>
+		<p>
+			There is also
+			<a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-details" class="property-name">aria-details</a>, which is meant to work like <span class="property-name">aria-describedby</span> without reducing the description to plain text; the description itself may have HTML structure. However, this feature is currently
+			<a target="_blank" href="https://www.scottohara.me/blog/2018/11/08/aria-details.html">poorly supported by screen readers</a>.
+		</p>
+		<h3 id="Strings">Labelling Strings</h3>
+		<p><span class="element-name">&lt;label&gt;</span>s can only be structurally associated with labelable elements; non-editable text elements like <span class="element-name">&lt;span&gt;</span>s are not able to be linked to <span class="element-name">&lt;label&gt;</span>s.</p>
+		<p>
+			The preferred method for presenting non-editable string information is to do so in one element. For example:<br />
+			<span class="element-name">&lt;span&gt;</span>SPARTAN TAG: 117<span class="element-name">&lt;/span&gt;</span>
+		</p>
+		<p>That said, this is not always easy for styling reasons. <span class="element-name">&lt;label&gt;</span>’d text is still accessible provided the elements are adjacent in the DOM.</p>
+		<div class="center-content-container">
+			<figure class="card">
+				<figcaption>Labelling a String</figcaption>
+				<div class="input-grid">
+					<label id="stringLabel1" for="labeledString1">SPARTAN Tag:</label>
+					<span id="labeledString1">117</span>
+				</div>
+				<footer>Chrome DevTools warns about this, but it's fine trust me.</footer>
+			</figure>
+		</div>
+		<p>
+			Relatedly, non-interactive text should not be in the tab order; they are accessible to screen readers with
+			<a target="blank" href="https://www.accessibility-developer-guide.com/knowledge/screen-readers/desktop/browse-focus-modes/">Browse Mode</a>, which allows users to scan a page's contents irrespective of focusability.
+		</p>
+		<p>To avoid implying that it may be editable in some conditions, we should not use read-only fields for text that is never editable.</p>
+		<p>Multiple string data values associated with labels is a good use-case for <span class="element-name">&lt;table&gt;</span>s.</p>
+		<h2 id="Tables">Tables</h2>
+		<h3 id="DataTables">Data Tables</h3>
+		<p><a target="_blank" href="https://www.w3.org/WAI/tutorials/tables/" class="element-name">&lt;table&gt;</a>s are a great tool for presenting information accessibly.</p>
+		<p>Specifying the <span class="property-name">scope</span> property on the header, <span class="element-name">&lt;th&gt;</span>, elements define their associative directions. This is important for large or complicated tables.</p>
+		<figure aria-labelledby="dataTblCptn">
+			<table>
+				<caption id="dataTblCptn">Horizontal Table Example</caption>
+				<tbody>
+					<tr>
+						<th scope="row">S Tier</th>
+						<td>Garrus Vakarian</td>
+					</tr>
+					<tr>
+						<th scope="row">A Tier</th>
+						<td>Tali'Zorah nar Rayya</td>
+						<td>Urdnot Wrex</td>
+						<td>Legion</td>
+						<td>Mordin Solus</td>
+					</tr>
+					<tr>
+						<th scope="row">B Tier</th>
+						<td>Liara T'Soni</td>
+						<td>Grunt</td>
+						<td>Thane Krios</td>
+						<td>Jack</td>
+						<td>James Vega</td>
+						<td>EDI</td>
+					</tr>
+					<tr>
+						<th scope="row">C Tier</th>
+						<td>Zaeed Massani</td>
+						<td>Samara</td>
+						<td>Kaidan Alenko</td>
+					</tr>
+					<tr>
+						<th scope="row">D Tier</th>
+						<td>Miranda Lawson</td>
+						<td>Jacob Taylor</td>
+						<td>Ashley Williams</td>
+					</tr>
+				</tbody>
+			</table>
+		</figure>
+		<p>Screen readers provide features to easily navigate through tables which rely on them being set-up properly and only used for presenting data.</p>
+		<p><a target="_blank" href="https://webaim.org/articles/nvda/tables.htm">NVDA Practice: Tables.</a></p>
+		<h3 id="LayoutTables">Layout Tables</h3>
+		<p>
+			Aside from presenting data, <span class="element-name">&lt;table&gt;</span>s are also sometimes used for layout purposes. This was more common before modern CSS layouts:
+			<ul>
+				<li><a target="_blank" href="https://www.w3.org/TR/css-flexbox-1/">Flexbox</a> (W3C Candidate Recommendation in 2012)</li>
+				<li><a target="_blank" href="https://www.w3.org/TR/css-grid-1/">Grid</a> (W3C Candidate Recommendation Draft, widely supported in 2017).<br />Grid was originally implemented in IE, and it still has <a target="_blank" href="https://css-tricks.com/css-grid-in-ie-debunking-common-ie-grid-misconceptions/">partial support</a>!</li>
+			</ul>
+		</p>
+		<p>
+			Implemented improperly, using <span class="element-name">&lt;table&gt;</span>s can introduce accessibility issues, especially if they are interpreted by the user-agent as data tables.
+			<a target="_blank" href="https://webaim.org/techniques/tables/#uses">User-agents tend to guess about this</a>, so testing is important.
+		</p>
+		<p>
+			Layout tables are, overall, difficult to maintain and are
+			<a target="_blank" href="https://www.w3.org/TR/2014/REC-html5-20141028/tabular-data.html#:~:text=Tables%20should%20not,from%20the%20document.">recommended against by the W3C</a>.
+		</p>
+		<figure>
+			<form autocomplete="off" aria-labelledby="ltCaption">
+				<figcaption id="ltCaption">Layout Table Form</figcaption>
+				<table class="layout-table">
+					<tbody>
+						<tr><td><label for="ltName">Name:</label></td><td><input id="ltName" type="text" /></td></tr>
+						<tr><td><label for="ltEmail">Email:</label></td><td><input id="ltEmail" type="email" /></td></tr>
+						<tr>
+							<td><label id="ltGender">Gender:</label></td>
+							<td>
+								<fieldset aria-labelledby="ltGender" class="transparent-fieldset">
+									<input id="ltRadioNo" type="radio" name="ltRadioGender" value="No" />
+									<label for="ltRadioNo">No</label>
+									<input id="ltRadioYes" type="radio" name="ltRadioGender" value="Yes" />
+									<label for="ltRadioYes">Yes</label>
+								</fieldset>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</form>
+		</figure>
+		<h2 id="Landmarks">Landmarks</h2>
+		<h3 id="Structure">Structuring a Page</h3>
+		<p>Representing the logical structure of a page explicitly in HTML (and not just visually) is achievable via Landmarks.</p>
+		<p>
+			Landmarks are a set of element
+			<a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles">Roles</a>, a semantic concept of what the element is intended for. This concept lives alongside accessible name and accessible description.
+		</p>
+		<p>
+			<aside class="card right bigger">
+				<img src="../../img/Blog/NVDA Elements List.png"
+					 alt="A screenshot of the NVDA Elements List dialog" />
+				<footer>
+					NVDA provides a tree view of page landmarks.
+				</footer>
+			</aside>
+			There are eight available
+			<a target="_blank" href="https://www.w3.org/WAI/ARIA/apg/practices/landmark-regions/#landmarkroles">Landmark Roles</a>:
+			<ul>
+				<li>Banner</li>
+				<li>Complimentary</li>
+				<li>Contentinfo</li>
+				<li>Form</li>
+				<li>Main</li>
+				<li>Navigation</li>
+				<li>Region</li>
+				<li>Search</li>
+			</ul>
+		</p>
+		<p>These roles allow users to both identify what section of the page they’re in and to quickly navigate between landmarks. For example, the NVDA Elements List popup provides a list of landmarks on the current page, as well as its headers, links, and form elements.</p>
+		<h3 id="Sectioning">HTML Sectioning Elements</h3>
+		<p>Common components of webpages, as specified by semantic HTML elements, are associated with a predefined set of roles.</p>
+		<figure aria-labelledby="secElsTblCptn">
+			<table>
+				<caption id="secElsTblCptn">Semantic Sectioning Elements</caption>
+				<thead><tr><th scope="col">HTML Element</th><th scope="col">Default Landmark Role</th></tr></thead>
+				<tbody>
+					<tr><td><span class="element-name">&lt;aside&gt;</span></td><td>Complimentary</td></tr>
+					<tr><td><span class="element-name">&lt;footer&gt;</span></td><td>Contentinfo when in context of the <span class="element-name">&lt;body&gt;</span> element</td></tr>
+					<tr><td><span class="element-name">&lt;header&gt;</span></td><td>Banner when in context of the <span class="element-name">&lt;body&gt;</span> element</td></tr>
+					<tr><td><span class="element-name">&lt;main&gt;</span></td><td>Main</td></tr>
+					<tr><td><span class="element-name">&lt;nav&gt;</span></td><td>Navigation</td></tr>
+					<tr><td><span class="element-name">&lt;section&gt;</span></td><td>Region when it has an accessible name using <span class="property-name">aria-labelledby</span> or <span class="property-name">aria-label</span>.</td></tr>
+				</tbody>
+			</table>
+			<footer><cite><a target="_blank" href="https://www.w3.org/WAI/ARIA/apg/practices/landmark-regions/#htmlsectioningelements">w3.org</a></cite></footer>
+		</figure>
+		<p>One common pattern seen in a lot of webpages is to include a link in the banner to the <span class="element-name">&lt;main&gt;</span> element, so that keyboard-only users may skip past repeated elements across multiple pages. Non-keyboard-only users frequently don’t notice these links since they are generally stylistically hidden until focused. In my experience, the presence of such links is a hallmark of a website which takes accessibility seriously.</p>
+		<h2 id="Conclusion">Conclusion</h2>
+		<p>This post is by no means comprehensive, but it is a hearty chunk of information I had ready to go. I plan to expand on more technical topics in follow-up posts, but in the interest of digestibility we’ll end here. I kind of like this style of more technical blogging; I’ll have to do it more often.</p>
+		<h2 id="Sources">Sources</h2>
+		<ul>
+			<li><a target="_blank" href="https://www.w3.org/WAI/ARIA/apg/">ARIA Authoring Practices Guide</a></li>
+			<li><a target="_blank" href="https://www.w3.org/TR/WCAG21/">Web Content Accessibility Guidelines (WCAG) 2.1</a></li>
+			<li><a target="_blank" href="https://webaim.org/">WebAIM</a></li>
+			<li><a target="_blank" href="https://www.accessibility-developer-guide.com/">Accessibility Developer Guide</a></li>
+			<li><a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/HTML">MDN Web Docs</a></li>
+		</ul>
+	</main>
+</body>
+</html>

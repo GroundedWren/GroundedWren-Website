@@ -1,0 +1,33 @@
+﻿.element-name {
+	font-family: Consolas, Monaco, Inconsolata;
+	background-color: var(--content-color-2);
+}
+
+.property-name {
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+	background-color: var(--content-color-2);
+}
+
+form {
+	margin: auto;
+}
+
+p.short {
+	margin-bottom: 5px;
+}
+
+th {
+	background-color: var(--accent-color-2);
+}
+
+table {
+	background-color: var(--content-color-2);
+}
+
+.layout-table, .layout-table th, .layout-table tr, .layout-table td {
+	border: none;
+}
+
+	.layout-table td {
+		padding: 3px;
+	}
