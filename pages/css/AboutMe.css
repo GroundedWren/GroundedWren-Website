@@ -136,6 +136,7 @@ li > span {
 }
 
 #dVera ul {
+	padding: 0;
 	display: inline-block;
 }
 
@@ -143,13 +144,6 @@ li > span {
 	display: inline-flex;
 	flex-direction: row;
 	align-items: center;
-}
-
-#dVera ul {
-	padding: 0;
-}
-
-#dVera li {
 	padding-left: 5px;
 	padding-right: 5px;
 }
