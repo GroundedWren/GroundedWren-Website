@@ -59,6 +59,10 @@ li > span {
 	padding-left: 3px;
 }
 
+.banner-buffer {
+	height: 1.5em;
+}
+
 /*#endregion*/
 
 /*#region Classes */
@@ -117,6 +121,7 @@ li > span {
 	width: 32px;
 }
 /*#endregion*/
+
 /*#region IDs*/
 #subveil {
 	background-color: var(--background-color);
