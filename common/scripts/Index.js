@@ -17,9 +17,9 @@ window.onload = () =>
 			window.location.href = "./TextAdventure/Home.html";
 			return;
 		case "GROUNDEDWREN":
-			window.location.href = "./pages/Home.html"
+			window.location.href = "./pages/Home.html";
 			return;
 		default:
-			window.location.href = "./TextAdventure/Home.html";
+			window.location.href = "./pages/Home.html";
 	}
 };

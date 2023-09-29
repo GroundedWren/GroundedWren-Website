@@ -167,7 +167,6 @@ a {
 	background-color: var(--accent-color);
 	color: var(--heading-color);
 	width: calc(100% - 10px);
-	/*height: 20px;*/
 	height: 1.25em;
 	padding-top: 1px;
 	padding-bottom: 4px;
@@ -192,11 +191,14 @@ a {
 	justify-content: space-between;
 }
 
-	.banner-center button {
-		flex-grow: 1;
-		margin-left: 2px;
-		margin-right: 2px;
-	}
+.z {
+}
+
+.banner-center button {
+	flex-grow: 1;
+	margin-left: 2px;
+	margin-right: 2px;
+}
 
 .banner-link {
 	background-color: var(--content-color);
@@ -217,7 +219,6 @@ a {
 }
 
 .banner-buffer {
-	/*height: 25px;*/
 	height: 1.25em;
 }
 
@@ -618,6 +619,7 @@ figure footer {
 	font-style: italic;
 	font-size: small;
 }
+
 figcaption {
 	border-bottom: 1px solid var(--accent-color);
 	margin-bottom: 5px;
