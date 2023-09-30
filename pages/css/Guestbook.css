@@ -1,0 +1,71 @@
+﻿main {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+h2{
+	margin-bottom: 5px !important;
+}
+
+#HCB_comment_box h3 {
+	display: none;
+}
+
+#HCB_comment_box > a {
+	display: none !important;
+}
+
+#hcb_subscribe {
+	display: none !important;
+}
+
+#hcb_settings {
+	display: none !important;
+}
+
+.admin-link {
+	display: none !important;
+}
+
+.approval-msg {
+	color: unset !important;
+	opacity: unset !important;
+}
+
+.btn {
+	height: 40px;
+	width: 100px;
+}
+
+.btn-secondary {
+	width: 200px;
+}
+
+.comment {
+	background-color: var(--content-color);
+	padding: 5px;
+}
+
+#HCB_comment_box .date {
+	color: unset !important;
+}
+
+#replying_to_container {
+	color: unset !important;
+}
+
+#HCB_comment_box .hcb-link {
+	margin-left: 5px;
+	margin-right: 5px;
+	background-color: #FFFFFF;
+	border-radius: 50px;
+}
+
+#HCB_comment_box .hcb-comment-tb button {
+	color: var(--link-color) !important;
+}
+
+.home-desc {
+	font-size: 0.85em;
+}

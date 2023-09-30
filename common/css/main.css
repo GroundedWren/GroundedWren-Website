@@ -389,7 +389,7 @@ form > h1, form > h2, form > h3, form > h4, form > h5, form > h6 {
 	padding-right: 10px;
 }
 
-input[type="text"], input[type="password"], input[type="number"], input[type="email"] {
+input[type="text"], input[type="password"], input[type="number"], input[type="email"], input[type="submit"] {
 	background-color: var(--input-background-color);
 	color: var(--input-text-color);
 }

@@ -167,8 +167,9 @@ window.onload = () =>
 			"Misc": {
 				childActionMap: {
 					"About Me": { linkHref: "./AboutMe.html" },
-					"Demo page": { linkHref: "./Example.html" },
+					"Guestbook": { linkHref: "./Guestbook.html" },
 					"Accessibility": { action: () => { Pages.Home.displayA11yStatement(); } },
+					"Demo page": { linkHref: "./Example.html" },
 					"Shortcuts": { action: () => { Common.Components.displayShortcuts(); } },
 				}
 			},
