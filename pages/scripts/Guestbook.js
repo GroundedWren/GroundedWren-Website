@@ -50,6 +50,10 @@ registerNamespace("Pages.Guestbook", function (ns)
 			true
 		).el.innerText = "Sign the Guestbook";
 
+		[...document.getElementById("hcb_subscribe").children].filter(
+			el => el.tagName === "INPUT"
+		).forEach(inputEl => inputEl.setAttribute("checked", "true"));
+
 		addFormLabel("hcb_form_name", "Display Name");
 		addFormLabel("hcb_form_content", "Message");
 		addFormLabel("hcb_form_website", "Website");
