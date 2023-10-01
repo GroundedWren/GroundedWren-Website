@@ -50,21 +50,34 @@ registerNamespace("Pages.Guestbook", function (ns)
 			true
 		).el.innerText = "Sign the Guestbook";
 
-		document.getElementById("hcb_form_name").setAttribute("aria-label", "Display Name");
-		document.getElementById("hcb_form_content").setAttribute("aria-label", "Comment");
+		addFormLabel("hcb_form_name", "Display Name");
+		addFormLabel("hcb_form_content", "Message");
+		addFormLabel("hcb_form_website", "Website");
+		addFormLabel("hcb_form_email", "Email");
+	};
+
+	function addFormLabel(inputId, labelText)
+	{
+		const nameContainer = document.getElementById(inputId).parentElement;
+		nameContainer.classList.add("input-vertical-line");
+		const nameLabel = Common.DOMLib.createElement("label", nameContainer, [], undefined, true).el;
+		nameLabel.innerText = labelText;
+		nameLabel.setAttribute("for", inputId);
 	};
 });
 
 hcb_user = {
+	name_label: '',
 	content_label: 'Write something nice :)',
 	submit: 'Sign',
 	no_comments_msg: 'The guestbook is empty :(',
 	again: 'Write something else',
 	said: 'wrote:',
+	email_label: '(optional)',
 	msg_thankyou: 'Thanks for stopping by!',
 	msg_approval: 'NOTE: This comment is not published until approved',
 	msg_approval_required: 'Thanks for stopping by! Your comment will appear once approved by a moderator.',
-	website_label: 'Website (optional)',
+	website_label: '(optional)',
 	PAGE: 'https://www.groundedwren.com/pages/Guestbook.html',
 	onload: Pages.Guestbook.onHCBLoad,
 	ON_COMMENT: Pages.Guestbook.onHCBComment,
