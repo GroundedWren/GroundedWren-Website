@@ -95,18 +95,18 @@
 
 		__createDOM(parentEl)
 		{
-			var focusTrapBefore = Common.DOMLib.createElement("div", parentEl).el;
+			var focusTrapBefore = Common.DOMLib.createElement("div", parentEl);
 			this.__cleanupEls.push(focusTrapBefore);
 
-			const { el: dialogEl, id: dialogId } = Common.DOMLib.createElement(
+			this.__dialogEl = Common.DOMLib.createElement(
 				"div",
 				parentEl,
+				undefined,
 				["dialog", "popup"]
 			);
-			this.__dialogEl = dialogEl;
-			this.__dialogId = dialogId;
+			this.__dialogId = this.__dialogEl.id;
 
-			var focusTrapAfter = Common.DOMLib.createElement("div", parentEl).el;
+			var focusTrapAfter = Common.DOMLib.createElement("div", parentEl);
 			this.__cleanupEls.push(focusTrapAfter);
 
 			if (this.__anchorEl)
@@ -132,47 +132,48 @@
 				}, 10);
 			}
 
-			const { el: dialogHeader } = Common.DOMLib.createElement(
+			const dialogHeader = Common.DOMLib.createElement(
 				"div",
 				this.__dialogEl,
+				undefined,
 				["popup-header", "dialog-header"]
 			);
 			this.__dialogHeader = dialogHeader;
 
-			const { el: dialogTitle, id: dialogTitleId } = Common.DOMLib.createElement(
+			const dialogTitle = Common.DOMLib.createElement(
 				"span",
 				dialogHeader,
+				{
+					"role": "heading",
+					"aria-level": "1"
+				},
 				["popup-title"]
 			);
-			Common.DOMLib.setAttributes(dialogTitle, {
-				"role": "heading",
-				"aria-level": "1"
-			});
 			this.__dialogTitle = dialogTitle;
 
-			const { el: dialogClose } = Common.DOMLib.createElement(
+			const dialogClose = Common.DOMLib.createElement(
 				"button",
 				dialogHeader,
-				["popup-close"]
+				{
+					"aria-label": "Close the dialog"
+				},
+				["popup-close"],
+				"&times;"
 			);
-			Common.DOMLib.setAttributes(dialogClose, {
-				"aria-label": "Close the dialog"
-			});
 			Common.DOMLib.setAsButton(dialogClose, () => { this.destroy(); });
-			dialogClose.innerHTML = "&times;";
 
-			const { el: dialogContent } = Common.DOMLib.createElement(
+			this.__dialogContent = Common.DOMLib.createElement(
 				"div",
 				this.__dialogEl,
+				undefined,
 				["popup-content"]
 			);
-			this.__dialogContent = dialogContent;
 
 			Common.DOMLib.setAttributes(this.__dialogEl, {
 				"tabIndex": "-1",
 				"aria-live": "polite",
 				"role": "dialog",
-				"aria-labelledBy": dialogTitleId
+				"aria-labelledBy": this.__dialogTitle.id
 			});
 			Common.DOMLib.addStyle(this.__dialogEl, { display: "None" });
 
@@ -180,8 +181,11 @@
 			{
 				Common.DOMLib.createElement(
 					"footer",
-					this.__dialogEl
-				).el.innerText = "Pressing F2 on the element which launched this dialog will return focus here";
+					this.__dialogEl,
+					undefined,
+					undefined,
+					"Pressing F2 on the element which launched this dialog will return focus here"
+				);
 			}
 		}
 

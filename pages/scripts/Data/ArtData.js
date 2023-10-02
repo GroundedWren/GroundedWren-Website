@@ -162,8 +162,8 @@
 		{
 			var dce = Common.DOMLib.createElement;
 
-			const { el: metaTable } = dce("table", parent);
-			const tBody = dce("tbody", metaTable).el;
+			const metaTable = dce("table", parent);
+			const tBody = dce("tbody", metaTable);
 
 			this.__addTableRow(
 				tBody,
@@ -191,12 +191,9 @@
 		{
 			var dce = Common.DOMLib.createElement;
 
-			var { el: tableRow } = dce("tr", tableEl);
-			var { el: rowLabel } = dce("th", tableRow, ["row-label"]);
-			rowLabel.setAttribute("scope", "row");
-			rowLabel.innerText = labelText;
-			var { el: rowValue } = dce("td", tableRow);
-			rowValue.innerHTML = labelValueHTML;
+			var tableRow = dce("tr", tableEl);
+			dce("th", tableRow, {"scope": "row"} , ["row-label"], labelText);
+			dce("td", tableRow, undefined, undefined, labelValueHTML);
 		}
 	};
 
@@ -205,7 +202,7 @@
 			src: "../img/Freya Shaded Halfbody - Chelsea-Rhi - 2022-02-24.png",
 			characters: ["Freya"],
 			artists: ["Chelsea-Rhi"],
-			date: new Date(2022, 01, 24),
+			date: new Date(2022, 1, 24),
 			description: "A depiction of my Human Paladin in a Tomb of Annhilation campaign I was in for years.<br /><br />"
 				+ " Once driven from her home, Freya returned to Chult to cleanse it of the undead menace."
 				+ " Tough but fair, Freya is a kind soul who is extremely protective of children in particular.<br /><br />"
@@ -217,7 +214,7 @@
 			src: "../img/Nocturna Cross Stitch Framed - Vera - 2022-07-18.jpg",
 			characters: ["Nocturna"],
 			artists: ["Vera"],
-			date: new Date(2022, 06, 18),
+			date: new Date(2022, 6, 18),
 			description: "A cross stitch project I completed as a gift for my partner.<br /><br />"
 				+ "I am never stitching a white background again - it took forever and was not worth it!",
 			altText: "A framed pixel-art style cross-stitching of a vampiric woman with blue skin and orange hair standing at the ready. She is above three red hearts.",
@@ -227,7 +224,7 @@
 			src: "../img/Original Group - Bastien Aufrere - 2019-04-25.png",
 			characters: ["Eryn", "Serin", "Ghodukk", "Lightsong"],
 			artists: ["Bastien Aufrere"],
-			date: new Date(2019, 03, 25),
+			date: new Date(2019, 3, 25),
 			description: "The Risen D&D Party as they once appeared years ago, before some could rise no more.<br /><br />"
 				+ " Beginning at the left and moving clockwise, we have:<br /><br />"
 				+ "- Eryn, my original character, a Half-Elf ranger. He is succeeded by Vera.<br /><br />"
@@ -241,7 +238,7 @@
 			src: "../img/Risen Brunch - ShrimpLoverCat - Shaded - 2022-03-12.png",
 			characters: ["Vera", "Serin", "Luric", "Lightsong", "Percy"],
 			artists: ["ShrimpLoverCat"],
-			date: new Date(2022, 02, 12),
+			date: new Date(2022, 2, 12),
 			description: "The Risen D&D party and their patron enjoying a light brunch between adventures.<br /><br />"
 				+ "From left to right:<br /><br />"
 				+ "- Lightsong, a Dwarven cleric<br /><br />"
@@ -256,7 +253,7 @@
 			src: "../img/Sindri Bust - Despey - 2016-09-22.png",
 			characters: ["Sindri"],
 			artists: ["Despey"],
-			date: new Date(2016, 08, 22),
+			date: new Date(2016, 8, 22),
 			description: "A piece I won from a raffle almost as soon as I adopted Sindri's design! Something has perplexed the poor lad.",
 			altText: "A bust drawing of a purple male Turian with piercings on his left brow looking confused.",
 			isExplicit: false,
@@ -265,7 +262,7 @@
 			src: "../img/Sindri Garden Raiyk 2018-04-12.png",
 			characters: ["Sindri"],
 			artists: ["Raiyk"],
-			date: new Date(2018, 03, 12),
+			date: new Date(2018, 3, 12),
 			description: "There are lots of things to love about Andromeda, not least of which is the exciting new plethora of flora to raise and study!",
 			altText: "A chibi-style depiction of a purple turian Male in overalls and flannel planting exotic plants with a hand shovel.",
 			isExplicit: false,
@@ -283,7 +280,7 @@
 			src: "../img/Sindri Profile - jesterdk & Vera - 2016-10-14.png",
 			characters: ["Sindri"],
 			artists: ["Vera", "JesterDK"],
-			date: new Date(2016, 09, 14),
+			date: new Date(2016, 9, 14),
 			description: "JesterDK was kind enough to post some free-to-use Turian lines I filled in!<br /><br />"
 				+ "Background is from my at-the-time musical hyperfixation, Blood on the Tracks",
 			altText: "A portrait of a purple Turian male looking left. The background is from the 1975 album 'Blood on the Tracks' by Bob Dylan.",
@@ -293,7 +290,7 @@
 			src: "../img/Sindri Reference - Raiyk - 2016-09-10.png",
 			characters: ["Sindri"],
 			artists: ["Raiyk"],
-			date: new Date(2016, 08, 10),
+			date: new Date(2016, 8, 10),
 			description: "A reference of Sindri designed by Raiyk as an adopt!<br /><br />"
 				+ "I really love his ombre-fringe design - I've written it into his backstory as a subtle regional tattoo pattern.",
 			altText: "A chibi character-sheet style depiction of a purple Turian male with two piercings in his left brow. ",
@@ -303,7 +300,7 @@
 			src: "../img/Vera Orb - ShrimpLoverCat - 2021-12-08.png",
 			characters: ["Vera"],
 			artists: ["ShrimpLoverCat"],
-			date: new Date(2021, 11, 08),
+			date: new Date(2021, 11, 8),
 			description: "A wonderfully shaded piece from Catty!<br /><br />"
 				+ "Hmm, I wonder who she's scrying on...",
 			altText: "A tiefling woman in blue robes looks deeply into a glowing blue orb.",
@@ -313,7 +310,7 @@
 			src: "../img/Vera and Jack - ShrimpLoverCat - 2021-08-22.png",
 			characters: ["Vera", "Jack"],
 			artists: ["ShrimpLoverCat"],
-			date: new Date(2021, 07, 22),
+			date: new Date(2021, 7, 22),
 			description: "Vera posing for a photo with her non-canonical sibling, my real-sibling's character Jack!<br /><br />"
 				+ "In canon, I bet they would (playfully!) fight as much as we do.",
 			altText: "A anthropomorphic orange and white canine with a blue bandana with his arm around a Tiefling woman in purple robes flashing the peace sign.",
@@ -332,7 +329,7 @@
 			src: "../img/Vera Reading - Ravenluck - 2021-02-11.png",
 			characters: ["Vera"],
 			artists: ["Berenice Borggrefe"],
-			date: new Date(2021, 01, 11),
+			date: new Date(2021, 1, 11),
 			description: "This is the very first piece of Vera I ever commissioned!<br /><br />"
 				+ "Berenice only had some found reference images to work with and effectively created Vera's canon look from them.<br /><br />"
 				+ "I consider this to be the authoritative depiction of Vera.",

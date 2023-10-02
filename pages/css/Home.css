@@ -166,3 +166,9 @@ figcaption {
 #webrings {
 	max-width: 200px;
 }
+
+#bisexualism {
+	display: grid;
+	grid-template-columns: 0fr 1fr 0fr;
+	grid-gap: 1px;
+}

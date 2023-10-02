@@ -53,50 +53,56 @@ registerNamespace("Common.Controls.Popups", function (ns)
 
 	function __createDOM()
 	{
-		const { el: veil } = Common.DOMLib.createElement(
+		const veil = Common.DOMLib.createElement(
 			"div",
 			window.document.body,
+			undefined,
 			["veil"]
 		);
 		__veilEl = veil;
 
-		const { el: modalEl } = Common.DOMLib.createElement(
+		const modalEl = Common.DOMLib.createElement(
 			"div",
 			veil,
+			{
+				"aria-live": "polite"
+			},
 			["modal", "popup"]
 		);
-		modalEl.setAttribute("aria-live", "polite");
 		__modalEl = modalEl;
 
-		const { el: modalHeader } = Common.DOMLib.createElement(
+		const modalHeader = Common.DOMLib.createElement(
 			"div",
 			modalEl,
+			undefined,
 			["popup-header"]
 		);
 
-		const { el: modalTitle } = Common.DOMLib.createElement(
+		const modalTitle = Common.DOMLib.createElement(
 			"span",
 			modalHeader,
+			{
+				"role": "heading",
+				"aria-level": "1"
+			},
 			["popup-title"]
 		);
-		Common.DOMLib.setAttributes(modalTitle, {
-			"role": "heading",
-			"aria-level": "1"
-		});
 		__modalTitle = modalTitle;
 
-		const { el: modalClose } = Common.DOMLib.createElement(
+		Common.DOMLib.createElement(
 			"button",
 			modalHeader,
-			["popup-close"]
-		);
-		modalClose.setAttribute("aria-label", "Close the modal");
-		modalClose.onclick = () => { hideModal(); };
-		modalClose.innerHTML = "&times;";
+			{
+				"aria-label": "Close the modal"
+			},
+			["popup-close"],
+			"&times;"
+		).onclick = () => { hideModal(); };
 
-		const { el: modalContent } = Common.DOMLib.createElement(
+		const modalContent = Common.DOMLib.createElement(
 			"div",
 			modalEl,
+			undefined,
 			["popup-content"]
 		);
 		__modalContent = modalContent;

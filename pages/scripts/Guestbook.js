@@ -45,10 +45,11 @@ registerNamespace("Pages.Guestbook", function (ns)
 		Common.DOMLib.createElement(
 			"h2",
 			hcbForm,
+			{ "id": hcbFormLabelId },
 			[],
-			hcbFormLabelId,
-			true
-		).el.innerText = "Sign the Guestbook";
+			"Sign the Guestbook",
+			Common.DOMLib.InsertLoc.Prepend
+		);
 
 		[...document.getElementById("hcb_subscribe").children].filter(
 			el => el.tagName === "INPUT"
@@ -64,9 +65,14 @@ registerNamespace("Pages.Guestbook", function (ns)
 	{
 		const nameContainer = document.getElementById(inputId).parentElement;
 		nameContainer.classList.add("input-vertical-line");
-		const nameLabel = Common.DOMLib.createElement("label", nameContainer, [], undefined, true).el;
-		nameLabel.innerText = labelText;
-		nameLabel.setAttribute("for", inputId);
+		const nameLabel = Common.DOMLib.createElement(
+			"label",
+			nameContainer,
+			{"for": inputId},
+			undefined,
+			labelText,
+			Common.DOMLib.InsertLoc.Prepend
+		);
 	};
 });
 

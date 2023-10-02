@@ -148,13 +148,13 @@ window.onload = () =>
 	);
 	/*Pages.Example.pageControl.setActiveTab("pgC_t1");*/
 
-	const { el: dynPage } = Common.DOMLib.createElement("div");
+	const dynPage = Common.DOMLib.createElement("div");
 	Pages.Example.pageControl.addNewTab("Dynamic", dynPage, () => { window.alert("on activate"); });
 
 	const nestedPageControl = Common.Controls.PageControl.buildPageControl(dynPage, "zero state");
 	Common.DOMLib.addStyle(nestedPageControl.controlEl, { "height": "100%" });
-	const { el: nested1 } = Common.DOMLib.createElement("div");
-	const { el: nested2 } = Common.DOMLib.createElement("div");
+	const nested1 = Common.DOMLib.createElement("div");
+	const nested2 = Common.DOMLib.createElement("div");
 	nested1.innerHTML = `<p>I'm a nested page</p>`;
 	nested2.innerHTML = `<p>hey me too</p>`;
 	nestedPageControl.addNewTab("Nested 1", nested1);

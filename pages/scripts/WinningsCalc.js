@@ -161,37 +161,41 @@ registerNamespace("Pages.WinningsCalc", function (ns)
 		ns.Players.push(playerDef);
 
 		const playersContainer = document.getElementById("playersContent");
-		const playerCard = dce("div", playersContainer, ["card"]).el;
+		const playerCard = dce("div", playersContainer, undefined, ["card"]);
 
-		const playerHeader = dce("div", playerCard, ["card-header"]).el;
-		dsa(playerHeader, { "role": "heading", "aria-level": "3" });
-		playerHeader.innerText = `Player ${playerDef.idx}`;
+		const playerHeader = dce(
+			"div",
+			playerCard,
+			{ "role": "heading", "aria-level": "3" },
+			["card-header"],
+			`Player ${playerDef.idx}`
+		);
 
-		const playerFieldset = dce("fieldset", playerCard, ["transparent-fieldset"]).el;
-		dsa(playerFieldset, { "aria-labelledby": playerHeader.id });
+		const playerFieldset = dce(
+			"fieldset",
+			playerCard,
+			{ "aria-labelledby": playerHeader.id },
+			["transparent-fieldset"]
+		);
 
 		const validatePlayer = Common.fcd(ns, ns.updatePlayerForm, [playerDef]);
 
-		const topDiv = dce("div", playerFieldset, ["player-top"]).el;
+		const topDiv = dce("div", playerFieldset, undefined, ["player-top"]);
 
-		const nameLine = dce("div", topDiv, ["input-vertical-line"]).el;
-		const nameLabel = dce("label", nameLine, []).el;
-		const nameInput = dce("input", nameLine, ["player-name-field"]).el;
+		const nameLine = dce("div", topDiv, undefined, ["input-vertical-line"]);
+		const nameLabel = dce("label", nameLine, undefined, [], "Name");
+		const nameInput = dce("input", nameLine, { type: "text", required: "" }, ["player-name-field"]);
 		dsa(nameLabel, { "for": nameInput.id });
-		nameLabel.innerText = "Name";
-		dsa(nameInput, { type: "text", required: "" });
 		nameInput.addEventListener("input", validatePlayer);
 		playerDef.nameInput = nameInput;
 
-		const netLine = dce("div", topDiv, ["input-vertical-line", "player-net-line"]).el;
-		const netLabel = dce("label", netLine, []).el;
-		const netSpan = dce("span", netLine, []).el;
+		const netLine = dce("div", topDiv, undefined, ["input-vertical-line", "player-net-line"]);
+		const netLabel = dce("label", netLine, undefined, [], "Net");
+		const netSpan = dce("span", netLine, undefined, [], "-");
 		dsa(netLabel, { "for": netSpan.id });
-		netLabel.innerText = "Net"
-		netSpan.innerText = "-";
 		playerDef.netSpan = netSpan;
 
-		const fieldsetsDiv = dce("div", playerFieldset, ["player-fieldset-container"]).el;
+		const fieldsetsDiv = dce("div", playerFieldset, undefined, ["player-fieldset-container"]);
 		playerDef.startingCounts = {};
 		playerDef.endingCounts = {};
 		playerDef.spanStartTotal = buildPlayerFieldset(
@@ -218,18 +222,16 @@ registerNamespace("Pages.WinningsCalc", function (ns)
 		const dce = Common.DOMLib.createElement;
 		const dsa = Common.DOMLib.setAttributes;
 
-		const fieldset = dce("fieldset", fieldsetsDiv, ["input-flex"]).el;
-		dce("legend", fieldset, []).el.innerText = legendText;
+		const fieldset = dce("fieldset", fieldsetsDiv, undefined, ["input-flex"]);
+		dce("legend", fieldset, undefined, [], legendText);
 
 		ns.ChipTypes.forEach(chipType =>
 		{
-			const chipLine = dce("div", fieldset, ["input-flex-line"]).el;
+			const chipLine = dce("div", fieldset, undefined, ["input-flex-line"]);
 
-			const chipLabel = dce("label", chipLine).el;
-			chipLabel.innerText = chipType.lblInput.value;
+			const chipLabel = dce("label", chipLine, undefined, undefined, chipType.lblInput.value);
 
-			const chipInput = dce("input", chipLine).el
-			dsa(chipInput, { type: "number", min: "0", placeholder: "0" });
+			const chipInput = dce("input", chipLine, { type: "number", min: "0", placeholder: "0" });
 			if (setValues)
 			{
 				chipInput.value = chipType.cntInput.value || 0;
@@ -241,12 +243,10 @@ registerNamespace("Pages.WinningsCalc", function (ns)
 			countCollection[chipType.idx - 1] = chipInput;
 		});
 
-		const totalLine = dce("div", fieldset, ["input-flex-line"]).el;
-		const lblTotal = dce("label", totalLine).el;
-		const spanTotal = dce("span", totalLine).el;
+		const totalLine = dce("div", fieldset, undefined, ["input-flex-line"]);
+		const lblTotal = dce("label", totalLine, undefined, undefined, "Total");
+		const spanTotal = dce("span", totalLine, undefined, undefined, "-");
 		dsa(lblTotal, { for: spanTotal.id });
-		lblTotal.innerText = "Total";
-		spanTotal.innerText = "-";
 
 		return spanTotal;
 	};
@@ -260,11 +260,10 @@ registerNamespace("Pages.WinningsCalc", function (ns)
 
 		const chipTypesContainer = document.getElementById("divChipTypesContainer");
 
-		const cTypeSet = dce("fieldset", chipTypesContainer, ["chiptype-fieldset"]).el;
+		const cTypeSet = dce("fieldset", chipTypesContainer, undefined, ["chiptype-fieldset"]);
 		chipTypeDef.fieldSet = cTypeSet;
 
-		const cTypeLegend = dce("legend", cTypeSet, []).el;
-		cTypeLegend.innerText = `Type ${chipTypeDef.idx}`;
+		dce("legend", cTypeSet, undefined, [], `Type ${chipTypeDef.idx}`);
 
 		chipTypeDef.lblInput = createChipInput(
 			cTypeSet,
@@ -289,14 +288,12 @@ registerNamespace("Pages.WinningsCalc", function (ns)
 		const dce = Common.DOMLib.createElement;
 		const dsa = Common.DOMLib.setAttributes;
 
-		const cTypeLine = dce("div", cTypeSet, ["input-vertical-line"]).el;
-		const cTypeLabel = dce("label", cTypeLine).el;
-		const cTypeInput = dce("input", cTypeLine).el;
+		const cTypeLine = dce("div", cTypeSet, undefined, ["input-vertical-line"]);
+		const cTypeLabel = dce("label", cTypeLine, undefined, undefined, labelText);
+		const cTypeInput = dce("input", cTypeLine, inpAttrs);
 
 		dsa(cTypeLabel, { for: cTypeInput.id });
-		cTypeLabel.innerText = labelText;
 
-		dsa(cTypeInput, inpAttrs);
 		cTypeInput.addEventListener("input", ns.updateGameForm);
 
 		return cTypeInput;

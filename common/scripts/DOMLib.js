@@ -9,38 +9,55 @@ registerNamespace("Common.DOMLib", function (ns)
 	const ELEMENT_PREFIX = "DOMLibElement-";
 	ns.ELEMENT_PREFIX = ELEMENT_PREFIX;
 
+	ns.InsertLoc = {
+		Prepend: "Prepend",
+		Append: "Arepend",
+	};
+
 	/**
 	 * Shortcut to create an element
 	 * @param type Element tag name
 	 * @param parent Element under which this will be inserted
+	 * @param attrs Attributes object
 	 * @param classAry Array of CSS classes to assign.
-	 * @param id If specified, assigned to this element.
-	 * @param prepend If true, prepend instead of append.
+	 * @param innerHTML HTML inside the element
+	 * @param loc InsertLoc - Where to insert (default: append)
 	 */
-	function createElement(type, parent, classAry, id, prepend)
+	function createElement(type, parent, attrs, classAry, innerHTML, loc)
 	{
 		const el = document.createElement(type);
 
-		if (!id)
+		attrs = attrs || {};
+		if (!attrs.id)
 		{
-			id = incElId();
+			attrs.id = incElId();
 		}
-		el.setAttribute("id", id);
+		ns.setAttributes(el, attrs);
 
 		(classAry || []).forEach((cls) =>
 		{
 			el.classList.add(cls);
 		});
 
-		if (parent)
+		if (innerHTML)
 		{
-			prepend
-				? parent.prepend(el)
-				: parent.appendChild(el);
-
+			el.innerHTML = innerHTML;
 		}
 
-		return { el: el, id: id };
+		if (parent)
+		{
+			switch (loc)
+			{
+				case ns.InsertLoc.Prepend:
+					parent.prepend(el);
+					break;
+				default:
+					parent.appendChild(el);
+					break;
+			}
+		}
+
+		return el;
 	};
 	ns.createElement = createElement;
 

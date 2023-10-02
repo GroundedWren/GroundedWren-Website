@@ -70,7 +70,7 @@ registerNamespace("Pages.ArtFrame", function (ns)
 			artFrame.buildMetaTable(document.getElementById("metaContainer"));
 		}
 
-		const descParagraph = Common.DOMLib.createElement("p", document.getElementById("commentContainer")).el;
+		const descParagraph = Common.DOMLib.createElement("p", document.getElementById("commentContainer"));
 		descParagraph.innerHTML = artFrame.description;
 	};
 });

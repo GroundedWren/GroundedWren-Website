@@ -35,7 +35,7 @@ registerNamespace("Pages.Winnings", function (ns)
 				name: decodeURIComponent(params.get(nameParam)),
 				net: parseFloat(decodeURIComponent(params.get(netParam)))
 			});
-			(players[idx].net > 0 ? posPlayers : negPlayers).push({...players[idx]});
+			(players[idx].net > 0 ? posPlayers : negPlayers).push({ ...players[idx] });
 		}
 
 		var payments = calcPayments(posPlayers, negPlayers);
@@ -44,7 +44,7 @@ registerNamespace("Pages.Winnings", function (ns)
 
 		for (var idx = 0; idx < players.length; idx++)
 		{
-			buildPlayerCard(idx+1, players[idx], payments[players[idx].name]);
+			buildPlayerCard(idx + 1, players[idx], payments[players[idx].name]);
 		}
 	};
 
@@ -57,7 +57,7 @@ registerNamespace("Pages.Winnings", function (ns)
 		while (!sorted)
 		{
 			posPlayers.sort(absSort);
-			negPlayers.sort(absSort)
+			negPlayers.sort(absSort);
 
 			if (posPlayers[0].net === 0)
 			{
@@ -91,7 +91,7 @@ registerNamespace("Pages.Winnings", function (ns)
 
 	function numericSort(a, b)
 	{
-		return b.net - a.net; 
+		return b.net - a.net;
 	}
 
 	function absSort(a, b)
@@ -102,35 +102,42 @@ registerNamespace("Pages.Winnings", function (ns)
 	function buildPlayerCard(rank, playerDef, paymentList)
 	{
 		const dce = Common.DOMLib.createElement;
-		const dsa = Common.DOMLib.setAttributes;
 
 		var list = document.getElementById("cardList");
+		const playerCard = dce("div", list, undefined, ["card"]);
 
-		const playerCard = dce("div", list, ["card"]).el;
+		dce(
+			"div",
+			playerCard,
+			{ "role": "heading", "aria-level": "2" },
+			["card-header"],
+			`${rank}${getSuffix(rank)}: ${playerDef.name}`
+		);
 
-		const playerHeader = dce("div", playerCard, ["card-header"]).el;
-		dsa(playerHeader, { "role": "heading", "aria-level": "2" });
-		playerHeader.innerText = `${rank}${getSuffix(rank)}: ${playerDef.name}`;
-
-		dce("span", playerCard).el.innerText =
-			`${playerDef.net >= 0 ? "Payout" : "Losses"}: $${Math.abs(playerDef.net)}`;
+		dce(
+			"span",
+			playerCard,
+			undefined,
+			undefined,
+			`${playerDef.net >= 0 ? "Payout" : "Losses"}: $${Math.abs(playerDef.net)}`
+		);
 
 		if (!paymentList) { return; }
 
-		var paymentsTable = dce("table", playerCard).el;
-		dce("caption", paymentsTable).el.innerText = "Payments";
+		var paymentsTable = dce("table", playerCard);
+		dce("caption", paymentsTable, undefined, undefined, "Payments");
 
-		var paymentsHead = dce("thead", paymentsTable).el;
-		var headerRow = dce("tr", paymentsHead).el;
-		dce("th", headerRow).el.innerText = playerDef.net > 0 ? "From" : "To";
-		dce("th", headerRow).el.innerText = "Amount";
+		var paymentsHead = dce("thead", paymentsTable);
+		var headerRow = dce("tr", paymentsHead);
+		dce("th", headerRow, undefined, undefined, playerDef.net > 0 ? "From" : "To");
+		dce("th", headerRow, undefined, undefined, "Amount");
 
-		var paymentsBody = dce("tbody", paymentsTable).el;
+		var paymentsBody = dce("tbody", paymentsTable);
 		paymentList.forEach(payment =>
 		{
-			var paymentRow = dce("tr", paymentsBody).el;
-			dce("td", paymentRow).el.innerText = playerDef.net > 0 ? payment.from : payment.to;
-			dce("td", paymentRow).el.innerText = `$${payment.amt}`;
+			var paymentRow = dce("tr", paymentsBody);
+			dce("td", paymentRow, undefined, undefined, playerDef.net > 0 ? payment.from : payment.to);
+			dce("td", paymentRow, undefined, undefined, `$${payment.amt}`);
 		});
 
 	};
@@ -146,14 +153,18 @@ registerNamespace("Pages.Winnings", function (ns)
 			case 3:
 				return "rd";
 			default:
-				return "th"
+				return "th";
 		}
 	}
 
 	function showLoadError()
 	{
-		const errHeading = Common.DOMLib.createElement("h2", document.getElementById("mainContent")).el;
-		errHeading.innerText = "Error: Malformed URL";
+		Common.DOMLib.createElement(
+			"h2",
+			document.getElementById("mainContent"),
+			undefined, undefined,
+			"Error: Malformed URL"
+		);
 	};
 });
 

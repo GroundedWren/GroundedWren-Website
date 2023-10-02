@@ -54,12 +54,10 @@ registerNamespace("Pages.Character", function (ns)
 		tdSex.innerHTML += character.sex;
 		if (character.sexInfo)
 		{
-			const sexButtonEl = Common.DOMLib.createElement("div", tdSex, ["sex-button"]).el
-			Common.DOMLib.setAttributes(sexButtonEl, {
+			const sexButtonEl = Common.DOMLib.createElement("div", tdSex, {
 				tabindex: 0,
 				"aria-label": "Show additional sex information"
-			});
-			sexButtonEl.setAttribute("tabindex", 0);
+			}, ["sex-button"]);
 
 			const sexIconEl = Common.SVGLib.createIcon(Common.SVGLib.Icons["circle-info"]);
 			sexIconEl.setAttribute("aria-hidden", "true");
@@ -68,10 +66,11 @@ registerNamespace("Pages.Character", function (ns)
 			const sexChevronEl = Common.DOMLib.createElement(
 				"span",
 				sexButtonEl,
+				undefined,
 				["chevron", "bottom", "td-chevron"]
-			).el;
+			);
 
-			const sexInfoEl = Common.DOMLib.createElement("div", tdSex).el;
+			const sexInfoEl = Common.DOMLib.createElement("div", tdSex);
 			Common.DOMLib.addStyle(sexInfoEl, { display: "none" });
 			sexInfoEl.innerHTML += character.sexInfo;
 
@@ -115,16 +114,14 @@ registerNamespace("Pages.Character", function (ns)
 
 	function createColorTable(colors, table)
 	{
-		var tbody = Common.DOMLib.createElement("tbody", table).el;
+		var tbody = Common.DOMLib.createElement("tbody", table);
 		Object.keys(colors).forEach(label =>
 		{
-			var tRow = Common.DOMLib.createElement("tr", tbody).el;
-			var thLabel = Common.DOMLib.createElement("th", tRow, []).el
-			thLabel.setAttribute("scope", "row")
-			thLabel.innerText = label;
+			var tRow = Common.DOMLib.createElement("tr", tbody);
+			Common.DOMLib.createElement("th", tRow, {"scope": "row"}, undefined, label);
 
 			var svg = Common.SVGLib.createChildElement(
-				Common.DOMLib.createElement("td", tRow, ["color-cell"]).el,
+				Common.DOMLib.createElement("td", tRow, undefined, ["color-cell"]),
 				Common.SVGLib.ElementTypes.svg,
 				{
 					"width": "100%",
@@ -204,7 +201,7 @@ registerNamespace("Pages.Character", function (ns)
 		}
 		if (character.galleryLink)
 		{
-			var galleryContainerEl = Common.DOMLib.createElement("div").el;
+			var galleryContainerEl = Common.DOMLib.createElement("div");
 			Common.DOMLib.addStyle(
 				galleryContainerEl,
 				{ height: "100%", width: "100%", overflow: "hidden" }
@@ -241,15 +238,14 @@ registerNamespace("Pages.Character", function (ns)
 
 	function getBasicDiv(innerHTML)
 	{
-		var el = Common.DOMLib.createElement("div").el;
-		el.innerHTML = innerHTML;
+		var el = Common.DOMLib.createElement("div", undefined, undefined, undefined, innerHTML);
 		Common.DOMLib.addStyle(el, { "padding-left": "10px", "padding-right": "10px" })
 		return el;
 	}
 
 	function getIFrameDiv(link)
 	{
-		var el = Common.DOMLib.createElement("iframe").el;
+		var el = Common.DOMLib.createElement("iframe");
 		el.src = link;
 		Common.DOMLib.addStyle(el, { width: "100%", height: "100%", border: "0" });
 		return el;

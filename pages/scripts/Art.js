@@ -82,14 +82,15 @@ registerNamespace("Pages.Art", function (ns)
 				{
 					var primaryChar = artFrame.getPrimaryCharacter();
 					if (ns.ArtGroupMap[primaryChar]) { return ns.ArtGroupMap[primaryChar]; }
-					const { el: divider } = dce("div", ns.GalleryEl, ["card", "divider"]);
-					divider.innerText = primaryChar;
-					Common.DOMLib.setAttributes(
-						divider,
+					const divider = dce(
+						"div",
+						ns.GalleryEl,
 						{
 							"role": "heading",
 							"aria-level": "2",
-						}
+						},
+						["card", "divider"],
+						primaryChar
 					);
 					ns.ArtGroupMap[primaryChar] = divider;
 					ns.ArtGroups.push(divider);
@@ -102,14 +103,15 @@ registerNamespace("Pages.Art", function (ns)
 				{
 					var primaryArtist = artFrame.getPrimaryArtist();
 					if (ns.ArtGroupMap[primaryArtist]) { return ns.ArtGroupMap[primaryArtist]; }
-					const { el: divider } = dce("div", ns.GalleryEl, ["card", "divider"]);
-					divider.innerHTML = ns.Artists[primaryArtist].getLink();
-					Common.DOMLib.setAttributes(
-						divider,
+					const divider = dce(
+						"div",
+						ns.GalleryEl,
 						{
 							"role": "heading",
 							"aria-level": "2",
-						}
+						},
+						["card", "divider"],
+						ns.Artists[primaryArtist].getLink()
 					);
 					ns.ArtGroupMap[primaryArtist] = divider;
 					ns.ArtGroups.push(divider);
@@ -123,14 +125,15 @@ registerNamespace("Pages.Art", function (ns)
 				{
 					var date = artFrame.date.getUTCFullYear();
 					if (ns.ArtGroupMap[date]) { return ns.ArtGroupMap[date]; }
-					const { el: divider } = dce("div", ns.GalleryEl, ["card", "divider"]);
-					divider.innerHTML = date;
-					Common.DOMLib.setAttributes(
-						divider,
+					const divider = dce(
+						"div",
+						ns.GalleryEl,
 						{
 							"role": "heading",
 							"aria-level": "2",
-						}
+						},
+						["card", "divider"],
+						date
 					);
 					ns.ArtGroupMap[date] = divider;
 					ns.ArtGroups.push(divider);
@@ -479,17 +482,15 @@ registerNamespace("Pages.Art", function (ns)
 		{
 			var dce = Common.DOMLib.createElement;
 
-			const { el: frame, id: id } = dce("div", null, ["card", "artframe"]);
-			this.frameId = id;
+			const frame = dce("div", undefined, undefined, ["card", "artframe"]);
+			this.frameId = frame.id;
 
-			dce("div", frame, ["frameBuffer"]);
+			dce("div", frame, undefined, ["frameBuffer"]);
 
-			var srHeader = dce("h3", frame, ["sr-only"]).el;
+			var srHeader = dce("h3", frame, undefined, ["sr-only"]);
 			srHeader.innerHTML = this.__title;
 
-			const { el: image } = dce("img", frame);
-			image.setAttribute("src", this.__artLink);
-			image.setAttribute("aria-label", this.altText);
+			const image = dce("img", frame, {"src": this.__artLink, "aria-label": this.altText});
 
 			var frameClickDelegate =(event) =>
 			{
@@ -527,9 +528,9 @@ registerNamespace("Pages.Art", function (ns)
 			frame.setAttribute("role", "none");
 			Common.DOMLib.setAsButton(frame, frameClickDelegate);
 
-			dce("div", frame, ["frameBuffer"]);
+			dce("div", frame, undefined, ["frameBuffer"]);
 
-			const { el: meta } = dce("div", frame, ["imgMeta"]);
+			const meta = dce("div", frame, undefined, ["imgMeta"]);
 			this.buildMetaTable(meta);
 
 			return frame;

@@ -22,14 +22,14 @@ registerNamespace("Pages.Music", function (ns)
 
 		Object.keys(ns.Data.Collections).forEach(collectionId =>
 		{
-			const inputLineEl = Common.DOMLib.createElement("div", collectionListEl, ["input-flex-line"]).el;
+			const inputLineEl = Common.DOMLib.createElement("div", collectionListEl, undefined, ["input-flex-line"]);
 
-			const labelEl = Common.DOMLib.createElement("label", inputLineEl).el;
+			const labelEl = Common.DOMLib.createElement("label", inputLineEl, undefined, undefined, collectionId);
 			labelEl.innerHTML = collectionId;
 
-			const radioEl = Common.DOMLib.createElement("input", inputLineEl).el;
-			Common.DOMLib.setAttributes(
-				radioEl,
+			const radioEl = Common.DOMLib.createElement(
+				"input",
+				inputLineEl,
 				{
 					"type": "radio",
 					"name": "collectionList",
@@ -181,15 +181,15 @@ registerNamespace("Pages.Music", function (ns)
 		const collectionInfoEl = document.getElementById(COLLECTION_INFO_ID);
 		collectionInfoEl.innerHTML = "";
 
-		Common.DOMLib.createElement("h3", collectionInfoEl).el.innerText = "Details";
-		const collectionMetaTable = Common.DOMLib.createElement("table", collectionInfoEl).el;
-		const collectionMetaTBody = Common.DOMLib.createElement("tbody", collectionMetaTable).el;
+		Common.DOMLib.createElement("h3", collectionInfoEl, undefined, undefined, "Details");
+		const collectionMetaTable = Common.DOMLib.createElement("table", collectionInfoEl);
+		const collectionMetaTBody = Common.DOMLib.createElement("tbody", collectionMetaTable);
 		addTableRow(collectionMetaTBody, "Collection Name", collectionId);
 		addTableRow(collectionMetaTBody, "Date", collection.DateString);
 		addTableRow(collectionMetaTBody, "Contributing Artists", collection.ContributingArtists.join(", "));
 
-		Common.DOMLib.createElement("h3", collectionInfoEl).el.innerText = "Description";
-		Common.DOMLib.createElement("p", collectionInfoEl).el.innerHTML = collection.Description;
+		Common.DOMLib.createElement("h3", collectionInfoEl, undefined, undefined, "Description");
+		Common.DOMLib.createElement("p", collectionInfoEl, undefined, undefined, collection.Description);
 	}
 
 	function buildSongList(collectionId)
@@ -208,21 +208,25 @@ registerNamespace("Pages.Music", function (ns)
 
 	function createSongCard(song, parent)
 	{
-		const containerEl = Common.DOMLib.createElement("div", parent, ["songContainer", "card"]).el;
+		const containerEl = Common.DOMLib.createElement("div", parent, undefined, ["songContainer", "card"]);
 
-		const songTitleContainer = Common.DOMLib.createElement("div", containerEl, ["songTitleContainer"]).el;
-		Common.DOMLib.createElement("h3", songTitleContainer).el.innerText = song.title;
-		const expandButton = Common.DOMLib.createElement("div", songTitleContainer, ["song-info-btn"]).el;
-		const infoIcon = Common.SVGLib.createIcon(Common.SVGLib.Icons["circle-info"],undefined,undefined,["song-info-icon"]);
+		const songTitleContainer = Common.DOMLib.createElement("div", containerEl, undefined, ["songTitleContainer"]);
+		Common.DOMLib.createElement("h3", songTitleContainer, undefined, undefined, song.title);
+		const expandButton = Common.DOMLib.createElement("div", songTitleContainer, undefined, ["song-info-btn"]);
+		const infoIcon = Common.SVGLib.createIcon(Common.SVGLib.Icons["circle-info"], undefined, undefined, ["song-info-icon"]);
 		infoIcon.setAttribute("aria-hidden", "true");
 		expandButton.appendChild(infoIcon);
-		const chevronEl = Common.DOMLib.createElement("span", expandButton, ["chevron", "bottom"]).el;
-		Common.DOMLib.setAttributes(expandButton, {
-			tabindex: 0,
-			"aria-label": "Show track details for " + song.title
-		});
+		const chevronEl = Common.DOMLib.createElement(
+			"span",
+			expandButton,
+			{
+				tabindex: 0,
+				"aria-label": "Show track details for " + song.title
+			},
+			["chevron", "bottom"]
+		);
 
-		const audioEl = Common.DOMLib.createElement("audio", containerEl).el;
+		const audioEl = Common.DOMLib.createElement("audio", containerEl);
 		ns.audioList.push(audioEl);
 		audioEl.addEventListener("play", () =>
 		{
@@ -251,15 +255,18 @@ registerNamespace("Pages.Music", function (ns)
 		audioEl.addEventListener("ended", Common.fcd(ns, onTrackEnded, []));
 
 		Common.DOMLib.setAttributes(audioEl, { "controls": null });
-		const sourceEl = Common.DOMLib.createElement("source", audioEl).el;
-		Common.DOMLib.setAttributes(sourceEl, { "src": song.src, "type": song.type });
+		const sourceEl = Common.DOMLib.createElement(
+			"source",
+			audioEl,
+			{ "src": song.src, "type": song.type }
+		);
 
-		const detailEl = Common.DOMLib.createElement("div", containerEl).el;
+		const detailEl = Common.DOMLib.createElement("div", containerEl);
 		Common.DOMLib.addStyle(detailEl, { display: "none" });
 
-		Common.DOMLib.createElement("h4", detailEl).el.innerText = "Details";
-		const detailTable = Common.DOMLib.createElement("table", detailEl).el;
-		const detailTBody = Common.DOMLib.createElement("tbody", detailTable).el;
+		Common.DOMLib.createElement("h4", detailEl, undefined, undefined, "Details");
+		const detailTable = Common.DOMLib.createElement("table", detailEl);
+		const detailTBody = Common.DOMLib.createElement("tbody", detailTable);
 		addTableRow(detailTBody, "Performers", song.performers.join(", "));
 		addTableRow(detailTBody, "Composers", song.composers.join(", "));
 		addTableRow(
@@ -269,11 +276,11 @@ registerNamespace("Pages.Music", function (ns)
 		);
 		addTableRow(detailTBody, "Instruments", song.instruments.join(", "));
 
-		Common.DOMLib.createElement("h4", detailEl).el.innerText = "Description";
-		Common.DOMLib.createElement("p", detailEl).el.innerHTML = song.description;
+		Common.DOMLib.createElement("h4", detailEl, undefined, undefined, "Description");
+		Common.DOMLib.createElement("p", detailEl, undefined, undefined, song.description);
 
-		Common.DOMLib.createElement("h4", detailEl).el.innerText = "Lyrics";
-		Common.DOMLib.createElement("p", detailEl).el.innerHTML = song.lyrics;
+		Common.DOMLib.createElement("h4", detailEl, undefined, undefined, "Lyrics");
+		Common.DOMLib.createElement("p", detailEl, undefined, undefined, song.lyrics);
 
 		Common.Components.RegisterVisToggle(
 			expandButton,
@@ -304,12 +311,9 @@ registerNamespace("Pages.Music", function (ns)
 	{
 		var dce = Common.DOMLib.createElement;
 
-		var { el: tableRow } = dce("tr", tableEl);
-		var { el: rowLabel } = dce("th", tableRow, []);
-		rowLabel.setAttribute("scope", "row");
-		rowLabel.innerText = labelText;
-		var { el: rowValue } = dce("td", tableRow);
-		rowValue.innerHTML = labelValueHTML;
+		var tableRow = dce("tr", tableEl);
+		dce("th", tableRow, {"scope": "row"}, undefined, labelText);
+		dce("td", tableRow, undefined, undefined, labelValueHTML);
 	}
 });
 

@@ -8,26 +8,30 @@ registerNamespace("Common.Controls.PageControl", function (ns)
 	 */
 	function buildPageControl(parentEl, zeroStateMessage, name)
 	{
-		const { el: pageControl } = Common.DOMLib.createElement(
+		const pageControl = Common.DOMLib.createElement(
 			"div",
 			parentEl,
+			undefined,
 			["page-control"]
 		);
 
-		const { el: tabStrip } = Common.DOMLib.createElement(
+		const tabStrip = Common.DOMLib.createElement(
 			"div",
 			pageControl,
+			undefined,
 			["tab-strip"]
 		);
 		Common.DOMLib.createElement(
 			"div",
 			tabStrip,
+			undefined,
 			["tab-gutter"]
 		);
 
-		const { el: pageContainer } = Common.DOMLib.createElement(
+		const pageContainer = Common.DOMLib.createElement(
 			"div",
 			pageControl,
+			undefined,
 			["page-container"]
 		);
 		return new PageControl(pageControl, tabStrip, pageContainer, {}, zeroStateMessage, name);
@@ -92,29 +96,30 @@ registerNamespace("Common.Controls.PageControl", function (ns)
 		 */
 		addNewTab(tabText, page, onActivate)
 		{
-			const { el: newTabEl, id: newTabId } = Common.DOMLib.createElement(
+			const newTabEl = Common.DOMLib.createElement(
 				"div",
 				undefined,
-				["tab-strip-tab", "button-like"]
+				undefined,
+				["tab-strip-tab", "button-like"],
+				`<span>${tabText}</span>`
 			);
-			newTabEl.innerHTML = `<span>${tabText}</span>`;
 
 			if (this.__lastTabId != null)
 			{
 				this.__tabDict[this.__lastTabId].tabEl.after(newTabEl);
-				this.__lastTabId = newTabId;
+				this.__lastTabId = newTabEl.id;
 			}
 			else
 			{
 				this.__tabStripEl.prepend(newTabEl)
-				this.__lastTabId = newTabId;
+				this.__lastTabId = newTabEl.id;
 			}
 
 			this.__pageContainerEl.appendChild(page);
 			page.classList.add("page-control-page")
 			this.registerTab(newTabEl, page, onActivate);
 
-			return newTabId;
+			return newTabEl.id;
 		};
 
 		/**

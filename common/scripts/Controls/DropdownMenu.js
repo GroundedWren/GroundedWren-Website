@@ -22,20 +22,23 @@ registerNamespace("Common.Controls.DropdownMenu", function (ns)
 	 */
 	function buildDropdownMenu(parentEl, tabActionMap, nonExclusive, durable)
 	{
-		const { el: menu } = Common.DOMLib.createElement(
+		const menu = Common.DOMLib.createElement(
 			"div",
 			parentEl,
+			undefined,
 			["dropdown-menu"]
 		);
 
-		const { el: tabStrip } = Common.DOMLib.createElement(
+		const tabStrip = Common.DOMLib.createElement(
 			"div",
 			menu,
+			undefined,
 			["tab-strip"]
 		);
 		Common.DOMLib.createElement(
 			"div",
 			tabStrip,
+			undefined,
 			["tab-gutter"]
 		);
 
@@ -135,17 +138,19 @@ registerNamespace("Common.Controls.DropdownMenu", function (ns)
 		{
 			childActionMap = childActionMap || {};
 
-			const { el: tabContainerEl, id: tabContainerId } = Common.DOMLib.createElement(
+			const tabContainerEl = Common.DOMLib.createElement(
 				"div",
+				undefined,
 				undefined,
 				["tab-strip-tab"]
 			);
 			const newTabEl = Common.DOMLib.createElement(
 				"div",
 				tabContainerEl,
-				["tab-strip-tab", "button-like"]
-			).el;
-			newTabEl.innerHTML = `<span class='tab-text'>${tabText}</span>`;
+				undefined,
+				["tab-strip-tab", "button-like"],
+				`<span class='tab-text'>${tabText}</span>`
+			);
 
 			if (this.__lastTabContainerId != null)
 			{
@@ -155,7 +160,7 @@ registerNamespace("Common.Controls.DropdownMenu", function (ns)
 			{
 				this.__tabStripEl.prepend(tabContainerEl);
 			}
-			this.__lastTabContainerId = tabContainerId;
+			this.__lastTabContainerId = tabContainerEl.id;
 
 			var children = [];
 			var childKeys = Object.keys(childActionMap);
@@ -175,15 +180,15 @@ registerNamespace("Common.Controls.DropdownMenu", function (ns)
 			{
 				if (linkHref) { Common.navTo(linkHref); }
 			};
-			this.__tabContainerDict[tabContainerId] = new Tab(
+			this.__tabContainerDict[tabContainerEl.id] = new Tab(
 				tabContainerEl,
 				newTabEl,
-				this.__getWrappedParentAction(action, tabContainerId),
+				this.__getWrappedParentAction(action, tabContainerEl.id),
 				linkHref,
 				children
 			);
 
-			return tabContainerId;
+			return tabContainerEl.id;
 		}
 
 		__getChildTab(childName, parentName, index, numChildren, childActionMap, tabContainerEl)
@@ -191,13 +196,18 @@ registerNamespace("Common.Controls.DropdownMenu", function (ns)
 			const childTabEl = Common.DOMLib.createElement(
 				"div",
 				tabContainerEl,
-				["tab-strip-tab", "button-like", "child"]
-			).el;
-			childTabEl.innerHTML = `<span class='tab-text'>${childName}</span>`;
-			childTabEl.tabIndex = "-1";
-			childTabEl.setAttribute(
-				"aria-label",
-				childName + " child item of " + parentName + " " + (index + 1) + "of " + numChildren
+				{
+					"tabIndex": "-1",
+					"aria-label": childName
+						+ " child item of "
+						+ parentName
+						+ " "
+						+ (index + 1)
+						+ " of "
+						+ numChildren,
+				},
+				["tab-strip-tab", "button-like", "child"],
+				`<span class='tab-text'>${childName}</span>`
 			);
 
 			if (childActionMap[childName].action)
@@ -230,7 +240,7 @@ registerNamespace("Common.Controls.DropdownMenu", function (ns)
 						event.preventDefault();
 					}
 				};
-				
+
 			}
 			else
 			{
@@ -261,7 +271,7 @@ registerNamespace("Common.Controls.DropdownMenu", function (ns)
 
 					event.preventDefault();
 				};
-				
+
 			}
 			else
 			{
@@ -442,7 +452,12 @@ registerNamespace("Common.Controls.DropdownMenu", function (ns)
 					debugger; //link parent elements are not supported
 				}
 
-				this.chevronEl = Common.DOMLib.createElement("span", this.tabEl, ["chevron", "bottom"]).el;
+				this.chevronEl = Common.DOMLib.createElement(
+					"span",
+					this.tabEl,
+					undefined,
+					["chevron", "bottom"]
+				);
 				Common.Components.RegisterVisToggle(tabEl, this.children, Common.fcd(this, this.__onToggle));
 			}
 			else

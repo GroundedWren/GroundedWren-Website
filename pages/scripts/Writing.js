@@ -36,14 +36,13 @@ registerNamespace("Pages.Writing", function (ns)
 
 		Object.keys(ns.Data.Folders).forEach(folder =>
 		{
-			const inputLineEl = Common.DOMLib.createElement("div", folderContentEl, ["input-flex-line"]).el;
+			const inputLineEl = Common.DOMLib.createElement("div", folderContentEl, undefined, ["input-flex-line"]);
 
-			const labelEl = Common.DOMLib.createElement("label", inputLineEl).el;
-			labelEl.innerHTML = folder;
+			const labelEl = Common.DOMLib.createElement("label", inputLineEl, undefined, undefined, folder);
 
-			const radioEl = Common.DOMLib.createElement("input", inputLineEl).el;
-			Common.DOMLib.setAttributes(
-				radioEl,
+			const radioEl = Common.DOMLib.createElement(
+				"input",
+				inputLineEl,
 				{
 					"type": "radio",
 					"name": "folderList",
@@ -142,13 +141,12 @@ registerNamespace("Pages.Writing", function (ns)
 		{
 			const entry = folderObj.entries[entryId];
 
-			const inputLineEl = Common.DOMLib.createElement("div", directoryEl, ["input-flex-line"]).el;
+			const inputLineEl = Common.DOMLib.createElement("div", directoryEl, undefined, ["input-flex-line"]);
 
-			const labelEl = Common.DOMLib.createElement("label", inputLineEl).el;
-			labelEl.innerHTML = entry.title;
-			const radioEl = Common.DOMLib.createElement("input", inputLineEl).el;
-			Common.DOMLib.setAttributes(
-				radioEl,
+			const labelEl = Common.DOMLib.createElement("label", inputLineEl, undefined, undefined, entry.title);
+			const radioEl = Common.DOMLib.createElement(
+				"input",
+				inputLineEl,
 				{
 					"type": "radio",
 					"name": "entryList",
@@ -223,9 +221,14 @@ registerNamespace("Pages.Writing", function (ns)
 		{
 			metaContent.remove();
 		}
-		metaContent = Common.DOMLib.createElement("div", metaCard, [], METADATA_CONTENT_ID).el;
+		metaContent = Common.DOMLib.createElement(
+			"div",
+			metaCard,
+			{ "id": METADATA_CONTENT_ID },
+			undefined,
+			`<span>Author: ${entry.author}</span>`
+		);
 
-		metaContent.innerHTML = `<span>Author: ${entry.author}</span>`;
 		if (entry.date)
 		{
 			metaContent.innerHTML += `<br /><span>Date: ${entry.date.toLocaleString(
