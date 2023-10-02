@@ -162,3 +162,7 @@ figcaption {
 #buttonsContent {
 	text-align: center;
 }
+
+#webrings {
+	max-width: 200px;
+}
