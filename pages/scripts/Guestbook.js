@@ -55,6 +55,10 @@ registerNamespace("Pages.Guestbook", function (ns)
 			el => el.tagName === "INPUT"
 		).forEach(inputEl => inputEl.setAttribute("checked", "true"));
 
+		[...document.getElementsByClassName("hcb-like"), ...document.getElementsByClassName("likes")].forEach(
+			el => el.remove()
+		);
+
 		addFormLabel("hcb_form_name", "Display Name");
 		addFormLabel("hcb_form_content", "Message");
 		addFormLabel("hcb_form_website", "Website");
