@@ -165,7 +165,6 @@ registerNamespace("Pages.Character", function (ns)
 					action: Common.fcd(this, function(tabId)
 					{
 						ns.infoControl.setActiveTab(tabId);
-						document.getElementById(tabId).focus();
 					}, [tabId]),
 					description: "Open appearance information"
 				}
@@ -179,7 +178,6 @@ registerNamespace("Pages.Character", function (ns)
 					action: Common.fcd(this, function (tabId)
 					{
 						ns.infoControl.setActiveTab(tabId);
-						document.getElementById(tabId).focus();
 					}, [tabId]),
 					description: "Open personality information"
 				}
@@ -193,7 +191,6 @@ registerNamespace("Pages.Character", function (ns)
 					action: Common.fcd(this, function (tabId)
 					{
 						ns.infoControl.setActiveTab(tabId);
-						document.getElementById(tabId).focus();
 					}, [tabId]),
 					description: "Open backstory information"
 				}
@@ -217,7 +214,6 @@ registerNamespace("Pages.Character", function (ns)
 					action: Common.fcd(this, function (tabId)
 					{
 						ns.infoControl.setActiveTab(tabId);
-						document.getElementById(tabId).focus();
 					}, [galleryTabId]),
 					description: "Open character art gallery"
 				}
