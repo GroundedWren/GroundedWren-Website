@@ -72,7 +72,7 @@ registerNamespace("Pages.Guestbook", function (ns)
 		const nameLabel = Common.DOMLib.createElement(
 			"label",
 			nameContainer,
-			{"for": inputId},
+			{ "for": inputId },
 			undefined,
 			labelText,
 			Common.DOMLib.InsertLoc.Prepend

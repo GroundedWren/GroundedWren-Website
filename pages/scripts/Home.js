@@ -198,4 +198,11 @@ window.onload = () =>
 	selTheme.value = Common.currentTheme;
 	Pages.Home.buildColorsTable();
 	selTheme.addEventListener("change", Pages.Home.onSelectTheme);
+
+	Common.Controls.VeraOnionring.siteRing(
+		"https://emeowly.github.io/bi/onionring-variables.js",
+		"bisexualism",
+		"Bisexualism",
+		"https://bisexualism.emeowly.gay/"
+	);
 };

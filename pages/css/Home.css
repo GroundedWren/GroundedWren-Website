@@ -171,4 +171,5 @@ figcaption {
 	display: grid;
 	grid-template-columns: 0fr 1fr 0fr;
 	grid-gap: 1px;
+	text-align: center;
 }
