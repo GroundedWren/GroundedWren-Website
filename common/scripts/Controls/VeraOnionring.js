@@ -24,9 +24,9 @@ registerNamespace("Common.Controls.VeraOnionring", function (ns)
 		prevIndex = (thisIndex - 1 < 0) ? sitesList.length - 1 : thisIndex - 1;
 		nextIndex = (thisIndex === sitesList.length - 1) ? 0 : thisIndex + 1;
 
-		buildLink(ringEl, "←", `Previous ${ringName} page`, sitesList[prevIndex]);
+		buildLink(ringEl, "← Prev.", `Previous ${ringName} page`, sitesList[prevIndex]);
 		buildLink(ringEl, ringName, `${ringName} index`, indexPage);
-		buildLink(ringEl, "→", `Next ${ringName} page`, sitesList[nextIndex]);
+		buildLink(ringEl, "Next →", `Next ${ringName} page`, sitesList[nextIndex]);
 	};
 
 	function getSitesList(scriptText)
