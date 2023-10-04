@@ -165,12 +165,28 @@ figcaption {
 }
 
 #webrings {
-	max-width: 200px;
+	max-width: 250px;
+}
+
+#webrings li{
+	margin-bottom: 5px;
 }
 
 #bisexualism {
 	display: grid;
-	grid-template-columns: 0fr 1fr 0fr;
+	grid-template-columns: 1fr 2fr 1fr;
 	grid-gap: 1px;
 	text-align: center;
+}
+
+#focusfirst-webring p {
+	margin: 0;
+	text-align: center;
+}
+
+#focusfirst-webring .webring-prev {
+	display: grid;
+	grid-template-columns: 1fr 2fr 1fr;
+	grid-gap: 1px;
+	align-items: center;
 }
