@@ -31,10 +31,26 @@ registerNamespace("Pages.Home", function (ns)
 		if (visible)
 		{
 			updateChevron.classList.remove("bottom");
+			document.getElementById("updateContent").focus();
 		}
 		else
 		{
 			updateChevron.classList.add("bottom");
+		}
+		event.stopPropagation();
+	};
+
+	ns.onButtonsVisToggled = (visible, event) =>
+	{
+		const buttonsChevron = document.getElementById("buttonsChevron");
+
+		if (visible)
+		{
+			buttonsChevron.classList.remove("bottom");
+		}
+		else
+		{
+			buttonsChevron.classList.add("bottom");
 		}
 		event.stopPropagation();
 	};
@@ -179,15 +195,26 @@ window.onload = () =>
 	Pages.Home.resizeListener();
 	window.addEventListener("resize", Pages.Home.resizeListener);
 
-	const updateContent = document.getElementById("updateContent");
+	const updateHistory = document.getElementById("updateHistory");
 	Common.Components.RegisterVisToggle(
 		document.getElementById("updateChevron"),
 		[
-			updateContent
+			updateHistory
 		],
 		Pages.Home.onUpdateVisToggled,
 		false,
 		[document.getElementById("updatesCardHeader")]
+	);
+
+	const buttonsExpanded = document.getElementById("buttonsExpanded");
+	Common.Components.RegisterVisToggle(
+		document.getElementById("buttonsChevron"),
+		[
+			buttonsExpanded
+		],
+		Pages.Home.onButtonsVisToggled,
+		false,
+		[document.getElementById("buttonsCardHeader")]
 	);
 
 	const selTheme = document.getElementById("selTheme");

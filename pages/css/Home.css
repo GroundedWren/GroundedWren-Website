@@ -26,8 +26,10 @@ h1 {
 }
 
 main {
-	margin-left: 20px;
-	margin-right: 20px;
+	padding-left: 20px;
+	padding-right: 20px;
+	max-width: 1800px;
+	margin: auto;
 	margin-top: 5px;
 	display: flex;
 	flex-direction: row;
@@ -40,8 +42,8 @@ main {
 /* Pages.Home.MINI_THRESHOLD */
 @media (max-width: 755px) {
 	main {
-		margin-left: 5px;
-		margin-right: 5px;
+		padding-left: 5px;
+		padding-right: 5px;
 	}
 }
 
@@ -112,6 +114,11 @@ ul {
 	width: 500px;
 }
 
+#updateContent {
+	max-height: 400px;
+	overflow-y: auto;
+}
+
 table {
 	border: none;
 }
@@ -134,7 +141,7 @@ th {
 	width: 100px;
 }
 
-#buttonList {
+.button-list {
 	padding: 0;
 	display: inline-block;
 }
@@ -142,12 +149,15 @@ th {
 .z {
 }
 
-#buttonList li {
+.button-list li {
 	display: inline-flex;
 	flex-direction: row;
 	align-items: center;
 	padding-left: 5px;
 	padding-right: 5px;
+	max-width: 81px;
+	font-size: 0.8em;
+	padding-bottom: 5px;
 }
 
 figure {
@@ -159,9 +169,12 @@ figcaption {
 	margin: 0px;
 }
 
+#buttons {
+	width: 290px;
+}
+
 #buttonsContent {
 	text-align: center;
-	max-width: 325px;
 }
 
 #webrings {
