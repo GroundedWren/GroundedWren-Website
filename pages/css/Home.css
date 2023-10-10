@@ -25,6 +25,10 @@ h1 {
 	text-align: center;
 }
 
+h2 {
+	font-size: 1.25em;
+}
+
 main {
 	padding-left: 20px;
 	padding-right: 20px;
@@ -178,7 +182,7 @@ figcaption {
 }
 
 #webrings {
-	max-width: 250px;
+	max-width: 250px;				
 }
 
 #webrings li{
@@ -202,4 +206,14 @@ figcaption {
 	grid-template-columns: 1fr 2fr 1fr;
 	grid-gap: 1px;
 	align-items: center;
+}
+
+#emailListForm {
+	margin: 10px;
+	max-width: 250px;
+}
+
+#emailListFormInputs{
+	margin-left: 10px;
+	margin-right: 10px;
 }

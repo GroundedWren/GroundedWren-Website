@@ -10,7 +10,7 @@ main {
 	flex-direction: row;
 	justify-content: flex-start;
 	align-items: stretch;
-	min-height: calc(100% - 1.25em); /*Header*/
+	min-height: calc(100% - 1.25em - 5px); /*Header*/
 	flex-wrap: wrap;
 	align-content: flex-start;
 }

@@ -1,7 +1,7 @@
 ﻿main {
 	margin-left: 20px;
 	margin-right: 20px;
-	min-height: calc(100vh - 1.25em); /*Header*/
+	min-height: calc(100vh - 1.25em - 5px); /*Header*/
 }
 
 /* Pages.Art.MINI_THRESHOLD */

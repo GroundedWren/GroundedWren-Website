@@ -28,7 +28,6 @@
 	<script src="../common/scripts/Components/Shortcuts.js"></script>
 	<script src="../common/scripts/Controls/Dialog.js"></script>
 	<script src="../common/scripts/Controls/Modal.js"></script>
-	<script src="../common/scripts/Controls/PageControl.js"></script>
 	<script src="../common/scripts/Controls/DropdownMenu.js"></script>
 	<script src="../common/scripts/Controls/VeraOnionring.js"></script>
 
@@ -81,14 +80,20 @@
 							</span>
 						</div>
 						<div id="updateContent" tabindex="-1">
-							<h3>10/6/23</h3>
+							<h3>10/10/23</h3>
 							<ul>
-								<li>New theme: Ocean</li>
-								<li>Retired the Nighthawks theme</li>
-								<li>Misc ux improvements</li>
-								<li>Added some buttons!</li>
+								<li>Additional buttons</li>
+								<li>Added an email list</li>
+								<li>Keyboard focus should be more visible</li>
 							</ul>
 							<div id="updateHistory" style="display: none">
+								<h3>10/6/23</h3>
+								<ul>
+									<li>New theme: Ocean</li>
+									<li>Retired the Nighthawks theme</li>
+									<li>Misc ux improvements</li>
+									<li>Added some buttons!</li>
+								</ul>
 								<h3>10/4/23</h3>
 								<ul>
 									<li>Accepted to the <a href="https://owlsroost.xyz/webring/index.html" target="_blank">Focus First</a> web ring! Button added.</li>
@@ -303,6 +308,31 @@
 							</tbody>
 						</table>
 					</div>
+					<form id="emailListForm"
+						  onsubmit="Pages.Home.addEmail()"
+						  autocomplete="off"
+						  aria-labelledby="emailListFormTitle"
+						  aria-describedby="bnrEmailListInfo">
+						<h2 id="emailListFormTitle">Join The Email List</h2>
+						<div id="emailListFormInputs">
+							<div class="input-vertical-line">
+								<label for="emailListForm_name">Name</label>
+								<input id="emailListForm_name" type="text" maxlength="1000" />
+							</div>
+							<div class="input-vertical-line">
+								<label for="emailListForm_email">Email*</label>
+								<input id="emailListForm_email" type="email" maxlength="1000" required />
+							</div>
+						</div>
+						<div id="bnrEmailListInfo" class="inline-banner">
+							<span class="icon-container" data-icon="circle-info">Info:</span>
+							I'll only email with major updates and new works.
+						</div>
+						<div class="form-footer">
+							<input id="emailListForm_reset" type="reset" value="Reset" />
+							<input id="emailListForm_submit" type="submit" value="Submit" />
+						</div>
+					</form>
 					<div id="buttons" class="card">
 						<div id="buttonsCardHeader" class="card-header">
 							<span role="heading" aria-level="2">Buttons</span>
@@ -364,6 +394,16 @@
 									<li>
 										<a href="https://pinkvampyr.leprd.space/" target="_blank">
 											<img src="../img/Buttons/pinkvampyr-button.png" alt="Pink Vampyr" title="Pink Vampyr" />
+										</a>
+									</li>
+									<li>
+										<a href="https://kalechips.net/" target="_blank">
+											<img src="../img/Buttons/kalechips-button.png" alt="Kale Chips" title="Kale Chips" />
+										</a>
+									</li>
+									<li>
+										<a href="https://debtdeath.neocities.org/" target="_blank">
+											<img src="../img/Buttons/debtdeath-button.png" alt="Debt-Death" title="Debt-Death" />
 										</a>
 									</li>
 								</ul>

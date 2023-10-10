@@ -136,6 +136,21 @@ registerNamespace("Pages.Home", function (ns)
 			+ `<p>If you have any feedback about GroundedWren.com, especially if you use a screen reader, I want to hear from you!</p>`
 		);
 	};
+
+	ns.addEmail = () =>
+	{
+		const name = document.getElementById("emailListForm_name").value;
+		const email = document.getElementById("emailListForm_email").value;
+
+		const request = new XMLHttpRequest();
+		request.open(
+			"POST",
+			"https://discord.com/api/webhooks/1161152577631694898/J74qDB0Jno2UU46CpGo4nM8WIMBRegr-gRRPF1m2zeLpzl2d6xrZyrydarisFup67SHn"
+		);
+		request.setRequestHeader("Content-Type", "application/json");
+
+		request.send(JSON.stringify({content: `NAME=${name};EMAIL=${email}`}));
+	};
 });
 
 /**
@@ -146,6 +161,7 @@ window.onload = () =>
 	Common.loadTheme();
 	Common.loadTheme();
 	Common.setUpAccessibility();
+	Common.SVGLib.insertIcons();
 
 	var directoryContainer = document.getElementById("Directory");
 	Pages.Home.directoryMenu = Common.Controls.DropdownMenu.buildDropdownMenu(
