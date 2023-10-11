@@ -23,6 +23,7 @@
 	<script src="../common/scripts/Common.js"></script>
 	<script src="../common/scripts/DOMLib.js"></script>
 	<script src="../common/scripts/SVGLib.js"></script>
+	<script src="../common/scripts/GSheetsLib.js"></script>
 	<script src="../common/scripts/Components/ElementDragger.js"></script>
 	<script src="../common/scripts/Components/VisibilityToggle.js"></script>
 	<script src="../common/scripts/Components/Shortcuts.js"></script>
@@ -47,8 +48,8 @@
 		<nav><div id="Directory" role="toolbar"></div></nav>
 		<main id="mainContent">
 			<div id="textPanes">
-				<div id="about" class="card">
-					<div class="card-header" role="heading" aria-level="2">About The Site</div>
+				<article id="about" class="card">
+					<h2 class="card-header">About The Site</h2>
 					<p>Hi!</p>
 					<p>
 						My name is Vera, welcome to my website. I've created this place primarily as an exercise for myself;
@@ -67,12 +68,12 @@
 						It rocks, check it out! ^^
 					</p>
 					<footer>Written 12/20/2022 by Vera</footer>
-				</div>
+				</article>
 				<div class="text-pane-row">
-					<div id="updateCard" class="card">
+					<article id="updateCard" class="card">
 						<div id="updatesCardHeader"
 							 class="card-header">
-							<span role="heading" aria-level="2">Updates</span>
+							<h2>Updates</h2>
 							<span id="updateChevron"
 								  class="chevron card-chevron bottom"
 								  aria-label="Show all updates"
@@ -80,13 +81,19 @@
 							</span>
 						</div>
 						<div id="updateContent" tabindex="-1">
-							<h3>10/10/23</h3>
+							<h3>10/11/23</h3>
 							<ul>
-								<li>Additional buttons</li>
-								<li>Added an email list</li>
-								<li>Keyboard focus should be more visible</li>
+								<li>Created the "Vera's Thoughts" widget</li>
+								<li>Tweaked colors</li>
+								<li>Added my Bluesky</li>
 							</ul>
 							<div id="updateHistory" style="display: none">
+								<h3>10/10/23</h3>
+								<ul>
+									<li>Additional buttons</li>
+									<li>Added an email list</li>
+									<li>Keyboard focus should be more visible</li>
+								</ul>
 								<h3>10/6/23</h3>
 								<ul>
 									<li>New theme: Ocean</li>
@@ -273,10 +280,41 @@
 								</ul>
 							</div>
 						</div>
-					</div>
-					<div id="colors" class="card">
+					</article>
+					<article id="thoughtsCard" class="card">
+						<h2 class="card-header">Vera's Thoughts</h2>
+						<ol id="thoughtsList" tabindex="0">
+							<!-- Thoughts -->
+						</ol>
+					</article>
+					<form id="emailListForm"
+						  onsubmit="Pages.Home.addEmail()"
+						  autocomplete="off"
+						  aria-labelledby="emailListFormTitle"
+						  aria-describedby="bnrEmailListInfo">
+						<h2 id="emailListFormTitle">Join The Email List</h2>
+						<div id="emailListFormInputs">
+							<div class="input-vertical-line">
+								<label for="emailListForm_name">Name</label>
+								<input id="emailListForm_name" type="text" maxlength="1000" />
+							</div>
+							<div class="input-vertical-line">
+								<label for="emailListForm_email">Email*</label>
+								<input id="emailListForm_email" type="email" maxlength="1000" required />
+							</div>
+						</div>
+						<div id="bnrEmailListInfo" class="inline-banner">
+							<span class="icon-container" data-icon="circle-info">Info:</span>
+							I'll only email with major updates and new works.
+						</div>
+						<div class="form-footer">
+							<input id="emailListForm_reset" type="reset" value="Reset" />
+							<input id="emailListForm_submit" type="submit" value="Submit" />
+						</div>
+					</form>
+					<article id="colors" class="card">
 						<div class="card-header">
-							<span id="spColors" role="heading" aria-level="2">Site Colors</span>
+							<h2 id="spColors">Site Colors</h2>
 							<div class="input-vertical-line" style="margin-bottom: 0px">
 								<label style="font-size: small;" for="selTheme">Theme</label>
 								<select id="selTheme">
@@ -307,35 +345,10 @@
 								</tr>
 							</tbody>
 						</table>
-					</div>
-					<form id="emailListForm"
-						  onsubmit="Pages.Home.addEmail()"
-						  autocomplete="off"
-						  aria-labelledby="emailListFormTitle"
-						  aria-describedby="bnrEmailListInfo">
-						<h2 id="emailListFormTitle">Join The Email List</h2>
-						<div id="emailListFormInputs">
-							<div class="input-vertical-line">
-								<label for="emailListForm_name">Name</label>
-								<input id="emailListForm_name" type="text" maxlength="1000" />
-							</div>
-							<div class="input-vertical-line">
-								<label for="emailListForm_email">Email*</label>
-								<input id="emailListForm_email" type="email" maxlength="1000" required />
-							</div>
-						</div>
-						<div id="bnrEmailListInfo" class="inline-banner">
-							<span class="icon-container" data-icon="circle-info">Info:</span>
-							I'll only email with major updates and new works.
-						</div>
-						<div class="form-footer">
-							<input id="emailListForm_reset" type="reset" value="Reset" />
-							<input id="emailListForm_submit" type="submit" value="Submit" />
-						</div>
-					</form>
-					<div id="buttons" class="card">
+					</article>
+					<article id="buttons" class="card">
 						<div id="buttonsCardHeader" class="card-header">
-							<span role="heading" aria-level="2">Buttons</span>
+							<h2>Buttons</h2>
 							<span id="buttonsChevron"
 								  class="chevron card-chevron bottom"
 								  aria-label="Show all buttons"
@@ -409,9 +422,9 @@
 								</ul>
 							</div>
 						</div>
-					</div>
-					<div id="webrings" class="card">
-						<div class="card-header" role="heading" aria-level="2">Webrings</div>
+					</article>
+					<article id="webrings" class="card">
+						<h2 class="card-header">Webrings</h2>
 						<ul>
 							<li><div id="bisexualism"></div></li>
 							<li>
@@ -421,16 +434,16 @@
 								</div>
 							</li>
 						</ul>
-					</div>
+					</article>
 				</div>
 			</div>
-			<div id="avi" class="card">
-				<div class="card-header" role="heading" aria-level="2">Featured Avi Photo</div>
+			<aside id="avi" class="card">
+				<h2 class="card-header">Featured Avi Photo</h2>
 				<img src="../img/Avi/Featured Avi 2022-12-28.png"
 					 style="width: 100%"
 					 alt="A photo of a black cat sitting on a stool in front of a table with a cup of coffee and a plate of toast. He is eyeing the toast and has a paw tenatively raised." />
 				<footer>He likes toast</footer>
-			</div>
+			</aside>
 		</main>
 		<div id="dialogRegion" role="region" aria-label="dialogs"></div>
 		<div class="banner-buffer"></div>

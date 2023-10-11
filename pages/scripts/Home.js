@@ -149,7 +149,49 @@ registerNamespace("Pages.Home", function (ns)
 		);
 		request.setRequestHeader("Content-Type", "application/json");
 
-		request.send(JSON.stringify({content: `NAME=${name};EMAIL=${email}`}));
+		request.send(JSON.stringify({ content: `NAME=${name};EMAIL=${email}` }));
+	};
+
+	ns.populateThoughts = (sheetData) =>
+	{
+		const thoughtsList = document.getElementById("thoughtsList");
+
+		for (let i = sheetData.rows.length - 1; i >= Math.max(sheetData.rows.length - 10, 0); i--)
+		{
+			const rowData = Common.GSheetsLib.fetchRow(i, sheetData);
+
+			const thoughtItem = Common.DOMLib.createElement("li",thoughtsList);
+			const thoughtArticle = Common.DOMLib.createElement("article", thoughtItem);
+
+			Common.DOMLib.createElement(
+				"span",
+				thoughtArticle,
+				undefined,
+				["thought-preamble"],
+				`Vera, feeling <strong>${rowData.Mood}</strong>, says:`
+			);
+			Common.DOMLib.createElement(
+				"span",
+				thoughtArticle,
+				undefined,
+				["thought-content"],
+				`"${rowData.Message}"`
+			);
+			if (rowData.Timestamp)
+			{
+				const timeString = rowData.Timestamp.toLocaleString(
+					undefined,
+					{ dateStyle: "short", timeStyle: "short" }
+				);
+				Common.DOMLib.createElement(
+					"footer",
+					thoughtArticle,
+					undefined,
+					undefined,
+					`at <time datetime=${rowData.Timestamp.toISOString()}>${timeString}</time>`
+				);
+			}
+		}
 	};
 });
 
@@ -248,4 +290,9 @@ window.onload = () =>
 		"Bisexualism",
 		"https://bisexualism.emeowly.gay/"
 	);
+
+	Common.GSheetsLib.loadSheet(
+		"1i6ywPKS-i0gNq7cWC-yWJXJPTnhBcfnmmdjVNFa0Ngo",
+		"0"
+	).then(Pages.Home.populateThoughts);
 };

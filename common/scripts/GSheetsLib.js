@@ -18,4 +18,31 @@ registerNamespace("Common.GSheetsLib", function (ns)
 		}
 		return "";
 	};
+
+	ns.fetchRow = function (rowIdx, data)
+	{
+		var rowData = {};
+		const cells = data.rows[rowIdx].c;
+
+		for (let i = 0; i < cells.length; i++)
+		{
+			rowData[data.cols[i].label] = parseCellType(cells[i], data.cols[i].type);
+
+		}
+		return rowData;
+	};
+
+	function parseCellType(cellData, cellType)
+	{
+		switch (cellType)
+		{
+			case "string":
+				return cellData ? cellData.v : cellData;
+			case "datetime":
+				const cellDate = new Date(cellData.f);
+				return isNaN(cellDate) ? "" : cellDate;
+			default:
+				return cellData;
+		}
+	}
 });

@@ -20,13 +20,17 @@ h2, h3, h4, h5, h6 {
 }
 
 h1 {
-	margin-top: 0;
-	margin-bottom: 0px;
 	text-align: center;
 }
 
 h2 {
-	font-size: 1.25em;
+	font-size: 1.25rem;
+	font-weight: initial;
+}
+
+h1, h2 {
+	margin-top: 0px;
+	margin-bottom: 0px;
 }
 
 main {
@@ -182,12 +186,12 @@ figcaption {
 }
 
 #webrings {
-	max-width: 250px;				
+	max-width: 250px;
 }
 
-#webrings li{
-	margin-bottom: 5px;
-}
+	#webrings li {
+		margin-bottom: 5px;
+	}
 
 #bisexualism {
 	display: grid;
@@ -213,7 +217,32 @@ figcaption {
 	max-width: 250px;
 }
 
-#emailListFormInputs{
+#emailListFormInputs {
 	margin-left: 10px;
 	margin-right: 10px;
+}
+
+#thoughtsList {
+	max-height: 150px;
+	max-width: 250px;
+	overflow-y: auto;
+	padding: 0;
+}
+
+.z {
+}
+
+#thoughtsList li {
+	display: block;
+	margin-bottom: 10px;
+}
+
+#thoughtsList article {
+	display: grid;
+	grid-template-rows: 0fr 1fr 0fr;
+	background-color: var(--content-color);
+}
+
+.thought-preamble {
+	margin-bottom: 2px;
 }

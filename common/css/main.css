@@ -414,7 +414,7 @@ input[type="text"], input[type="password"], input[type="number"], input[type="em
 }
 
 input[type="text"]:invalid, input[type="password"]:invalid, input[type="number"]:invalid, input[type="email"]:invalid {
-	box-shadow: inset 0px 0px 5px 2px var(--accent-color);
+	box-shadow: inset 0px 0px 5px 2px var(--input-selected-color);
 }
 
 input[type=number]::-webkit-inner-spin-button {
