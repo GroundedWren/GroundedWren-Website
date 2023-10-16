@@ -137,8 +137,10 @@ registerNamespace("Pages.Home", function (ns)
 		);
 	};
 
-	ns.addEmail = () =>
+	ns.addEmail = (event) =>
 	{
+		event.preventDefault();
+
 		const name = document.getElementById("emailListForm_name").value;
 		const email = document.getElementById("emailListForm_email").value;
 
@@ -150,6 +152,9 @@ registerNamespace("Pages.Home", function (ns)
 		request.setRequestHeader("Content-Type", "application/json");
 
 		request.send(JSON.stringify({ content: `NAME=${name};EMAIL=${email}` }));
+
+		document.getElementById("emailListForm").reset();
+		alert("Email submitted!")
 	};
 
 	ns.populateThoughts = (sheetData) =>
@@ -177,9 +182,9 @@ registerNamespace("Pages.Home", function (ns)
 				["thought-content"],
 				`"${rowData.Message}"`
 			);
-			if (rowData.Timestamp)
+			if (rowData.LocalTimestamp)
 			{
-				const timeString = rowData.Timestamp.toLocaleString(
+				const timeString = rowData.LocalTimestamp.toLocaleString(
 					undefined,
 					{ dateStyle: "short", timeStyle: "short" }
 				);
@@ -188,7 +193,7 @@ registerNamespace("Pages.Home", function (ns)
 					thoughtArticle,
 					undefined,
 					undefined,
-					`at <time datetime=${rowData.Timestamp.toISOString()}>${timeString}</time>`
+					`at <time datetime=${rowData.LocalTimestamp.toISOString()}>${timeString}</time>`
 				);
 			}
 		}

@@ -325,3 +325,79 @@
 }
 /*#endregion */
 
+/*#region Comments*/
+.comments-region {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 10px;
+}
+
+.comments-region blockquote {
+	max-width: unset !important;
+	overflow-wrap: break-word;
+}
+
+.comments-container {
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	max-width: 500px;
+	gap: 5px;
+}
+
+.comment-box-container {
+	margin-top: 5px;
+	margin-left: auto;
+	margin-right: auto;
+	width: fit-content;
+}
+
+.comment-form-title {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 5px;
+	font-size: 1.25em;
+}
+
+.comment-article {
+	border-left: 2px solid var(--general-border-color);
+	padding: 4px;
+	background-color: var(--content-color);
+	display: flex;
+	flex-direction: column;
+}
+
+.comment-article > button {
+	max-width: fit-content;
+	height: 30px;
+}
+
+.comment-header {
+	display: grid;
+	grid-template-columns: 0fr 1fr 1fr;
+	gap: 5px;
+	align-items: baseline;
+}
+
+.comment-article .comment-article {
+	margin-left: 10px;
+	margin-top: 10px;
+	padding-right: 0px;
+}
+
+.comment-id, .comment-timestamp {
+	font-size: 0.85em;
+	font-weight: lighter;
+	font-style: italic;
+}
+
+.comment-timestamp {
+	text-align: end;
+}
+
+.commenter-name {
+	font-size: 1.1em;
+	font-weight: bold;
+}
+/*#endregion*/

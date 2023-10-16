@@ -57,10 +57,6 @@ registerNamespace("Pages.ArtFrame", function (ns)
 		{
 			document.getElementById("homeLink").remove();
 		}
-		else
-		{
-			document.getElementById("backLink").remove();
-		}
 
 		document.getElementById("imgElement").setAttribute("src", artFrame.getArtLink());
 		document.getElementById("imgElement").setAttribute("alt", artFrame.getAltText());

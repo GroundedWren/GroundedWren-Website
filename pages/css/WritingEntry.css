@@ -92,9 +92,10 @@ p {
 	margin-left: 10px;
 	margin-bottom: 10px;
 }
-.card.right.bigger {
-	width: 35%;
-}
+
+	.card.right.bigger {
+		width: 35%;
+	}
 
 .z {
 }
@@ -132,20 +133,23 @@ blockquote, .centertext, .center-content-container > figure {
 }
 
 figcaption {
-
 }
 
 hr {
 	margin-bottom: 32px;
 }
 
-main, .page-text {
+main, .page-text, .comments-region {
 	max-width: 1100px;
 	margin: auto;
 	margin-top: 10px;
 	padding: 5px;
+}
+
+main, .page-text {
 	background-color: var(--content-color);
 }
+
 
 .z {
 }

@@ -11,6 +11,13 @@
     <script src="../../common/scripts/main.js"></script>
     <script src="../../common/scripts/Common.js"></script>
     <script src="../scripts/WritingEntry.js"></script>
+
+    <!-- Comments -->
+    <link rel="stylesheet" href="../../common/css/Controls.css" type="text/css" />
+    <script src="../../common/scripts/GSheetsLib.js"></script>
+    <script src="../../common/scripts/DOMLib.js"></script>
+    <script src="../../common/scripts/SVGLib.js"></script>
+    <script src="../../common/scripts/Controls/Comments.js"></script>
 </head>
 <body>
     <header>
@@ -19,7 +26,7 @@
             <p class="subtitle">By Vera @ <a href="https://www.GroundedWren.com" target="_blank">GroundedWren.com</a> 12/20/22</p>
         </div>
     </header>
-    <div class="page-text">
+    <main>
         <p>Hey there :)</p>
         <p>
             I have just stayed up until 2 in the morning putting this blog page together. I didn't do it how I originally planned, but
@@ -37,8 +44,15 @@
         <p>
             I think that's about it. I'm going to go to bed now. Good night, blog!
         </p>
-    </div>
-    <br />
-    <br />
+    </main>
+    <footer>
+        <section aria-labelled-by="commentsH2"
+                 class="comments-region"
+                 data-spreadsheet="1Iv0lu3fNTiM7L_gLRQAcIrEMZp1zZKQBDNtAxxdpZLw"
+                 data-sheet="Hello-Blog"
+                 data-discord="https://discord.com/api/webhooks/1163274244461953054/CjBhjQZ6-t2vu_z-wrJwjgWgZv_fNbIO2XZTp_ENFmGkIiqg0oJebpCLdGaB8se6ANso">
+            <h2 id="commentsH2">Comments</h2>
+        </section>
+    </footer>
 </body>
 </html>

@@ -81,13 +81,19 @@
 							</span>
 						</div>
 						<div id="updateContent" tabindex="-1">
-							<h3>10/11/23</h3>
+							<h3>10/15/23</h3>
 							<ul>
-								<li>Created the "Vera's Thoughts" widget</li>
-								<li>Tweaked colors</li>
-								<li>Added my Bluesky</li>
+								<li>Fix the Email List</li>
+								<li>Enable comments on blog posts :)</li>
+								<li>Redo the guestbook as homegrown</li>
 							</ul>
 							<div id="updateHistory" style="display: none">
+								<h3>10/11/23</h3>
+								<ul>
+									<li>Created the "Vera's Thoughts" widget</li>
+									<li>Tweaked colors</li>
+									<li>Added my Bluesky</li>
+								</ul>
 								<h3>10/10/23</h3>
 								<ul>
 									<li>Additional buttons</li>
@@ -288,7 +294,7 @@
 						</ol>
 					</article>
 					<form id="emailListForm"
-						  onsubmit="Pages.Home.addEmail()"
+						  onsubmit="Pages.Home.addEmail(event)"
 						  autocomplete="off"
 						  aria-labelledby="emailListFormTitle"
 						  aria-describedby="bnrEmailListInfo">

@@ -356,6 +356,15 @@ form > h1, form > h2, form > h3, form > h4, form > h5, form > h6 {
 .z {
 }
 
+.input-vertical {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
 .input-vertical-line {
 	display: flex;
 	flex-direction: column;
@@ -368,7 +377,7 @@ form > h1, form > h2, form > h3, form > h4, form > h5, form > h6 {
 .z {
 }
 
-.input-vertical-line > label {
+.input-vertical-line > label, .input-vertical > label {
 	padding-bottom: 2px;
 }
 
@@ -413,7 +422,7 @@ input[type="text"], input[type="password"], input[type="number"], input[type="em
 .z { /* Fix auto-indent */
 }
 
-input[type="text"]:invalid, input[type="password"]:invalid, input[type="number"]:invalid, input[type="email"]:invalid {
+input[type="text"]:invalid, input[type="password"]:invalid, input[type="number"]:invalid, input[type="email"]:invalid, textarea:invalid {
 	box-shadow: inset 0px 0px 5px 2px var(--input-selected-color);
 }
 

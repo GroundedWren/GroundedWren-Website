@@ -18,7 +18,8 @@
 	<script src="../common/scripts/Common.js"></script>
 	<script src="../common/scripts/DOMLib.js"></script>
 	<script src="../common/scripts/SVGLib.js"></script>
-	<script src="../common/scripts/FileLib.js"></script>
+	<script src="../common/scripts/GSheetsLib.js"></script>
+	<script src="../common/scripts/Controls/Comments.js"></script>
 	<script src="../common/scripts/Components/Shortcuts.js"></script>
 	<script src="../common/scripts/Components/ElementDragger.js"></script>
 	<script src="../common/scripts/Controls/Dialog.js"></script>
@@ -52,10 +53,15 @@
 		</header>
 		<div id="BannerBuffer" class="banner-buffer"></div>
 		<main id="mainContent">
-			<!-- begin wwww.htmlcommentbox.com -->
-			<div id="HCB_comment_box"><a href="http://www.htmlcommentbox.com">HTML Comment Box</a> is loading comments...</div>
-			<script type="text/javascript" id="hcb">/*<!--*/ if (!window.hcb_user) { hcb_user = {}; } (function () { var s = document.createElement("script"), l = hcb_user.PAGE || ("" + window.location).replace(/'/g, "%27"), h = "https://www.htmlcommentbox.com"; s.setAttribute("type", "text/javascript"); s.setAttribute("src", h + "/jread?page=" + encodeURIComponent(l).replace("+", "%2B") + "&mod=%241%24wq1rdBcg%24wtcJwwOgkMqWiA1dG16Kj." + "&opts=18326&num=10&ts=1696128609564"); if (typeof s != "undefined") document.getElementsByTagName("head")[0].appendChild(s); })(); /*-->*/</script>
-			<!-- end www.htmlcommentbox.com -->
+			<section aria-labelled-by="commentsH2"
+					 class="comments-region"
+					 data-spreadsheet="1Iv0lu3fNTiM7L_gLRQAcIrEMZp1zZKQBDNtAxxdpZLw"
+					 data-sheet="Guestbook"
+					 data-form-title="Sign the Guestbook"
+					 data-new-first="true";
+					 data-discord="https://discord.com/api/webhooks/1163279111461027961/7a1-rzCXffhnIvlK3OxhuRXD6SAW0B8UXfHt53yjdcOar6NOBUuKkIbuhKDoXtXtpzWp">
+				<h2 id="commentsH2">Guest Comments</h2>
+			</section>
 		</main>
 		<div id="dialogRegion" role="region" aria-label="dialogs"></div>
 	</div>
