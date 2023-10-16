@@ -3,6 +3,8 @@
 	flex-direction: row;
 	justify-content: center;
 	margin-bottom: 5px;
+	padding-left: 5px;
+	padding-right: 5px;
 }
 
 h2 {

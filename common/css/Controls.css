@@ -333,6 +333,10 @@
 	gap: 10px;
 }
 
+.comments-region input {
+	width: 135px;
+}
+
 .comments-region blockquote {
 	max-width: unset !important;
 	overflow-wrap: break-word;
