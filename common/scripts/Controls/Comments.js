@@ -11,6 +11,7 @@ registerNamespace("Common.Controls.Comments", function (ns)
 	ns.DEFAULT_FORM_TITLE = "Add a Comment"
 	ns.COMMENT_DISCORD_ATTRIBUTE = "data-discord";
 	ns.NEWEST_FIRST_ATTRIBUTE = "data-new-first";
+	ns.ALREADY_LOADED_ATTRIBUTE = "already-loaded";
 	ns.ERR_COULDNT_LOAD = "Comments could not be loaded";
 	ns.ERR_NOTHING = "Nothing to show";
 
@@ -19,6 +20,11 @@ registerNamespace("Common.Controls.Comments", function (ns)
 		const commentsSections = document.getElementsByClassName(ns.COMMENT_SECTION_CLASS);
 		for (element of commentsSections)
 		{
+			if (element.getAttribute(ns.ALREADY_LOADED_ATTRIBUTE))
+			{
+				continue;
+			}
+
 			const commentsGSpreadsheetId = element.getAttribute(ns.COMMENT_SPREADSHEET_ATTRIBUTE);
 			const commentsGSheetId = element.getAttribute(ns.COMMENT_SHEET_ATTRIBUTE);
 			const discordUrl = element.getAttribute(ns.COMMENT_DISCORD_ATTRIBUTE);
@@ -39,6 +45,8 @@ registerNamespace("Common.Controls.Comments", function (ns)
 				formTitleText,
 				newestFirst
 			);
+
+			element.setAttribute(ns.ALREADY_LOADED_ATTRIBUTE, true);
 		};
 	};
 
@@ -59,10 +67,14 @@ registerNamespace("Common.Controls.Comments", function (ns)
 		if (newestFirst)
 		{
 			allComments.reverse();
+			sectionEl.appendChild(formEl);
 		}
 		buildCommentList(sectionEl, allComments, formElementIds);
 
-		sectionEl.appendChild(formEl);
+		if (!newestFirst)
+		{
+			sectionEl.appendChild(formEl);
+		}
 	};
 
 	function buildCommentList(sectionEl, allComments, formIds)

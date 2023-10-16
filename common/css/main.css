@@ -346,12 +346,16 @@ form > h1, form > h2, form > h3, form > h4, form > h5, form > h6 {
 	flex-wrap: wrap;
 	justify-content: space-evenly;
 	align-items: center;
+	row-gap: 4px;
 }
 
-	.input-horizontal-flex > .input-flex-line {
-		width: auto;
-		margin-right: 10px;
-	}
+.z {
+}
+
+.input-horizontal-flex > .input-flex-line {
+	width: auto;
+	margin-right: 10px;
+}
 
 .z {
 }
