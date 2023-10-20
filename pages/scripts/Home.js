@@ -248,6 +248,7 @@ window.onload = () =>
 					"About Me": { linkHref: "./AboutMe.html" },
 					"Guestbook": { linkHref: "./Guestbook.html" },
 					"Accessibility": { action: () => { Pages.Home.displayA11yStatement(); } },
+					"Neocities": { linkHref: "https://groundedwren.neocities.org/"},
 					"Demo page": { linkHref: "./Example.html" },
 					"Shortcuts": { action: () => { Common.Components.displayShortcuts(); } },
 				}
