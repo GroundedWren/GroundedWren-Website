@@ -389,3 +389,9 @@ window.onload = () =>
 		[document.getElementById("chipsHeader")]
 	);
 };
+
+window.onbeforeunload = (event) =>
+{
+	event.preventDefault();
+	return false;
+};

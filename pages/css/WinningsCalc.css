@@ -66,7 +66,15 @@
 	min-width: 268px;
 }
 
-input[type="number"], input[type="text"] {
+input[type="number"] {
+	width: 75px;
+}
+
+#playersContent input[type="number"] {
+	width: 30px
+}
+
+input[type="text"] {
 	width: 100px;
 }
 

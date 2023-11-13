@@ -32,7 +32,7 @@ registerNamespace("Common", function (ns)
 	{
 		return function generatedDelegate()
 		{
-			method.apply(context, (args || []).concat(...arguments));
+			return method.apply(context, (args || []).concat(...arguments));
 		};
 	}
 	ns.fcd = fcd;
@@ -303,5 +303,219 @@ registerNamespace("Common", function (ns)
 		ns.currentTheme = thName || "theme-vera";
 		document.documentElement.className = ns.currentTheme;
 		localStorage.setItem("theme", ns.currentTheme);
+
+		for (const themer of document.getElementsByTagName("gw-themer"))
+		{
+			themer.onThemeSelected();
+		}
 	};
+
+	ns.Themer = class Themer extends HTMLElement
+	{
+		//#region staticProperties
+		static observedAttributes = [];
+		static instanceCount = 0;
+		static instanceMap = {};
+		//#endregion
+
+		//#region instance properties
+		instanceId;
+
+		//#region element properties
+		articleEl;
+		selectEl;
+		tdBackground;
+		tdContent1;
+		tdContent2;
+		tdAccent;
+		//#endregion
+		//#endregion
+
+		constructor()
+		{
+			super();
+			this.instanceId = Themer.instanceCount++;
+			Themer.instanceMap[this.instanceId] = this;
+		}
+
+		get idKey()
+		{
+			return `gw-db-area-${this.instanceId}`;
+		}
+
+		//#region HTMLElement implementation
+		connectedCallback()
+		{
+			this.renderContent();
+			this.registerHandlers();
+
+			for (const themeName in Common.ThemeNames)
+			{
+				this.selectEl.add(new Option(themeName, Common.ThemeNames[themeName]));
+			}
+
+			this.selectEl.value = Common.currentTheme;
+			this.buildColorsTable();
+		}
+
+		disconnectedCallback()
+		{
+		}
+
+		adoptedCallback()
+		{
+		}
+
+		attributeChangedCallback(name, oldValue, newValue)
+		{
+		}
+		//#endregion
+
+		renderContent()
+		{
+			//Markup
+			this.innerHTML = `
+			<article id="${this.idKey}" class="card">
+				<div class="card-header">
+					<h2 id="${this.idKey}-spColors">Site Colors</h2>
+					<div class="input-vertical-line" style="margin-bottom: 0px">
+						<label style="font-size: small;" for="${this.idKey}-selTheme">Theme</label>
+						<select id="${this.idKey}-selTheme">
+						</select>
+					</div>
+				</div>
+				<table aria-labelledby="${this.idKey}-spColors">
+					<tbody>
+						<tr>
+							<th scope="row">Background</th>
+							<td id="${this.idKey}-tdBackground" class="color-cell">
+							</td>
+						</tr>
+						<tr>
+							<th scope="row">Content 1</th>
+							<td id="${this.idKey}-tdContent1" class="color-cell">
+							</td>
+						</tr>
+						<tr>
+							<th scope="row">Content 2</th>
+							<td id="${this.idKey}-tdContent2" class="color-cell">
+							</td>
+						</tr>
+						<tr>
+							<th scope="row">Accent</th>
+							<td id="${this.idKey}-tdAccent" class="color-cell">
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+			`;
+
+			//element properties
+			this.articleEl = document.getElementById(this.idKey);
+			this.selectEl = document.getElementById(`${this.idKey}-selTheme`);
+			this.tdBackground = document.getElementById(`${this.idKey}-tdBackground`);
+			this.tdContent1 = document.getElementById(`${this.idKey}-tdContent1`);
+			this.tdContent2 = document.getElementById(`${this.idKey}-tdContent2`);
+			this.tdAccent = document.getElementById(`${this.idKey}-tdAccent`);
+		}
+
+		//#region Handlers
+		registerHandlers()
+		{
+			this.selectEl.addEventListener("change", this.onSelectTheme);
+		}
+
+		onThemeSelected = () =>
+		{
+			if (this.selectEl.value === Common.currentTheme)
+			{
+				return;
+			}
+			this.selectEl.value = Common.currentTheme;
+			this.buildColorsTable();
+		};
+
+		onSelectTheme = () =>
+		{
+			Common.setTheme(this.selectEl.value);
+			this.buildColorsTable();
+		};
+		//#endregion
+
+		buildColorsTable()
+		{
+			const theme = Common.Themes[Common.currentTheme];
+			this.#buildColorCell(this.tdBackground, theme["--background-color"], theme["--text-color"]);
+			this.#buildColorCell(this.tdContent1, theme["--content-color"], theme["--text-color"]);
+			this.#buildColorCell(this.tdContent2, theme["--content-color-2"], theme["--text-color"]);
+			this.#buildColorCell(this.tdAccent, theme["--accent-color"], theme["--heading-color"]);
+		};
+
+		#buildColorCell(tdElement, color, textColor)
+		{
+			tdElement.innerHTML = null;
+			const SVGLib = Common.SVGLib;
+
+			if (!SVGLib)
+			{
+				tdElement.innerHTML = color === "#663399"
+					? `<a href="https://meyerweb.com/eric/thoughts/2014/06/19/rebeccapurple/" target="_blank">${color}</a>`
+					: color;
+				return;
+			}
+
+			const svgTypes = Common.SVGLib.ElementTypes;
+
+			var svg = SVGLib.createChildElement(
+				tdElement,
+				svgTypes.svg,
+				{
+					"width": "100%",
+					"height": "100%",
+				}
+			);
+			Common.SVGLib.createChildElement(
+				svg,
+				svgTypes.rect,
+				{
+					"x": "0",
+					"y": "0",
+					"width": "100%",
+					"height": "100%",
+					"fill": color
+				}
+			);
+
+			var linkEl = null;
+			if (color === "#663399") //rebeccapurple
+			{
+				linkEl = Common.SVGLib.createChildElement(
+					svg,
+					svgTypes.a,
+					{
+						"href": "https://meyerweb.com/eric/thoughts/2014/06/19/rebeccapurple/",
+						"target": "_blank",
+					}
+				);
+			}
+
+			Common.SVGLib.createChildElement(
+				!!linkEl ? linkEl : svg,
+				svgTypes.text,
+				{
+					"x": "50%",
+					"y": "50%",
+					"dominant-baseline": "middle",
+					"text-anchor": "middle",
+					"font-size": "0.8em",
+					"text-decoration": !!linkEl ? "underline" : "",
+					"fill": textColor
+				},
+				color
+			);
+		}
+
+	};
+	customElements.define("gw-themer", ns.Themer);
 });

@@ -563,6 +563,11 @@ thead {
 tr > th {
 	text-align: left;
 }
+
+.color-cell {
+	height: 21.5px;
+	width: 100px;
+}
 /*#endregion */
 
 /*#region Inline Banner */
@@ -819,5 +824,15 @@ button[role="link"], .button-like[role="link"] {
 	outline-width: 5px;
 	outline-color: var(--input-selected-color);
 	z-index: 100;
+}
+
+.nb-word {
+	display: flex;
+	flex-direction: row;
+	width: max-content;
+}
+
+.nb-word + .nb-word {
+	margin-left: 0.3em;
 }
 /*#endregion*/

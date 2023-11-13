@@ -69,6 +69,9 @@ registerNamespace("Common.SVGLib", function (ns)
 	const ICON_CLASSES_ATTRIBUTE = "data-icon-classes";
 	const ICON_STYLE_ATTRIBUTE = "data-icon-style";
 
+	/**
+	 * Icon SVG path definitions
+	 */
 	ns.Icons = {
 		"circle-info": {
 			title: "info",
@@ -147,6 +150,9 @@ registerNamespace("Common.SVGLib", function (ns)
 		},
 	};
 
+	/**
+	 * Inserts all icons into marked containers on a page
+	 */
 	ns.insertIcons = function insertIcons()
 	{
 		var elements = document.getElementsByClassName(ICON_CONTAINER_CLASS);
@@ -173,6 +179,9 @@ registerNamespace("Common.SVGLib", function (ns)
 		};
 	};
 
+	/**
+	 * Creates and returns an icon to spec
+	 */
 	ns.createIcon = function createIcon(iconDef, title, desc, classes, style)
 	{
 		var iconEl = createElement(

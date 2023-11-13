@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" class="theme-vera">
 <head>
 	<meta charset="utf-8" />
@@ -81,13 +81,18 @@
 							</span>
 						</div>
 						<div id="updateContent" tabindex="-1">
-							<h3>10/15/23</h3>
+							<h3>11/12/23</h3>
 							<ul>
-								<li>Fix the Email List</li>
-								<li>Enable comments on blog posts :)</li>
-								<li>Redo the guestbook as homegrown</li>
+								<li>Migrate the theme switcher into its own component</li>
+								<li>Minor tweaks to the Winnings Calculator</li>
 							</ul>
 							<div id="updateHistory" style="display: none">
+								<h3>10/15/23</h3>
+								<ul>
+									<li>Fix the Email List</li>
+									<li>Enable comments on blog posts :)</li>
+									<li>Redo the guestbook as homegrown</li>
+								</ul>
 								<h3>10/11/23</h3>
 								<ul>
 									<li>Created the "Vera's Thoughts" widget</li>
@@ -318,40 +323,7 @@
 							<input id="emailListForm_submit" type="submit" value="Submit" />
 						</div>
 					</form>
-					<article id="colors" class="card">
-						<div class="card-header">
-							<h2 id="spColors">Site Colors</h2>
-							<div class="input-vertical-line" style="margin-bottom: 0px">
-								<label style="font-size: small;" for="selTheme">Theme</label>
-								<select id="selTheme">
-								</select>
-							</div>
-						</div>
-						<table aria-labelledby="spColors">
-							<tbody>
-								<tr>
-									<th scope="row">Background</th>
-									<td id="tdBackground" class="color-cell">
-									</td>
-								</tr>
-								<tr>
-									<th scope="row">Content 1</th>
-									<td id="tdContent1" class="color-cell">
-									</td>
-								</tr>
-								<tr>
-									<th scope="row">Content 2</th>
-									<td id="tdContent2" class="color-cell">
-									</td>
-								</tr>
-								<tr>
-									<th scope="row">Accent</th>
-									<td id="tdAccent" class="color-cell">
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</article>
+					<gw-themer></gw-themer>
 					<article id="buttons" class="card">
 						<div id="buttonsCardHeader" class="card-header">
 							<h2>Buttons</h2>

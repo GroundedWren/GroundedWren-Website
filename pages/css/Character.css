@@ -32,7 +32,7 @@ main {
 	flex-grow: 1;
 	flex-shrink: 0;
 	height: inherit;
-	max-height: calc(100vh - 1.25em - 5px - 10px); /*Header, margin-top*/
+	max-height: calc(100vh - 1.25em - 5px -  10px); /*Header, margin-top*/
 }
 
 td, th {
