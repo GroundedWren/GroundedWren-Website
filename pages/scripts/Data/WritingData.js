@@ -67,6 +67,11 @@ registerNamespace("Pages.Writing.Data", function (ns)
 			entriesDirectory: "./poetry_entries/",
 			entryExtension: ".html",
 			entries: {
+				"GroceryBag": {
+					title: "Grocery Bag",
+					author: "Vera",
+					date: new Date(2023, 10, 20),
+				},
 				"PastOne": {
 					title: "Past One",
 					author: "Vera",
