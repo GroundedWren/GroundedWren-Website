@@ -83,6 +83,21 @@ registerNamespace("Pages.Example", function (ns)
 		Common.Components.unregisterShortcuts([code]);
 	};
 	//#endregion
+
+	ns.EnhancedButtonEl = class EnhancedButtonEl extends HTMLElement
+	{
+		connectedCallback()
+		{
+			const button = this.previousElementSibling;
+			button.innerHTML = "I'm an enhanced button!"
+			this.appendChild(button);
+			button.onclick = () =>
+			{
+				window.alert("enhanced button!");
+			};
+		}
+	};
+	customElements.define("gw-enh-button", ns.EnhancedButtonEl);
 });
 
 /**

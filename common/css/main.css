@@ -352,7 +352,7 @@ form > h1, form > h2, form > h3, form > h4, form > h5, form > h6 {
 .z {
 }
 
-.input-horizontal-flex > .input-flex-line {
+.input-horizontal-flex > .input-flex-line, .input-horizontal-flex > .input-vertical-line {
 	width: auto;
 	margin-right: 10px;
 }
@@ -394,9 +394,12 @@ form > h1, form > h2, form > h3, form > h4, form > h5, form > h6 {
 	align-items: baseline;
 }
 
-	.input-grid > .full-line {
-		grid-column: 1 / -1;
-	}
+.z {
+}
+
+.input-grid > .full-line {
+	grid-column: 1 / -1;
+}
 
 .z {
 }
@@ -832,7 +835,7 @@ button[role="link"], .button-like[role="link"] {
 	width: max-content;
 }
 
-.nb-word + .nb-word {
-	margin-left: 0.3em;
-}
+	.nb-word + .nb-word {
+		margin-left: 0.3em;
+	}
 /*#endregion*/
