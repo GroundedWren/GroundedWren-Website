@@ -586,6 +586,7 @@ tr > th {
 	margin: 10px;
 	border: 1px solid var(--general-border-color);
 	background-color: var(--inline-banner-color);
+	color: var(--text-color);
 	padding: 10px;
 	word-break: break-word;
 	display: flex;
@@ -788,6 +789,10 @@ button[role="link"], .button-like[role="link"] {
 .clickable:hover {
 	cursor: pointer;
 }
+
+#gwFileDownloadLink, #gwFilePickerInput {
+	display: none;
+}
 /*#endregion*/
 
 /*#region Other*/
@@ -811,12 +816,15 @@ button[role="link"], .button-like[role="link"] {
 	height: 16px;
 }
 
-	.icon.unloaded-icon {
-		width: auto !important;
-		height: auto !important;
-	}
+.z {
+}
 
-.icon-container {
+.icon.unloaded-icon {
+	width: auto !important;
+	height: auto !important;
+}
+
+.icon-container, gw-icon {
 	display: inline-flex;
 	flex-direction: row;
 	align-items: center;

@@ -19,6 +19,8 @@ registerNamespace("Common", function (ns)
 		DownArrow: 40,
 		F1: 112,
 		F2: 113,
+		End: 35,
+		Home: 36,
 	};
 	ns.KeyCodes = KeyCodes;
 
@@ -159,44 +161,13 @@ registerNamespace("Common", function (ns)
 	}
 
 	ns.ThemeNames = {
-		"Vera": "theme-vera",
 		"Ocean": "theme-ocean",
+		"Vera": "theme-vera",
 		"Paper": "theme-paper",
 		"Serin": "theme-serin",
 	};
 
 	ns.Themes = {
-		"theme-vera": {
-			"--background-color": "#1A0D26",
-			"--content-color": "#331A4D",
-			"--content-color-2": "#000000",
-			"--input-background-color": "#000000",
-			"--input-text-color": "#FFFFFF",
-			"--input-selected-color": "#663399",
-			"--tab-selected-color": "#663399",
-			"--accent-color": "#663399",
-			"--accent-color-hover": "#A853FC",
-			"--accent-color-2": "#4D2673",
-			"--text-color": "#FFFFFF",
-			"--button-face-color": "#262626",
-			"--button-face-color-hover": "#191919",
-			"--button-face-color-disabled": "#191919",
-			"--button-border-color": "#5B9AD5",
-			"--button-border-color-hover": "#497CAB",
-			"--button-border-color-disabled": "#474747",
-			"--button-text-color": "#FFFFFF",
-			"--clickable-border-color": "#FFFFFF",
-			"--link-color": "#FFFFFF",
-			"--general-border-color": "#FFFFFF",
-			"--scrollbar-track-color": "#2C1642",
-			"--scrollbar-thumb-color": "#663399",
-			"--inline-banner-color": "#404040",
-			"--inline-banner-warn-color": "#766000",
-			"--inline-banner-pos-color": "#195725",
-			"--icon-color": "#FFFFFF",
-			"--heading-color": "#FFFFFF",
-			"--box-shadow-color": "#64646466",
-		},
 		"theme-ocean": {
 			"--background-color": "#090B1A",
 			"--content-color": "#1F2555",
@@ -221,6 +192,37 @@ registerNamespace("Common", function (ns)
 			"--general-border-color": "#FFFFFF",
 			"--scrollbar-track-color": "#2F3780",
 			"--scrollbar-thumb-color": "#306396",
+			"--inline-banner-color": "#404040",
+			"--inline-banner-warn-color": "#766000",
+			"--inline-banner-pos-color": "#195725",
+			"--icon-color": "#FFFFFF",
+			"--heading-color": "#FFFFFF",
+			"--box-shadow-color": "#64646466",
+		},
+		"theme-vera": {
+			"--background-color": "#1A0D26",
+			"--content-color": "#331A4D",
+			"--content-color-2": "#000000",
+			"--input-background-color": "#000000",
+			"--input-text-color": "#FFFFFF",
+			"--input-selected-color": "#663399",
+			"--tab-selected-color": "#663399",
+			"--accent-color": "#663399",
+			"--accent-color-hover": "#A853FC",
+			"--accent-color-2": "#4D2673",
+			"--text-color": "#FFFFFF",
+			"--button-face-color": "#262626",
+			"--button-face-color-hover": "#191919",
+			"--button-face-color-disabled": "#191919",
+			"--button-border-color": "#5B9AD5",
+			"--button-border-color-hover": "#497CAB",
+			"--button-border-color-disabled": "#474747",
+			"--button-text-color": "#FFFFFF",
+			"--clickable-border-color": "#FFFFFF",
+			"--link-color": "#FFFFFF",
+			"--general-border-color": "#FFFFFF",
+			"--scrollbar-track-color": "#2C1642",
+			"--scrollbar-thumb-color": "#663399",
 			"--inline-banner-color": "#404040",
 			"--inline-banner-warn-color": "#766000",
 			"--inline-banner-pos-color": "#195725",
@@ -292,7 +294,7 @@ registerNamespace("Common", function (ns)
 		},
 	};
 
-	ns.currentTheme = "theme-vera";
+	ns.currentTheme = "theme-ocean";
 	ns.loadTheme = function loadTheme()
 	{
 		ns.setTheme(localStorage.getItem("theme"));
@@ -300,7 +302,7 @@ registerNamespace("Common", function (ns)
 
 	ns.setTheme = function setTheme(thName)
 	{
-		ns.currentTheme = thName || "theme-vera";
+		ns.currentTheme = thName || "theme-ocean";
 		document.documentElement.className = ns.currentTheme;
 		localStorage.setItem("theme", ns.currentTheme);
 
@@ -518,4 +520,13 @@ registerNamespace("Common", function (ns)
 
 	};
 	customElements.define("gw-themer", ns.Themer);
+
+	ns.isNullUndefinedOrEmpty = function isNullUndefinedOrEmpty(subject)
+	{
+		return ns.isNullOrUndefined(subject) || subject === "";
+	}
+	ns.isNullOrUndefined = function isNullOrUndefined(subject)
+	{
+		return subject === null || subject === undefined;
+	}
 });

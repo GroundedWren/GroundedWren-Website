@@ -1,5 +1,6 @@
 ﻿/**
  * Comments control
+ * TODO refactor into components
  */
 
 registerNamespace("Common.Controls.Comments", function (ns)
@@ -221,10 +222,17 @@ registerNamespace("Common.Controls.Comments", function (ns)
 		const nameEl = Common.DOMLib.createElement(
 			"input",
 			undefined,
-			{ type: "text", maxlength: "1000", "required": true }
+			{ type: "text", maxlength: "1000", "required": true, value: localStorage.getItem("comment-name") || "" }
 		);
-		const emailEl = Common.DOMLib.createElement("input", undefined, { type: "email" });
-		const websiteEl = Common.DOMLib.createElement("input", undefined, { type: "text", maxlength: "1000" });
+		const emailEl = Common.DOMLib.createElement("input", undefined, {
+			type: "email",
+			value: localStorage.getItem("comment-email") || ""
+		});
+		const websiteEl = Common.DOMLib.createElement("input", undefined, {
+			type: "text",
+			maxlength: "1000",
+			value: localStorage.getItem("comment-website") || ""
+		});
 		const commentEl = Common.DOMLib.createElement(
 			"textarea",
 			undefined,
@@ -324,7 +332,16 @@ registerNamespace("Common.Controls.Comments", function (ns)
 
 		request.send(JSON.stringify({ content: contentAry.join("; ") }));
 
+		localStorage.setItem("comment-name", contentObj.name);
+		localStorage.setItem("comment-email", contentObj.email);
+		localStorage.setItem("comment-website", contentObj.website);
+
 		document.getElementById(formElementIds.form).reset();
+		document.getElementById(formElementIds.name).value = contentObj.name;
+		document.getElementById(formElementIds.email).value = contentObj.email;
+		document.getElementById(formElementIds.website).value = contentObj.website;
+
+
 		alert("Comment submitted!")
 	};
 });

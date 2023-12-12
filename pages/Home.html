@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en" class="theme-vera">
+<html lang="en" class="theme-ocean">
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -81,11 +81,18 @@
 							</span>
 						</div>
 						<div id="updateContent" tabindex="-1">
-							<h3>11/20/23</h3>
+							<h3>12/11/23</h3>
 							<ul>
-								<li>New poetry: <a href="poetry_entries/GroceryBag.html">Grocery Bag</a></li>
+								<li>Ocean is now the default theme!</li>
+								<li>The comments form will now remember you<br />(I still need to refactor it)</li>
+								<li>Poetry should be more screen reader accessible :)</li>
+								<li>I've been quiet with updates since I've been focusing on the <a href="https://textadventure.groundedwren.com">Text Adventure</a>. It's coming along!</li>
 							</ul>
 							<div id="updateHistory" style="display: none">
+								<h3>11/20/23</h3>
+								<ul>
+									<li>New poetry: <a href="poetry_entries/GroceryBag.html">Grocery Bag</a></li>
+								</ul>
 								<h3>11/12/23</h3>
 								<ul>
 									<li>Migrate the theme switcher into its own component</li>
@@ -319,7 +326,8 @@
 							</div>
 						</div>
 						<div id="bnrEmailListInfo" class="inline-banner">
-							<span class="icon-container" data-icon="circle-info">Info:</span>
+							<span id="emailInfoIconTitle">Info:</span>
+							<gw-icon iconKey="circle-info" titleId="emailInfoIconTitle"></gw-icon>
 							I'll only email with major updates and new works.
 						</div>
 						<div class="form-footer">

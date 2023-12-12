@@ -55,7 +55,7 @@ registerNamespace("Common.Controls.PageControl", function (ns)
 		__zeroStateControl;
 
 		//element id of the currently selected tab
-		__activeTabId;
+		activeTabId;
 		//element if of the rightmost tab in the tabstrip
 		__lastTabId;
 
@@ -86,7 +86,7 @@ registerNamespace("Common.Controls.PageControl", function (ns)
 				);
 			}
 
-			this.__activeTabId = null;
+			this.activeTabId = null;
 
 			this.controlEl.classList.remove("loading");
 		}
@@ -150,15 +150,23 @@ registerNamespace("Common.Controls.PageControl", function (ns)
 		{
 			if (this.__tabDict[tabId] == null) { return; }
 
-			if (this.__activeTabId !== null)
+			const prevActiveId = this.activeTabId;
+			if (this.activeTabId !== null)
 			{
-				this.__tabDict[this.__activeTabId].deactivate();
+				this.__tabDict[this.activeTabId].deactivate();
+			}
+
+			if (tabId === prevActiveId)
+			{
+				this.activeTabId = null;
+				this.__enterZeroState();
+				return;
 			}
 
 			this.__exitZeroState();
 
 			this.__tabDict[tabId].activate();
-			this.__activeTabId = tabId;
+			this.activeTabId = tabId;
 
 			if (event) { event.preventDefault(); }
 		};
@@ -168,6 +176,13 @@ registerNamespace("Common.Controls.PageControl", function (ns)
 			if (this.__zeroStateControl)
 			{
 				Common.DOMLib.addStyle(this.__zeroStateControl, { "display": "none" });
+			}
+		}
+		__enterZeroState()
+		{
+			if (this.__zeroStateControl)
+			{
+				Common.DOMLib.addStyle(this.__zeroStateControl, { "display": "block" });
 			}
 		}
 	};

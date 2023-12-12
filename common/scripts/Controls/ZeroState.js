@@ -47,17 +47,26 @@
 			}
 		);
 
+		const styles = [
+			"display: flex",
+			"flex-direction: column",
+			"align-items: center",
+			"justify-content: center",
+			"height: 100%",
+			"margin-left: 5px",
+			"margin-right: 5px",
+			"color: var(--heading-color)",
+		].join("; ");
 		SVGLib.createChildElement(
 			svg,
-			SVGLib.ElementTypes.text,
+			SVGLib.ElementTypes.foreignObject,
 			{
-				"x": "50%",
-				"y": "50%",
-				"dominant-baseline": "middle",
-				"text-anchor": "middle",
-				"fill": Common.Themes[Common.currentTheme]["--heading-color"]
+				"x": "0",
+				"y": "0",
+				"width": "100%",
+				"height": "100%",
 			},
-			text
+			`<div style="${styles}">${text}</div>`
 		);
 		return svg;
 	}

@@ -7,32 +7,39 @@ registerNamespace("Common.FileLib", function (ns)
 	 * Prompts the user to select a file, then parses it as plaintext
 	 * @param callback Callback to which the text is passed
 	 * @param typelList List of filetypes and their allowed extensions
+	 * @param fallbackExtension The filetype to use if showOpenFilePicker is unavailable
 	 */
-	function getFileFromUserAsText(callback, typeList)
+	ns.getFileFromUserAsText = function getFileFromUserAsText(callback, typeList, fallbackExtension)
 	{
-		getFileFromUser((file) => { loadFileAsText(file, callback); }, typeList);
+		getFileFromUser((file) => { loadFileAsText(file, callback); }, typeList, fallbackExtension);
 	}
-	ns.getFileFromUserAsText = getFileFromUserAsText;
 
 	/**
 	 * Prompts the user to select a file, then parses it as JSON
 	 * @param callback Callback to which the object is passed
 	 * @param typelList List of filetypes and their allowed extensions
+	 * @param fallbackExtension The filetype to use if showOpenFilePicker is unavailable
 	 */
-	function getFileFromUserAsObject(callback, typeList)
+	ns.getFileFromUserAsObject = function getFileFromUserAsObject(callback, typeList, fallbackExtension)
 	{
-		getFileFromUser((file) => { parseJSONFile(file, callback); }, typeList);
+		getFileFromUser((file) => { parseJSONFile(file, callback); }, typeList, fallbackExtension);
 	}
-	ns.getFileFromUserAsObject = getFileFromUserAsObject;
 
 	/**
 	 * Prompts the user to upload a file
 	 * @param callback Invoked with the user specified File.
 	 * @param typeList List of filetypes and their allowed extensions
 	 *				e.g. [{'application/json': ['.json']}, {'text/plain': ['.txt']}]
+	 * @param fallbackExtension The filetype to use if showOpenFilePicker is unavailable
 	 */
-	function getFileFromUser(callback, typeList)
+	function getFileFromUser(callback, typeList, fallbackExtension)
 	{
+		if (!window.showOpenFilePicker)
+		{
+			getFileFromUserAlt(callback, fallbackExtension);
+			return;
+		}
+
 		var filePickerTypes = [];
 		typeList.forEach((typeObj) =>
 		{
@@ -86,8 +93,14 @@ registerNamespace("Common.FileLib", function (ns)
 	 * @param suggestedName The name automatically populated in the file window
 	 * @param extensions Allowed file extensions
 	 */
-	async function saveJSONFile(object, suggestedName, extensions)
+	ns.saveJSONFile = async function saveJSONFile(object, suggestedName, extensions)
 	{
+		if (!window.showSaveFilePicker)
+		{
+			saveJSONFileAlt(object, suggestedName, extensions);
+			return;
+		}
+
 		var extensions = extensions || ['.json'];
 
 		const fileHandle = await window.showSaveFilePicker({
@@ -101,7 +114,6 @@ registerNamespace("Common.FileLib", function (ns)
 		writable.write(JSON.stringify(object));
 		await writable.close();
 	};
-	ns.saveJSONFile = saveJSONFile;
 
 	ns.loadJSONFileFromDirectory = async function (path)
 	{
@@ -109,4 +121,38 @@ registerNamespace("Common.FileLib", function (ns)
 		if (!response.ok) { return null; }
 		return JSON.parse(await response.text());
 	};
+
+	function saveJSONFileAlt(object, suggestedName, extensions)
+	{
+		let downloadLinkEl = document.getElementById("gwFileDownloadLink");
+		if (!downloadLinkEl)
+		{
+			document.documentElement.insertAdjacentHTML("afterbegin", `<a id="gwFileDownloadLink" download></a>`);
+			downloadLinkEl = document.getElementById("gwFileDownloadLink");
+		}
+
+		const file = new File([JSON.stringify(object)], suggestedName, { type: "application/json" });
+
+		downloadLinkEl.href = window.URL.createObjectURL(file);
+		downloadLinkEl.setAttribute("download", suggestedName + extensions[0]);
+		downloadLinkEl.click();
+	}
+
+	function getFileFromUserAlt(callback, fallbackExtension)
+	{
+		let filePickerEl = document.getElementById("gwFilePickerInput");
+		if (!filePickerEl)
+		{
+			document.documentElement.insertAdjacentHTML("afterbegin", `<input type="file" id="gwFilePickerInput">`);
+			filePickerEl = document.getElementById("gwFilePickerInput");
+		}
+
+		filePickerEl.setAttribute("accept", fallbackExtension);
+
+		filePickerEl.onchange = () =>
+		{
+			callback(filePickerEl.files[0]);
+		};
+		filePickerEl.click();
+	}
 });
