@@ -46,12 +46,15 @@
         </p>
     </main>
     <footer>
-        <section aria-labelled-by="commentsH2"
-                 class="comments-region"
-                 data-spreadsheet="1Iv0lu3fNTiM7L_gLRQAcIrEMZp1zZKQBDNtAxxdpZLw"
-                 data-sheet="Hello-Blog"
-                 data-discord="https://discord.com/api/webhooks/1163274244461953054/CjBhjQZ6-t2vu_z-wrJwjgWgZv_fNbIO2XZTp_ENFmGkIiqg0oJebpCLdGaB8se6ANso">
+        <section class="comments-region" aria-labelledby="commentsH2">
             <h2 id="commentsH2">Comments</h2>
+            <gw-comment-list gSpreadsheetId="1Iv0lu3fNTiM7L_gLRQAcIrEMZp1zZKQBDNtAxxdpZLw"
+                             gSheetId="Hello-Blog"
+                             gwCommentFormId="commentForm">
+            </gw-comment-list>
+            <gw-comment-form id="commentForm"
+                             discordURL="https://discord.com/api/webhooks/1163274244461953054/CjBhjQZ6-t2vu_z-wrJwjgWgZv_fNbIO2XZTp_ENFmGkIiqg0oJebpCLdGaB8se6ANso">
+            </gw-comment-form>
         </section>
     </footer>
 </body>

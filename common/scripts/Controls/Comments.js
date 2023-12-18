@@ -1,349 +1,466 @@
 ﻿/**
  * Comments control
- * TODO refactor into components
  */
-
-registerNamespace("Common.Controls.Comments", function (ns)
+registerNamespace("Common.Controls", function (ns)
 {
-	ns.COMMENT_SECTION_CLASS = "comments-region";
-	ns.COMMENT_SPREADSHEET_ATTRIBUTE = "data-spreadsheet";
-	ns.COMMENT_SHEET_ATTRIBUTE = "data-sheet";
-	ns.FORM_TITLE_ATTRIBUTE = "data-form-title";
-	ns.DEFAULT_FORM_TITLE = "Add a Comment"
-	ns.COMMENT_DISCORD_ATTRIBUTE = "data-discord";
-	ns.NEWEST_FIRST_ATTRIBUTE = "data-new-first";
-	ns.ALREADY_LOADED_ATTRIBUTE = "already-loaded";
-	ns.ERR_COULDNT_LOAD = "Comments could not be loaded";
-	ns.ERR_NOTHING = "Nothing to show";
-
-	ns.buildSections = () =>
+	ns.CommentForm = class CommentForm extends HTMLElement
 	{
-		const commentsSections = document.getElementsByClassName(ns.COMMENT_SECTION_CLASS);
-		for (element of commentsSections)
+		//#region staticProperties
+		static observedAttributes = [];
+		static instanceCount = 0;
+		static instanceMap = {};
+		//#endregion
+
+		//#region instance properties
+		instanceId;
+		isInitialized;
+		titleText;
+		discordURL;
+
+		//#region element properties
+		formEl;
+		titleEl;
+
+		dispNameInpt;
+		emailInpt;
+		websiteInpt;
+		respToInpt;
+		commentInpt;
+
+		resetBtn;
+		submitBtn;
+		//#endregion
+		//#endregion
+
+		constructor()
 		{
-			if (element.getAttribute(ns.ALREADY_LOADED_ATTRIBUTE))
+			super();
+			this.instanceId = CommentForm.instanceCount++;
+			CommentForm.instanceMap[this.instanceId] = this;
+		}
+
+		get idKey()
+		{
+			return `gw-comment-form-${this.instanceId}`;
+		}
+
+		//#region HTMLElement implementation
+		connectedCallback()
+		{
+			if (this.isInitialized) { return; }
+
+			this.titleText = this.getAttribute("titleText") || "Add a Comment";
+			this.discordURL = this.getAttribute("discordURL")
+
+			this.renderContent();
+			this.registerHandlers();
+
+			this.isInitialized = true;
+		}
+		//#endregion
+
+		renderContent()
+		{
+			//Markup
+			this.innerHTML = `
+			<form	id="${this.idKey}-form"
+					aria-labelledby="${this.idKey}-title"
+					aria-describedby="${this.idKey}-banner"
+					class="comment-form"
+					autocomplete="off"
+			>
+				<span id="${this.idKey}-title" class="comment-form-title">${this.titleText}</span>
+				<div class="input-horizontal-flex">
+					<div class="input-vertical">
+						<label for="${this.idKey}-dispName">Display name*</label>
+						<input id="${this.idKey}-dispName" type="text" maxlength="1000" required="true">
+					</div>
+					<div class="input-vertical">
+						<label for="${this.idKey}-email">Email</label>
+						<input id="${this.idKey}-email" type="email">
+					</div>
+					<div class="input-vertical">
+						<label for="${this.idKey}-website">Website</label>
+						<input id="${this.idKey}-website" type="text" maxlength="1000">
+					</div>
+					<div class="input-vertical">
+						<label for="${this.idKey}-respTo">Response to</label>
+						<input id="${this.idKey}-respTo" type="number">
+					</div>
+				</div>
+				<div class="comment-box-container">
+					<div class="input-vertical">
+						<label for="${this.idKey}-comment">Comment*</label>
+						<textarea	id="${this.idKey}-comment"
+									minlength="1"
+									maxlength="1000"
+									required="true"
+									rows="5"
+									cols="33"
+						></textarea>
+					</div>
+				</div>
+				<div id="${this.idKey}-banner" class="inline-banner">
+					<gw-icon iconKey="circle-info" title="info"></gw-icon>
+					<span>Comments are manually approved</span>
+				</div>
+				<div class="form-footer">
+					<input id="${this.idKey}-reset" type="reset" value="Reset">
+					<input id="${this.idKey}-submit" type="submit" value="Submit">
+				</div>
+			</form>
+			`;
+
+			//element properties
+			this.formEl = document.getElementById(`${this.idKey}-form`);
+			this.titleEl = document.getElementById(`${this.idKey}-title`);
+
+			this.dispNameInpt = document.getElementById(`${this.idKey}-dispName`);
+			this.emailInpt = document.getElementById(`${this.idKey}-email`);
+			this.websiteInpt = document.getElementById(`${this.idKey}-website`);
+			this.respToInpt = document.getElementById(`${this.idKey}-respTo`);
+			this.commentInpt = document.getElementById(`${this.idKey}-comment`);
+
+			this.resetBtn = document.getElementById(`${this.idKey}-reset`);
+			this.submitBtn = document.getElementById(`${this.idKey}-submit`);
+
+			//default values
+			this.dispNameInpt.value = localStorage.getItem("comment-name") || "";
+			this.emailInpt.value = localStorage.getItem("comment-email") || "";
+			this.websiteInpt.value = localStorage.getItem("comment-website") || "";
+		}
+
+		//#region Handlers
+		registerHandlers()
+		{
+			this.formEl.onsubmit = this.onSubmit;
+		}
+
+		onSubmit = (event) =>
+		{
+			event.preventDefault();
+
+			const contentObj = {
+				name: this.dispNameInpt.value,
+				email: this.emailInpt.value,
+				website: this.websiteInpt.value,
+				responseTo: this.respToInpt.value,
+				comment: this.commentInpt.value,
+				timestamp: new Date().toUTCString(),
+			};
+			const contentAry = [];
+			for (let contentKey in contentObj)
 			{
-				continue;
+				contentAry.push(`${contentKey}=${contentObj[contentKey]}`);
 			}
 
-			const commentsGSpreadsheetId = element.getAttribute(ns.COMMENT_SPREADSHEET_ATTRIBUTE);
-			const commentsGSheetId = element.getAttribute(ns.COMMENT_SHEET_ATTRIBUTE);
-			const discordUrl = element.getAttribute(ns.COMMENT_DISCORD_ATTRIBUTE);
-			const formTitleText = element.getAttribute(ns.FORM_TITLE_ATTRIBUTE) || ns.DEFAULT_FORM_TITLE;
-			const newestFirst = element.getAttribute(ns.NEWEST_FIRST_ATTRIBUTE) || false;
-
-			if (!commentsGSheetId || !discordUrl)
-			{
-				element.innerHTML = `<span>${ns.ERR_COULDNT_LOAD}</span>`;
-				continue;
-			}
-
-			ns.buildCommentsSection(
-				element,
-				commentsGSpreadsheetId,
-				commentsGSheetId,
-				discordUrl,
-				formTitleText,
-				newestFirst
+			const request = new XMLHttpRequest();
+			request.open(
+				"POST",
+				this.discordURL,
+				true
 			);
+			request.setRequestHeader("Content-Type", "application/json");
 
-			element.setAttribute(ns.ALREADY_LOADED_ATTRIBUTE, true);
-		};
-	};
-
-	ns.buildCommentsSection = async function buildCommentsSection(
-		sectionEl,
-		gSpreadsheetId,
-		gSheetId,
-		discordUrl,
-		formTitleText,
-		newestFirst
-	)
-	{
-		const sheetData = await Common.GSheetsLib.loadSheet(gSpreadsheetId, gSheetId);
-
-		const { formElementIds, formEl } = buildCommentForm(discordUrl, formTitleText);
-
-		const allComments = Common.GSheetsLib.fetchAllRows(sheetData);
-		if (newestFirst)
-		{
-			allComments.reverse();
-			sectionEl.appendChild(formEl);
-		}
-		buildCommentList(sectionEl, allComments, formElementIds);
-
-		if (!newestFirst)
-		{
-			sectionEl.appendChild(formEl);
-		}
-	};
-
-	function buildCommentList(sectionEl, allComments, formIds)
-	{
-		
-		const allCommentsIndex = {};
-		const topLevelCommentIdxs = [];
-		const childCommentIdxs = [];
-		for (let i = 0; i < allComments.length; i++)
-		{
-			const comment = allComments[i];
-			allCommentsIndex[comment.ID] = i;
-			if (!comment.ResponseTo)
+			request.onreadystatechange = function ()
 			{
-				topLevelCommentIdxs.push(i);
-			}
-			else
-			{
-				childCommentIdxs.push(i);
-			}
-		}
-		childCommentIdxs.forEach(childIdx =>
-		{
-			const replyId = allComments[childIdx].ResponseTo;
-			const respondeeComment = allComments[allCommentsIndex[replyId]];
-
-			respondeeComment.childrenIdxs = respondeeComment.childrenIdxs || [];
-			respondeeComment.childrenIdxs.push(childIdx);
-		});
-
-		const commentsContainer = Common.DOMLib.createElement(
-			"div",
-			sectionEl,
-			undefined,
-			["comments-container"]
-		);
-
-		let commentsToBuild = [];
-		topLevelCommentIdxs.forEach(
-			topCommentIdx => commentsToBuild.push(
+				if (request.readyState == 4)
 				{
-					parent: commentsContainer,
-					parentId: null,
-					comment: allComments[topCommentIdx]
+					console.log(request.responseText);
 				}
-			)
-		);
+			};
 
-		while (commentsToBuild.length > 0)
+			request.send(JSON.stringify({ content: contentAry.join("; ") }));
+
+			localStorage.setItem("comment-name", contentObj.name);
+			localStorage.setItem("comment-email", contentObj.email);
+			localStorage.setItem("comment-website", contentObj.website);
+
+			this.formEl.reset();
+			this.dispNameInpt.value = contentObj.name;
+			this.emailInpt.value = contentObj.email;
+			this.websiteInpt.value = contentObj.website;
+
+			alert("Comment submitted!")
+		};
+		//#endregion
+	};
+	customElements.define("gw-comment-form", ns.CommentForm);
+
+	ns.CommentList = class CommentList extends HTMLElement
+	{
+		//#region staticProperties
+		static observedAttributes = [];
+		static instanceCount = 0;
+		static instanceMap = {};
+		//#endregion
+
+		//#region instance properties
+		instanceId;
+		isInitialized;
+		gSpreadsheetId;
+		gSheetId;
+		isNewestFirst;
+		gwCommentFormId;
+
+		//#region element properties
+		//#endregion
+		//#endregion
+
+		constructor()
 		{
-			let { parent, parentId, comment } = commentsToBuild.shift();
-			const commentEl = buildComment(parent, parentId, comment, formIds);
-			(comment.childrenIdxs || []).forEach(
-				childIdx => commentsToBuild.push({
-					parent: commentEl,
-					parentId: comment.ID,
-					comment: allComments[childIdx]
-				})
+			super();
+			this.instanceId = CommentList.instanceCount++;
+			CommentList.instanceMap[this.instanceId] = this;
+		}
+
+		get idKey()
+		{
+			return `gw-comment-list-${this.instanceId}`;
+		}
+
+		//#region HTMLElement implementation
+		connectedCallback()
+		{
+			if (this.isInitialized) { return; }
+
+			this.gSpreadsheetId = this.getAttribute("gSpreadsheetId");
+			this.gSheetId = this.getAttribute("gSheetId");
+			this.isNewestFirst = this.getAttribute("isNewestFirst");
+			this.gwCommentFormId = this.getAttribute("gwCommentFormId");
+
+			this.loadAndRender();
+
+			this.isInitialized = true;
+		}
+		//#endregion
+
+		async loadAndRender()
+		{
+			this.innerHTML = `
+			<div class="inline-banner">
+				<gw-icon iconkey="circle-info" title="info"></gw-icon>
+				<span>Comments loading....</span>
+			</div>
+			`
+			const sheetData = await Common.GSheetsLib.loadSheet(this.gSpreadsheetId, this.gSheetId);
+			this.innerHTML = "";
+
+			const allComments = Common.GSheetsLib.fetchAllRows(sheetData);
+			if (this.isNewestFirst)
+			{
+				allComments.reverse();
+			}
+
+			this.renderContent();
+			this.registerHandlers();
+
+			const allCommentsIndex = {};
+			const topLevelCommentIdxs = [];
+			const childCommentIdxs = [];
+			for (let i = 0; i < allComments.length; i++)
+			{
+				const comment = allComments[i];
+				allCommentsIndex[comment.ID] = i;
+				if (!comment.ResponseTo)
+				{
+					topLevelCommentIdxs.push(i);
+				}
+				else
+				{
+					childCommentIdxs.push(i);
+				}
+			}
+			childCommentIdxs.forEach(childIdx =>
+			{
+				const replyId = allComments[childIdx].ResponseTo;
+				const respondeeComment = allComments[allCommentsIndex[replyId]];
+
+				respondeeComment.childrenIdxs = respondeeComment.childrenIdxs || [];
+				respondeeComment.childrenIdxs.push(childIdx);
+			});
+
+			let commentsToBuild = [];
+			topLevelCommentIdxs.forEach(
+				topCommentIdx => commentsToBuild.push(
+					{
+						parent: this.containerEl,
+						parentId: null,
+						comment: allComments[topCommentIdx]
+					}
+				)
 			);
-		}
-	};
 
-	function buildComment(parent, parentId, commentObj, formIds)
-	{
-		if (!commentObj.ID
-			|| !commentObj["Display Name"]
-			|| !commentObj.Comment
-			|| !commentObj.Timestamp
-		)
-		{
-			return Common.DOMLib.createElement("article", parent, undefined, undefined, ns.ERR_NOTHING);
-		}
-		const articleHeader = Common.DOMLib.createElement("div", undefined, undefined, ["comment-header"]);
-		const articleEl = Common.DOMLib.createElement(
-			"article",
-			parent,
-			{ "aria-labelledby": articleHeader.id },
-			["comment-article"]
-		);
-		articleEl.appendChild(articleHeader);
-
-		const idContainer = Common.DOMLib.createElement("div", articleHeader);
-
-
-		Common.DOMLib.createElement("span",
-			idContainer,
+			while (commentsToBuild.length > 0)
 			{
-				"aria-hidden": true
-			},
-			["comment-id"],
-			`#${commentObj.ID}`
-		);
-		Common.DOMLib.createElement(
-			"span",
-			idContainer,
-			undefined,
-			["sr-only"],
-			parentId
-					? `Comment #${ commentObj.ID } replying to #${ parentId }`
-					: `Top level Comment #${ commentObj.ID }`
-		);
+				let { parent, parentId, comment } = commentsToBuild.shift();
+				if (!comment.Timestamp)
+				{
+					continue;
+				}
+				parent.insertAdjacentHTML("beforeend", `
+				<gw-comment-card	id="${this.idKey}-cmt-${comment.ID}"
+									commentId="${comment.ID || ""}"
+									replyToId="${parentId || ""}"
+									commenterName="${comment["Display Name"] || ""}"
+									isoTimestamp="${comment.Timestamp.toISOString()}"
+									websiteURL="${comment.Website || ""}"
+									commentText="${comment.Comment || ""}"
+									gwCommentFormId="${this.gwCommentFormId || ""}"
+				></gw-comment-card>
+				`);
 
-		Common.DOMLib.createElement(
-			commentObj.Website ? "a" : "span",
-			articleHeader,
-			commentObj.Website ? { href: commentObj.Website, target: "_blank" } : undefined,
-			["commenter-name"],
-			commentObj["Display Name"]
-		);
-
-		const timestampString = commentObj.Timestamp.toLocaleString(
-			undefined,
-			{ dateStyle: "short", timeStyle: "short" }
-		);
-		Common.DOMLib.createElement(
-			"time",
-			articleHeader,
-			{ datetime: commentObj.Timestamp.toISOString() },
-			["comment-timestamp"],
-			timestampString
-		);
-
-		Common.DOMLib.createElement("blockquote", articleEl, undefined, undefined, commentObj.Comment);
-		Common.DOMLib.createElement(
-			"button",
-			articleEl,
-			undefined,
-			undefined,
-			`Reply to #${commentObj.ID}`
-		).onclick = Common.fcd(this, onReplyClicked, [commentObj.ID, formIds.responseTo]);
-
-		return articleEl;
-	};
-
-	function onReplyClicked(commentId, responseToId)
-	{
-		const responseEl = document.getElementById(responseToId);
-		responseEl.value = commentId;
-		responseEl.focus();
-	};
-
-	function buildCommentForm(discordUrl, formTitleText)
-	{
-		const nameEl = Common.DOMLib.createElement(
-			"input",
-			undefined,
-			{ type: "text", maxlength: "1000", "required": true, value: localStorage.getItem("comment-name") || "" }
-		);
-		const emailEl = Common.DOMLib.createElement("input", undefined, {
-			type: "email",
-			value: localStorage.getItem("comment-email") || ""
-		});
-		const websiteEl = Common.DOMLib.createElement("input", undefined, {
-			type: "text",
-			maxlength: "1000",
-			value: localStorage.getItem("comment-website") || ""
-		});
-		const commentEl = Common.DOMLib.createElement(
-			"textarea",
-			undefined,
-			{ minlength: "1", maxlength: "1000", required: true, rows: "5", cols: "33" }
-		);
-		const responseToEl = Common.DOMLib.createElement("input", undefined, { type: "number" });
-
-		const formTitle = Common.DOMLib.createElement(
-			"span",
-			undefined,
-			undefined,
-			["comment-form-title"],
-			formTitleText
-		);
-		const formInfo = Common.DOMLib.createElement("div", undefined, undefined, ["inline-banner"]);
-		formInfo.appendChild(Common.SVGLib.createIcon(Common.SVGLib.Icons["circle-info"], "info"));
-		Common.DOMLib.createElement("span", formInfo, undefined, undefined, "Comments are manually approved");
-
-		const formEl = Common.DOMLib.createElement(
-			"form",
-			undefined,
-			{
-				autocomplete: "off",
-				"aria-labelledby": formTitle.id,
-				"aria-describedby": formInfo.id
+				const commentEl = document.getElementById(`${this.idKey}-cmt-${comment.ID}`);
+				(comment.childrenIdxs || []).forEach(
+					childIdx => commentsToBuild.push({
+						parent: commentEl.articleEl,
+						parentId: comment.ID,
+						comment: allComments[childIdx]
+					})
+				);
 			}
-		);
-		const formElementIds = {
-			form: formEl.id,
-			name: nameEl.id,
-			email: emailEl.id,
-			website: websiteEl.id,
-			comment: commentEl.id,
-			responseTo: responseToEl.id
-		};
-		formEl.onsubmit = Common.fcd(this, ns.addComment, [discordUrl, formElementIds])
-		formEl.appendChild(formTitle);
-
-		const horizFlex = Common.DOMLib.createElement("div", formEl, undefined, ["input-horizontal-flex"]);
-		addFormLabelledItem(horizFlex, "Display name*", nameEl);
-		addFormLabelledItem(horizFlex, "Email", emailEl);
-		addFormLabelledItem(horizFlex, "Website", websiteEl);
-		addFormLabelledItem(horizFlex, "Response to", responseToEl);
-
-		const commentBoxContainer = Common.DOMLib.createElement("div", formEl, undefined, ["comment-box-container"]);
-		addFormLabelledItem(commentBoxContainer, "Comment*", commentEl);
-
-		formEl.appendChild(formInfo);
-
-		const formFooterEl = Common.DOMLib.createElement("div", formEl, undefined, ["form-footer"]);
-		Common.DOMLib.createElement("input", formFooterEl, { type: "reset", value: "Reset" });
-		Common.DOMLib.createElement("input", formFooterEl, { type: "submit", value: "Submit" });
-
-		return { formElementIds, formEl };
-	};
-
-	function addFormLabelledItem(parentEl, labelText, inputEl)
-	{
-		const containerEl = Common.DOMLib.createElement("div", parentEl, undefined, ["input-vertical"]);
-		Common.DOMLib.createElement("label", containerEl, { for: inputEl.id }, undefined, labelText);
-		containerEl.appendChild(inputEl);
-	};
-
-	ns.addComment = function (discordUrl, formElementIds, event)
-	{
-		event.preventDefault();
-
-		const contentObj = {
-			name: document.getElementById(formElementIds.name).value,
-			email: document.getElementById(formElementIds.email).value,
-			website: document.getElementById(formElementIds.website).value,
-			comment: document.getElementById(formElementIds.comment).value,
-			responseTo: document.getElementById(formElementIds.responseTo).value,
-			timestamp: new Date().toUTCString(),
-		};
-		const contentAry = [];
-		for (contentKey in contentObj)
-		{
-			contentAry.push(`${contentKey}=${contentObj[contentKey]}`);
 		}
 
-		const request = new XMLHttpRequest();
-		request.open(
-			"POST",
-			discordUrl,
-			true
-		);
-		request.setRequestHeader("Content-Type", "application/json");
-
-		request.onreadystatechange = function ()
+		renderContent()
 		{
-			if (request.readyState == 4)
-			{
-				console.log(request.responseText);
-			}
-		};
+			//Markup
+			this.innerHTML = `
+			<div id="${this.idKey}-container" class="comments-container"">
+			</div>
+			`;
 
-		request.send(JSON.stringify({ content: contentAry.join("; ") }));
+			//element properties
+			this.containerEl = document.getElementById(`${this.idKey}-container`);
+		}
 
-		localStorage.setItem("comment-name", contentObj.name);
-		localStorage.setItem("comment-email", contentObj.email);
-		localStorage.setItem("comment-website", contentObj.website);
-
-		document.getElementById(formElementIds.form).reset();
-		document.getElementById(formElementIds.name).value = contentObj.name;
-		document.getElementById(formElementIds.email).value = contentObj.email;
-		document.getElementById(formElementIds.website).value = contentObj.website;
-
-
-		alert("Comment submitted!")
+		//#region Handlers
+		registerHandlers()
+		{
+		}
+		//#endregion
 	};
+	customElements.define("gw-comment-list", ns.CommentList);
+
+	ns.CommentCard = class CommentCard extends HTMLElement
+	{
+		//#region staticProperties
+		static observedAttributes = [];
+		static instanceCount = 0;
+		static instanceMap = {};
+		//#endregion
+
+		//#region instance properties
+		instanceId;
+		isInitialized;
+		commentId;
+		replyToId;
+		commenterName;
+		isoTimestamp;
+		datetime;
+		websiteURL;
+		commentText;
+		gwCommentFormId;
+
+		//#region element properties
+		articleEl;
+		replyBtn;
+		//#endregion
+		//#endregion
+
+		constructor()
+		{
+			super();
+			this.instanceId = CommentCard.instanceCount++;
+			CommentCard.instanceMap[this.instanceId] = this;
+		}
+
+		get idKey()
+		{
+			return `gw-comment-card-${this.instanceId}`;
+		}
+
+		//#region HTMLElement implementation
+		connectedCallback()
+		{
+			if (this.isInitialized) { return; }
+
+			this.commentId = this.getAttribute("commentId");
+			this.replyToId = this.getAttribute("replyToId");
+			this.commenterName = this.getAttribute("commenterName");
+			this.isoTimestamp = this.getAttribute("isoTimestamp");
+			this.datetime = new Date(this.isoTimestamp);
+			this.websiteURL = this.getAttribute("websiteURL");
+			this.commentText = this.getAttribute("commentText");
+			this.gwCommentFormId = this.getAttribute("gwCommentFormId");
+
+			this.renderContent();
+			this.registerHandlers();
+
+			this.isInitialized = true;
+		}
+		//#endregion
+
+		renderContent()
+		{
+			const headerText = this.replyToId
+				? `Comment #${this.commentId} replying to #${this.replyToId}`
+				: `Top level comment #${this.commentId}`;
+
+			const displayTimestamp = this.datetime.toLocaleString(
+				undefined,
+				{ dateStyle: "short", timeStyle: "short" }
+			);
+
+			const commenterNameEl = this.websiteURL
+				? `<a href="${this.websiteURL}" target="_blank" class="commenter-name">${this.commenterName}</a>`
+				: `<span class="commenter-name">${this.commenterName}</span>`;
+
+			//Markup
+			this.innerHTML = `
+			<article	id="${this.idKey}-article"
+						aria-labelledby="${this.idKey}-header"
+						class="comment-article"
+			>
+				<div id="${this.idKey}-header" class="comment-header">
+					<div>
+						<span aria-hidden="true" class="comment-id">#${this.commentId}</span>
+						<span class="sr-only">${headerText}</span>
+					</div>
+					${commenterNameEl}
+					<time datetime="${this.isoTimestamp}" class="comment-timestamp">${displayTimestamp}</time>
+				</div>
+				<blockquote>${this.commentText}</blockquote>
+				<button id="${this.idKey}-reply">Reply to #${this.commentId}</button>
+			</article>
+			`;
+
+			//element properties
+			this.articleEl = document.getElementById(`${this.idKey}-article`);
+			this.replyBtn = document.getElementById(`${this.idKey}-reply`);
+		}
+
+		//#region Handlers
+		registerHandlers()
+		{
+			this.replyBtn.onclick = this.onReply;
+		}
+
+		onReply = () =>
+		{
+			const gwCommentForm = document.getElementById(this.gwCommentFormId);
+			const respToInpt = gwCommentForm.respToInpt;
+			if (!respToInpt)
+			{
+				alert("Comment form not found");
+				return;
+			}
+
+			respToInpt.value = this.commentId;
+			respToInpt.focus();
+		};
+		//#endregion
+	};
+	customElements.define("gw-comment-card", ns.CommentCard);
 });
 
-window.addEventListener("load", Common.Controls.Comments.buildSections);
+/*window.addEventListener("load", Common.Controls.Comments.buildSections);*/

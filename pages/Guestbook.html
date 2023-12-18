@@ -53,14 +53,17 @@
 		</header>
 		<div id="BannerBuffer" class="banner-buffer"></div>
 		<main id="mainContent">
-			<section aria-labelled-by="commentsH2"
-					 class="comments-region"
-					 data-spreadsheet="1Iv0lu3fNTiM7L_gLRQAcIrEMZp1zZKQBDNtAxxdpZLw"
-					 data-sheet="Guestbook"
-					 data-form-title="Sign the Guestbook"
-					 data-new-first="true";
-					 data-discord="https://discord.com/api/webhooks/1163279111461027961/7a1-rzCXffhnIvlK3OxhuRXD6SAW0B8UXfHt53yjdcOar6NOBUuKkIbuhKDoXtXtpzWp">
+			<section class="comments-region" aria-labelledby="commentsH2">
 				<h2 id="commentsH2">Guest Comments</h2>
+				<gw-comment-form id="commentForm"
+								 titleText="Sign the Guestbook"
+								 discordURL="https://discord.com/api/webhooks/1163279111461027961/7a1-rzCXffhnIvlK3OxhuRXD6SAW0B8UXfHt53yjdcOar6NOBUuKkIbuhKDoXtXtpzWp">
+				</gw-comment-form>
+				<gw-comment-list gSpreadsheetId="1Iv0lu3fNTiM7L_gLRQAcIrEMZp1zZKQBDNtAxxdpZLw"
+								 gSheetId="Guestbook"
+								 isNewestFirst="true"
+								 gwCommentFormId="commentForm">
+				</gw-comment-list>
 			</section>
 		</main>
 		<div id="dialogRegion" role="region" aria-label="dialogs"></div>

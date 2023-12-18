@@ -155,7 +155,7 @@ registerNamespace("Common", function (ns)
 		parentEl.innerHTML = "";
 
 		var messageEl = document.createElement("p");
-		messageEl.innerText = message.replaceAll("<br />", " ");
+		messageEl.innerHTML = message.replaceAll("<br />", " ");
 
 		parentEl.appendChild(messageEl);
 	}
@@ -250,7 +250,7 @@ registerNamespace("Common", function (ns)
 			"--button-border-color-disabled": "#8D95A8",
 			"--button-text-color": "#000000",
 			"--clickable-border-color": "#615747",
-			"--link-color": "#0645AD",
+			"--link-color": "#551A8B",
 			"--general-border-color": "#000000",
 			"--scrollbar-track-color": "#EDEDED",
 			"--scrollbar-thumb-color": "#E1CAA4",

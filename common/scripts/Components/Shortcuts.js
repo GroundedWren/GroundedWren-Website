@@ -52,7 +52,7 @@ registerNamespace("Common.Components.Shortcuts", function (ns)
 			mapLevel = mapLevel["SHIFT"] = mapLevel["SHIFT"] || {};
 		}
 		var stack = mapLevel[event.key.toUpperCase()];
-		if (stack && stack.length)
+		if (stack && stack.length && stack[0].action)
 		{
 			stack[0].action();
 		}

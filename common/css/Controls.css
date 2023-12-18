@@ -33,7 +33,7 @@
 
 .popup-close {
 	border: 2px;
-	display:flex;
+	display: flex;
 	flex-direction: row;
 	align-items: center;
 	font-size: 2em;
@@ -332,13 +332,8 @@
 	gap: 10px;
 }
 
-.comments-region input {
+.comment-form input {
 	width: 135px;
-}
-
-.comments-region blockquote {
-	max-width: unset !important;
-	overflow-wrap: break-word;
 }
 
 .comments-container {
@@ -369,6 +364,14 @@
 	background-color: var(--content-color);
 	display: flex;
 	flex-direction: column;
+}
+
+.z {
+}
+
+.comment-article blockquote {
+	max-width: unset !important;
+	overflow-wrap: break-word;
 }
 
 .comment-article > button {

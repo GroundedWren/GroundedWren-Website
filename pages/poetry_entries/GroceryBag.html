@@ -105,12 +105,15 @@
 		</div>
 	</div>
 	<footer>
-		<section aria-labelled-by="commentsH2"
-				 class="comments-region"
-				 data-spreadsheet="1Iv0lu3fNTiM7L_gLRQAcIrEMZp1zZKQBDNtAxxdpZLw"
-				 data-sheet="Grocery-Bag"
-				 data-discord="https://discord.com/api/webhooks/1176349213899104346/kIvD4sp4pk7MAK7vq_eQxudt6gzbv8DyNkAY-XWlPcOaGKETVbgB01fEq0vYzajZTuYl">
+		<section class="comments-region" aria-labelledby="commentsH2">
 			<h2 id="commentsH2">Comments</h2>
+			<gw-comment-list gSpreadsheetId="1Iv0lu3fNTiM7L_gLRQAcIrEMZp1zZKQBDNtAxxdpZLw"
+							 gSheetId="Grocery-Bag"
+							 gwCommentFormId="commentForm">
+			</gw-comment-list>
+			<gw-comment-form id="commentForm"
+							 discordURL="https://discord.com/api/webhooks/1176349213899104346/kIvD4sp4pk7MAK7vq_eQxudt6gzbv8DyNkAY-XWlPcOaGKETVbgB01fEq0vYzajZTuYl">
+			</gw-comment-form>
 		</section>
 	</footer>
 </body>
