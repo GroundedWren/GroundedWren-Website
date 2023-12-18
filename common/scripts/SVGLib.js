@@ -340,7 +340,7 @@ registerNamespace("Common.SVGLib", function (ns)
 			{
 				"viewBox": iconDef.viewBox,
 				"class": `${ICON_CLASS} ${classes}`,
-				"aria-role": "img",
+				"role": "img",
 				"style": style || ""
 			},
 			ICON_CITATION
