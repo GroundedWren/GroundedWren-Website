@@ -162,19 +162,30 @@ registerNamespace("Common.Controls.DropdownMenu", function (ns)
 			}
 			this.__lastTabContainerId = tabContainerEl.id;
 
+			newTabEl.addEventListener(
+				"focus",
+				Common.fcd(this, this.onFocused, [this.__tabStripEl.children.length - 2, -1])
+			);
+
 			var children = [];
 			var childKeys = Object.keys(childActionMap);
-			childKeys.forEach(childName =>
+			for (var i = 0; i < childKeys.length; i++)
 			{
-				children.push(this.__getChildTab(
+				const childName = childKeys[i];
+				const childTab = this.__getChildTab(
 					childName,
 					tabText,
 					children.length,
 					childKeys.length,
 					childActionMap,
 					tabContainerEl
-				));
-			});
+				)
+				childTab.addEventListener(
+					"focus",
+					Common.fcd(this, this.onFocused, [this.__tabStripEl.children.length - 2, i])
+				);
+				children.push(childTab);
+			}
 
 			action = action || function ()
 			{
@@ -290,6 +301,17 @@ registerNamespace("Common.Controls.DropdownMenu", function (ns)
 		//#endregion
 
 		//#region focus
+		onFocused(index, childIdx)
+		{
+			if (this.__focusIndex === index
+				&& this.__getTabAtIndex(index).focusedChildIndex === childIdx
+			)
+			{
+				return;
+			}
+			this.__setFocus(index, childIdx);
+		}
+
 		__onKeyDown(event)
 		{
 			var leftRightEnabled = this.__orientation === Common.Controls.DropdownMenu.Orientations.horizontal;
@@ -370,8 +392,8 @@ registerNamespace("Common.Controls.DropdownMenu", function (ns)
 			}
 
 			this.__getTabAtIndex(this.__focusIndex).setUnfocused();
-			this.__getTabAtIndex(index).setFocused(childIndex);
 			this.__focusIndex = index;
+			this.__getTabAtIndex(index).setFocused(childIndex);
 		};
 		//#endregion
 
@@ -422,7 +444,7 @@ registerNamespace("Common.Controls.DropdownMenu", function (ns)
 		// Chevron inside the tab to denote expanded
 		chevronEl;
 		//Index of the focused child
-		__focusedChildIndex;
+		focusedChildIndex;
 		//#endregion
 
 		/**
@@ -442,7 +464,7 @@ registerNamespace("Common.Controls.DropdownMenu", function (ns)
 				if (linkHref) { Common.navTo(linkHref); }
 			};
 			this.children = children || [];
-			this.__focusedChildIndex = -1;
+			this.focusedChildIndex = -1;
 
 			this.tabEl.tabIndex = "-1";
 			if (this.children.length)
@@ -515,7 +537,7 @@ registerNamespace("Common.Controls.DropdownMenu", function (ns)
 		{
 			if (childIndex !== undefined && childIndex >= 0)
 			{
-				this.__focusedChildIndex = childIndex;
+				this.focusedChildIndex = childIndex;
 				var child = this.children[childIndex];
 				child.tabIndex = "0";
 				child.focus();
@@ -534,37 +556,37 @@ registerNamespace("Common.Controls.DropdownMenu", function (ns)
 
 		clearChildFocus()
 		{
-			if (this.__focusedChildIndex >= 0)
+			if (this.focusedChildIndex >= 0)
 			{
-				this.children[this.__focusedChildIndex].tabIndex = "-1";
-				this.__focusedChildIndex = -1;
+				this.children[this.focusedChildIndex].tabIndex = "-1";
+				this.focusedChildIndex = -1;
 				this.tabEl.tabIndex = "0";
 			}
 		}
 
 		focusUp()
 		{
-			if (this.__focusedChildIndex === -1)
+			if (this.focusedChildIndex === -1)
 			{
 				this.doToggle(false);
 				return;
 			}
-			if (this.__focusedChildIndex === 0)
+			if (this.focusedChildIndex === 0)
 			{
-				this.children[this.__focusedChildIndex].tabIndex = "-1";
-				this.__focusedChildIndex = -1;
+				this.children[this.focusedChildIndex].tabIndex = "-1";
+				this.focusedChildIndex = -1;
 				this.setFocused();
 				return;
 			}
-			this.children[this.__focusedChildIndex].tabIndex = "-1";
-			var child = this.children[--this.__focusedChildIndex];
+			this.children[this.focusedChildIndex].tabIndex = "-1";
+			var child = this.children[--this.focusedChildIndex];
 			child.tabIndex = "0";
 			child.focus();
 		}
 		focusDown()
 		{
-			if (!this.children.length || this.__focusedChildIndex === this.children.length - 1) { return; }
-			if (this.__focusedChildIndex === -1)
+			if (!this.children.length || this.focusedChildIndex === this.children.length - 1) { return; }
+			if (this.focusedChildIndex === -1)
 			{
 				Common.axAlertAssertive("pressed");
 				this.doToggle(true);
@@ -572,9 +594,9 @@ registerNamespace("Common.Controls.DropdownMenu", function (ns)
 			}
 			else
 			{
-				this.children[this.__focusedChildIndex].tabIndex = "-1";
+				this.children[this.focusedChildIndex].tabIndex = "-1";
 			}
-			var child = this.children[++this.__focusedChildIndex];
+			var child = this.children[++this.focusedChildIndex];
 			child.tabIndex = "0";
 			child.focus();
 		}

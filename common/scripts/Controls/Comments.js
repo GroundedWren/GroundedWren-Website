@@ -462,5 +462,3 @@ registerNamespace("Common.Controls", function (ns)
 	};
 	customElements.define("gw-comment-card", ns.CommentCard);
 });
-
-/*window.addEventListener("load", Common.Controls.Comments.buildSections);*/
