@@ -30,7 +30,7 @@ registerNamespace("Common.SVGLib", function (ns)
 	 */
 	function createChildElement(parent, elementType, attributes, innerHTML)
 	{
-		var childEl = createElement(elementType, attributes, innerHTML)
+		var childEl = createElement(elementType, attributes, innerHTML);
 		parent.appendChild(childEl);
 		return childEl;
 	}
@@ -48,7 +48,7 @@ registerNamespace("Common.SVGLib", function (ns)
 		Object.keys(attributes || {}).forEach((attr) => el.setAttributeNS(null, attr, attributes[attr]));
 		el.innerHTML = innerHTML || null;
 		return el;
-	};
+	}
 	ns.createElement = createElement;
 
 	/**

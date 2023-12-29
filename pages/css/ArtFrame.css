@@ -58,6 +58,6 @@ main.frame {
 	min-width: 100%;
 }
 
-#commentContainer {
+#noteContainer {
 	flex-shrink: 1
 }

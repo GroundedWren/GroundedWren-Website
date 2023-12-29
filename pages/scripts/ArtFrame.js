@@ -66,7 +66,7 @@ registerNamespace("Pages.ArtFrame", function (ns)
 			artFrame.buildMetaTable(document.getElementById("metaContainer"));
 		}
 
-		const descParagraph = Common.DOMLib.createElement("p", document.getElementById("commentContainer"));
+		const descParagraph = Common.DOMLib.createElement("p", document.getElementById("noteContainer"));
 		descParagraph.innerHTML = artFrame.description;
 	};
 });

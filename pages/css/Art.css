@@ -25,6 +25,11 @@ h1, h2, h3, h4, h5, h6 {
 	margin-top: 10px;
 }
 
+#stickyPane {
+	position: sticky;
+	top: calc(1.25em + 5px); /*Header*/
+}
+
 #gallery {
 	display: flex;
 	flex-direction: row;
@@ -110,6 +115,8 @@ iframe {
 }
 
 #leftPaneCollapseBtn {
+	position: sticky;
+	top: calc(1.25em + 5px + 185px); /*Header + margin-top*/
 	margin-top: 181px;
 	height: 75px;
 	width: 0px;

@@ -12,6 +12,55 @@ registerNamespace("Pages.Music.Data", function (ns)
 			Description: "In-progress collection of things I'm recording this year.",
 			Songs: [
 				{
+					title: "Why Hate The Winter",
+					src: "../music/Untitled 2023/Why_Hate_The_Winter.mp3",
+					type: "audio/mp3",
+					performers: ["Vera"],
+					composers: ["Iron & Wine"],
+					instruments: ["Acoustic Guitar", "Vocals"],
+					recorded: new Date(2023, 11, 2),
+					description: "A cover I recorded once winter truly set upon us where I live.<br />",
+					lyrics: "All the water's run out, you sit there wet<br />"
+						+ "There's a high speed chase on the TV set<br />"
+						+ "And I think to myself 'why hate the winter?'<br /><br />"
+						+ "The fireplace glows on the snow outside<br />"
+						+ "You've a towel around your head and words in your eyes<br />"
+						+ "They're the words I would say if only I was braver<br /><br />"
+						+ "And it's much too cold to run like a dog all alone<br />"
+						+ "So come to my side and snuggle with me in the blanket<br />"
+						+ "But dont' offer your love 'cause I'm not the one who should take it<br /><br />"
+						+ "I'll batton the doors and the windows too<br />"
+						+ "The radio man says it's negative two<br />"
+						+ "Then he puts on a song that just wouldn't fit in the summer<br /><br />"
+						+ "Your body it sways so fragile and bare<br />"
+						+ "You say 'won't you come here and play in my hair?'<br />"
+						+ "But I still like a tree, taken by a shiver<br /><br />"
+						+ "And it's much too cold to run like a dog all alone<br />"
+						+ "So come to my side and snuggle with me in the blanket<br />"
+						+ "Don't offer your love 'cause I'm not the one who should take it<br /><br />"
+						+ "The floorboards are quiet and cold to the feet<br />"
+						+ "I'll cry like a child when you've gone to sleep<br />"
+						+ "'Cause I'd give you my soul if it wasn't that of a sinner<br /><br />"
+						+ "I'm no virgin Mary, no angel so clean<br />"
+						+ "There's no tellin' all of the damage I've seen<br />"
+						+ "My skin makes for me a warm, screaming reminder<br /><br />"
+						+ "And it's much too cold to run like a dog all alone<br />"
+						+ "So come to my side and snuggle with me in the blanket<br />"
+						+ "But don't offer your love 'cause I'm not a man who can take it<br />"
+				},
+				{
+					title: "Summer's Smoke",
+					src: "../music/Untitled 2023/Summers_Smoke.mp3",
+					type: "audio/mp3",
+					performers: ["Vera"],
+					composers: ["Vera"],
+					instruments: ["Acoustic Guitar"],
+					recorded: new Date(2023, 5, 17),
+					description: "Wildfires up north have made for apocalyptic ambience this summer.<br />"
+						+ "This is the first music I've written in a long while.",
+					lyrics: "(Instrumental)",
+				},
+				{
 					title: "The Air Near My Fingers",
 					src: "../music/Untitled 2023/The_Air_Near_My_Fingers.mp3",
 					type: "audio/mp3",
@@ -32,18 +81,6 @@ registerNamespace("Pages.Music.Data", function (ns)
 						+ "But I can't seem to think of another kind of love<br />That I could ever get from anyone but her<br />"
 						+ "<br />"
 						+ "I get nervous when she comes around<br />",
-				},
-				{
-					title: "Summer's Smoke",
-					src: "../music/Untitled 2023/Summers_Smoke.mp3",
-					type: "audio/mp3",
-					performers: ["Vera"],
-					composers: ["Vera"],
-					instruments: ["Acoustic Guitar"],
-					recorded: new Date(2023, 5, 17),
-					description: "Wildfires up north have made for apocalyptic ambience this summer.<br />"
-						+ "This is the first music I've written in a long while.",
-					lyrics: "(Instrumental)",
 				},
 				{
 					title: "Ladybug's Duet",

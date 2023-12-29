@@ -294,8 +294,7 @@ registerNamespace("Pages.Art", function (ns)
 			{
 				/**
 				 * Yeah I know.
-				 * The individual checkboxes should be auto-generated from the data, at which point we can
-				 * just maintain a map of them to do this.
+				 * TODO
 				 */
 				setAllChildCheckboxes(child, checked);
 			}
@@ -377,6 +376,66 @@ registerNamespace("Pages.Art", function (ns)
 		ns.sortBy(ns.__lastSort);
 		window.history.replaceState(null, "", "Art.html");
 	};
+
+	ns.buildFilters = function ()
+	{
+		buildArtistFilters();
+		buildCharFilters();
+	};
+
+	function buildArtistFilters()
+	{
+		const charTogglesEl = document.getElementById("charToggles");
+
+		let categoryNum = 0;
+		Object.keys(ns.Data.CharacterCategories).forEach(categoryName =>
+		{
+			categoryNum++;
+
+			charTogglesEl.insertAdjacentHTML("beforeend", `
+			<h4 id="charCategory${categoryNum}">${categoryName}</h4>
+			<fieldset
+				id="charFieldset${categoryNum}"
+				class="transparent-fieldset input-flex"
+				aria-labelledby="charCategory${categoryNum}"
+			></fieldset>
+			`);
+
+			const fieldsetEl = document.getElementById(`charFieldset${categoryNum}`);
+			ns.Data.CharacterCategories[categoryName].forEach(characterName =>
+			{
+				fieldsetEl.insertAdjacentHTML("beforeend", `
+				<div class="input-flex-line">
+					<label for="${characterName}charCB">${characterName}</label>
+					<input id="${characterName}charCB"
+							type="checkbox"
+							onchange="Pages.Art.setCharFilter('${characterName}', arguments[0].target.checked)"
+					/>
+				</div>
+				`);
+				ns.UrlParams.charFilt[characterName] = `${characterName}charCB`;
+			});
+		});
+	}
+
+	function buildCharFilters()
+	{
+		const artistTogglesEl = document.getElementById("artistToggles");
+
+		Object.keys(ns.Data.Artists).forEach(artistName =>
+		{
+			artistTogglesEl.insertAdjacentHTML("afterbegin", `
+			<div class="input-flex-line">
+				<label for="${artistName}artistCB">${artistName}</label>
+				<input id="${artistName}artistCB"
+						type="checkbox"
+						onchange="Pages.Art.togArtistFilter('${artistName}', arguments[0].target.checked)"
+				/>
+			</div>
+			`);
+			ns.UrlParams.artistFilt[artistName] = `${artistName}artistCB`;
+		});
+	}
 	//#endregion
 
 	//#region Frames
@@ -563,6 +622,7 @@ registerNamespace("Pages.Art", function (ns)
 	};
 
 	//#endregion
+
 	//#region Zero State
 	ns.ZeroStateControl = null;
 	function enterZeroState()
@@ -586,27 +646,8 @@ registerNamespace("Pages.Art", function (ns)
 			"date": "DateRad",
 		},
 		"charFilt": {
-			"Vera": "VeraCB",
-			"Eryn": "ErynCB",
-			"Freya": "FreyaCB",
-			"Sindri": "SindriCB",
-			"Ghodukk": "GhodukkCB",
-			"Jack": "JackCB",
-			"Lightsong": "LightsongCB",
-			"Percy": "PercyCB",
-			"Serin": "SerinCB",
-			"Nocturna": "NocturnaCB",
 		},
 		"artistFilt": {
-			"Bastien Aufrere": "BACB",
-			"Berenice Borggrefe": "BerBorCB",
-			"Chelsea-Rhi": "ChelseaRhiCB",
-			"Despey": "DespeyCB",
-			"JesterDK": "JestCB",
-			"LiliVic Creations": "LiliVicCB",
-			"Raiyk": "RaiykCB",
-			"ShrimpLoverCat": "SLCCB",
-			"Vera": "VeraArtCB",
 		},
 		"showAll": {
 			"char": "CharFilters",
@@ -709,6 +750,24 @@ registerNamespace("Pages.Art", function (ns)
 		Common.Controls.Popups.showModal("Art Gallery",`Link Copied!<br>${link}`);
 	}
 	//#endregion
+
+	ns.onLeftPaneChevToggle = function onLeftPaneChevToggle()
+	{
+		const charTogChev = document.getElementById("chevViewCharacters");
+		const artTogChev = document.getElementById("chevViewArtists");
+		const stickyPane = document.getElementById("stickyPane");
+
+		if (artTogChev.getAttribute("aria-pressed") == "false"
+			&& charTogChev.getAttribute("aria-pressed") == "false"
+		)
+		{
+			stickyPane.style = "";
+		}
+		else
+		{
+			stickyPane.style = "position: relative; top: 0px";
+		}
+	};
 });
 
 /**
@@ -763,6 +822,9 @@ window.onload = () =>
 	Pages.Art.enterZeroState();
 
 	Pages.Art.ArtFrames.sort((a, b) => b.date - a.date);
+
+	Pages.Art.buildFilters();
+
 	Pages.Art.interperetUrlParams(Common.getUrlParams());
 
 	const visTogButton = document.getElementById("leftPaneCollapseBtn");
@@ -805,6 +867,8 @@ window.onload = () =>
 			{
 				charTogChev.classList.add("bottom");
 			}
+
+			Pages.Art.onLeftPaneChevToggle();
 			charTogChev.focus();
 		}
 	);
@@ -825,6 +889,8 @@ window.onload = () =>
 			{
 				artTogChev.classList.add("bottom");
 			}
+
+			Pages.Art.onLeftPaneChevToggle();
 			artTogChev.focus();
 		}
 	);

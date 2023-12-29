@@ -68,6 +68,37 @@
 		"LiliVic Creations": {
 			link: "https://liliviccreationsart.carrd.co/",
 		},
+		"Shafer Brown": {
+			link: "https://www.shaferbrown.com/"
+		},
+		"NeverNeverLand": {
+			link: "https://ko-fi.com/antaresnnl"
+		},
+	};
+	//#endregion
+
+	//#region Characters
+	ns.CharacterCategories = {
+		"Vera's OCs": [
+			"Vera",
+			"Eryn",
+			"Freya",
+			"Sindri",
+			"Titus",
+		],
+		"Other's OCs": [
+			"Ghodukk",
+			"Luric",
+			"Jack",
+			"Lightsong",
+			"Percy",
+			"Serin",
+		],
+		"Others": [
+			"Nocturna",
+			"Shadow",
+			"Echo",
+		],
 	};
 	//#endregion
 
@@ -364,6 +395,24 @@
 			description: "Wonderful depiction of Vera in a low moment by Lilian<br /><br />"
 				+ "If she'd never done any of this, maybe he'd still be alive...",
 			altText: "A bust of a sad-looking Tiefling woman.",
+			isExplicit: false,
+		},
+		"Tense Encounter": {
+			src: "../img/Shadow and Echo Battle Screen - Schafer Brown - 2022-10-16.jpg",
+			characters: ["Shadow", "Echo"],
+			artists: ["Shafer Brown"],
+			date: new Date(2023, 9, 16),
+			description: "An illustration based on the true story of my partner's cats having a tense stand-off with a dog on their turf.",
+			altText: "Video game style battle screen of two black cats with daggers and swords facing off with a death dog in a desert.",
+			isExplicit: false,
+		},
+		"Titus Reference": {
+			src: "../img/Titus Ref - NeverNeverLand - 2023-11-27.png",
+			characters: ["Titus"],
+			artists: ["NeverNeverLand"],
+			date: new Date(2023, 10, 27),
+			description: "A Turian adopt of Titus, a character in Sindri's story.",
+			altText: "A white and pinkish male Turian with red eyes posing plainly.",
 			isExplicit: false,
 		},
 	};
