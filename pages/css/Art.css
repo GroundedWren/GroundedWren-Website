@@ -25,15 +25,12 @@ h1, h2, h3, h4, h5, h6 {
 	margin-top: 10px;
 }
 
-#stickyPane {
-	position: sticky;
-	top: calc(1.25em + 5px); /*Header*/
-}
-
 #gallery {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
+	overflow-y: auto;
+	height: calc(100vh - 1.25em - 5px); /*Header*/
 }
 
 .artframe {
@@ -115,8 +112,6 @@ iframe {
 }
 
 #leftPaneCollapseBtn {
-	position: sticky;
-	top: calc(1.25em + 5px + 185px); /*Header + margin-top*/
 	margin-top: 181px;
 	height: 75px;
 	width: 0px;
@@ -126,6 +121,8 @@ iframe {
 }
 
 #leftPane {
+	overflow-y: auto;
+	height: calc(100vh - 1.25em - 5px); /*Header*/
 	flex-shrink: 0;
 	flex-grow: 0;
 	flex-basis: 210px;

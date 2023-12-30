@@ -56,89 +56,87 @@
 		<main id="mainContent">
 			<div class="content">
 				<div id="leftPane" role="form" aria-label="Sort and Filter">
-					<div id="stickyPane">
-						<button id="getLink" onclick="Pages.Art.onLinkRequested()">Get Link</button>
-						<div class="card">
-							<div id="sortHeading" class="card-header" role="heading" aria-level="2">Sort</div>
-							<fieldset class="transparent-fieldset input-flex" aria-labelledby="sortHeading">
-								<div class="input-flex-line">
-									<label for="CharaRad">Character</label>
-									<input id="CharaRad" type="radio" name="SortRadGroup" onChange="Pages.Art.sortBy('Character')" checked />
-								</div>
-								<div class="input-flex-line">
-									<label for="ArtistRad">Artist</label>
-									<input id="ArtistRad" type="radio" name="SortRadGroup" onChange="Pages.Art.sortBy('Artist')" />
-								</div>
-								<div class="input-flex-line">
-									<label for="DateRad">Most Recent</label>
-									<input id="DateRad" type="radio" name="SortRadGroup" onChange="Pages.Art.sortBy('Date')" />
-								</div>
-							</fieldset>
-						</div>
-						<div class="card">
-							<div id="filterHeading" class="card-header" role="heading" aria-level="2">Filter</div>
-							<fieldset class="transparent-fieldset" aria-labelledby="filterHeading">
+					<button id="getLink" onclick="Pages.Art.onLinkRequested()">Get Link</button>
+					<div class="card">
+						<div id="sortHeading" class="card-header" role="heading" aria-level="2">Sort</div>
+						<fieldset class="transparent-fieldset input-flex" aria-labelledby="sortHeading">
+							<div class="input-flex-line">
+								<label for="CharaRad">Character</label>
+								<input id="CharaRad" type="radio" name="SortRadGroup" onChange="Pages.Art.sortBy('Character')" checked />
+							</div>
+							<div class="input-flex-line">
+								<label for="ArtistRad">Artist</label>
+								<input id="ArtistRad" type="radio" name="SortRadGroup" onChange="Pages.Art.sortBy('Artist')" />
+							</div>
+							<div class="input-flex-line">
+								<label for="DateRad">Most Recent</label>
+								<input id="DateRad" type="radio" name="SortRadGroup" onChange="Pages.Art.sortBy('Date')" />
+							</div>
+						</fieldset>
+					</div>
+					<div class="card">
+						<div id="filterHeading" class="card-header" role="heading" aria-level="2">Filter</div>
+						<fieldset class="transparent-fieldset" aria-labelledby="filterHeading">
+							<div class="input-line">
+								<button id="showAllBtn"
+										onclick="Pages.Art.showAll()"
+										aria-pressed="false">
+									Show All
+								</button>
+								<button id="hideAllBtn"
+										onclick="Pages.Art.hideAll()"
+										aria-pressed="true">
+									Hide All
+								</button>
+							</div>
+							<h3 id="charactersHeading">Characters</h3>
+							<fieldset id="CharFilters"
+									  class="transparent-fieldset"
+									  aria-labelledby="charactersHeading">
 								<div class="input-line">
-									<button id="showAllBtn"
-											onclick="Pages.Art.showAll()"
+									<button id="showAllCharsBtn"
+											onclick="Pages.Art.showAllChars()"
 											aria-pressed="false">
 										Show All
 									</button>
-									<button id="hideAllBtn"
-											onclick="Pages.Art.hideAll()"
+									<button id="hideAllCharsBtn"
+											onclick="Pages.Art.hideAllChars()"
 											aria-pressed="true">
 										Hide All
 									</button>
+									<span id="chevViewCharacters"
+										  class="chevron filt-chev bottom"
+										  aria-label="View character toggles"
+										  tabindex="0"></span>
 								</div>
-								<h3 id="charactersHeading">Characters</h3>
-								<fieldset id="CharFilters"
-										  class="transparent-fieldset"
-										  aria-labelledby="charactersHeading">
-									<div class="input-line">
-										<button id="showAllCharsBtn"
-												onclick="Pages.Art.showAllChars()"
-												aria-pressed="false">
-											Show All
-										</button>
-										<button id="hideAllCharsBtn"
-												onclick="Pages.Art.hideAllChars()"
-												aria-pressed="true">
-											Hide All
-										</button>
-										<span id="chevViewCharacters"
-											  class="chevron filt-chev bottom"
-											  aria-label="View character toggles"
-											  tabindex="0"></span>
-									</div>
-									<div id="charToggles" style="display: none">
-										<!-- Character Chexkboxes -->
-									</div>
-								</fieldset>
-
-								<h3 id="artistsHeading">Artists</h3>
-								<fieldset id="ArtistFilters" class="transparent-fieldset" aria-labelledby="artistsHeading">
-									<div class="input-line">
-										<button id="showAllArtistsBtn"
-												onclick="Pages.Art.showAllArtists()"
-												aria-pressed="false">
-											Show All
-										</button>
-										<button id="hideAllArtistsBtn"
-												onclick="Pages.Art.hideAllArtists()"
-												aria-pressed="true">
-											Hide All
-										</button>
-										<span id="chevViewArtists"
-											  class="chevron filt-chev bottom"
-											  aria-label="View artist toggles"
-											  tabindex="0"></span>
-									</div>
-									<div id="artistToggles" class="input-flex" style="display: none;">
-										<!-- Artist Checkboxes -->
-									</div>
-								</fieldset>
+								<div id="charToggles" style="display: none">
+									<!-- Character Chexkboxes -->
+								</div>
 							</fieldset>
-						</div>
+
+							<h3 id="artistsHeading">Artists</h3>
+							<fieldset id="ArtistFilters" class="transparent-fieldset" aria-labelledby="artistsHeading">
+								<div class="input-line">
+									<button id="showAllArtistsBtn"
+											onclick="Pages.Art.showAllArtists()"
+											aria-pressed="false">
+										Show All
+									</button>
+									<button id="hideAllArtistsBtn"
+											onclick="Pages.Art.hideAllArtists()"
+											aria-pressed="true">
+										Hide All
+									</button>
+									<span id="chevViewArtists"
+										  class="chevron filt-chev bottom"
+										  aria-label="View artist toggles"
+										  tabindex="0"></span>
+								</div>
+								<div id="artistToggles" class="input-flex" style="display: none;">
+									<!-- Artist Checkboxes -->
+								</div>
+							</fieldset>
+						</fieldset>
 					</div>
 				</div>
 

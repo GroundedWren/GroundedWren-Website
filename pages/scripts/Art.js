@@ -753,20 +753,20 @@ registerNamespace("Pages.Art", function (ns)
 
 	ns.onLeftPaneChevToggle = function onLeftPaneChevToggle()
 	{
-		const charTogChev = document.getElementById("chevViewCharacters");
-		const artTogChev = document.getElementById("chevViewArtists");
-		const stickyPane = document.getElementById("stickyPane");
+		//const charTogChev = document.getElementById("chevViewCharacters");
+		//const artTogChev = document.getElementById("chevViewArtists");
+		//const stickyPane = document.getElementById("stickyPane");
 
-		if (artTogChev.getAttribute("aria-pressed") == "false"
-			&& charTogChev.getAttribute("aria-pressed") == "false"
-		)
-		{
-			stickyPane.style = "";
-		}
-		else
-		{
-			stickyPane.style = "position: relative; top: 0px";
-		}
+		//if (artTogChev.getAttribute("aria-pressed") == "false"
+		//	&& charTogChev.getAttribute("aria-pressed") == "false"
+		//)
+		//{
+		//	stickyPane.style = "";
+		//}
+		//else
+		//{
+		//	stickyPane.style = "position: relative; top: 0px";
+		//}
 	};
 });
 
