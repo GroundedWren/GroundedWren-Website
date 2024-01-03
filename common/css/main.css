@@ -424,6 +424,7 @@ form > h1, form > h2, form > h3, form > h4, form > h5, form > h6 {
 input[type="text"], input[type="password"], input[type="number"], input[type="email"], input[type="submit"] {
 	background-color: var(--input-background-color);
 	color: var(--input-text-color);
+	-moz-appearance: textfield;
 }
 
 .z { /* Fix auto-indent */
@@ -805,6 +806,7 @@ button[role="link"], .button-like[role="link"] {
 .sr-only {
 	position: absolute;
 	left: -99999999px;
+	top: 0px;
 }
 
 .ans-toggler {
