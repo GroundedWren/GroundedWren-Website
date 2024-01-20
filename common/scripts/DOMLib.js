@@ -142,7 +142,6 @@ registerNamespace("Common.DOMLib", function (ns)
 		{
 			return;
 		}
-		event.preventDefault();
 		if (event.keyCode === Common.KeyCodes.Enter)
 		{
 			__buttonPress(action, event);
