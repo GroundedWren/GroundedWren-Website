@@ -94,7 +94,10 @@ registerNamespace("Common.DOMLib", function (ns)
 		}
 	};
 	ns.setAttributes = setAttributes;
-
+	
+	/**
+	* This isn't recommended
+	*/
 	function setAsButton(el, action)
 	{
 		if (!el.getAttribute("role"))
@@ -113,7 +116,10 @@ registerNamespace("Common.DOMLib", function (ns)
 		el.addEventListener("click", (event) => { __buttonPress(action, event); });
 	};
 	ns.setAsButton = setAsButton;
-
+	
+	/**
+	* This isn't recommended
+	*/
 	function setAsLink(el, href)
 	{
 		el.setAttribute("role", "link");
