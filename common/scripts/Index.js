@@ -13,12 +13,12 @@ window.onload = () =>
 	var subdomain = window.location.host.split('.')[0].toUpperCase();
 	switch (subdomain)
 	{
-		case "TEXTADVENTURE":
-			window.location.href = "./TextAdventure/Home.html";
-			return;
-		case "GROUNDEDWREN":
-			window.location.href = "./pages/Home.html";
-			return;
+		//case "TEXTADVENTURE":
+		//	window.location.href = "./TextAdventure/Home.html";
+		//	return;
+		//case "GROUNDEDWREN":
+		//	window.location.href = "./pages/Home.html";
+		//	return;
 		default:
 			window.location.href = "./pages/Home.html";
 	}
