@@ -564,7 +564,7 @@ thead {
 	font-weight: bold;
 }
 
-tr > th {
+tbody th {
 	text-align: left;
 }
 
