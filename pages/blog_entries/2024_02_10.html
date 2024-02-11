@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="theme-ocean">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Eighth blog entry by Vera Konigin">
+	<title>Labelling Strings</title>
+	<link rel="stylesheet" href="../../common/css/main.css" type="text/css" />
+	<link rel="stylesheet" href="../../common/css/Controls.css" type="text/css" />
+	<link rel="stylesheet" href=".././css/WritingEntry.css" type="text/css" />
+
+	<script src="../../common/scripts/main.js"></script>
+	<script src="../../common/scripts/GSheetsLib.js"></script>
+	<script src="../../common/scripts/DOMLib.js"></script>
+	<script src="../../common/scripts/SVGLib.js"></script>
+	<script src="../../common/scripts/Common.js"></script>
+	<script src="../../common/scripts/Controls/Comments.js"></script>
+	<script src="../scripts/WritingEntry.js"></script>
+</head>
+<body>
+	<header>
+		<div class="title-container">
+			<h1>Labelling Strings</h1>
+			<p class="subtitle">By Vera @ <a href="https://www.GroundedWren.com" target="_blank">GroundedWren.com</a> <time datetime="2024-02-11T00:59:40.192Z">2/10/24</time></p>
+		</div>
+	</header>
+	<nav class="card">
+		<h2>Contents</h2>
+		<ol>
+			<li><a href="#PreviousComments">Previous Comments</a></li>
+			<li><a href="#ItKeepsComingUp">It Keeps Coming Up</a></li>
+			<li><a href="#ANewIdea">Previous Comments</a></li>
+		</ol>
+	</nav>
+	<main>
+		<h2 id="PreviousComments">Previous Comments</h2>
+		<p>
+			In <a href="./2023_09_18.html#Strings" target="_blank">Organizing Information Accessibly</a>, I spoke briefly about labelling strings. Semantically associating a <span class="element-name">&lt;label&gt;</span> with text via the <span class="property-name">for</span> property is sadly not included in any HTML specification, so my advice basically amounted to relying on DOM proximity or using a <span class="element-name">&lt;table&gt;</span>.
+		</p>
+		<p>
+			I didn't find that particularly satisfactory at the time, but after digging around others' blog posts and trawling forms for a while I was not able to find a better answer. Oddly, this issue is rather hard to find discussion about, and I found myself second-guessing my need for doing this in the first place. Surely I'm not the only one who wants to display read-only key/value string pairings, right?
+		</p>
+		<p>
+			Regardless, without an answer I was forced to write what I had so I could move on with my life. Life, as it turned out, wasn't done bugging me about this though.
+		</p>
+		<h2 id="ItKeepsComingUp">It Keeps Coming Up</h2>
+		<p>
+			Just a few days ago, my officemate at work spun his chair around to pick my brain about something he was working on. I'd been listening to the faint sound of JAWS through his headphones over the preceding hour, so I was looking forward to discussing some accessibility consideration until I realized he was running into the very thing which had left me stumped way back in September: he needed to label some strings.
+		</p>
+		<p>
+			After inspecting his control for a minute, I had to give him the disappointing news that basic text <span class="element-name">&lt;span&gt;</span>s couldn't really be given an accessible name separate from their content, and that <span class="element-name">&lt;label&gt;</span>s woudln't have effect. This was especially troubling since the label was meant to apply to multiple fragments of text which were only visually associated with it; they were nowhere close in the DOM, and couldn't be converted to a <span class="element-name">&lt;table&gt;</span> or brought closer without a complete redesign.
+		</p>
+		<p>
+			So, I got to watch the disgust on his face as I explained that his best option was probably to add a <a href="https://webaim.org/techniques/css/invisiblecontent/">clear label</a> to each text fragment so that the association could be established. It meant duplicating the contents of the label across all of the fragments intended to be labelled, but fortunately this label is meant to be static and <em>probably</em> won't fall out of date with the clear labels.
+		</p>
+		<p>
+			I shared his disgust, and its taste stuck with me into that evening through to the next morning. I woke up an hour before I needed to actually rise and sleepily dug through the internet on my phone once again looking for a better solution as my cat purred on my lap. It was about the time I was futilely trying to come up with reasons why disabled fields might not be <a href="https://medium.com/@izzmo/anti-pattern-using-disabled-or-read-only-for-form-input-e2c24c669f5b" target="_blank">that bad</a> for this after all when I came across an odd passage on the ARIA Authoring Practices Guide:
+		</p>
+		<div class="centertext-container">
+			<blockquote class="card" cite="https://www.w3.org/WAI/ARIA/apg/practices/names-and-descriptions/#naming_with_aria-labelledby">
+				<q>In some cases, the most effective name for an element is its own content combined with the content of another element. Because <span class="property-name">aria-labelledby</span> has highest precedence in name calculation, in those situations, it is possible to use <span class="property-name">aria-labelledby</span> to reference both the element itself and the other element.</q>
+				<footer><cite><a href="https://www.w3.org/WAI/ARIA/apg/practices/names-and-descriptions/#naming_with_aria-labelledby">w3.org</a></cite></footer>
+			</blockquote>
+		</div>
+		<p>
+			And that's when a lightbulb went off.
+		</p>
+		<h2 id="ANewIdea">A New Idea</h2>
+		<p>
+			The cited example includes an anchor element which is labelled both by itself and a heading, which, if the link were just text, would be exactly what we would want: a single text element which has both a value and an accessible name. Unfortunately, being able to apply an accessible name to the anchor element is contingent on it having a role, in this case "link", so the <span class="property-name">href</span> is required.
+		</p>
+		<p>
+			While testing this though, I noticed that if the <span class="property-name">href</span>-less anchor element also had no content, it could be given an accessible name via <span class="property-name">aria-labelledby</span>. This is really convenient, since an <span class="element-name">&lt;a&gt;</span> won't visually display without inner text, so it's automatically hidden. As such, it can be easily snuck inside a <span class="element-name">&lt;span&gt;</span> with a text value to reference a <span class="element-name">&lt;label&gt;</span> elsewhere on the page without duplicating its content!
+		</p>
+		<div class="center-content-container">
+			<figure class="card">
+				<figcaption>Markup</figcaption>
+				<pre>&lt;label id=&quot;txtLbl&quot; aria-hidden=&quot;true&quot;&gt;Label:&lt;/label&gt;<br />&lt;span&gt;<br />&#9;&lt;a aria-labelledby=&quot;txtLbl&quot;&gt;&lt;/a&gt;<br />&#9;Text<br />&lt;/span&gt;<br /></pre>
+			</figure>
+			<figure class="card">
+				<figcaption>Demonstration</figcaption>
+				<label id="txtLbl" aria-hidden="true">Label:</label>
+				<span>
+					<a aria-labelledby="txtLbl"></a>
+					Text
+				</span>
+			</figure>
+		</div>
+		<p>
+			This <span class="element-name">&lt;a&gt;</span> could just as easily be a <span class="element-name">&lt;span&gt;</span>, but I kind of like using an anchor element here since we're "linking" to another element on the page. I went ahead and set <span class="property-name">aria-hidden</span> on the <span class="element-name">&lt;label&gt;</span> since it's now effectively duplicitive with its referrer inside the labelled text.
+		</p>
+		<p>I've also deliberately kept the <span class="element-name">&lt;a&gt;</span> and the <span class="element-name">#text</span> within the same <span class="element-name">&lt;span&gt;</span> so that they are read together in a single virtual cursor stop.</p>
+		<p>
+			In the brief few days I've known about this technique it's worked well for me, and I plan to use it <em>a lot</em> in my workplace where this sort of thing comes up regularly. I hope that this is a more satisfying answer to this problem and that you find it useful; I am eager for feedback, positive or critical!
+		</p>
+	</main>
+	<footer>
+		<section class="comments-region" aria-labelledby="commentsH2">
+			<h2 id="commentsH2">Comments</h2>
+			<gw-comment-list gSpreadsheetId="1Iv0lu3fNTiM7L_gLRQAcIrEMZp1zZKQBDNtAxxdpZLw"
+							 gSheetId="Labelling-Strings"
+							 gwCommentFormId="commentForm">
+			</gw-comment-list>
+			<gw-comment-form id="commentForm"
+							 discordURL="https://discord.com/api/webhooks/1206042930888843264/naNiCJhe_hwmoExV-r3tbBoy1Onh6at2Z6xNYrXGLlpYs-argnP1wWYRlenRwsOBRah7">
+			</gw-comment-form>
+		</section>
+	</footer>
+</body>
+</html>
