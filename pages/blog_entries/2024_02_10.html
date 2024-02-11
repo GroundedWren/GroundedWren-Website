@@ -21,7 +21,10 @@
 	<header>
 		<div class="title-container">
 			<h1>Labelling Strings</h1>
-			<p class="subtitle">By Vera @ <a href="https://www.GroundedWren.com" target="_blank">GroundedWren.com</a> <time datetime="2024-02-11T00:59:40.192Z">2/10/24</time></p>
+			<p class="subtitle">
+				By Vera @ <a href="https://www.GroundedWren.com" target="_blank">GroundedWren.com</a> <time datetime="2024-02-11T00:59:40.192Z">2/10/24</time>
+			</p>
+			<p class="subtitle">Updated <time datetime="2024-02-11T18:50:39.690Z" >2/11/24</time></p>
 		</div>
 	</header>
 	<nav class="card">
@@ -29,7 +32,14 @@
 		<ol>
 			<li><a href="#PreviousComments">Previous Comments</a></li>
 			<li><a href="#ItKeepsComingUp">It Keeps Coming Up</a></li>
-			<li><a href="#ANewIdea">A New Idea</a></li>
+			<li>
+				<a href="#ANewIdea">A New Idea</a>
+				<ol>
+					<li><a href="TheProblem">The Problem</a></li>
+					<li><a href="Alternatives">Alternatives</a></li>
+				</ol>
+			</li>
+			<li><a href="#Conclusion">Conclusion</a></li>
 		</ol>
 	</nav>
 	<main>
@@ -90,8 +100,26 @@
 			This <span class="element-name">&lt;a&gt;</span> could just as easily be a <span class="element-name">&lt;span&gt;</span>, but I kind of like using an anchor element here since we're "linking" to another element on the page. I went ahead and set <span class="property-name">aria-hidden</span> on the <span class="element-name">&lt;label&gt;</span> since it's now effectively duplicitive with its referrer inside the labelled text.
 		</p>
 		<p>I've also deliberately kept the <span class="element-name">&lt;a&gt;</span> and the <span class="element-name">#text</span> within the same <span class="element-name">&lt;span&gt;</span> so that they are read together in a single virtual cursor stop.</p>
+		<h3 id="TheProblem"> The Problem</h3>
 		<p>
-			In the brief few days I've known about this technique it's worked well for me, and I plan to use it <em>a lot</em> in my workplace where this sort of thing comes up regularly. I hope that this is a more satisfying answer to this problem and that you find it useful; I am eager for feedback, positive or critical!
+			After I posted this originally, <a href="https://c.im/@cwilcox808" target="_blank">Curtis Wilcox</a> was kind enough to <a href="https://c.im/@cwilcox808/111913369111855009" target="_blank">point out</a> that this approach does not work very well using VoiceOver, where the <span class="property-name">href</span>-less anchor element was not only a separate virtual cursor stop from the <span class="element-name">#text</span>, it also had an inferred role of <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/group_role" target="_blank">group</a>.
+		</p>
+		<p>
+			That isn't great, but the behavior is worse using both Firefox and TalkBack, where the anchor element is entirely ignored, which entirely defeats what I'm trying to do here. So, unfortunately, I'm left to yearm for official support of adding an accessible name to elements with a <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/generic_role" target="_blank">generic</a> role.
+		</p>
+		<h3 id="Alternatives">Alternatives</h3>
+		<p>
+			The scenario for which this came up recently, where the <span class="element-name">#label</span> fragments and their associated <span class="element-name">&lt;label&gt;</span> are separated in the DOM, is usually avoidable, fortunately. The clear label approach I mentioned should work well enough in this exception case.
+		</p>
+		<p>
+			Curtis also brought up the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dl" target="_blank">description list</a>, which is a good tool for semantically associating text elements with each other in some cases. Regrettably, its user-agent support is a little lacking in my opinion; description lists tend to be read very similarly to unordered lists, which is especially poorly suited to a single key/value pair. I did play around with adding the <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/definition_role" target="_blank">definition</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/term_role" target="_blank">term</a> roles to <span class="element-name">&lt;a&gt;</span>s, <span class="element-name">&lt;span&gt;</span>s, and <span class="element-name">&lt;label&gt;</span>s in various permutations, but the results were no better than my original idea.
+		</p>
+		<p>
+			Another thing Curtis mentioned was using <span class="element-name">::before</span> and <span class="element-name">::after</span> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements" target="_blank">pseudo-elements</a> to augment user-agent interperitation of semantic HTML, as outlined in a <a href="https://www.tpgi.com/short-note-on-making-your-mark-more-accessible/" target="_blank">blog post by Steve Faulkner</a>. It sadly doesn't really help us here more than clear labels, but it's a cool enough concept that I wanted to include it anyway.
+		</p>
+		<h2 id="Conclusion">Conclusion</h2>
+		<p>
+			So, after much ado, we're sadly back to where we started. I suppose the lessons here are to keep in mind these sorts of limitations early on when designing a project so that you don't end up painted into a corner of remedial solutions, to only fall back on ARIA <a href="https://www.w3.org/TR/using-aria/#rule1" target="_blank">if you really have to</a>, and to always verify (don't even trust but verify) cross-browser and user-agent support of accessibilty features.
 		</p>
 	</main>
 	<footer>
