@@ -4,16 +4,36 @@
 registerNamespace("Pages.Music.Data", function (ns)
 {
 	ns.Collections = {
-		"Untitled 2023": {
+		"Brave Old World": {
+			ContributingArtists: ["Vera"],
+			DateString: "2024",
+			Art: "../img/Music/Brave_Old_World_Art.png",
+			ArtAlt: "Composite photographs of urban areas and street posters edited to have bright transluscent colors.",
+			Description: "In-progress collection for 2024.",
+			Songs: [
+				{
+					title: "After Hours",
+					src: "../music/Brave Old World/After_Hours.mp3",
+					type: "audio/mp3",
+					performers: ["Vera"],
+					composers: ["The Velvet Underground"],
+					instruments: ["Acoustic Guitar", "Vocals"],
+					recorded: new Date(2024, 1, 11),
+					description: "Gotta love jaunty tunes about suicidal ideation!",
+					lyrics: "<a href='https://genius.com/The-velvet-underground-after-hours-lyrics' target='_blank'>genius.com</a>",
+				}
+			]
+		},
+		"I'll Miss The Winter": {
 			ContributingArtists: ["Vera"],
 			DateString: "2023",
-			Art: "../img/Music/Untitled2.png",
+			Art: "../img/Music/Ill_Miss_The_Winter.png",
 			ArtAlt: "A low-fidelity image of a snowy urban street.",
-			Description: "In-progress collection of things I'm recording this year.",
+			Description: "A small collection of things recorded in 2023. Includes some of my first original music in a long time.",
 			Songs: [
 				{
 					title: "Why Hate The Winter",
-					src: "../music/Untitled 2023/Why_Hate_The_Winter.mp3",
+					src: "../music/Ill Miss The Winter/Why_Hate_The_Winter.mp3",
 					type: "audio/mp3",
 					performers: ["Vera"],
 					composers: ["Iron & Wine"],
@@ -50,7 +70,7 @@ registerNamespace("Pages.Music.Data", function (ns)
 				},
 				{
 					title: "Summer's Smoke",
-					src: "../music/Untitled 2023/Summers_Smoke.mp3",
+					src: "../music/Ill Miss The Winter/Summers_Smoke.mp3",
 					type: "audio/mp3",
 					performers: ["Vera"],
 					composers: ["Vera"],
@@ -62,7 +82,7 @@ registerNamespace("Pages.Music.Data", function (ns)
 				},
 				{
 					title: "The Air Near My Fingers",
-					src: "../music/Untitled 2023/The_Air_Near_My_Fingers.mp3",
+					src: "../music/Ill Miss The Winter/The_Air_Near_My_Fingers.mp3",
 					type: "audio/mp3",
 					performers: ["Vera"],
 					composers: ["The White Stripes"],
@@ -84,7 +104,7 @@ registerNamespace("Pages.Music.Data", function (ns)
 				},
 				{
 					title: "Ladybug's Duet",
-					src: "../music/Untitled 2023/Ladybugs_Duet.mp3",
+					src: "../music/Ill Miss The Winter/Ladybugs_Duet.mp3",
 					type: "audio/mp3",
 					performers: ["Vera"],
 					composers: ["Vera"],
@@ -96,7 +116,7 @@ registerNamespace("Pages.Music.Data", function (ns)
 				},
 				{
 					title: "Random Encounter",
-					src: "../music/Untitled 2023/Random_Encounter.mp3",
+					src: "../music/Ill Miss The Winter/Random_Encounter.mp3",
 					type: "audio/mp3",
 					performers: ["Vera"],
 					composers: ["Vera", "Blackmore's Night"],
