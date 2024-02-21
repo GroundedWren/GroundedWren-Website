@@ -523,7 +523,10 @@ registerNamespace("Common", function (ns)
 
 	ns.isNullUndefinedOrEmpty = function isNullUndefinedOrEmpty(subject)
 	{
-		return ns.isNullOrUndefined(subject) || subject === "";
+		return ns.isNullOrUndefined(subject)
+			|| subject === ""
+			|| subject === []
+			|| (typeof subject === "object" && Object.keys(subject).length === 0);
 	}
 	ns.isNullOrUndefined = function isNullOrUndefined(subject)
 	{
