@@ -1,0 +1,175 @@
+﻿h1, h2, h3, h4, h5, h6 {
+	margin-top: 0;
+	margin-bottom: 10px;
+}
+
+main {
+	margin-left: 20px;
+	margin-right: 20px;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: stretch;
+	min-height: calc(100% - 1.25em - 5px); /*Header*/
+	flex-wrap: wrap;
+	align-content: flex-start;
+}
+
+#leftPane {
+	flex-basis: 250px;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: stretch;
+	flex-grow: 2;
+}
+
+#collectionsPane {
+	flex-basis: 480px;
+	flex-grow: 0;
+	padding: 10px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: stretch;
+}
+
+#collectionImg {
+	min-width: 340px;
+	width: 480px;
+	height: auto;
+}
+
+#collectionImgWrapper {
+	max-width: 480px;
+	max-height: 480px;
+}
+
+#collectionsInfoPane {
+	padding: 10px;
+}
+
+#collectionsCard {
+	min-width: 150px;
+	flex-basis: 300px;
+	margin-right: 20px;
+}
+
+#trackList {
+	flex-grow: 1;
+	flex-basis: 360px;
+	overflow: auto;
+	margin-left: 10px;
+	background-color: var(--content-color);
+}
+
+audio {
+	margin-bottom: 10px;
+}
+
+.songTitleContainer {
+	padding-right: 5px;
+	cursor: pointer;
+	display: grid;
+	grid-template-columns: 1fr 0fr;
+	column-gap: 5px;
+}
+
+.z {
+}
+
+.songTitleContainer h3 {
+	display: inline-block;
+}
+
+.songTitleContainer span {
+	width: 10px;
+}
+
+.hidden {
+	display: none;
+}
+
+td, th {
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	padding-top: 5px;
+	width: auto;
+}
+
+table {
+	border: none;
+	margin-bottom: 20px;
+}
+
+th {
+	width: 175px;
+}
+
+#trackControls {
+	display: flex;
+	flex-basis: calc(88px * 3);
+	margin-right: 10px;
+	margin-left: 10px;
+}
+
+.z {
+}
+
+#trackControls > button {
+	flex-grow: 1;
+	min-height: 44px;
+}
+
+#trackListHeader {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+#trackListHeader > h2 {
+	flex-grow: 1;
+}
+
+audio {
+	width: 100%;
+}
+
+.song-info-btn {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.song-info-icon {
+	padding-bottom: 7px;
+	padding-right: 3px;
+}
+
+@media (max-width: 1000px) {
+	main {
+		margin-left: 5px;
+		margin-right: 5px;
+	}
+}
+
+@media (max-width: 720px) {
+	#collectionsPane {
+		flex-wrap: wrap;
+	}
+}
+
+/* Common.MINI_THRESHOLD */
+@media (max-width: 600px) {
+	#collectionImg {
+		min-width: auto;
+		width: 100%;
+	}
+}
+
+@media (max-width: 400px) {
+	.row-label {
+		width: 100px;
+	}
+}
