@@ -16,10 +16,12 @@ registerNamespace("Common.Controls", function (ns)
 		isInitialized;
 		titleText;
 		discordURL;
+		encodedPath;
 
 		//#region element properties
 		formEl;
 		titleEl;
+		bannerEl;
 
 		dispNameInpt;
 		emailInpt;
@@ -50,7 +52,8 @@ registerNamespace("Common.Controls", function (ns)
 			if (this.isInitialized) { return; }
 
 			this.titleText = this.getAttribute("titleText") || "Add a Comment";
-			this.discordURL = this.getAttribute("discordURL")
+			this.discordURL = this.getAttribute("discordURL");
+			this.encodedPath = this.getAttribute("encodedPath");
 
 			this.renderContent();
 			this.registerHandlers();
@@ -100,7 +103,7 @@ registerNamespace("Common.Controls", function (ns)
 						></textarea>
 					</div>
 				</div>
-				<div id="${this.idKey}-banner" class="inline-banner">
+				<div id="${this.idKey}-banner" class="inline-banner" aria-live="polite">
 					<gw-icon iconKey="circle-info" title="info"></gw-icon>
 					<span>Comments are manually approved</span>
 				</div>
@@ -114,6 +117,7 @@ registerNamespace("Common.Controls", function (ns)
 			//element properties
 			this.formEl = document.getElementById(`${this.idKey}-form`);
 			this.titleEl = document.getElementById(`${this.idKey}-title`);
+			this.bannerEl = document.getElementById(`${this.idKey}-banner`);
 
 			this.dispNameInpt = document.getElementById(`${this.idKey}-dispName`);
 			this.emailInpt = document.getElementById(`${this.idKey}-email`);
@@ -157,16 +161,30 @@ registerNamespace("Common.Controls", function (ns)
 			const request = new XMLHttpRequest();
 			request.open(
 				"POST",
-				this.discordURL,
+				this.discordURL || atob("aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3Mv" + this.encodedPath),
 				true
 			);
 			request.setRequestHeader("Content-Type", "application/json");
 
-			request.onreadystatechange = function ()
+			request.onreadystatechange = () =>
 			{
-				if (request.readyState == 4)
+				if (request.readyState !== XMLHttpRequest.DONE) { return; }
+				if (Math.floor(request.status / 100) !== 2)
 				{
 					console.log(request.responseText);
+					this.bannerEl.classList.add("warning");
+					this.bannerEl.innerHTML =
+						`
+						<gw-icon iconKey="triangle-exclamation" title="warning"></gw-icon>
+						<span>
+							That didn't work.
+							<a href="mailto:vera@groundedwren.com?subject=Comment on ${document.title}&body=${contentAry.join("; ")}">Click here to send as an email instead</a>.
+						</span>
+						`;
+				}
+				else
+				{
+					alert("Comment submitted!");
 				}
 			};
 
@@ -180,8 +198,6 @@ registerNamespace("Common.Controls", function (ns)
 			this.dispNameInpt.value = contentObj.name;
 			this.emailInpt.value = contentObj.email;
 			this.websiteInpt.value = contentObj.website;
-
-			alert("Comment submitted!")
 		};
 		//#endregion
 	};
@@ -242,7 +258,7 @@ registerNamespace("Common.Controls", function (ns)
 				<gw-icon iconkey="circle-info" title="info"></gw-icon>
 				<span>Comments loading....</span>
 			</div>
-			`
+			`;
 			const sheetData = await Common.GSheetsLib.loadSheet(this.gSpreadsheetId, this.gSheetId);
 			this.innerHTML = "";
 
