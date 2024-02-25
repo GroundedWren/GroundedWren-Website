@@ -257,6 +257,78 @@ a {
 span[role=heading], .heading-text {
 	color: var(--heading-color);
 }
+
+nav.breadcrumb {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: 5px;
+	padding: 10px;
+}
+
+nav.breadcrumb ol {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+nav.breadcrumb li {
+	display: inline-block;
+	margin-bottom: 4px;
+}
+
+nav.breadcrumb li + li::before {
+	display: inline-block;
+	margin: 0 0.25em;
+	transform: rotate(15deg);
+	border-right: 0.1em solid var(--border-color);
+	height: 0.8em;
+	content: "";
+}
+
+nav.breadcrumb [aria-current="page"] {
+	font-weight: 700;
+	text-decoration: none;
+}
+
+nav.breadcrumb a {
+	display: inline-block;
+	padding: 4px;
+	border-radius: 20px;
+	background-color: var(--link-background-color);
+}
+
+.three-header {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	align-items: center;
+	text-align: center;
+	gap: 10px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid var(--border-color);
+	padding: 5px;
+}
+
+@media (max-width: 450px) {
+	.three-header {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+}
+
+.three-header-left, .three-header-right {
+	width: fit-content;
+}
+
+.three-header-left {
+	justify-self: flex-start;
+}
+
+.three-header-right {
+	justify-self: flex-end;
+}
 /*#endregion */
 
 /*#region Form */
