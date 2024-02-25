@@ -588,8 +588,11 @@ registerNamespace("Common.Controls.DropdownMenu", function (ns)
 			if (!this.children.length || this.focusedChildIndex === this.children.length - 1) { return; }
 			if (this.focusedChildIndex === -1)
 			{
-				Common.axAlertAssertive("pressed");
-				this.doToggle(true);
+				if (!this.areChildrenShown())
+				{
+					Common.axAlertAssertive("pressed");
+					this.doToggle(true); 
+				}
 				this.tabEl.tabIndex = "-1";
 			}
 			else
