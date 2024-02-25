@@ -168,6 +168,7 @@ window.onload = () =>
 				childActionMap: {
 					"Winnings Calc": { linkHref: "./WinningsCalc.html" },
 					"GTAS": { linkHref: "https://textadventure.groundedwren.com" },
+					"Neocities": { linkHref: "https://groundedwren.neocities.org/" },
 					"DnD Workbook": { linkHref: "./DnDWorkbook.html" },
 				}
 			},
@@ -176,7 +177,6 @@ window.onload = () =>
 					"About Me": { linkHref: "./AboutMe.html" },
 					"Guestbook": { linkHref: "./Guestbook.html" },
 					"Accessibility": { action: () => { Pages.Home.displayA11yStatement(); } },
-					"Neocities": { linkHref: "https://groundedwren.neocities.org/"},
 					"Demo page": { linkHref: "./Example.html" },
 					"Shortcuts": { action: () => { Common.Components.displayShortcuts(); } },
 				}
