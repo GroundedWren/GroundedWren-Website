@@ -160,7 +160,16 @@
 				["popup-close"],
 				"&times;"
 			);
-			Common.DOMLib.setAsButton(dialogClose, () => { this.destroy(); });
+			Common.DOMLib.setAsButton(dialogClose, (event) =>
+			{
+				event.preventDefault();
+				if (this.__anchorEl)
+				{
+					this.__anchorEl.focus();
+				}
+
+				this.destroy();
+			});
 
 			this.__dialogContent = Common.DOMLib.createElement(
 				"div",
