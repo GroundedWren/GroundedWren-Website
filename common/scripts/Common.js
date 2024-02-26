@@ -532,4 +532,23 @@ registerNamespace("Common", function (ns)
 	{
 		return subject === null || subject === undefined;
 	}
+
+	/**
+	 * Locates an object by namespace address
+	 * @param address period delimited address
+	 * @returns Whatever's at the address
+	 */
+	ns.nsLookup = function nsLookup(address)
+	{
+		var ancestors = address.split(".");
+
+		var ns = window;
+		for (var i = 0; i < ancestors.length; i++)
+		{
+			ns[ancestors[i]] = ns[ancestors[i]] || {};
+			ns = ns[ancestors[i]];
+		}
+
+		return ns;
+	};
 });

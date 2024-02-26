@@ -934,4 +934,8 @@ button[role="link"], .button-like[role="link"] {
 .nb-word + .nb-word {
 	margin-left: 0.3em;
 }
+
+.hidden {
+	display: none !important;
+}
 /*#endregion*/

@@ -16,6 +16,14 @@ registerNamespace("Common.DOMLib", function (ns)
 
 	/**
 	 * Shortcut to create an element
+	 * @param args arguments object - tag, parent, attrs, classAry, innerHTML, loc
+	 */
+	ns.crEl = function crEl(args)
+	{
+		return ns.createElement(args.tag, args.parent, args.attrs, args.classAry, args.innerHTML, args.loc);
+	}
+	/**
+	 * Shortcut to create an element
 	 * @param type Element tag name
 	 * @param parent Element under which this will be inserted
 	 * @param attrs Attributes object
@@ -32,6 +40,9 @@ registerNamespace("Common.DOMLib", function (ns)
 		{
 			attrs.id = incElId();
 		}
+		Object.keys(attrs).filter(
+			attrKey => attrs[attrKey] === undefined
+		).forEach(undKey => delete attrs[undKey]);
 		ns.setAttributes(el, attrs);
 
 		(classAry || []).forEach((cls) =>
