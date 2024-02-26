@@ -407,3 +407,29 @@
 	font-weight: bold;
 }
 /*#endregion*/
+
+/*#region Bound Element*/
+.btn-header {
+	width: 100%;
+	display: flex;
+}
+
+.btn-header.compact {
+	width: auto;
+	gap: 5px;
+	align-items: baseline;
+}
+
+.btn-header.card-header {
+	width: auto;
+}
+
+.btn-header > :not(button) {
+	flex-grow: 1;
+	margin: 0;
+}
+
+.btn-header.compact > * {
+	flex-grow: 0;
+}
+/*#endregion*/
