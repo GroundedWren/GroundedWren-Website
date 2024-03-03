@@ -167,8 +167,9 @@ window.onload = () =>
 			"Coding": {
 				childActionMap: {
 					"Winnings Calc": { linkHref: "./WinningsCalc.html" },
-					"GTAS": { linkHref: "https://textadventure.groundedwren.com" },
 					"Neocities": { linkHref: "https://groundedwren.neocities.org/" },
+					"GTAS": { linkHref: "https://textadventure.groundedwren.com" },
+					"Lyrics": { linkHref: "https://lyrics.groundedwren.com" },
 					"DnD Workbook": { linkHref: "./DnDWorkbook.html" },
 				}
 			},
