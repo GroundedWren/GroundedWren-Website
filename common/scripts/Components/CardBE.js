@@ -15,6 +15,8 @@ registerNamespace("Common.Components", function (ns)
 		constructor()
 		{
 			super();
+
+			this.lastValidName = "";
 		}
 
 		connectedCallback()
@@ -29,7 +31,11 @@ registerNamespace("Common.Components", function (ns)
 			return `
 			<div class="card-header btn-header">
 				<${hTag} id="${this.idKey}-hName">${this.data.Name}</${hTag}>
-				<button id=${this.idKey}-ocBtn aria-pressed="false" class="icon-button">${this.#getIcon(true)}</button>
+				<button id="${this.openCloseBtnId}"
+					aria-pressed="false"
+					aria-describedby="${this.idKey}-hName"
+					class="icon-button"
+				>${this.#getIcon(true)}</button>
 			</div>
 			`;
 		}
