@@ -148,7 +148,7 @@ registerNamespace("Common.Controls.PageControl", function (ns)
 		 * Tab pages
 		 * @param tabId id of the tab to activate
 		 */
-		setActiveTab(tabId, event)
+		setActiveTab(tabId, event, noFocus)
 		{
 			if (this.__tabDict[tabId] == null) { return; }
 
@@ -167,7 +167,7 @@ registerNamespace("Common.Controls.PageControl", function (ns)
 
 			this.__exitZeroState();
 
-			this.__tabDict[tabId].activate();
+			this.__tabDict[tabId].activate(noFocus);
 			this.activeTabId = tabId;
 
 			if (event) { event.preventDefault(); }
@@ -232,14 +232,17 @@ registerNamespace("Common.Controls.PageControl", function (ns)
 		/**
 		 * Make the tab's page active
 		 */
-		activate()
+		activate(noFocus)
 		{
 			if (this.onActivate) { this.onActivate(); }
 			this.tabEl.classList.add("selected");
 			this.__pageEl.classList.add("selected");
 			this.tabEl.setAttribute("aria-pressed", "true");
 
-			this.__pageEl.focus();
+			if (!noFocus)
+			{
+				this.__pageEl.focus();
+			}
 		};
 
 		/**
