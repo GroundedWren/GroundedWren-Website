@@ -53,6 +53,7 @@ registerNamespace("Common.Controls.PageControl", function (ns)
 		__tabDict;
 		//zero state control element
 		__zeroStateControl;
+		__gutterEl;
 
 		//element id of the currently selected tab
 		activeTabId;
@@ -62,10 +63,11 @@ registerNamespace("Common.Controls.PageControl", function (ns)
 		/**
 		 * Create a page control from existing DOM elements
 		 */
-		constructor(pageControl, tabStrip, pageContainer, tabPageMap, zeroStateMessage, name)
+		constructor(pageControl, tabStrip, pageContainer, tabPageMap, zeroStateMessage, name, gutterEl)
 		{
 			this.controlEl = pageControl;
 			this.__tabStripEl = tabStrip;
+			this.__gutterEl = gutterEl;
 			this.__pageContainerEl = pageContainer;
 
 			this.controlEl.setAttribute("role", "region");
@@ -170,6 +172,23 @@ registerNamespace("Common.Controls.PageControl", function (ns)
 
 			if (event) { event.preventDefault(); }
 		};
+
+		disableTabs()
+		{
+			Object.values(this.__tabDict).forEach(tabObj =>
+			{
+				tabObj.tabEl.disabled = true;
+			});
+			this.__gutterEl?.classList.add("disabled");
+		}
+		enableTabs()
+		{
+			Object.values(this.__tabDict).forEach(tabObj =>
+			{
+				tabObj.tabEl.disabled = false;
+			});
+			this.__gutterEl?.classList.remove("disabled");
+		}
 
 		__exitZeroState()
 		{

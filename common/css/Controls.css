@@ -189,6 +189,10 @@
 	border-left: 1px solid var(--clickable-border-color);
 }
 
+.tab-gutter.disabled {
+	border-left-color: var(--button-border-color-disabled);
+}
+
 .vertical-tabs > .tab-gutter {
 	border-left: none;
 	border-top: 1px solid var(--clickable-border-color);
