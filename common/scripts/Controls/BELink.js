@@ -43,7 +43,7 @@ registerNamespace("Common.Controls", function (ns)
 		{
 			//Markup
 			this.innerHTML = `
-			<button id=${this.idKey} class="icon-button"></button>
+			<button id="${this.idKey}" class="icon-button"></button>
 			`;
 
 			//element properties
