@@ -55,6 +55,7 @@ registerNamespace("Common.Components.Shortcuts", function (ns)
 		if (stack && stack.length && stack[0].action)
 		{
 			stack[0].action();
+			event.preventDefault();
 		}
 	});
 
