@@ -99,7 +99,7 @@ registerNamespace("Common.Controls.PageControl", function (ns)
 		addNewTab(tabText, page, onActivate)
 		{
 			const newTabEl = Common.DOMLib.createElement(
-				"div",
+				"button",
 				undefined,
 				undefined,
 				["tab-strip-tab", "button-like"],
