@@ -157,9 +157,6 @@ body {
 	background: var(--scrollbar-thumb-color);
 }
 
-.z { /* Fix auto-indent */
-}
-
 ::-webkit-scrollbar-thumb:hover {
 	background: var(--accent-color-hover);
 }
@@ -203,9 +200,6 @@ a {
 	justify-content: space-between;
 }
 
-.z {
-}
-
 .banner-center button {
 	flex-grow: 1;
 	margin-left: 2px;
@@ -219,9 +213,6 @@ a {
 	text-align: center;
 	padding-left: 10px;
 	padding-right: 10px;
-}
-
-.z {
 }
 
 .banner-left > * {
@@ -339,9 +330,6 @@ form {
 	background-color: var(--content-color);
 }
 
-.z {
-}
-
 form.transparent-form {
 	border: none;
 	padding: 0px;
@@ -370,9 +358,6 @@ form > h1, form > h2, form > h3, form > h4, form > h5, form > h6 {
 	justify-content: flex-end;
 }
 
-.z {
-}
-
 .form-footer > * {
 	margin: 3px;
 	min-height: 30px;
@@ -390,9 +375,6 @@ form > h1, form > h2, form > h3, form > h4, form > h5, form > h6 {
 
 .input-line {
 	margin-bottom: 5px;
-}
-
-.z {
 }
 
 .input-flex {
@@ -420,15 +402,9 @@ form > h1, form > h2, form > h3, form > h4, form > h5, form > h6 {
 	row-gap: 4px;
 }
 
-.z {
-}
-
 .input-horizontal-flex > .input-flex-line, .input-horizontal-flex > .input-vertical-line {
 	width: auto;
 	margin-right: 10px;
-}
-
-.z {
 }
 
 .input-vertical {
@@ -449,9 +425,6 @@ form > h1, form > h2, form > h3, form > h4, form > h5, form > h6 {
 	margin-bottom: 6px;
 }
 
-.z {
-}
-
 .input-vertical-line > label, .input-vertical > label {
 	padding-bottom: 2px;
 }
@@ -465,14 +438,8 @@ form > h1, form > h2, form > h3, form > h4, form > h5, form > h6 {
 	align-items: baseline;
 }
 
-.z {
-}
-
 .input-grid > .full-line {
 	grid-column: 1 / -1;
-}
-
-.z {
 }
 
 .input-line label, .input-flex-line label, .input-vertical-line label, .input-grid label {
@@ -481,9 +448,6 @@ form > h1, form > h2, form > h3, form > h4, form > h5, form > h6 {
 
 .input-line > button, .input-flex-line > button, .input-vertical-line > button, .input-grid button {
 	height: 30px;
-}
-
-.z { /* Fix auto-indent */
 }
 
 .input-flex-line > label {
@@ -496,9 +460,6 @@ input[type="text"], input[type="password"], input[type="number"], input[type="em
 	background-color: var(--input-background-color);
 	color: var(--input-text-color);
 	-moz-appearance: textfield;
-}
-
-.z { /* Fix auto-indent */
 }
 
 input[type="text"]:invalid, input[type="password"]:invalid, input[type="number"]:invalid, input[type="email"]:invalid, textarea:invalid {
@@ -521,9 +482,6 @@ input[type="checkbox"] {
 	border-radius: 3px;
 }
 
-.z { /* Fix auto-indent */
-}
-
 input[type="checkbox"]:checked {
 	background-color: var(--input-selected-color);
 }
@@ -541,9 +499,6 @@ input[type="radio"] {
 	height: 13px;
 	border: 2px solid var(--general-border-color);
 	border-radius: 50%;
-}
-
-.z { /* Fix auto-indent */
 }
 
 input[type="radio"] + label {
@@ -581,25 +536,16 @@ button, input[type="button"], input[type="submit"], input[type="reset"], input[t
 	border: 1px solid var(--button-border-color);
 }
 
-.z {
-}
-
 button[disabled], input[type="button"][disabled], input[type="submit"][disabled], input[type="reset"][disabled], input[type="file"][disabled]::file-selector-button, .button-like[disabled] {
 	background-color: var(--button-face-color-disabled);
 	border: 1px solid var(--button-border-color-disabled);
 	color: lightgray;
 }
 
-.z {
-}
-
 button[disabled]:hover, input[type="button"][disabled]:hover, input[type="submit"][disabled]:hover, input[type="reset"][disabled]:hover, input[type="file"][disabled]::file-selector-button:hover, .button-like[disabled]:hover {
 	background-color: var(--button-face-color-disabled);
 	border: 1px solid var(--button-border-color-disabled);
 	cursor: not-allowed;
-}
-
-.z { /* Fix auto-indent */
 }
 
 button:hover, input[type="button"]:hover, input[type="submit"]:hover, input[type="reset"]:hover, input[type="file"]::file-selector-button:hover, .button-like:hover {
@@ -610,6 +556,24 @@ button:hover, input[type="button"]:hover, input[type="submit"]:hover, input[type
 
 button[aria-pressed="true"] {
 	background-color: var(--tab-selected-color);
+	font-weight: bold;
+	font-style: italic;
+}
+
+button[role="link"], .button-like[role="link"] {
+	text-decoration: underline;
+}
+
+*[role="button"]:hover, *[role="link"]:hover {
+	cursor: pointer;
+}
+
+.clickable:hover {
+	cursor: pointer;
+}
+
+#gwFileDownloadLink, #gwFilePickerInput {
+	display: none;
 }
 /*#endregion */
 
@@ -650,9 +614,6 @@ tbody th {
 	display: flex;
 }
 
-.z {
-}
-
 .inline-banner-wrapper > .inline-banner {
 	width: 100%;
 }
@@ -669,14 +630,8 @@ tbody th {
 	gap: 5px;
 }
 
-.z {
-}
-
 .inline-banner.center {
 	justify-content: center;
-}
-
-.z {
 }
 
 .inline-banner.warning {
@@ -690,9 +645,6 @@ tbody th {
 .inline-banner-buttonWrpr {
 	height: 100%;
 	flex-grow: 1;
-}
-
-.z {
 }
 
 .inline-banner-buttonWrpr > button {
@@ -794,9 +746,6 @@ figcaption {
 	border-bottom: 1px dotted var(--general-border-color);
 }
 
-.z { /* Fix auto-indent */
-}
-
 .tooltip-target .tooltip-text {
 	visibility: hidden;
 	background-color: var(--accent-color);
@@ -843,34 +792,6 @@ figcaption {
 /*#endregion*/
 
 /*#region Elements*/
-kbd {
-	font-family: Consolas;
-	border: 1px solid var(--general-border-color);
-	border-radius: 3px;
-	padding: 1px;
-	margin: 3px;
-}
-
-button[role="link"], .button-like[role="link"] {
-	text-decoration: underline;
-}
-
-*[role="button"]:hover, *[role="link"]:hover {
-	cursor: pointer;
-}
-
-.clickable:hover {
-	cursor: pointer;
-}
-
-#gwFileDownloadLink, #gwFilePickerInput {
-	display: none;
-}
-
-.icon-button {
-	display: flex;
-	align-items: center;
-}
 /*#endregion*/
 
 /*#region Other*/
@@ -889,18 +810,15 @@ button[role="link"], .button-like[role="link"] {
 	left: -99999999px;
 }
 
-	.hide-until-focus:focus {
-		position: revert;
-		left: revert;
-	}
+.hide-until-focus:focus {
+	position: revert;
+	left: revert;
+}
 
 .icon {
 	fill: var(--icon-color);
 	width: 16px;
 	height: 16px;
-}
-
-.z {
 }
 
 .icon.unloaded-icon {
@@ -915,6 +833,19 @@ button[role="link"], .button-like[role="link"] {
 	justify-content: center;
 }
 
+.icon-button {
+	display: flex;
+	align-items: center;
+}
+
+kbd {
+	font-family: Consolas;
+	border: 1px solid var(--general-border-color);
+	border-radius: 3px;
+	padding: 1px;
+	margin: 3px;
+}
+
 :focus-visible {
 	outline-width: 5px;
 	outline-color: var(--input-selected-color);
@@ -925,9 +856,6 @@ button[role="link"], .button-like[role="link"] {
 	display: flex;
 	flex-direction: row;
 	width: max-content;
-}
-
-.z {
 }
 
 .nb-word + .nb-word {
