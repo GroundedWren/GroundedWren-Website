@@ -241,7 +241,15 @@ registerNamespace("Common.Controls.PageControl", function (ns)
 
 			if (!noFocus)
 			{
-				this.__pageEl.focus();
+				const anchors = [...this.__pageEl.getElementsByClassName("pgc-anchor")];
+				if (anchors.length)
+				{
+					anchors[0].focus();
+				}
+				else
+				{
+					this.__pageEl.focus();
+				}
 			}
 		};
 
