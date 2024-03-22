@@ -187,7 +187,7 @@
 			},
 
 			createdBy: "Vera & Raiyk",
-			createdDate: new Date(2016, 08),
+			createdDate: new Date(2016, 8),
 			status: "Active",
 
 			appearanceDetails: ""

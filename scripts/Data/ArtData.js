@@ -406,15 +406,15 @@
 			altText: "Video game style battle screen of two black cats with daggers and swords facing off with a death dog in a desert.",
 			isExplicit: false,
 		},
-		"Titus Reference": {
-			src: "../img/Titus Ref - NeverNeverLand - 2023-11-27.png",
-			characters: ["Titus"],
-			artists: ["NeverNeverLand"],
-			date: new Date(2023, 10, 27),
-			description: "A Turian adopt of Titus, a character in Sindri's story.",
-			altText: "A white and pinkish male Turian with red eyes posing plainly.",
-			isExplicit: false,
-		},
+		//"Titus Reference": {
+		//	src: "../img/Titus Ref - NeverNeverLand - 2023-11-27.png",
+		//	characters: ["Titus"],
+		//	artists: ["NeverNeverLand"],
+		//	date: new Date(2023, 10, 27),
+		//	description: "A Turian adopt of Titus, a character in Sindri's story.",
+		//	altText: "A white and pinkish male Turian with red eyes posing plainly.",
+		//	isExplicit: false,
+		//},
 	};
 	//#endregion
 });
