@@ -155,7 +155,7 @@ window.onload = () =>
 				}
 			},
 			"Music": {
-				linkHref: "./Music.html",
+				linkHref: "./Music.html?collection=I%27ll%20Miss%20The%20Winter",
 			},
 			"Writing": {
 				childActionMap: {
