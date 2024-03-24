@@ -1,44 +1,12 @@
 ﻿/*#region Themes*/
-.theme-vera {
-	--background-color: #1A0D26;
-	--content-color: #331A4D;
-	--content-color-2: #000000;
-	--input-background-color: #000000;
-	--input-text-color: #FFFFFF;
-	--input-selected-color: #663399;
-	--tab-selected-color: #663399;
-	--accent-color: #663399;
-	--accent-color-hover: #A853FC;
-	--accent-color-2: #4D2673;
-	--text-color: #FFFFFF;
-	--button-face-color: #262626;
-	--button-face-color-hover: #191919;
-	--button-face-color-disabled: #191919;
-	--button-border-color: #5B9AD5;
-	--button-border-color-hover: #497CAB;
-	--button-border-color-disabled: #474747;
-	--button-text-color: #FFFFFF;
-	--clickable-border-color: #FFFFFF;
-	--link-color: #FFFFFF;
-	--general-border-color: #FFFFFF;
-	--scrollbar-track-color: #2C1642;
-	--scrollbar-thumb-color: #663399;
-	--inline-banner-color: #404040;
-	--inline-banner-warn-color: #766000;
-	--inline-banner-pos-color: #195725;
-	--icon-color: #FFFFFF;
-	--heading-color: #FFFFFF;
-	--box-shadow-color: #64646466;
-}
-
 .theme-ocean {
 	--background-color: #090B1A;
 	--content-color: #1F2555;
 	--content-color-2: #10122B;
 	--input-background-color: #000000;
 	--input-text-color: #FFFFFF;
-	--tab-selected-color: #2F3780;
 	--input-selected-color: #306396;
+	--tab-selected-color: #2F3780;
 	--accent-color: #2F3780;
 	--accent-color-hover: #10122B;
 	--accent-color-2: #10122B;
@@ -55,6 +23,38 @@
 	--general-border-color: #FFFFFF;
 	--scrollbar-track-color: #2F3780;
 	--scrollbar-thumb-color: #306396;
+	--inline-banner-color: #404040;
+	--inline-banner-warn-color: #766000;
+	--inline-banner-pos-color: #195725;
+	--icon-color: #FFFFFF;
+	--heading-color: #FFFFFF;
+	--box-shadow-color: #64646466;
+}
+
+.theme-vera {
+	--background-color: #1A0D26;
+	--content-color: #331A4D;
+	--content-color-2: #27143A;
+	--input-background-color: #000000;
+	--input-text-color: #FFFFFF;
+	--input-selected-color: #775FE8;
+	--tab-selected-color: #663399;
+	--accent-color: #663399;
+	--accent-color-hover: #4D2673;
+	--accent-color-2: #4D2673;
+	--text-color: #FFFFFF;
+	--button-face-color: #262626;
+	--button-face-color-hover: #191919;
+	--button-face-color-disabled: #191919;
+	--button-border-color: #5B9AD5;
+	--button-border-color-hover: #497CAB;
+	--button-border-color-disabled: #474747;
+	--button-text-color: #FFFFFF;
+	--clickable-border-color: #FFFFFF;
+	--link-color: #FFFFFF;
+	--general-border-color: #FFFFFF;
+	--scrollbar-track-color: #663399;
+	--scrollbar-thumb-color: #775FE8;
 	--inline-banner-color: #404040;
 	--inline-banner-warn-color: #766000;
 	--inline-banner-pos-color: #195725;
