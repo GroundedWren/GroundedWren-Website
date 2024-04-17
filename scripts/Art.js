@@ -750,24 +750,6 @@ registerNamespace("Pages.Art", function (ns)
 		Common.Controls.Popups.showModal("Art Gallery",`Link Copied!<br>${link}`);
 	}
 	//#endregion
-
-	ns.onLeftPaneChevToggle = function onLeftPaneChevToggle()
-	{
-		//const charTogChev = document.getElementById("chevViewCharacters");
-		//const artTogChev = document.getElementById("chevViewArtists");
-		//const stickyPane = document.getElementById("stickyPane");
-
-		//if (artTogChev.getAttribute("aria-pressed") == "false"
-		//	&& charTogChev.getAttribute("aria-pressed") == "false"
-		//)
-		//{
-		//	stickyPane.style = "";
-		//}
-		//else
-		//{
-		//	stickyPane.style = "position: relative; top: 0px";
-		//}
-	};
 });
 
 /**
@@ -868,7 +850,6 @@ window.onload = () =>
 				charTogChev.classList.add("bottom");
 			}
 
-			Pages.Art.onLeftPaneChevToggle();
 			charTogChev.focus();
 		}
 	);
@@ -890,7 +871,6 @@ window.onload = () =>
 				artTogChev.classList.add("bottom");
 			}
 
-			Pages.Art.onLeftPaneChevToggle();
 			artTogChev.focus();
 		}
 	);
