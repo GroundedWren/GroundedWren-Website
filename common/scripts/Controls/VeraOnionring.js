@@ -37,7 +37,8 @@ registerNamespace("Common.Controls.VeraOnionring", function (ns)
 			scriptText.indexOf(sitesListPreamble) + sitesListPreamble.length
 		);
 		sitesListText = sitesListText.slice(0, sitesListText.indexOf(sitesListEpilogue));
-		sitesListText = sitesListText.replaceAll("'", "");
+		const quotesRegex = /'|"/g;
+		sitesListText = sitesListText.replaceAll(quotesRegex, "");
 
 		var sitesList = sitesListText.split(",");
 		sitesList = sitesList.map(site => site.trim()).filter(site => !!site);
