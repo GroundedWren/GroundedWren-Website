@@ -871,6 +871,10 @@ kbd {
 	z-index: 100;
 }
 
+*[tabindex="-1"]:focus {
+	outline-style: dashed;
+}
+
 .nb-word {
 	display: flex;
 	flex-direction: row;
