@@ -53,7 +53,7 @@
 
 /*#region Dialog*/
 .dialog {
-	position: absolute;
+	position: absolute !important;
 	z-index: 1;
 	background-color: var(--content-color-2);
 }
