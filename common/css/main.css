@@ -412,8 +412,7 @@ form > h1, form > h2, form > h3, form > h4, form > h5, form > h6 {
 	flex-direction: column;
 	justify-content: flex-start;
 	align-items: flex-start;
-	margin-left: 5px;
-	margin-right: 5px;
+	margin-inline: 5px;
 }
 
 .input-vertical-line {
@@ -442,8 +441,23 @@ form > h1, form > h2, form > h3, form > h4, form > h5, form > h6 {
 	grid-column: 1 / -1;
 }
 
-.input-line label, .input-flex-line label, .input-vertical-line label, .input-grid label {
+label {
 	cursor: pointer;
+}
+
+label:not(.input-vertical, .text-after) :is(input, select) {
+	margin-inline-start: 5px;
+}
+label.text-after :is(input, select) {
+	margin-inline-end: 5px;
+}
+
+:is(label, .input-line, .input-flex-line, .input-vertical-line):has(> input:checked) {
+	background-color: var(--input-selected-color);
+}
+
+.input-grid > :is(*:has(+ input:checked), input:checked) {
+	background-color: var(--input-selected-color);
 }
 
 .input-line > button, .input-flex-line > button, .input-vertical-line > button, .input-grid button {
@@ -453,7 +467,7 @@ form > h1, form > h2, form > h3, form > h4, form > h5, form > h6 {
 .input-flex-line > label {
 	text-align: left;
 	flex-grow: 1;
-	padding-right: 10px;
+	padding-inline-end: 10px;
 }
 
 input[type="text"], input[type="password"], input[type="number"], input[type="email"], input[type="submit"] {
@@ -486,7 +500,7 @@ input[type="checkbox"]:checked {
 	background-color: var(--input-selected-color);
 }
 
-input[type="checkbox"]:hover {
+input[type="checkbox"] {
 	cursor: pointer;
 }
 
@@ -509,7 +523,7 @@ input[type="radio"]:checked {
 	background-color: var(--input-selected-color);
 }
 
-input[type="radio"]:hover {
+input[type="radio"] {
 	cursor: pointer;
 }
 
@@ -523,6 +537,7 @@ textarea {
 select {
 	color: var(--input-text-color);
 	background-color: var(--input-background-color);
+	cursor: pointer;
 }
 
 button.button-like {
@@ -726,7 +741,7 @@ figcaption {
 }
 
 .card-chevron {
-	height: 0px;
+	height: 20px;
 	width: 25px;
 	margin-top: 5px;
 }
@@ -846,9 +861,13 @@ kbd {
 	margin: 3px;
 }
 
-:focus-visible {
-	outline-width: 5px;
+:focus-visible, *[tabindex="-1"]:focus {
+	outline-width: 4px;
 	outline-color: var(--input-selected-color);
+	outline-style: solid;
+	outline-offset: 1px;
+	
+	position: relative;
 	z-index: 100;
 }
 
