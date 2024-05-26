@@ -198,6 +198,7 @@ registerNamespace("Common", function (ns)
 			"--icon-color": "#FFFFFF",
 			"--heading-color": "#FFFFFF",
 			"--box-shadow-color": "#64646466",
+			"--focus-color": "#FF0701",
 		},
 		"theme-vera": {
 			"--background-color": "#1A0D26",
@@ -229,6 +230,7 @@ registerNamespace("Common", function (ns)
 			"--icon-color": "#FFFFFF",
 			"--heading-color": "#FFFFFF",
 			"--box-shadow-color": "#64646466",
+			"--focus-color": "#01FE14",
 		},
 		"theme-paper": {
 			"--background-color": "#EDEDED",
@@ -260,6 +262,7 @@ registerNamespace("Common", function (ns)
 			"--icon-color": "#000000",
 			"--heading-color": "#000000",
 			"--box-shadow-color": "#64646466",
+			"--focus-color": "#FF0701",
 		},
 		"theme-serin": {
 			"--background-color": "#FEFAE0",
@@ -291,6 +294,7 @@ registerNamespace("Common", function (ns)
 			"--icon-color": "#000000",
 			"--heading-color": "#FFFFFF",
 			"--box-shadow-color": "#64646466",
+			"--focus-color": "#FF0701",
 		},
 	};
 

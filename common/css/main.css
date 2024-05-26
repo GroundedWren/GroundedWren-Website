@@ -29,6 +29,7 @@
 	--icon-color: #FFFFFF;
 	--heading-color: #FFFFFF;
 	--box-shadow-color: #64646466;
+	--focus-color: #FF0701;
 }
 
 .theme-vera {
@@ -61,6 +62,7 @@
 	--icon-color: #FFFFFF;
 	--heading-color: #FFFFFF;
 	--box-shadow-color: #64646466;
+	--focus-color: #01FE14;
 }
 
 .theme-paper {
@@ -93,6 +95,7 @@
 	--icon-color: #000000;
 	--heading-color: #000000;
 	--box-shadow-color: #64646466;
+	--focus-color: #FF0701;
 }
 
 .theme-serin {
@@ -125,6 +128,7 @@
 	--icon-color: #000000;
 	--heading-color: #FFFFFF;
 	--box-shadow-color: #64646466;
+	--focus-color: #FF0701;
 }
 /*#endregion*/
 
@@ -863,12 +867,12 @@ kbd {
 
 :focus-visible, *[tabindex="-1"]:focus {
 	outline-width: 4px;
-	outline-color: var(--input-selected-color);
+	outline-color: var(--focus-color);
 	outline-style: solid;
 	outline-offset: 1px;
 	
 	position: relative;
-	z-index: 100;
+	z-index: 100 !important;
 }
 
 *[tabindex="-1"]:focus {
