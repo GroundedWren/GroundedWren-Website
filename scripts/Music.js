@@ -220,7 +220,6 @@ registerNamespace("Pages.Music", function (ns)
 			"span",
 			expandButton,
 			{
-				tabindex: 0,
 				"aria-label": "Show track details for " + song.title
 			},
 			["chevron", "bottom"]
