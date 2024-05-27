@@ -370,15 +370,12 @@
 	flex-direction: column;
 }
 
-.z {
-}
-
 .comment-article blockquote {
 	max-width: unset !important;
 	overflow-wrap: break-word;
 }
 
-.comment-article > button {
+.comment-article button {
 	max-width: fit-content;
 	height: 30px;
 }
@@ -402,16 +399,37 @@
 	font-style: italic;
 }
 
-.comment-timestamp {
-	text-align: end;
+.comment-header-right {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
 }
 
 .commenter-name {
 	font-size: 1.1em;
 	font-weight: bold;
 }
-/*#endregion*/
 
+.comment-footer {
+	display: flex;
+	flex-direction: row;
+	gap: 5px;
+}
+
+gw-comment-card:not(.collapsed) .show-comment {
+	display: none;
+}
+gw-comment-card.collapsed .comment-article > *:not(.comment-header) {
+	display: none !important;
+}
+gw-comment-card.collapsed .show-comment {
+	display: block;
+}
+
+gw-comment-card.collapsed .comment-header-right time {
+	display: none;
+}
+/*#endregion*/
 /*#region Bound Element*/
 .btn-header {
 	width: 100%;
