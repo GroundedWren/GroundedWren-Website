@@ -393,7 +393,7 @@
 	padding-right: 0px;
 }
 
-.comment-id, .comment-timestamp {
+.comment-id, .comment-header-right > time {
 	font-size: 0.85em;
 	font-weight: lighter;
 	font-style: italic;
