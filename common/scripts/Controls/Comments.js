@@ -178,7 +178,7 @@ registerNamespace("Common.Controls", function (ns)
 						<gw-icon iconKey="triangle-exclamation" title="warning"></gw-icon>
 						<span>
 							That didn't work.
-							<a href="mailto:vera@groundedwren.com?subject=Comment on ${document.title}&body=${contentAry.join("; ")}">Click here to send as an email instead</a>.
+							<a class="full" href="mailto:vera@groundedwren.com?subject=Comment on ${document.title}&body=${contentAry.join("; ")}">Click here to send as an email instead</a>.
 						</span>
 						`;
 				}
