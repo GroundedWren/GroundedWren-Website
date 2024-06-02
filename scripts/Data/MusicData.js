@@ -12,6 +12,43 @@ registerNamespace("Pages.Music.Data", function (ns)
 			Description: "In-progress collection for 2024.",
 			Songs: [
 				{
+					title: "Naked As We Came",
+					src: "../music/Brave Old World/Naked_As_We_Came.mp3",
+					type: "audio/mp3",
+					performers: ["Vera"],
+					composers: ["Iron & Wine"],
+					instruments: ["Acoustic Guitar", "Vocals"],
+					recorded: new Date(2024, 5, 1),
+					description: "Recorded in the empty hard wood floor living room of the apartment my partner and I am moving into. Reverb for days!",
+					lyrics: "They say <q>Wake up, it's no use pretending</q><br>"
+						+ "I'll keep dreamin', stealin' them<br>"
+						+ "Birds are leaving over autumn's endin'<br>"
+						+ "One of us will die inside these arms<br>"
+						+ "<br>"
+						+ "(Chorus)<br>"
+						+ "Eyes wide open<br>"
+						+ "Naked as we came<br>"
+						+ "One will spread our ashes 'round the yard<br>"
+						+ "<br>"
+						+ "They say <q>If I leave before you, darling<br>"
+						+ "Don't you waste me in the ground</q><br>"
+						+ "I lay smiling like our dreaming children<br>"
+						+ "One of us will die inside these arms<br>"
+						+ "<br>"
+						+ "(Chorus)",
+				},
+				{
+					title: "The Same Boy You've Always Known",
+					src: "../music/Brave Old World/The_Same_Boy_Youve_Always_Known.mp3",
+					type: "audio/mp3",
+					performers: ["Vera"],
+					composers: ["The White Strips"],
+					instruments: ["Acoustic Guitar", "Vocals"],
+					recorded: new Date(2024, 5, 1),
+					description: "I've been playing this song since forever - always fun to revisit.",
+					lyrics: "<a href='https://genius.com/The-white-stripes-the-same-boy-youve-always-known-lyrics' target='_blank'>genius.com</a>",
+				},
+				{
 					title: "After Hours",
 					src: "../music/Brave Old World/After_Hours.mp3",
 					type: "audio/mp3",
