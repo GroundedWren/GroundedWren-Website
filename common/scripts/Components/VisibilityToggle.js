@@ -53,7 +53,10 @@
 			{
 				toggler.setAttribute("role", "button");
 			}
-			toggler.setAttribute("tabindex", 0);
+			if (!toggler.hasAttribute("tabindex"))
+			{
+				toggler.setAttribute("tabindex", 0);
+			}
 			toggler.setAttribute("aria-pressed", !!startPressed ? "true" : "false");
 
 			(ansilarryTogglers || []).concat([this.__toggler]).forEach(togglerEl =>

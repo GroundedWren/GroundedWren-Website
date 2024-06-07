@@ -474,12 +474,11 @@ registerNamespace("Common.Controls.DropdownMenu", function (ns)
 					debugger; //link parent elements are not supported
 				}
 
-				this.chevronEl = Common.DOMLib.createElement(
-					"span",
-					this.tabEl,
-					undefined,
-					["chevron", "bottom"]
-				);
+				this.chevronEl = Common.DOMLib.crEl({
+					tag: "span",
+					parent: this.tabEl,
+					classAry: ["chevron", "bottom"]
+				});
 				Common.Components.RegisterVisToggle(tabEl, this.children, Common.fcd(this, this.__onToggle));
 			}
 			else
