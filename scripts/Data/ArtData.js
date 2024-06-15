@@ -74,6 +74,9 @@
 		"NeverNeverLand": {
 			link: "https://ko-fi.com/antaresnnl"
 		},
+		"Ewylana": {
+			link: "https://www.tumblr.com/ewylana"
+		},
 	};
 	//#endregion
 
@@ -406,15 +409,24 @@
 			altText: "Video game style battle screen of two black cats with daggers and swords facing off with a death dog in a desert.",
 			isExplicit: false,
 		},
-		//"Titus Reference": {
-		//	src: "../img/Titus Ref - NeverNeverLand - 2023-11-27.png",
-		//	characters: ["Titus"],
-		//	artists: ["NeverNeverLand"],
-		//	date: new Date(2023, 10, 27),
-		//	description: "A Turian adopt of Titus, a character in Sindri's story.",
-		//	altText: "A white and pinkish male Turian with red eyes posing plainly.",
-		//	isExplicit: false,
-		//},
+		"Titus Reference": {
+			src: "../img/Titus Ref - NeverNeverLand - 2023-11-27.png",
+			characters: ["Titus"],
+			artists: ["NeverNeverLand"],
+			date: new Date(2023, 10, 27),
+			description: "A Turian adopt of Titus, a character in Sindri's story.",
+			altText: "A white and pinkish male Turian with red eyes posing plainly.",
+			isExplicit: false,
+		},
+		"In The Lavender": {
+			src: "../img/Vera Flowers - Ewylana - 2024-06-04.png",
+			characters: ["Vera"],
+			artists: ["Ewylana"],
+			date: new Date(2024, 5, 04),
+			description: "Beautiful YCH dynamic sketch!",
+			altText: "A tielfing woman in purple robes sitting in a field of lavender looking contemplatively into the middle distance.",
+			isExplicit: false,
+		},
 	};
 	//#endregion
 });
