@@ -815,7 +815,7 @@ figcaption {
 
 /*#region Other*/
 .sr-only {
-	position: absolute;
+	position: absolute !important;
 	left: -99999999px;
 	top: 0px;
 }
