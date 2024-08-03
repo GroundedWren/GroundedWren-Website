@@ -39,8 +39,8 @@ registerNamespace("Pages.WinningsCalc", function (ns)
 			startingAssets += (ns.ChipTypes[idx].valInput.value * playerCount);
 			playerDef.chipCounts[idx] = -playerCount;
 		}
-		playerDef.startingAssets = startingAssets;
-		playerDef.spanStartTotal.innerText = `$${startingAssets}`;
+		playerDef.startingAssets = Number(startingAssets.toFixed(2));
+		playerDef.spanStartTotal.innerText = `$${playerDef.startingAssets}`;
 
 		var endingAssets = 0;
 		for (var idx = 0; idx < ns.ChipTypes.length; idx++)
@@ -49,9 +49,9 @@ registerNamespace("Pages.WinningsCalc", function (ns)
 			endingAssets += (ns.ChipTypes[idx].valInput.value * playerCount);
 			playerDef.chipCounts[idx] += playerCount;
 		}
-		playerDef.spanEndTotal.innerText = `$${endingAssets}`;
+		playerDef.spanEndTotal.innerText = `$${endingAssets.toFixed(2)}`;
 
-		playerDef.netAssets = endingAssets - startingAssets;
+		playerDef.netAssets = Number((endingAssets - startingAssets).toFixed(2));
 		playerDef.netSpan.innerText = `$${playerDef.netAssets}`;
 
 		ns.updateGameForm();
@@ -146,6 +146,8 @@ registerNamespace("Pages.WinningsCalc", function (ns)
 			potVal += playerDef.startingAssets;
 			ns.NetTblVal += playerDef.netAssets;
 		});
+		potVal = Number(potVal.toFixed(2));
+		ns.NetTblVal = Number(ns.NetTblVal.toFixed(2));
 		document.getElementById("tdPot").innerText = `$${potVal}`;
 		document.getElementById("tdTblNet").innerText = `$${ns.NetTblVal}`;
 	};
