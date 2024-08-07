@@ -576,7 +576,6 @@ button:hover, input[type="button"]:hover, input[type="submit"]:hover, input[type
 button[aria-pressed="true"] {
 	background-color: var(--tab-selected-color);
 	font-weight: bold;
-	font-style: italic;
 }
 
 button[role="link"], .button-like[role="link"] {
