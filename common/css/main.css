@@ -864,7 +864,7 @@ kbd {
 	margin: 3px;
 }
 
-label:has(> :focus-visible), *:not(label) > :focus-visible, *[tabindex="-1"]:focus {
+label:has(> :focus-visible), *:not(label) > :not(.dialog):focus-visible, :not(.dialog)[tabindex="-1"]:focus {
 	outline-width: 4px !important;
 	outline-color: var(--focus-color) !important;
 	outline-style: solid !important;
@@ -875,7 +875,7 @@ label:has(> :focus-visible), *:not(label) > :focus-visible, *[tabindex="-1"]:foc
 label > :focus-visible {
 	outline: none !important;
 }
-*[tabindex="-1"]:focus {
+:not(.dialog)[tabindex="-1"]:focus {
 	outline-style: dashed !important;
 }
 
