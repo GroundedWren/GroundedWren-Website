@@ -15,7 +15,7 @@ window.onload = () =>
 	Common.setUpAccessibility();
 	Common.Components.registerShortcuts({
 		"ALT+H": {
-			action: () => { Common.navTo('./Home.html'); },
+			action: () => { Common.navTo('https://groundedwren.com/'); },
 			description: "Return to the home page"
 		},
 	});
